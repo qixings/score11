@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="user-profile.css">
+    <link rel="stylesheet" href="styles3.css">
+</head>
+
+<body id="home">
+
+    <div class="container">
+        <header class="profile-header">
+            <div class="user-data">
+                <div class="user-info">
+                    <img src="user.png" alt="Profile Picture" class="profile-pic" style="filter: invert();"
+                        width="40px">
+                    <div class="user-details">
+                        <h2>admin_demo</h2>
+                        <p>ID: 7001 <button class="copy-btn" onclick="copyToClipboard(7001)"><img src="copyicon.png"
+                                    alt="" width="10px" style="filter: invert();"></button></p>
+                    </div>
+                </div>
+                <div class="balance-info-user">
+                    <div style="display: flex;align-items: center; font-weight: bold;">
+                        <p>₹58555.45</p>
+                        <button class="refresh-btn" onclick="refreshBalance()"><img src="processing.png" alt=""
+                                width="15px" style="filter: invert();"></button>
+                    </div>
+                    <p style="font-size: 10px; margin-right: 15px; display: flex; gap: 5px; color: white;"><img
+                            src="wallet.png" alt="" width="10px">Wallet Balance</p>
+                </div>
+            </div>
+        </header>
+
+        <div style="display: flex;
+    justify-content: space-between; align-items: center; margin-bottom: 11px;
+    margin-top: 14px;
+">
+
+          <div class="info-section" style=" display: flex;
+          margin-left: 15px;
+          font-size: 12px;
+          flex-direction: column;
+          text-align: left;">
+            <div id="timer" class="timer-section">Result Timer:</div>
+            <span id="timer-value" class="value" style="height: 20px; display: flex; align-items: center; justify-content: center;">00:01:00</span>
+        </div>
+
+            <div class="score-tutorials">
+                <a href="https://t.me/sattalog" target="_blank"><img src="score11only.png" alt="" width="70px"
+                        style="margin-right: -14px;">Tutorials</a>
+            </div>
+        </div>
+
+        <div class="navbar">
+            <nav class="main-nav">
+                <button onclick="navigateTo('personal')"> <img src="agent.png" alt="" width="30px"
+                        style="filter: invert();">Personal</button>
+                <button onclick="navigateTo('deposit')"><img src="deposit.png" alt="" width="30px"
+                        style="filter: invert();">Deposit</button>
+                <button onclick="navigateTo('withdraw')"><img src="withdrawicon.png" alt="" width="30px"
+                        style="filter: invert();">Withdraw</button>
+                <button onclick="navigateTo('bank')"> <img src="bank.png" alt="" width="30px"
+                        style="filter: invert();">Bank</button>
+                <button onclick="navigateTo('inbox')"> <img src="inboxicon.png" alt="" width="30px"
+                        style="filter: invert();">Inbox</button>
+                <button onclick="navigateTo('vip')"> <img src="vipicon.png" alt="" width="30px"
+                        style="filter: invert();">VIP</button>
+            </nav>
+
+        </div>
+    </div>
+
+
+    <!-- Alert panel -->
+    <section class="alert-panel2">
+        <marquee behavior="scroll" direction="left">Our customer support never sends links to members. If you receive
+            any, please report it immediately.</marquee>
+    </section>
+
+
+    <!-- Mid Section Content -->
+
+    <div class="main-cont">
+
+        <section  class="cont">
+            <div class="cont-content">
+                <div class="icon">
+                    <img src="bettinghistory.png" alt="" width="40px">
+                </div>
+                <div class="section-content">
+                    <h3>Betting history <br> <p>My betting history</p></h3>
+                </div>
+            </div>
+
+            <div class="cont-content">
+                <div class="icon">
+                    <img src="transaction.png" alt=""width="40px">
+                </div>
+                <div class="section-content">
+                    <h3>Transaction<br> <p>My transaction history</p</h3>
+                </div>
+            </div>         
+        </section>
+
+
+        <section class="cont">
+            <div class="cont-content">
+                <div class="icon">
+                    <img src="deposicon.png" alt=""width="40px">
+                </div>
+                <div class="section-content">
+                    <h3>Deposit<br> <p>My desposit history</p</h3>
+                </div>
+            </div>
+ 
+            <div class="cont-content" style="margin-left:px;">
+                <div class="icon">
+                    <img src="withdrawicon2.png" alt=""width="40px">
+                </div>
+                <div class="section-content"  >
+                    <h3>Withdraw<br> <p>My withdraw history</p</h3>
+                </div>
+            </div>         
+        </section>
+
+
+        <section  class="cont">
+            <div class="cont-content">
+                <div class="icon">
+                    <img src="cs.png" alt=""width="40px">
+                </div>
+                <div class="section-content" style="width: 272px;
+                position: relative;">
+                    <h3>Customer Service Center<br> <p>Resolution to all kind of problems</p></h3>
+                </div>
+            </div>
+      
+        </section>
+
+        
+    </div>
+
+<div class="bottom-cont">
+    <section class="settings">
+        <div class="setting-cont"><a href=""><img src="privacysettingicon.png" alt="" width="25px"style="filter: invert()"> Security & Privacy Settings </a></div>
+        <div class="setting-cont"><a href=""><img src="translateicon.png" alt="" width="25px"style="filter: invert()"> Language Settings</a> </div>
+        <div class="setting-cont"><a href=""><img src="settingsicon.png" alt="" width="25px"style="filter: invert()">Appearance Settings</a>  </div>
+    </section>
+
+    <section class="socials">
+        <div class="social-cont"> <a href="https://t.me/sattalog" target="_blank"><img src="telegramicon.png" alt="" width="25px"></a></div>
+        <div class="social-cont"> <a href="#"><img src="instagramicon.png" alt="" width="25px"></a></div>
+        <div class="social-cont"> <a href="#"><img src="facebookicon.png" alt="" width="25px"></a></div>
+        <div class="social-cont"> <a href="#"><img src="youtubeicon.png" alt="" width="25px"></a></div>
+    </section>
+
+
+    <section class="logout">
+        <button id="logoutButton">Logout</button>
+    </section>
+
+</div>
+    <!-- Navigation menu -->
+    <nav class="navigation-menu">
+        <div class="nav-item" onclick="navigateTo('home')">
+            <img src="home.png" alt="Home">
+            <p>Home</p>
+        </div>
+        <div class="nav-item" onclick="navigateTo('activity')">
+            <img src="activity.png" alt="Activity">
+            <p>Activity</p>
+        </div>
+        <div class="nav-item" onclick="navigateTo('refer')">
+            <img src="refer.png" alt="Refer & Earn">
+            <p>Refer & Earn</p>
+        </div>
+        <div class="nav-item" onclick="navigateTo('agent')">
+            <img src="agent.png" alt="Agent">
+            <p>Agent</p>
+        </div>
+        <div class="nav-item" onclick="navigateTo('user-profile')">
+            <img src="user.png" alt="Profile">
+            <p>Profile</p>
+        </div>
+    </nav>
+
+    <script src="../script.js"></script>
+    <script src="scripts3.js"></script>
+    <script src="user-profile.js"></script>
+</body>
+
+</html>

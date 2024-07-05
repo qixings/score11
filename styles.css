@@ -1,0 +1,1267 @@
+body {
+    font-family: Arial, sans-serif;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: inherit;
+    max-width: 414px;
+    margin: auto;
+    background:linear-gradient(45deg, black, #2c4fa4);
+    color: #ffffff;
+    align-items: start;
+    justify-items: center;
+}
+
+.logo-container{
+    width: 100%;
+    top: 0px;
+    position: relative;
+    height: 47px;
+    background: linear-gradient(45deg, #5749d0, #274792);
+    z-index: 1;
+}
+
+img{
+    width: 27%;
+    left: 33px;
+    position: relative;
+    top: -3px;
+}
+
+#game-container {
+    display: grid;
+    justify-items: center;
+    background: linear-gradient(349deg, #7900ff, #c33dff);
+    border-radius: 0px 0px 20px 20px;
+    width: 335px;
+    padding: 20px;
+    text-align: center;
+    padding-bottom: 0px;
+    animation: gradientRotate 10s linear infinite; /* Apply the animation here */
+}
+
+.balance-container {
+    display: grid;
+    background: linear-gradient(356deg, #000002, #6008ff);
+    border-radius: 9px;
+    box-shadow: 0 0 20px rgb(255 215 251);
+    width: 208px;
+    padding: 10px;
+    padding-bottom: 2px;
+    text-align: center;
+    color: white;
+    position: relative;
+    bottom: 17px;
+}
+
+.fa-wallet{
+    font-size: 10px;
+    position: relative;
+    right: 3px;
+    color: rgb(0, 208, 255);
+}
+
+.fa-arrows-rotate{
+    font-size: small;
+    left: 409px;
+    top: 19px;
+    position: static;
+}
+
+
+#balance {
+    color: greenyellow;
+    gap: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wallet {
+    position: relative;
+    font-size: 9px;
+    bottom: 10px;
+    top: -6px;
+}
+
+.money {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    top: -9px;
+    position: relative;
+}
+
+.money-button {
+    flex: 1;
+    padding: 8px;
+    background-color: #fff8d0;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.money-button:hover {
+    background-color: greenyellow;
+}
+
+.money-button b {
+    white-space: nowrap;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    background-color: rgba(83, 0, 135, 0.343);
+    border-radius:10px;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 0px;
+    top: -10px;
+    position: relative;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+#betting-section {
+    margin: 20px 0;
+}
+
+#info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -2px;
+    margin-top: -12px;
+    font-size: 10px;
+    align-items: center;
+}
+
+.info-section {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.label1 {
+    right: 26px;
+    position: relative;
+    font-size: 12px;
+    padding-bottom: 9px;
+}
+.label2{
+    font-size: 12px;
+    left: 0px;
+    position: relative;
+}
+
+.value {
+    font-weight: bold;
+    display: block;
+    font-size: 12px;
+}
+
+
+#timer-value{
+    font-weight: bold;
+    background: #ffffff;
+    color: #000;
+    padding: 2px;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 112px;
+}
+
+
+
+
+
+
+
+
+
+#numbers {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    justify-items: center;
+    background: rgb(255, 0, 0);
+    padding: 10px 38px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.stripe-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+}
+
+.stripe1 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite;
+    rotate: 348deg;
+}
+
+.stripe2 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite;
+    rotate: 337deg;
+}
+
+.stripe3 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 326deg;
+}
+
+.stripe4 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 315deg;
+}
+
+
+.stripe5 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 304deg;
+}
+
+
+.stripe6 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 293deg;
+}
+
+.stripe7 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 282deg;
+}
+
+.stripe8 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 271deg;
+}
+
+.stripe9 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 260deg;
+}
+
+.stripe10 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 249deg;
+}
+
+.stripe11 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 238deg;
+}
+
+.stripe12 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 227deg;
+}
+
+.stripe13 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 216deg;
+}
+
+.stripe14 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 205deg;
+}
+
+
+.stripe15 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 194deg;
+}
+
+
+.stripe16 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 183deg;
+}
+
+.stripe17 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 172deg;
+}
+.stripe18 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 161deg;
+}
+.stripe19 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 150deg;
+}
+.stripe20 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 139deg;
+}
+.stripe21 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 128deg;
+}
+.stripe22 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 117deg;
+}
+.stripe23 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 106deg;
+}
+.stripe24 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 95deg;
+}
+.stripe25 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 84deg;
+}
+.stripe26 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 73deg;
+}
+.stripe27 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 62deg;
+}
+.stripe28 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 51deg;
+}
+.stripe29 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 40deg;
+}
+.stripe30 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 29deg;
+}
+.stripe31 {
+    position: absolute;
+    bottom: 2px;
+    left: -3px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 18deg;
+}
+.stripe32 {
+    position: absolute;
+    bottom: 1px;
+    left: -4px;
+    width: 116%;
+    height: 20%;
+    background: linear-gradient(175deg, transparent 50%, rgba(255, 255, 255, 0.307) 50%);
+    transform-origin: bottom left;
+    animation: rotate 30s linear infinite; 
+    rotate: 3deg;
+}
+
+
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.number {
+    z-index: 1;
+    position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.number {
+    padding: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    border: none;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 20px;
+}
+
+.number:hover {
+        background-color: greenyellow;
+        box-shadow: 0 0 10px #ffffff; /* Adjust the spread (third value) for glow intensity */
+        transition: box-shadow 0.3s ease-in-out; /* Smooth transition for the glow effect */
+    
+    
+}
+
+#bets {
+    text-align: left;
+}
+
+.guide {
+    font-size: 8px;
+    bottom: 15px;
+    position: relative;
+    color: #dadf11;
+}
+
+#notices {
+    display: flex;
+    align-items: center;
+    margin-top: -32px;
+    display: inline-grid;
+    gap: 10px;
+    color: #ffffff;
+    font-size: 8px;
+    margin-bottom: -20px;
+}
+#notices .fa-bullhorn {
+    font-size: 14px; /* Adjust icon size if needed */
+    color: #81f200;
+    position: relative;
+    left: 5px;
+}
+.lrnr{
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff0000, rgb(255, 196, 0));
+    border-radius: 10px;
+    border: none;
+    font-size: 8px;
+    padding: 5.09px;
+}
+.lrn-icons{
+    display: flex;
+    gap: 224px;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    position: relative;
+    top: -30px;
+}
+
+
+
+
+#notice-container {
+    height: 20px; /* Adjust height as needed */
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #cccccc68;
+    padding: 0px;
+    width: 291px;
+    display: flex;
+    align-items: center;
+    margin-top: 23px;
+}
+
+#scrolling-notices {
+    display: flex;
+    gap: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.notice {
+    display: inline-block;
+    padding: 5px 24px;
+    margin-right: 10px;
+    border-radius: 5px;
+    white-space: nowrap; /* Prevents text from wrapping */
+    animation: slide-up 10s linear infinite; /* Adjust duration (20s) as needed */
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translateY(100%);
+    }
+    10%, 90% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+i{
+    font-size: 20px;
+}
+.tg-links{
+    display: flex;
+    font-size: 9px;
+    padding-top: 0px;
+    width: 330px;
+    align-items: center;
+    position: relative;
+    bottom: 6px;
+}
+.tg1{
+    position: relative;
+    right: 2px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.tg2{
+    position: relative;
+    left: 125px;
+}
+.tg-a{
+    text-decoration: none;
+    color: #00ffff;
+}
+.tg-b{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+
+
+.data-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#below-section {
+    display: grid;
+    background: #ffffff0a;
+    border-radius: 7px;
+    width: 335px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    margin-top: 5px;
+    justify-content: center;
+}
+
+.below-section-content {
+    display: grid;
+    justify-items: center;
+    background: #ffffff0a;
+    border-radius: 7px;
+    width: 335px;
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+    height: 65vh;
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: space-around;
+    font-size: 10px;
+}
+
+.tab-buttons button {
+    flex: 1;
+    padding: 7px 38px;
+    cursor: pointer;
+    background-color: #7727fd;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.tab-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.tab-buttons button.active {
+    background-color: #ff6600; /* Active button color */
+    color: #ffffff; /* Active button text color */
+    transform: scale(1.05); /* Slightly enlarge the active button */
+}
+
+.tab-content {
+    display: none;
+}
+
+#bellow-section {
+    margin-top: 20px;
+    text-align: left;
+}
+
+#public-bets-list, #game-history-list, #my-bets-list {
+    list-style: none;
+    padding: 0;
+    width: 250px;
+}
+
+#public-bets-list li, #game-history-list li, #my-bets-list li {
+    background: #0f327d;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.popup {
+    position: fixed;
+    bottom: 0; /* Adjusted to bottom */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(100%); /* Hide popup by default */
+}
+
+.popup.show {
+    transform: translateY(0); /* Show popup at the bottom */
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    max-width: 400px;
+    height: 225px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    
+}
+
+.popup-buttons {
+    margin-top: 35px;
+    display: flex;
+    justify-content:center;
+    width: 100%;
+}
+
+label {
+    font-size: 12px;
+    display: flex;
+    position: relative;
+    color: black;
+    width: 100%;
+    bottom: -5px;
+}
+
+
+.quick-amount{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    top: 8px;
+    position: relative;
+}
+
+.quick-deposit{
+    background: rgb(255, 0, 0);
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+.quick-amount button:hover{
+    background:#0056b3
+
+}
+
+input {
+    width: 150px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid black;
+    position: relative;
+    
+
+}
+.tips{
+    color: black;
+    position: absolute;
+    font-size: 9px;
+    bottom: 28px;
+}
+
+.popup-buttons button {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    background-color: #ff0000b7;
+    color: #fff;
+    transition: background-color 0.3s;
+    font-size: 14px;
+}
+
+.popup-buttons button:first-child {
+    background-color: #ff0606c6;
+    color: #ffffff;
+    position: relative;
+    right: 6px;
+}
+
+.popup-buttons button:last-child {
+    background-color: #8008ff;
+    color: #ffffff;
+    position: relative;
+    left: 6px;
+}
+
+.popup-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.pre-amount-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.pre-amount-button {
+    flex: 1;
+    padding: 10px;
+    margin: 0 5px;
+    background-color: greenyellow;
+    color: rgb(2, 1, 1);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.pre-amount-button:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+@keyframes shuffle {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.number {
+    padding: 6px;
+    font-size: 28px;
+    cursor: pointer;
+    border: none;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 20px;
+}
+#number11{
+    left: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    color: white;
+    border: 2px solid white;
+    border-style: dotted ;
+    flex-wrap: wrap;
+
+ 
+        height: 40px;
+        width: 40px;
+        right: 0;
+        top: 0;
+        bottom: 0;
+      background: linear-gradient(124deg, #004586, #287eff, #004586, #287eff, #004586, #287eff, #004586, #287eff, #004586);
+      background-size: 1800% 1800%;
+      
+      -webkit-animation: rainbow 8s ease infinite;
+      -z-animation: rainbow 8s ease infinite;
+      -o-animation: rainbow 8s ease infinite;
+        animation: rainbow 8s ease infinite;}
+      
+      @-webkit-keyframes rainbow {
+          0%{background-position:0% 82%}
+          50%{background-position:100% 19%}
+          100%{background-position:0% 82%}
+      }
+      @-moz-keyframes rainbow {
+          0%{background-position:0% 82%}
+          50%{background-position:100% 19%}
+          100%{background-position:0% 82%}
+      }
+      @-o-keyframes rainbow {
+          0%{background-position:0% 82%}
+          50%{background-position:100% 19%}
+          100%{background-position:0% 82%}
+      }
+      @keyframes rainbow { 
+          0%{background-position:0% 82%}
+          50%{background-position:100% 19%}
+          100%{background-position:0% 82%}
+      
+}
+
+.jackpot{
+    font-size: 7px;
+    margin: 0;
+    top: -25px;
+    color: yellow;
+    position: relative;;
+
+}
+
+.number.zoom {
+    animation: zoomIn 0.5s forwards;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.3);
+    }
+}
+
+/* New styles for the tables */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    margin: 0px 0;
+}
+
+th, td {
+    padding: 10px;
+    
+}
+
+th {
+    background-color: #8e75f9;
+    width: 200px; /* Adjust this value as needed */
+    text-align: center;
+    font-size: 12px;
+}
+
+td {
+    text-align: center;
+    font-size: 11px;
+    background-color: #de0cff14;
+}
+
+#public-bets table, #game-history table, #my-bets table {
+    width: 100%;
+}
+
+#public-bets th, #game-history th, #my-bets th {
+    min-width: 10px; /* Minimum width for headers to ensure they are not too narrow */
+}
+
+#public-bets td, #game-history td, #my-bets td {
+    text-align: center;
+}
+
+/* Additional styles for buttons and other elements */
+
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0px;
+}
+
+.tab-buttons button {
+    
+    padding: 5px 35px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Add this to your styles.css */
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: rotate 1s linear;
+}
+
+
+
+/* Existing Popup Styles (if any) */
+
+/* New Game Notification Popup Styles */
+#popup-game-notification {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000; /* Ensure popup is on top */
+    overflow: auto;
+}
+
+#popup-game-notification .popup-content {
+    background-color: #fff;
+    max-width: 80%;
+    margin: 20% auto; /* Center the popup */
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Winning Popup Background Effect */
+#popup-game-notification.popup-winner {
+    background: radial-gradient(ellipse at bottom, #192E47 0%, #030617 100%);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* Close Button Styling */
+#popup-game-close {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+#popup-game-close:hover {
+    background-color: #004499;
+}
+
+
+
+
+.result-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    text-align: center;
+    z-index: 1000;
+    display: none; /* Initially hidden */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 35vh;
+    width: 90vw; /* Adjust for responsive width */
+    max-width: 600px; /* Max width for larger screens */
+    color: black;
+    font-size: 20px;
+    box-sizing: border-box; /* Ensure padding is included in the width/height */
+}
+
+.result-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('winning png.png'); /* Adjust the path as necessary */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+}
+
+.black-and-white .result-background {
+    filter: grayscale();
+}
+
+.wontext {
+    display: flex;
+    flex-direction: column;
+    top: 24px;
+    position: relative;
+    color: #cfff00;
+    font-weight: bold;
+    z-index: 1;
+}
+
+#result-message {
+    color: #ffffff;
+    font-size: 18px;
+    margin: 0px;
+}
+
+#bet-number {
+    color: #ffffff;
+    margin: 13px;
+    font-size: 12px;
+}
+
+#winning-amount {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.result-popup.show {
+    display: block;
+}
+
+
+
+
+
+

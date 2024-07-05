@@ -1,0 +1,309 @@
+body {
+    display: flex;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    height: auto;
+    min-height: 100vh;
+    max-width: 414px;
+    margin: auto;
+    background: linear-gradient(45deg, black, #2c4fa4);
+    background-repeat: no-repeat;
+    flex-direction: column;
+}
+
+.profile-section{
+    margin-bottom: 20px;
+    margin-top: 15px;
+    background-image: url('withdraw card.png');
+    width: 100%;
+    height: 240px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-container {
+    display: flex;
+    align-content: flex-start;
+    width: auto;
+    height: 340px;
+    justify-content: center;
+
+    background: linear-gradient(124deg, #00b7ff75, #28ff3e, #8400ff3a, #9e00e1, #0084ff, #008bd6, #009dff3e, #4c00ff5d, #a166ff);
+    background-size: 1800% 1800%;
+    border-radius: 12px;
+    position: relative;
+    margin: 9px;
+    margin-top: -15px;
+    flex-wrap: wrap;
+    overflow: hidden; /* Ensure overflow doesn't disrupt the gradient animation */
+    z-index: 1; /* Ensure the gradient is behind game icons */
+    animation: rainbow 20s ease infinite; /* Apply animation */
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 82%; }
+    50% { background-position: 100% 19%; }
+    100% { background-position: 0% 82%; }
+}
+
+.profile-info, .bank-info-section {
+    display: none;
+}
+
+.profile-info.active {
+    display: flex;
+    width: 340px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bank-info-section.active {
+    display: flex;
+    width: 340px;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: -120px;
+    filter: drop-shadow(0px 4px 16px rgb(195, 0, 255));
+}
+
+.bank-info-section.active p {
+    font-size: 14px;
+    margin: 2px;
+
+}
+
+.bank-change {
+    display: flex;
+    align-items: center;
+}
+
+#change-bank-button {
+    background: linear-gradient(32deg, #e04fee, #1993e8);
+    margin-left: 113px;
+    color: white;
+    font-weight: bold;
+    padding: 9px;
+}
+
+.balance-container {
+    margin-left: 205px;
+    font-size: 25px;
+    margin-top: -48px;
+    color: greenyellow;
+}
+
+.bank-info {
+    display: flex;
+    margin-top: 84px;
+    margin-left: 233px;
+    align-items: center;
+}
+
+.bank-info.active {
+    display: none;
+}
+
+.card {
+    display: flex;
+    background: linear-gradient(45deg, #9600c0, #0c245e);
+    padding: 10px;
+    border-radius: 10px;
+    align-items: center;
+    width: 330px;
+    margin-top: 22px;
+    align-items: center;
+    height: 40px
+}
+
+.bank-change a{
+    text-decoration: none;
+    color: #00fffb;
+    margin-top: -5px;
+    font-size: 12px;
+}
+
+.flip-button {
+    background: none;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #00e5ff;
+}
+
+.flip-button:hover {
+    color: #00ff00;
+}
+
+.withdraw-section{
+    background:#ffffff0d;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 9px;
+    border-radius: 12px;
+    height: 442px;
+    align-items: center;
+    margin-top: 0px;
+
+}
+
+#withdraw-form{
+    display: flex;
+    width: 75%;
+    text-align: left;
+    background: #1550cf;
+    border-radius: 12px;
+    height: 200px;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+
+}
+
+label {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 12px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 93%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.remember{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    height: 15px;
+
+}
+
+button[type="submit"] {
+    background: linear-gradient(45deg, #e04fee, #1993e8);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 85px;
+    transition: background-color 0.3s;
+}
+.sbmt{
+    display: flex;
+    justify-content: center;
+}
+
+button[type="submit"]:hover {
+    background-color: #e65c00;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.note {
+    font-size: 10px;
+    color: #f2f2f2;
+    background-color: #00e6e646;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+    width: 300px;
+}
+
+
+.history-section{
+    background: #ffffff14;
+    border-radius: 12px;
+    margin: 9px;
+    margin-top: 0px;
+}
+
+.withdraw-data{
+    display: flex;
+    font-size: 12px;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 6px;
+    
+}
+.data{
+    display: flex;
+    gap: 60px;
+   
+}
+.history-entry {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    gap: 15px;
+    justify-content: space-between;
+    color: black;
+}
+
+
+.success-cont{
+    background:#1aa41a ;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 75px;
+    justify-content: center;
+    border-radius: 6px;
+    
+}
+.fail-cont{
+    background:#e10808 ;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 75px;
+    justify-content: center;
+    border-radius: 6px;
+    
+}
+
+.withdraw-label{
+    display: flex;
+    text-align: left;
+    background: linear-gradient(45deg, #e04fee, #1993e8);
+    height: 30px;
+    margin: 12px 0px;
+    border-radius: 3px;
+    font-size: 12px;
+    align-items: center;
+
+}
+
+.withdraw-label h3{
+    margin-left: 5px;
+}
+
+
+.success {
+    color: #ffffff;
+    font-weight: bold;
+    display: flex;
+}
+
+.failed {
+    color: #ffffff;
+    font-weight: bold;
+}
