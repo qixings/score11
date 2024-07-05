@@ -108,7 +108,7 @@ document.getElementById('phone-login').addEventListener('submit', function(event
     const password = event.target.querySelector('input[type="password"]').value;
 
     // Simulated backend logic (replace with actual backend integration later)
-    if (phone === '80808080' && password === 'admin') {
+    if (phone === '8080' && password === 'admin') {
         // Simulate login success
         const userData = {
             isLoggedIn: true,
