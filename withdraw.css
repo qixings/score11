@@ -231,6 +231,7 @@ button[type="submit"]:hover {
     border-radius: 12px;
     margin: 9px;
     margin-top: 0px;
+    min-height:535px
 }
 
 .withdraw-data{
