@@ -16,7 +16,7 @@ body {
     margin-bottom: 20px;
     margin-top: 15px;
     background-image: url('withdraw card.png');
-    max-width: 100%;
+    width: 100%;
     min-height: 250px;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -30,7 +30,7 @@ body {
     display: flex;
     align-content: flex-start;
     width: auto;
-    height: 275px;
+    height: 293px;
     justify-content: center;
     background: linear-gradient(124deg, #00b7ff75, #28ff3e, #8400ff3a, #9e00e1, #0084ff, #008bd6, #009dff3e, #4c00ff5d, #a166ff);
     background-size: 1800% 1800%;
@@ -49,8 +49,8 @@ body {
     background: linear-gradient(45deg, #9600c0, #0c245e);
     padding: 10px;
     border-radius: 10px;
-    width: 309px;
-    margin-top: 202px;
+    width: 337px;
+    margin-top: 220px;
     height: 31px
     }
     
@@ -194,6 +194,7 @@ body {
     justify-content: center;
     font-size: 12px;
     font-weight: bold;
+    align-items: center;
 }
 
 #custom-amount {
