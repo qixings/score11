@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Page</title>
+    <link rel="stylesheet" href="deposit.css">
+</head>
+
+<body>
+    <div class="card-container">
+        <div class="profile-section">
+            <div class="profile-info front active" onclick="flipCard()">
+                <div style="    display: flex;
+                align-items: center;
+                width: 306px;
+                justify-content: space-between;
+                font-size: 12px;
+            ">
+                    <p style="display: flex; align-items: center; gap: 5px;">
+                        <img src="user.png" alt="" width="30px" style="filter: invert();">
+                        <span id="username">Shiv Patel</span>
+                    </p>
+                    <p><span id="Balance-label">Available Balance</span></p>
+                </div>
+                <div class="balance-container">
+                    <p><span id="balance">₹55554.45</span></p>
+                </div>
+                <div style="min-width: 306px;
+                text-align: right;
+                margin-right: 0;
+                margin-top: 32px;
+                font-size: 12px;
+            ">
+                    <p class="bank-info-link">Bank info</p>
+                </div>
+            </div>
+            <div class="profile-info back" onclick="flipCard()" style="filter: drop-shadow(0px 2px 16px rgb(234, 2, 255));">
+                <div style="display: flex;
+                width: 100%;
+                justify-content: space-between;align-items: center;">
+                <p style="margin: 3px;    margin-top: 24px; ">Name: Shivam Patel</p>
+                <button class="support-button"  style="   background: linear-gradient(45deg, #e04fee, #1993e8);
+                color: white;
+                border: none;
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+                margin: 5px;
+                transition: background-color 0.3s;" ><a href="https://t.me/ronyforPremiumAgents" style="text-decoration: none; color: white;">Support</a></button>
+            </div>
+                <p style="margin: 3px; ">A/C No.: 34977023456</p>
+                <p style="margin: 3px;">Bank: STATE BANK OF INDIA</p>
+                <p style="margin: 3px; ">IFSC: SBIN0000001</p>
+                <p style="margin: 3px;">Phone: 98621234567</p>
+
+                <p class="bank-info-link">Back to Balance</p>
+            </div>
+
+            <div class="card" id="card-info">
+                <img src="bank.png" alt="" width="30px" style="filter: invert();">
+                <p style="margin-left: 20px; font-size: 12px;">STATE BANK OF INDIA...****4977</p>
+            </div>
+        </div>
+    </div>
+
+       <!-- Alert panel -->
+       <section class="alert-panel2">
+        <marquee behavior="scroll" direction="left">Our customer support never sends links to members. If you receive
+            any, please report it immediately.</marquee>
+    </section>
+    
+
+
+    <div class="payment-section" style="padding-bottom: 4px;">
+        <label for="server-button" style="text-align: left;width: 95%;
+        font-size: 12px;
+    ">Select payment server</label>
+        <div class="server-selection">
+            <button id="server1" class="server-button"
+               >Server 1</button>
+            <button id="server2" class="server-button"
+                >Server 2</button>
+            <button id="server3" class="server-button"
+                >Server 3</button>
+        </div>
+
+
+
+        <div class="amount-selection">
+            <label for="amount-button" style="text-align: left;width: 100%;
+        font-size: 12px; ">Select your amount</label>
+
+            <div style="display: flex;">
+                <button class="amount-button" data-amount="100">₹100</button>
+                <button class="amount-button" data-amount="300">₹300</button>
+                <button class="amount-button" data-amount="500">₹500</button>
+                <button class="amount-button" data-amount="1000">₹1000</button>
+                <button class="amount-button" data-amount="5000">₹5000</button>
+                <button class="amount-button" data-amount="10000">₹10000</button>
+            </div>
+
+            <div style="display: flex;align-items: center;
+        margin-left: 45px;margin-top: 6px; gap: 5px;">
+                <p style="font-size: 12px; text-align: left;">Enter <br> amount</p>
+                <input type="text" id="custom-amount" placeholder="Enter amount">
+            </div>
+            <div>
+                <button id="pay-button">Pay</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <p style="font-size: 9px; color: yellow; margin: 2px;">*QR and UPI details will appear below after you select
+            your amount and click on pay</p>
+    </div>
+
+    <div id="qr-section" class="qr-section hidden">
+        <img id="qr-code" src="qr1.png" alt="QR Code">
+        <p id="upi-id">UPI ID: <span
+                style="background: white; color: rgb(243, 0, 0); padding: 4px 10px 4px 10px;; border-radius: 4px; font-size: 14px;">demoaccount@paytm</span>
+            <button id="copy-upi"><img src="copyicon.png" width="15px" alt="" style="filter: invert();"></button></p>
+    </div>
+
+
+
+    <div class="utr-section">
+        <div>
+            <p style="font-size: 9px; color: yellow; margin:0 0 8px 0;">*Already paid? enter the UTR/Ref number below
+            </p>
+        </div>
+        <div style="display: flex;
+    align-items: center;">
+            <input type="text" id="utr-number" placeholder="Enter UTR" style="display: flex;
+        align-items: center;
+        gap: 5px;
+        height: 33px;
+    border-radius: 5px;
+    border: none;padding-left: 9px;">
+            <button id="utr-submit" style=" background: linear-gradient(45deg, #ffb700, #ff007b);">Submit</button>
+        </div>
+    </div>
+
+    <div class="history-section">
+        <div class="deposit-label">
+            <h3>Deposit history</h3>
+        </div>
+        <div id="deposit-history" style="width: 100%;"></div>
+
+        <!-- Add more entries as needed -->
+    </div>
+    
+
+    <script src="deposit.js"></script>
+</body>
+
+</html>
