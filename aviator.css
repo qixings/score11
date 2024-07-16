@@ -73,7 +73,7 @@ body {
     flex-direction: column;
     width: 148px;
     border-radius: 12px;
-    background: linear-gradient(0deg, #0a2441, #1f5350);
+    background: linear-gradient(0deg, #044688, #031145);
     padding: 10px;
     height: fit-content;
 }
@@ -84,7 +84,7 @@ body {
     flex-direction: column;
     width: 148px;
     border-radius: 12px;
-    background: linear-gradient(0deg, #0a2441, #1f5350);
+    background: linear-gradient(0deg, #044688, #031145);
     padding: 10px;
     height: fit-content;
 }
