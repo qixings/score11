@@ -39,10 +39,11 @@ body {
 
 .upper-bet-section{
     background: linear-gradient(0deg, #01313b, #00c2ff);
-    padding: 10px;
+    padding: 20px;
     border-radius: 0px 0px 20px 20px;
     height: 427px;
     padding-top: 9px;
+    width: 335px;
 }
 
 .wallet-balance{
