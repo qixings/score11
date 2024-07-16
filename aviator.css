@@ -27,7 +27,7 @@ body {
 .header {
     display: flex;
     margin-bottom: 5px;
-    background: linear-gradient(0deg, #003c5e, #00c2ff);
+    background: linear-gradient(0deg, #050007, #530075);
     border-radius: 9px;
     font-size: 12px;
     height: 45px;
