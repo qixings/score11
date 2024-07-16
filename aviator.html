@@ -1,20 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aviator Game</title>
+    <link rel="stylesheet" href="aviator.css" />
+  </head>
+  <body>
+    <div class="logo-container">
+        <a href="../lottery-game/main-home-page/home.html"><img src="topbarlogo.png" alt=""></a>
+    </div>
+    <div class="container">
+      <section class="upper-bet-section">
+        <div class="header">
+          <div class="serial">
+            Serial: <span id="serialNumber">20240618000001</span>
+          </div>
+          <div class="wallet-balance">
+            Wallet Balance:<span
+              id="walletBalance"
+              style="font-size: 15px; color: greenyellow"
+            >
+              ₹58555.45</span
+            >
+          </div>
+        </div>
+        <div class="game-area">
 
-    <title>Aviator</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles3.css">
-</head>
-<body style="display: flex;
-flex-direction: column;
-height: 100vh;
-justify-content: center;">
-    <h1>Coming Soon.....</h1>
-    
-</body>
+            <div id="timerLoading"></div>
+
+
+
+
+
+          <div class="stripe-container">
+            <div class="stripe1"></div>
+            <div class="stripe2"></div>
+            <div class="stripe3"></div>
+            <div class="stripe4"></div>
+            <div class="stripe5"></div>
+            <div class="stripe6 "></div>
+            <div class="stripe7"></div>
+            <div class="stripe8"></div>
+            <div class="stripe9"></div>
+            <div class="stripe10"></div>
+            <div class="stripe11"></div>
+            <div class="stripe12 "></div>
+            <div class="stripe13"></div>
+            <div class="stripe14"></div>
+            <div class="stripe15"></div>
+            <div class="stripe16"></div>
+            <div class="stripe17 "></div>
+            <div class="stripe18"></div>
+            <div class="stripe19"></div>
+            <div class="stripe20"></div>
+            <div class="stripe21"></div>
+            <div class="stripe22"></div>
+            <div class="stripe23"></div>
+            <div class="stripe24"></div>
+            <div class="stripe25"></div>
+            <div class="stripe26"></div>
+            <div class="stripe27"></div>
+            <div class="stripe28"></div>
+            <div class="stripe29"></div>
+            <div class="stripe30"></div>
+            <div class="stripe31"></div>
+            <div class="stripe32"></div>
+          </div>
+          <div id="timerDisplay" style="margin-top: 110px;
+"></div>
+          <div class="multiplier-display">
+            <img src="rocket.png" alt="Rocket" class="rocket" id="rocket" />
+            <div class="multiplier" id="multiplierValue"></div>
+          </div>
+        </div>
+        <div class="betting-section">
+          <section class="bet-left">
+            <div class="betting-controls">
+              <div class="bet">
+                <button id="betButtonLeft">BET</button>
+                <label
+                  for="betAmountLeft"
+                  style="
+                    font-size: 8px;
+                    margin-bottom: -10px;
+                    margin-left: -15px;
+                    color: yellow;
+                  "
+                  >Enter amount:</label
+                >
+                <input
+                  type="number"
+                  id="betAmountLeft"
+                  value=""
+                  placeholder="Enter amount"
+                />
+              </div>
+              <div class="auto-cash-section">
+                <div class="auto-cashout">
+                  <label for="autoCashout">Auto Cashout</label>
+                  <input type="checkbox" id="autoCashout" />
+                  <div class="toggle"></div>
+
+                  <div
+                    style="
+                      display: flex;
+                      width: 66px;
+                      align-items: center;
+                      flex-direction: row;
+                      background: black;
+                      justify-content: center;
+                      border-radius: 10px;
+                    "
+                  >
+                    <div
+                      style="border: 2px solid; border-radius: 50%; width: 10px"
+                    >
+                      -
+                    </div>
+                    <input
+                      type="number"
+                      id="autoCashoutValue"
+                      value="2.00"
+                      style="
+                        width: 27px;
+                        font-size: 10px;
+                        text-align: center;
+                        background: none;
+                        border: none;
+                        color: white;
+                        padding: 4px;
+                        border-radius: 10px;
+                      "
+                    />
+                    <div
+                      style="border: 2px solid; border-radius: 50%; width: 10px"
+                    >
+                      +
+                    </div>
+                  </div>
+                </div>
+                <div class="preset-buttons">
+                  <button onclick="setBetAmount(10, 'Left')">₹10</button>
+                  <button onclick="setBetAmount(30, 'Left')">₹30</button>
+                  <button onclick="setBetAmount(90, 'Left')">₹90</button>
+                  <button onclick="setBetAmount(270, 'Left')">₹270</button>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="bet-right">
+            <div class="betting-controls">
+              <div class="bet">
+                <button id="betButtonRight">BET</button>
+                <label
+                  for="betAmountRight"
+                  style="
+                    font-size: 8px;
+                    margin-bottom: -10px;
+                    margin-left: -15px;
+                    color: yellow;
+                  "
+                  >Enter amount:</label
+                >
+                <input
+                  type="number"
+                  id="betAmountRight"
+                  value=""
+                  placeholder="Enter amount"
+                />
+              </div>
+              <div class="auto-cash-section">
+                <div class="auto-cashout">
+                  <label for="autoCashout">Auto Cashout</label>
+                  <input type="checkbox" id="autoCashout" />
+                  <div class="toggle"></div>
+                  <div
+                    style="
+                      display: flex;
+                      width: 66px;
+                      align-items: center;
+                      flex-direction: row;
+                      background: black;
+                      justify-content: center;
+                      border-radius: 10px;
+                    "
+                  >
+                    <div
+                      style="border: 2px solid; border-radius: 50%; width: 10px"
+                    >
+                      -
+                    </div>
+                    <input
+                      type="number"
+                      id="autoCashoutValue"
+                      value="2.00"
+                      style="
+                        width: 27px;
+                        font-size: 10px;
+                        text-align: center;
+                        background: none;
+                        border: none;
+                        color: white;
+                        padding: 4px;
+                        border-radius: 10px;
+                      "
+                    />
+                    <div
+                      style="border: 2px solid; border-radius: 50%; width: 10px"
+                    >
+                      +
+                    </div>
+                  </div>
+                </div>
+                <div class="preset-buttons">
+                  <button onclick="setBetAmount(10, 'Right')">₹10</button>
+                  <button onclick="setBetAmount(30, 'Right')">₹30</button>
+                  <button onclick="setBetAmount(90, 'Right')">₹90</button>
+                  <button onclick="setBetAmount(270, 'Right')">₹270</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+
+        <div class="navigation">
+            <div style="    display: flex;
+        align-items: center;"> <img src="telegramicon.png" alt="" style="width: 15px;"><a href="#">Official prediction channel</a></div>
+            
+            <a href="#">Learn how to play?</a>
+          </div>
+
+     </section>
+
+     
+
+     
+<div class="data-container">
+        <div id="below-section">
+            <div class="tab-buttons">
+                <button onclick="showTab('public-bets')">Public Bets</button>
+                <button onclick="showTab('game-history')">History/Trend</button>
+                <button onclick="showTab('my-bets')">My Bets</button>
+            </div>
+        </div>
+
+        <div class="below-section-content">
+            <div id="public-bets" class="tab-content active">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Bet on</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="public-bets-list"></tbody>
+                </table>
+            </div>
+            <div id="game-history" class="tab-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Winning Number</th>
+                        </tr>
+                    </thead>
+                    <tbody id="game-history-list"></tbody>
+                </table>
+            </div>
+            <div id="my-bets" class="tab-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Bet on</th>
+                            <th>Amount</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody id="my-bets-list"></tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+    <script src="aviator.js"></script>
+  </body>
 </html>
-
-
