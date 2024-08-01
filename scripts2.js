@@ -74,7 +74,7 @@ document.querySelector('#signup-page form').addEventListener('submit', function(
 
 
 
-// nichor section testing or lagi lagaisi pore aro  bala tike dekia ei function implement kormu
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
