@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Score11 Home</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles3.css">
@@ -27,37 +26,42 @@
     </header>
 
     <!-- Alert panel -->
+     <div>
     <section class="alert-panel">
         <marquee behavior="scroll" direction="left">Our customer support never sends links to members. If you receive
             any, please report it immediately.</marquee>
     </section>
+</div>
 
-    <!-- Balance section -->
-    <div class="balance-container">
-        <section class="balance-section">
-            <div class="balance-info">
-                <p>₹ <span id="wallet-balance">55555.45</span><i id="refresh-icon"
-                        class="fa-solid fa-arrows-rotate"></i></p>
+   <!-- Banners section -->
+<section class="banner-slider" ><a href="activity.html">
+    <div class="slider-wrapper">
+        <div class="slider">
+            <div class="slide">
+                <img src="banner1.png" alt="Banner 1" class="banner-image">
             </div>
-            <div class="balance-actions">
-                <button onclick="withdraw()">Withdraw</button>
-                <button onclick="deposit()">Deposit</button>
-                <button onclick="addBankAccount()" style="width: 182px;">Add Bank Account</button>
+            <div class="slide">
+                <img src="banner2.png" alt="Banner 2" class="banner-image">
             </div>
-        </section>
+            <!-- Add more slides as needed -->
+        </div>
     </div>
+</a>
+</section>
+
 
     <div class="section-label1">
         <h3>All Games</h3>
     </div>
 
-    <!-- Games section -->
+<!-- Games section with horizontal scrolling -->
+<div class="games-container">
     <section class="games-section">
         <div class="game" onclick="redirectToGame('./satta')">
             <img src="SATTA.png" alt="Satta Game">
         </div>
         <div class="game" onclick="redirectToAviator('./aviator')">
-            <img src="SATTAAVTR.png" alt="Aviator">
+            <img src="MINES.png" alt="Aviator">
         </div>
         <div class="game" onclick="redirectToColortrading('./colortrading')">
             <img src="colortrading.png" alt="Color Trading">
@@ -65,32 +69,20 @@
         <div class="game" onclick="redirectToBigsmall('./bigsmall')">
             <img src="bigsmall.png" alt="Big Small">
         </div>
+        <div class="game" onclick="redirectToPlinko('./plinko')">
+            <img src="PLINKO.png" alt="Spin & Win">
+        </div>
         <div class="game" onclick="redirectToSpinwin('./spinwin')">
             <img src="SPINWIN.png" alt="Spin & Win">
         </div>
-
-        <p>*Tap on the game icon to play and start earning</p>
-
+        
     </section>
+    
+</div>
+<p class="guide-game">*Tap on the game icon to play and start earning</p>
 
-    <!-- Banners section -->
-    <div class="section-label1">
-        <h3>Activities</h3>
-    </div>
-    <section class="banner-slider" ><a href="activity.html">
-        <div class="slider-wrapper">
-            <div class="slider">
-                <div class="slide">
-                    <img src="banner1.png" alt="Banner 1" class="banner-image">
-                </div>
-                <div class="slide">
-                    <img src="banner2.png" alt="Banner 2" class="banner-image">
-                </div>
-                <!-- Add more slides as needed -->
-            </div>
-        </div>
-    </a>
-    </section>
+
+ 
 
 
 
