@@ -53,7 +53,7 @@ body {
     white-space: nowrap;
     scroll-behavior: smooth;
     margin: 9px;
-     background: linear-gradient(124deg, #00b7ff, #287eff, #8400ff, #bf28ff, #0084ff, #ff28d0, #f6ff00, #4c00ff, #ffcf66);
+     background: #284455;
     padding: 10px;
     border-radius: 8px;
 }
