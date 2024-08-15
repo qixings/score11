@@ -1,19 +1,3 @@
-// Function to handle balance refresh
-function refreshBalance() {
-    // Get the current balance from the game
-    const updatedBalance = getBalance();
-    document.getElementById('wallet-balance').textContent = updatedBalance.toFixed(2);
-    
-    // Add rotate animation
-    const refreshIcon = document.querySelector('.fa-arrows-rotate');
-    refreshIcon.classList.add('rotate');
-
-    // Remove rotate animation after 1 second
-    setTimeout(() => {
-        refreshIcon.classList.remove('rotate');
-    }, 1000);
-}
-
 // Functions to handle button clicks
 function withdraw() {
     window.location.href = 'withdraw.html';
@@ -41,32 +25,38 @@ function redirectToGame(game) {
 function redirectToAviator() {
     window.location.href = 'aviator.html';
 }
+
 // Function to redirect to color trading game
 function redirectToColortrading() {
     window.location.href = 'colortrading.html';
 }
+
 // Function to redirect to big small game
 function redirectToBigsmall() {
     window.location.href = 'bigsmall.html';
 }
+
 // Function to redirect to Spin Win game
 function redirectToSpinwin() {
     window.location.href = 'spinwin.html';
 }
 
-// Initial function calls to set up event listeners and refresh balance on load
+// Function to handle horizontal scroll
+function scrollGamesContainer(direction) {
+    const container = document.querySelector('.games-container');
+    const scrollAmount = direction === 'left' ? -200 : 200; // Adjust scroll step as needed
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+}
+
+// Initial function calls to set up event listeners on load
 document.addEventListener("DOMContentLoaded", function() {
-    // Refresh the balance on page load
-    refreshBalance();
 
-    // Attach event listeners
-    document.querySelector('.balance-actions button:nth-child(1)').addEventListener('click', withdraw);
-    document.querySelector('.balance-actions button:nth-child(2)').addEventListener('click', deposit);
-    document.querySelector('.balance-actions button:nth-child(3)').addEventListener('click', addBankAccount);
-    document.querySelector('.balance-info button').addEventListener('click', refreshBalance);
-
+    // Attach event listeners for game icons
     document.querySelector('.games-section .game:nth-child(1)').addEventListener('click', function() { redirectToGame('satta'); });
-    document.querySelector('.games-section .game:nth-child(2)').addEventListener('click', redirectToResults);
+    document.querySelector('.games-section .game:nth-child(2)').addEventListener('click', redirectToAviator);
+    document.querySelector('.games-section .game:nth-child(3)').addEventListener('click', redirectToColortrading);
+    document.querySelector('.games-section .game:nth-child(4)').addEventListener('click', redirectToBigsmall);
+    document.querySelector('.games-section .game:nth-child(5)').addEventListener('click', redirectToSpinwin);
 
     const navItems = document.querySelectorAll('.navigation-menu .nav-item');
     navItems[0].addEventListener('click', function() { navigateTo('home'); });
@@ -75,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function() {
     navItems[3].addEventListener('click', function() { navigateTo('agent'); });
     navItems[4].addEventListener('click', function() { navigateTo('user-profile'); });
 });
-
 
 // JavaScript for banner slider
 let slideIndex = 0;
@@ -99,10 +88,6 @@ function nextSlide() {
 
 // Automatically advance slides every few seconds
 setInterval(nextSlide, 5000); // Adjust timing as needed
-
-
-
-
 
 function navigateTo(page) {
     // Remove active class from all nav items
