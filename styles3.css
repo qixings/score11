@@ -6,7 +6,7 @@ body {
     min-height: 100vh;
     max-width: 414px;
     margin: auto;
-   background: linear-gradient(45deg, black, #28324d);
+    background: linear-gradient(45deg, black, #28324d);
     background-repeat: no-repeat;
 }
 
@@ -30,6 +30,7 @@ body {
 
 /* Alert panel */
 .alert-panel {
+    margin: 8px;
     margin-top: 57px;
     background-color: #ffffff69;
     padding: 5px;
@@ -40,130 +41,51 @@ body {
     position: relative;
 }
 
-.balance-container{
-    display: flex;
-    align-content: flex-start;
-    width: auto;
-    height: 140px;
-    justify-content: center;
-    background: #ffffff0f;
-    border-radius: 12px;
+/* Removed balance-container and balance-section */
 
-    background: linear-gradient(124deg, #00b7ff75, #28ff3e, #8400ff3a, #9e00e1, #0084ff, #000000, #009dff3e, #4c00ff5d, #a166ff);
-    background-size: 1800% 1800%;
-    border-radius: 12px;
-    position: relative;
-    margin: 9px;
-    flex-wrap: wrap;
-    overflow: hidden; /* Ensure overflow doesn't disrupt the gradient animation */
-    z-index: 1; /* Ensure the gradient is behind game icons */
-    animation: rainbow 30s ease infinite; /* Apply animation */
+.balance-container {
+    display: none; /* Hide the balance section */
 }
-
-@keyframes rainbow {
-    0% { background-position: 0% 82%; }
-    50% { background-position: 100% 19%; }
-    100% { background-position: 0% 82%; }
-
-}
-
-
-
-/* Balance section */
-.balance-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
-    text-align: center;
-    border-radius: 20px;
-    width: 200px;
-    height: 80px;
-    background: linear-gradient(27deg, #da5aff, #334aa6);
-    filter: drop-shadow(1px 1px 70px #00ffffd2);
-    margin-top: 10px;
-    
-}
-
-.balance-info p {
-    font-size: 18px;
-    margin: 0;
-    color: greenyellow;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.fa-arrows-rotate{
-    font-size: 15px;
-    margin-left: 5px;
-    color: greenyellow;
-}
-
-.balance-actions button {
-    margin: 4px;
-    padding: 10px 8px;
-    font-size: 14px;
-    background-color: #fff8d0;
-    border-style: none;
-    border-radius: 5px;
-    font-weight: bold;
-    width: 85px;
-    color: black;
-}
-
-
-
 
 /* Games section */
+.games-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    margin: 9px;
+     background: linear-gradient(124deg, #00b7ff, #287eff, #8400ff, #bf28ff, #0084ff, #ff28d0, #f6ff00, #4c00ff, #ffcf66);
+    padding: 10px;
+    border-radius: 8px;
+}
+.guide-game{
+    font-size: 10px;
+    color: #eeff00;
+}
+
 .games-section {
     display: flex;
-    justify-content: space-around;
-    padding: 8px;
-    background: linear-gradient(124deg, #00b7ff, #287eff, #8400ff, #bf28ff, #0084ff, #ff28d0, #f6ff00, #4c00ff, #ffcf66);
-    background-size: 1800% 1800%;
-    border-radius: 12px;
-    position: relative;
-    margin: 9px;
     flex-wrap: wrap;
-    overflow: hidden; /* Ensure overflow doesn't disrupt the gradient animation */
-    z-index: 1; /* Ensure the gradient is behind game icons */
-    animation: rainbow 30s ease infinite; /* Apply animation */
-}
-
-@keyframes rainbow {
-    0% { background-position: 0% 82%; }
-    50% { background-position: 100% 19%; }
-    100% { background-position: 0% 82%; }
-}
-
-.games-section p {
-    font-size: 9px;
-    margin: 0;
-    margin-top: 10px;
-    color: yellow; /* Adjust text color */
-    text-align: center; /* Center align the text */
-}
-
-.games-section .game {
-    text-align: center;
-    padding: 0;
-    margin: 4px; /* Adjust spacing between games */
+    gap: 7px;
+    justify-content: center;
 }
 
 .games-section .game img {
-    width: 63px; /* Adjust image size */
-    height: 63px;
-    filter: drop-shadow(0.9px 5px 5px rgb(15, 37, 63)); /* Add drop shadow effect */
+    width: 112px;
+    height: 117px;
+    filter: drop-shadow(0.9px 5px 5px rgb(15, 37, 63));
+    display: block;
+    cursor: pointer;
 }
 
-
-
+/* Optional: Hide scrollbar in WebKit browsers (Chrome, Safari) */
+.games-container::-webkit-scrollbar {
+    display: none;
+}
 
 /* Banners section */
-/* Banner slider */
 .banner-slider {
-    max-width: 720px; /* Adjust as needed */
-    margin: 0 auto; /* Center align if needed */
+    max-width: 720px;
+    margin: 0 auto;
     overflow: hidden;
     border-radius: 10px;
     margin-top: 10px;
@@ -178,40 +100,40 @@ body {
 
 .slider {
     display: flex;
-    transition: transform 1s ease-in-out; /* Adjust speed as needed */
+    transition: transform 1s ease-in-out;
 }
 
 .slide {
-    flex: 0 0 auto; /* Prevent stretching */
-    width: 100%; /* Ensure slides take full width */
+    flex: 0 0 auto;
+    width: 100%;
 }
 
 .banner-image {
     width: 100%;
-    height: auto; /* Maintain aspect ratio */
+    height: auto;
     display: block;
     border-radius: 10px;
     transition: transform 5s ease-in-out;
 }
 
-
 /* Winner's record */
 .winners-record {
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.084);
-    border-radius: 12px;
-    height: 255px; /* Adjust based on the number of visible winners */
-    margin: 15px 9px; /* Consolidated margin declaration */
+    padding: 4px;
+    background: rgb(12 42 51 / 94%);
+    border-radius: 4px;
+    height: 255px;
+    margin: 15px 9px;
     font-size: 12px;
-    overflow: hidden; /* Adjust overflow handling as needed */
+    overflow: hidden;
     position: relative;
+
 }
 
 .marquee {
     display: flex;
     flex-direction: column;
-    animation: marquee 20s linear infinite; /* Adjust duration based on content */
-    height: 100%; /* Ensure marquee takes up full height */
+    animation: marquee 20s linear infinite;
+    height: 100%;
 }
 
 .winner {
@@ -228,17 +150,9 @@ body {
         transform: translateY(0);
     }
     100% {
-        transform: translateY(calc(-100% - 4px * 210)); /* Adjust based on .winner height and count */
+        transform: translateY(calc(-100% - 4px * 210));
     }
 }
-
-
-
-
-
-
-
-
 
 /* Navigation menu */
 .navigation-menu {
@@ -246,19 +160,18 @@ body {
     bottom: 0;
     width: 100%;
     max-width: 414px;
-    background-color: #101f33 ;
+    background-color: #101f33;
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
     box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
 }
 
 .navigation-menu .nav-item.active img {
     filter: drop-shadow(1px 1px 10px #00ffea);
-    border: none; /* Optional: Makes the shadow circular if the image is also circular */
+    border: none;
 }
-
-
 
 .navigation-menu .nav-item img {
     height: 25px;
@@ -271,10 +184,8 @@ body {
     font-size: 14px;
 }
 
-
-
-
-.monthly-winner-container{
+/* Monthly winner container */
+.monthly-winner-container {
     background: rgb(30 193 255 / 8%);
     border-radius: 12px;
     height: 300px;
@@ -284,49 +195,45 @@ body {
     margin-top: 23px;
 }
 
-
-.winner-month-section{
+.winner-month-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 39px;
- 
-
 }
 
-.board1{
+.board1 {
     width: 300px;
 }
 
-.board2{
+.board2 {
     display: flex;
     width: 300px;
     justify-content: space-around;
     margin-top: -56px;
 }
-.board3{
+
+.board3 {
     display: flex;
     justify-content: center;
 }
 
-
-.middle2{
+.middle2 {
     border: 5px solid;
     border-bottom: none;
     width: 79px;
     height: 31px;
     margin-top: 60px;
-
 }
 
-.left3{
+.left3 {
     border: 5px solid white;
     height: 60px;
     width: 106px;
     border-right: none;
 }
 
-.middle3{
+.middle3 {
     width: 79px;
     border-bottom: 5px solid white;
     height: 65px;
@@ -335,19 +242,16 @@ body {
     justify-content: center;
     margin-top: -9.3px;
     padding-bottom: 9px;
-
 }
 
-.right3{
+.right3 {
     height: 60px;
     width: 106px;
     border: 5px solid white;
     border-left: none;
-
 }
 
-
-.no1{
+.no1 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -357,8 +261,7 @@ body {
     color: yellow;
 }
 
-
-.section-label1{
+.section-label1 {
     text-align: left;
     margin: 0px;
     margin-bottom: -13px;
@@ -366,6 +269,6 @@ body {
     margin-left: 10px;
 }
 
-.bottom-section{
+.bottom-section {
     display: flex;
 }
