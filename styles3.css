@@ -6,7 +6,7 @@ body {
     min-height: 100vh;
     max-width: 414px;
     margin: auto;
-    background: linear-gradient(45deg, black, #2c4fa4);
+   background: linear-gradient(45deg, black, #28324d);
     background-repeat: no-repeat;
 }
 
@@ -246,7 +246,7 @@ body {
     bottom: 0;
     width: 100%;
     max-width: 414px;
-    background-color: #002d67;
+    background-color: #101f33 ;
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
