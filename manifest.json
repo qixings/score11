@@ -1,10 +1,10 @@
 {
-  "name": "SCORE 11",
-  "short_name": "SCORE 11",
+  "name": "Your App Name",
+  "short_name": "App Name",
   "start_url": "./home.html",
   "display": "standalone",
   "background_color": "#FFFFFF",
-  "theme_color": "#000000",
+  "theme_color": "#28324d", <!-- Use your app's color -->
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
