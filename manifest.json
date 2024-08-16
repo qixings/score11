@@ -1,7 +1,7 @@
 {
   "name": "SCORE 11",
   "short_name": "SCORE 11",
-  "start_url": "/home.html",
+  "start_url": "./home.html",
   "display": "standalone",
   "background_color": "#FFFFFF",
   "theme_color": "#000000",
