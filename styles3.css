@@ -157,16 +157,18 @@ body {
 
 /* Navigation menu */
 .navigation-menu {
-    position: fixed;
+position: fixed;
     bottom: 0;
     width: 100%;
     max-width: 414px;
-    background-color: #101f33;
+    background-color: #0077cb;
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
-    box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px
 }
 
 .navigation-menu .nav-item.active img {
