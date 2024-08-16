@@ -172,7 +172,7 @@ position: fixed;
 }
 
 .navigation-menu .nav-item.active img {
-    filter: drop-shadow(1px 1px 10px #00ffea);
+    filter: drop-shadow(1px 1px 10px #00d0ff);
     border: none;
 }
 
