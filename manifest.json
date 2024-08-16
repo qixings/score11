@@ -4,7 +4,7 @@
   "start_url": "./home.html",
   "display": "standalone",
   "background_color": "#FFFFFF",
-  "theme_color": "#28324d", <!-- Use your app's color -->
+  "theme_color": "#28324d"
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
