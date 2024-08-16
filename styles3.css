@@ -70,8 +70,8 @@ body {
 }
 
 .games-section .game img {
-    width: 112px;
-    height: 117px;
+    width: 102px;
+    height: 107px;
     filter: drop-shadow(0.9px 5px 5px rgb(15, 37, 63));
     display: block;
     cursor: pointer;
