@@ -1,7 +1,7 @@
 {
-  "name": "Your App Name",
-  "short_name": "App Name",
-  "start_url": "/index.html",
+  "name": "SCORE 11",
+  "short_name": "SCORE 11",
+  "start_url": "/home.html",
   "display": "standalone",
   "background_color": "#FFFFFF",
   "theme_color": "#000000",
