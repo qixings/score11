@@ -73,7 +73,7 @@ body {
     align-items: center;
     border-radius: 11px;
     background: linear-gradient(2deg, black, #006d9a);
-    width: 160px;
+    width: 163px;
     gap: 6px;
     padding: 6px;
     padding-top: 10px;
@@ -102,8 +102,8 @@ body {
     border-radius: 3px;
     color: #00a108;
     cursor: pointer;
-    width: 26px;
-    height: 19px;
+    width: 29px;
+    height: 23px;
     font-size: 9px;
     font-weight: bold;
     text-align: center;
@@ -129,14 +129,14 @@ h2{
 }
 
 .amount-controls input{
-    width: 71px;
-    height: 27px;
+    width: 84px;
+    height: 32px;
     font-size: 10px;
 }
 
 .action-button{
     height: 40px;
-    width: 150px;
+    width: 162px;
     background: #1fa400;
     border: none;
     border-radius: 7px;
