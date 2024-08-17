@@ -113,30 +113,36 @@ function autoSpinSequence() {
 function spinWheel(callback) {
     const wheel = document.getElementById('wheel');
     const spinSound = document.getElementById('spin-sound');
-    const totalSegments = 16; // We have 16 segments on the wheel
-    const segmentAngle = 360 / totalSegments; // 22.5 degrees per segment
+    const totalSegments = 16; // Number of segments on your wheel
+    const segmentAngle = 360 / totalSegments;
     const rotations = 360 * 5; // 5 full rotations
 
-    // Randomly select a segment index
-    const segmentIndex = Math.floor(Math.random() * totalSegments);
+    const multipliers = [0.3, 0.5, 0.9, 1, 1.3, 1.5, 1.9, 2, 2.3, 2.5, 2.9, 3, 3.3, 3.5, 3.9, 4];
+
+    // Randomly select a multiplier as the winning segment
+    const segmentIndex = Math.floor(Math.random() * multipliers.length);
     const winningMultiplier = multipliers[segmentIndex];
 
-    // Calculate the exact angle where the wheel should stop (center of the segment)
+    // Calculate the angle to rotate to land on the winning segment
     const landingAngle = (segmentIndex * segmentAngle) + (segmentAngle / 2);
 
-    // Apply the cumulative rotation
-    cumulativeRotation += rotations + landingAngle;
+    // Calculate the total rotation (considering full rotations + landing angle)
+    const spinAmount = rotations + landingAngle;
 
-    // Set the volume (e.g., 50% volume)
-    spinSound.volume = 0.07; // Adjust this value between 0.0 and 1.0
+    // Apply the cumulative rotation
+    cumulativeRotation += spinAmount;
+
+    // Fine-tuning for perfect alignment
+    const alignmentOffset = 0; // Adjust this value if needed
 
     // Play the spin sound
+    spinSound.volume = 0.1; // Adjust the volume as needed
     spinSound.currentTime = 0;
     spinSound.play();
 
-    // Spin the wheel
+    // Apply the rotation to the wheel
     wheel.style.transition = 'transform 4s cubic-bezier(0.25, 1, 0.5, 1)';
-    wheel.style.transform = `rotate(${cumulativeRotation}deg)`;
+    wheel.style.transform = `rotate(${cumulativeRotation + alignmentOffset}deg)`;
 
     // Trigger the callback after the spin is done
     setTimeout(() => {
@@ -145,7 +151,6 @@ function spinWheel(callback) {
         callback(winningMultiplier);
     }, 4000); // Match the duration of the spin
 }
-
 
   
 
