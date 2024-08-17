@@ -113,36 +113,38 @@ function autoSpinSequence() {
 function spinWheel(callback) {
     const wheel = document.getElementById('wheel');
     const spinSound = document.getElementById('spin-sound');
-    const totalSegments = 16; // Number of segments on your wheel
+    const totalSegments = 16;
     const segmentAngle = 360 / totalSegments;
     const rotations = 360 * 5; // 5 full rotations
 
     const multipliers = [0.3, 0.5, 0.9, 1, 1.3, 1.5, 1.9, 2, 2.3, 2.5, 2.9, 3, 3.3, 3.5, 3.9, 4];
-
-    // Randomly select a multiplier as the winning segment
+    
+    // Randomly select a segment index
     const segmentIndex = Math.floor(Math.random() * multipliers.length);
     const winningMultiplier = multipliers[segmentIndex];
 
-    // Calculate the angle to rotate to land on the winning segment
+    // Calculate the exact angle where the wheel should stop (center of the segment)
     const landingAngle = (segmentIndex * segmentAngle) + (segmentAngle / 2);
 
-    // Calculate the total rotation (considering full rotations + landing angle)
-    const spinAmount = rotations + landingAngle;
+    // Adjust the landing angle if necessary (to match the visual indicator)
+    const visualOffset = -9; // Adjust this value as needed (in degrees)
+    const adjustedLandingAngle = landingAngle + visualOffset;
+
+    const spinAmount = rotations + adjustedLandingAngle;
 
     // Apply the cumulative rotation
     cumulativeRotation += spinAmount;
 
-    // Fine-tuning for perfect alignment
-    const alignmentOffset = 0; // Adjust this value if needed
+    // Set the volume for the spin sound
+    spinSound.volume = 0.07; // Adjust this value between 0.0 and 1.0
 
     // Play the spin sound
-    spinSound.volume = 0.1; // Adjust the volume as needed
     spinSound.currentTime = 0;
     spinSound.play();
 
-    // Apply the rotation to the wheel
+    // Spin the wheel
     wheel.style.transition = 'transform 4s cubic-bezier(0.25, 1, 0.5, 1)';
-    wheel.style.transform = `rotate(${cumulativeRotation + alignmentOffset}deg)`;
+    wheel.style.transform = `rotate(${cumulativeRotation}deg)`;
 
     // Trigger the callback after the spin is done
     setTimeout(() => {
