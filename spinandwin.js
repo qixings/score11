@@ -132,7 +132,7 @@ function spinWheel(callback) {
     
 
       // Set the volume (e.g., 50% volume)
-      spinSound.volume = 0.1; // Adjust this value between 0.0 and 1.0
+      spinSound.volume = 0.07; // Adjust this value between 0.0 and 1.0
 
     // Play the spin sound
     spinSound.currentTime = 0;
