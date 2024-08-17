@@ -113,26 +113,22 @@ function autoSpinSequence() {
 function spinWheel(callback) {
     const wheel = document.getElementById('wheel');
     const spinSound = document.getElementById('spin-sound');
-    const totalSegments = 16;
-    const segmentAngle = 360 / totalSegments;
+    const totalSegments = 16; // We have 16 segments on the wheel
+    const segmentAngle = 360 / totalSegments; // 22.5 degrees per segment
     const rotations = 360 * 5; // 5 full rotations
-    
-    const multipliers = [0.3, 0.5, 0.9, 1, 1.3, 1.5, 1.9, 2, 2.3, 2.5, 3, 3.3, 3.5, 4, 4.5, 5];
-    
+
     // Randomly select a segment index
-    const segmentIndex = Math.floor(Math.random() * multipliers.length);
+    const segmentIndex = Math.floor(Math.random() * totalSegments);
     const winningMultiplier = multipliers[segmentIndex];
 
     // Calculate the exact angle where the wheel should stop (center of the segment)
     const landingAngle = (segmentIndex * segmentAngle) + (segmentAngle / 2);
-    const spinAmount = rotations + landingAngle;
 
     // Apply the cumulative rotation
-    cumulativeRotation += spinAmount;
-    
+    cumulativeRotation += rotations + landingAngle;
 
-      // Set the volume (e.g., 50% volume)
-      spinSound.volume = 0.07; // Adjust this value between 0.0 and 1.0
+    // Set the volume (e.g., 50% volume)
+    spinSound.volume = 0.07; // Adjust this value between 0.0 and 1.0
 
     // Play the spin sound
     spinSound.currentTime = 0;
