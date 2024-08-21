@@ -283,7 +283,6 @@ position: fixed;
     font-weight: bold;
     font-style: italic;
     width: 80%;
-    margin-top: -50px;
     color: #ffffff;
 
 }
@@ -319,6 +318,7 @@ position: fixed;
 .bottom-para{
     display: flex;
     justify-content: center;
+    margin-top: -75px;
 }
 
 .connect-container{
