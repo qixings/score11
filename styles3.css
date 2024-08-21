@@ -192,12 +192,12 @@ position: fixed;
 .monthly-winner-container {
     background: rgb(30 193 255 / 8%);
     border-radius: 12px;
-    height: 300px;
+    height: 270px;
     display: flex;
     justify-content: center;
     margin: 9px;
     margin-top: 10px;
-    margin-bottom: 85px;
+   
 }
 
 .winner-month-section {
@@ -279,29 +279,29 @@ position: fixed;
 }
 
 .bottom-para p{
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
     font-style: italic;
     width: 80%;
-    margin-top: -5px;
-    color: #a8a8a8;
+    margin-top: -50px;
+    color: #ffffff;
 
 }
 
 .payment-partners h2{
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     text-align: center;
     margin-left: 15px;
     margin-right: 15px;
-  
+    text-align: left;
     padding-top: 8px;
     color:#a8a8a8;
 
 }
 
 .payment-partner-container{
-    background: linear-gradient(45deg, #1c478075, #0e1e2a);
+    background: linear-gradient(45deg, #1f355075, #1f355075);
     border-radius: 14px;
     margin: 9px;
 
@@ -310,12 +310,54 @@ position: fixed;
 .winner-month-section h3{
     text-align: left;
     margin: 0px;
-    font-size: 16px;
+    font-size: 14px;
     color: #a8a8a8 ;
     margin-bottom: 15px;
     margin-top: -27px;
+    margin-left: -115px;
 }
 .bottom-para{
     display: flex;
     justify-content: center;
+}
+
+.connect-container{
+    margin:9px;
+    border-bottom: 2px solid #0d2a33;
+    padding-bottom: 14px;
+}
+.connect-with-us{
+    display: grid;
+    text-align: left;
+    gap: 6px;
+    grid-template-columns: auto auto;
+}
+.connect-with-us a{
+    display: flex;
+    text-decoration: none;
+    gap: 10px;
+    color: skyblue ;
+    font-size: 11px;
+    align-items: center;
+    margin-left: 35px;
+}
+
+.connect-container h4{
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 2px solid #0d2a33;
+    padding-bottom: 10px;
+}
+
+.footer{
+    margin: 9px;
+    margin-bottom: 85px;
+}
+
+.footer p{
+    font-size: 12px;
+    margin: 0px;
+    margin-top: -10px;
+    margin-bottom: 35px;
+    color: #aaaaaa;
 }
