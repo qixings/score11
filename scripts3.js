@@ -47,6 +47,11 @@ function redirectToSpinwin() {
     window.location.href = 'spinwin.html';
 }
 
+// Function to redirect to Spin Win game
+function redirectToPlinko() {
+    window.location.href = 'plinko.html';
+}
+
 // Function to handle horizontal scroll
 function scrollGamesContainer(direction) {
     const container = document.querySelector('.games-container');
