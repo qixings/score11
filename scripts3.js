@@ -21,25 +21,26 @@ function redirectToGame(game) {
     window.location.href = game + '.html';
 }
 
-
-// Function to redirect to Mines game
-function redirectToSatta() {
-    window.location.href = 'satta.html';
+// Function to redirect to color trading game
+function redirectToColortrading() {
+    window.location.href = 'colortrading.html';
 }
-
 // Function to redirect to Mines game
 function redirectToMines() {
     window.location.href = 'mines.html';
 }
 
-// Function to redirect to color trading game
-function redirectToColortrading() {
-    window.location.href = 'colortrading.html';
-}
-
 // Function to redirect to big small game
 function redirectToBigsmall() {
     window.location.href = 'bigsmall.html';
+}
+// Function to redirect to Spin Win game
+function redirectToPlinko() {
+    window.location.href = 'plinko.html';
+}
+// Function to redirect to Mines game
+function redirectToSatta() {
+    window.location.href = 'satta.html';
 }
 
 // Function to redirect to Spin Win game
@@ -47,10 +48,7 @@ function redirectToSpinwin() {
     window.location.href = 'spinwin.html';
 }
 
-// Function to redirect to Spin Win game
-function redirectToPlinko() {
-    window.location.href = 'plinko.html';
-}
+
 
 // Function to handle horizontal scroll
 function scrollGamesContainer(direction) {
