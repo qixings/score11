@@ -164,12 +164,13 @@ body {
     border-radius: 3px;
     color: #ffffff;
     cursor: pointer;
-    width: 32px;
+    width: 37px;
     height: 26px;
     font-size: 10px;
     font-weight: bold;
     text-align: center;
     padding: 0;
+    
 }
 
 .pre-amount-buttons{
@@ -191,7 +192,7 @@ body {
 .amount-controls input {
     width: 227px;
     height: 30px;
-    font-size: 10px;
+    font-size: 12px;
     border: none;
     border-radius: 6px;
 }
@@ -279,6 +280,7 @@ thead {
     border: none;
     border-radius: 6px;
     font-size: 12px;
+        color: black;
 }
 
 .mine-gem-selector input{
@@ -353,6 +355,7 @@ thead {
     border: none;
     border-radius: 5px;
     background: #c3d800;
+    color: black
 }
 /* Popup Close Button */
 .popup-close-button {
