@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plinko Game</title>
+    <link rel="stylesheet" href="plinko.css">
+</head>
+
+<body>
+    <div class="balance-container">
+        <div id="balance">Balance: ₹<span id="balance-amount">55245.00</span><img src="refresh.png" alt="" class="refresh"></div>
+        <div>
+            <button onclick="withdraw()">WITHDRAW</button>
+            <button onclick="deposit()">DEPOSIT</button>
+        </div>
+    </div>
+
+    <div class="plinko-container">
+        <div id="plinko-board" class="plinko-board">
+            <div class="plinko-peg">
+            <!-- Triangle-shaped pins structure for 16 rows -->
+            <div class="pin-row row-1">
+                <div class="pin"></div>
+            </div>
+            <div class="pin-row row-2">
+                <div class="pin"></div>
+                <div class="pin"></div>
+            </div>
+            <div class="pin-row row-3">
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+            </div>
+            <div class="pin-row row-4">
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+            </div>
+            <div class="pin-row row-5">
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+            </div>
+            <div class="pin-row row-6">
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+            </div>
+            <div class="pin-row row-7">
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+            </div>
+            <div class="pin-row row-8">
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+            </div>
+            <div class="pin-row row-9">
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+            </div>
+            <div class="pin-row row-10">
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+            </div>
+            <div class="pin-row row-11">
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+            </div>
+            <div class="pin-row row-12">
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+            </div>
+            <div class="pin-row row-13">
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+            </div>
+            <div class="pin-row row-14">
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+            </div>
+            <div class="pin-row row-15">
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+            </div>
+            <div class="pin-row row-16">
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+                <div class="pin"></div>
+            </div>
+        </div>
+
+            <div id="result-slots" class="result-slots">
+                <!-- Result slots will be dynamically adjusted -->
+                <div class="slot">1000x</div>
+                <div class="slot">130x</div>
+                <div class="slot">26x</div>
+                <div class="slot">9x</div>
+                <div class="slot">4x</div>
+                <div class="slot">2x</div>
+                <div class="slot">0.2x</div>
+                <div class="slot">0.2x</div>
+                <div class="slot">2x</div>
+                <div class="slot">4x</div>
+                <div class="slot">9x</div>
+                <div class="slot">26x</div>
+                <div class="slot">130x</div>
+                <div class="slot">1000x</div>
+            </div>
+        </div>
+
+
+        <div class="bet-container">
+            <div class="betting-section">
+                <div class="pre-amount-buttons">
+                    <button onclick="setAmount(10)">₹10</button>
+                    <button onclick="setAmount(30)">₹30</button>
+                    <button onclick="setAmount(90)">₹90</button>
+                    <button onclick="setAmount(270)">₹270</button>
+                    <button onclick="setAmount(810)">₹810</button>
+                    <button onclick="setAmount(2430)">₹2430</button>
+                    <button onclick="setAmount()" style="width: 65px;">All In</button>
+                </div>
+    
+                <div class="amount-controls">
+                    <input type="number" id="bet-amount" min="1" placeholder="Enter amount">
+                    <button onclick="adjustAmount(0.5)">1/2x</button>
+                    <button onclick="adjustAmount(2)">2x</button>
+                </div>
+    
+                <div class="dropdown-controls">
+                    <div>
+                    <div class="risk-selection">
+                        <label for="risk-level">Risk Level:</label>
+                        <select id="risk-level" onchange="updatePlinkoSettings()">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+    
+                    <div class="rows-selection">
+                        <label for="rows-count">Rows:</label>
+                        <select id="rows-count" onchange="updatePlinkoSettings()">
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16" selected>16</option>
+                        </select>
+                    </div>
+                </div>
+
+                    <div id="manual-section">
+                        <button id="bet" class="action-button">Bet</button>
+                    </div>
+                    <div id="auto-section" style="display: none;">
+                        <button id="start-auto-bet" class="action-button">Start Auto Bet</button>
+                        <button id="stop-auto-bet" class="action-button" style="display: none;">Stop Auto Bet</button>
+                    </div>
+        
+                </div>
+                
+    
+                <div class="mode-selection">
+                    <button id="manual-button" class="mode-button active" onclick="switchMode('manual')">Manual</button>
+                    <button id="auto-button" class="mode-button" onclick="switchMode('auto')">Auto</button>
+                </div>
+    
+                
+                
+            </div>
+        </div>
+
+
+        
+
+       
+    </div>
+
+
+
+
+   
+
+
+
+
+
+    <div id="results-sidebar" class="results-sidebar">
+        <!-- Results will be appended here dynamically -->
+    </div>
+
+    <div class="history-section">
+        <h2>My History</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Round</th>
+                    <th>Winning Amount</th>
+                </tr>
+            </thead>
+            <tbody id="history-list"></tbody>
+        </table>
+    </div>
+    <div id="pagination"></div>
+    
+    
+
+    
+
+    <script src="plinko.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
+
+</body>
+
+</html>
