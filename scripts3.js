@@ -22,8 +22,8 @@ function redirectToGame(game) {
 }
 
 // Function to redirect to aviator game
-function redirectToAviator() {
-    window.location.href = 'aviator.html';
+function redirectToMines() {
+    window.location.href = 'mines.html';
 }
 
 // Function to redirect to color trading game
