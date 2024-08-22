@@ -21,7 +21,13 @@ function redirectToGame(game) {
     window.location.href = game + '.html';
 }
 
-// Function to redirect to aviator game
+
+// Function to redirect to Mines game
+function redirectToSatta() {
+    window.location.href = 'satta.html';
+}
+
+// Function to redirect to Mines game
 function redirectToMines() {
     window.location.href = 'mines.html';
 }
