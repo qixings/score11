@@ -55,7 +55,7 @@ body {
 }
 
 .game-board {
-    display: grid;
+   display: grid;
     grid-template-columns: repeat(5, 56px);
     grid-template-rows: repeat(5, 56px);
     gap: 10px;
@@ -65,7 +65,8 @@ body {
     padding: 10px;
     margin-bottom: 10px;
     margin-top: 10px;
-    background-color: #091a27;
+    background-image: url(mineback.png);
+    background-repeat: no-repeat;
     justify-items: center;
     align-items: center;
 }
