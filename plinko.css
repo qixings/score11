@@ -20,7 +20,7 @@ body {
     border-bottom-left-radius: 5px;
 }
 
-.balance-container button{
+.balance-container button {
     width: 81px;
     height: 32px;
     border-radius: 7px;
@@ -30,25 +30,16 @@ body {
     font-size: 10px;
     text-align: center;
     color: white;
-
 }
 
-#balance-amount{
+#balance-amount {
     color: greenyellow;
-
 }
-#balance{
+
+#balance {
     font-size: 12px;
     display: flex;
     align-items: center;
-}
-
-
-.risk-selection, .rows-selection{
-    display: flex;
-    flex-direction: column;
-    width: 230px;
-    margin-bottom: 4px;
 }
 
 .refresh {
@@ -61,75 +52,110 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #162837;
-    border-radius: 10px;
-    width: 100%;
+    background: #223546;
+    border-radius: 0px 0px 10px 10px;
+    width: 370px;
     max-width: 500px;
-    padding: 20px;
     overflow: hidden;
-    height: 645px;
+    height: 691px;
     gap: 16px;
+    
+
 }
 
 .plinko-board {
     position: relative;
-    width: 93%;
-    max-width: 450px;
-    height: 402px;
+    width: 359px;
+    height: 419px;
     background-color: #0e1c28;
     border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
-
+    overflow: hidden; /* Ensure no elements go outside the plinko board */
+    margin-top: -17px;
 }
 
-.plinko-peg{
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-}
-
-/* Pin Rows Configuration */
 .pin-row {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    height: 20px; /* Adjust height as needed */
 }
-
 .pin {
     width: 7px;
     height: 7px;
     background-color: white;
     border-radius: 50%;
+    position: absolute;
 }
 
-/* Adjust the position of each row to create a triangular shape */
-.row-1 { top: 5%; justify-content: center; }
-.row-2 { top: 10%; justify-content: space-around; padding: 0 0%; width: 13%; }
-.row-3 { top: 15%; justify-content: space-around; padding: 0 0%; width: 19%; }
-.row-4 { top: 20%; justify-content: space-around; padding: 0 0%; width: 25%; }
-.row-5 { top: 25%; justify-content: space-around; padding: 0 0%; width: 31%; }
-.row-6 { top: 30%; justify-content: space-around; padding: 0 0%; width: 37%; }
-.row-7 { top: 35%; justify-content: space-around; padding: 0 0%; width: 43%; }
-.row-8 { top: 40%; justify-content: space-around; padding: 0 0%; width: 49%; }
-.row-9 { top: 45%; justify-content: space-around; padding: 0 0%; width: 55%; }
-.row-10 { top: 50%; justify-content: space-around; padding: 0 0%; width: 61%; }
-.row-11 { top: 55%; justify-content: space-around; padding: 0 0%; width: 67%; }
-.row-12 { top: 60%; justify-content: space-around; padding: 0 0%; width: 73%; }
-.row-13 { top: 65%; justify-content: space-around; padding: 0 0%; width: 79%; }
-.row-14 { top: 70%; justify-content: space-around; padding: 0 0%; width: 85%; }
-.row-15 { top: 75%; justify-content: space-around; padding: 0 0%; width: 91%; }
-.row-16 { top: 80%; justify-content: space-around; padding: 0 0%; width: 97%; }
 
-
-.slot:hover {
-    transform: scale(1.1);
+.pin::after {
+    content: '';
+    position: absolute;
+    width: 10px; /* Initial size of the ripple */
+    height: 10px;
+    border-radius: 50%;
+    background: rgb(255, 255, 255); /* Ripple color */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
 }
+
+.pin.ripple::after {
+    animation: rippleAnimation 0.4s ease-out;
+}
+
+@keyframes rippleAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+
+
+
+.result-slots {
+    position: absolute;
+    bottom: 0; /* Position the result slots at the bottom */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    background: radial-gradient(#a6e100, #092d01);
+    border-radius: 0 0 10px 10px;
+    z-index: 999999; /* Ensure they are on top */
+}
+
+.slot {
+    flex: 1;
+    margin: 0 2px;
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+    font-size: 8px;
+    background-color: red;
+    height: 30px;
+    align-items: center;
+    display: flex;
+    position: relative;
+    justify-content: center;
+
+}
+
+.plinko-ball {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 50%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
 
 .bet-container {
     display: flex;
@@ -152,20 +178,6 @@ body {
     filter: drop-shadow(0px 1px 3px rgb(20, 35, 43));
 }
 
-.dropdown-controls{
-    font-size: 11px;
-    gap: 5px;
-    display: flex;
-    width: 302px;
-    justify-content: space-between;
-
-}
-
-select{
-    height: 30px;
-    border: none;
-    border-radius: 6px;
-}
 .pre-amount-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -186,14 +198,13 @@ select{
     font-weight: bold;
     text-align: center;
     padding: 0;
-
 }
 
 .amount-controls {
     display: flex;
     justify-content: space-around;
     width: 305px;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
 }
 
 .amount-controls input {
@@ -202,10 +213,12 @@ select{
     font-size: 12px;
     border: none;
     border-radius: 6px;
+    background: #1d2534;
+    color: white;
+    padding-left: 5px;
 }
 
-.amount-controls button{
-
+.amount-controls button {
     background-color: #627790;
     border: none;
     border-radius: 5px;
@@ -216,29 +229,6 @@ select{
     font-size: 9px;
     font-weight: bold;
 }
-.mode-selection {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin-bottom: 10px;
-    background: #0b212e;
-    border-radius: 25px;
-}
-
-.mode-button {
-    padding: 10px 20px;
-    background-color:transparent;
-    border: 2px solid rgba(123, 123, 123, 0.276);
-    color: white;
-    cursor: pointer;
-    border-radius: 50px;
-    transition: background-color 0.3s;
-    width: 49%;
-}
-
-.mode-button.active {
-    border-color: rgb(0, 217, 255);
-}
 
 .action-button {
     background-color: #1fa400;
@@ -248,41 +238,13 @@ select{
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s;
-    height: 100%;
-    width: 67px;
+    height: 45px;
+    width: 77px;
 }
 
 .action-button:hover {
     background-color: #17a300;
 }
-
-#auto-section {
-    display: none;
-}
-
-.results-sidebar {
-    position: absolute;
-    top: 112px;
-    right: 25px;
-    width: 35px;
-    height: 148px;
-    background-color: #1c324a;
-    border-radius: 10px;
-    padding: 10px;
-    overflow-y: auto;
-    color: white;
-    font-size: 14px;
-}
-
-.result-item {
-    padding: 5px;
-    margin-bottom: 5px;
-    background-color: #394381;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 9px;
-}
-
 
 .history-section {
     margin-top: 10px;
@@ -308,13 +270,7 @@ select{
     border-collapse: collapse;
 }
 
-.history-section th, .history-section td {
-    padding: 10px;
-    text-align: center;
-    width: 50%;
-    font-size: 11px;
-    background: #1d2534;
-}
+
 
 .history-section th {
     background-color: #1d2534;
@@ -330,56 +286,148 @@ select{
 #pagination {
     margin-top: 5px;
     text-align: center;
-}
-
-
-
-
-
-.result-slots {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 5px 0;
-    background-color: #1c324a;
-    border-radius: 0 0 10px 10px;
-}
-
-.slot {
-    flex: 1;
-    margin: 0 2px;
-    text-align: center;
-    border-radius: 2px;
-    transition: transform 0.2s ease;
-    font-size: 8px;
-    background: red;
-    width: 14px;
-    justify-content: center;
-    height: 30px;
     align-items: center;
-    display: flex;
+    margin-bottom: 30px;
 }
 
-.slot.low {
-    background-color: #ffcc00; /* Yellow */
+
+.history-section th, .history-section td {
+    padding: 10px;
+    text-align: center;
+    width: 33%; /* Adjusted for three columns */
+    font-size: 11px;
+    background: #1d2534;
 }
 
-.slot.medium {
-    background-color: #ff7f50; /* Orange */
-}
-
-.slot.high {
-    background-color: #ff4757; /* Red */
-}
-
-.plinko-ball {
+.results-sidebar {
     position: absolute;
-    width: 14px;
-    height: 14px;
-    background-color: yellow;
-    border-radius: 50%;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 308px;
+    height: 19px;
+    border-radius: 7px;
+    overflow: hidden;
+    font-size: 14px;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    z-index: 999999;
+    top: 97px;
+
 }
 
+.result-item {
+    padding: 0px;
+    margin-right: 0.8px;
+    border-radius: 1px;
+    text-align: center;
+    font-size: 11px;
+    background: linear-gradient(358deg, #ff7400, #ff9c00);
+    height: 29px;
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+
+}
+
+
+/* Alert panel */
+.alert-panel {
+    margin: 8px;
+    margin-top: 5px;
+    background-color: #ffffff69;
+    padding: 5px;
+    text-align: center;
+    font-size: 10px;
+    border-radius: 15px;
+    z-index: 9999;
+    position: relative;
+    width: 350px;
+}
+
+
+
+@keyframes slotHighlight {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 3px #fff, 0 0 10px #fff;
+    }
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 10px #ff0, 0 0 30px #ff0;
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 3px #fff, 0 0 10px #fff;
+    }
+}
+
+.slot.highlight {
+    animation: slotHighlight 0.5s ease-out;
+}
+
+
+
+.slot-5x {
+    background-color: #FF1C1C; /* Bright Red */
+}
+
+.slot-3x {
+    background-color: #FF5733; /* Darker Red */
+}
+
+.slot-2x {
+    background-color: #FF7F50; /* Coral */
+}
+
+.slot-1_5x {
+    background-color: #FFA500; /* Orange */
+}
+
+.slot-1_2x {
+    background-color: #ffa200; /* Gold */
+}
+
+.slot-0_5x {
+    background-color: #ffb32f; /* Yellow Green */
+}
+
+.slot-0_2x {
+    background-color: #fcc100; /* Lawn Green */
+}
+
+
+
+.pin-effect {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation: ripple 0.4s ease-out;
+    pointer-events: none; /* So the effect doesn't interfere with ball interaction */
+    z-index: 1000; /* Ensure the effect is on top */
+}
+
+
+.row-selection{
+    display: flex;
+    flex-direction: column;
+    width: 303px;
+    gap: 3px;
+}
+.row-selection label{
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+.row-selection select{
+    height: 32px;
+    background-color:#1d2534;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
