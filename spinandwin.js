@@ -9,9 +9,14 @@ const recordsPerPage = 10;
 const pagesToShow = 4; // Number of pages to show in pagination
 let cumulativeRotation = 0; // Track cumulative rotation
 
-function setAmount(amount) {
-    currentAmount = amount;
-    document.getElementById('bet-amount').value = amount;
+function setAmount(amount, isAuto = false) {
+    if (isAuto) {
+        autoSpinAmount = amount;
+        document.getElementById('auto-bet-amount').value = amount;
+    } else {
+        currentAmount = amount;
+        document.getElementById('bet-amount').value = amount;
+    }
 }
 
 function setAutoAmount(amount) {
@@ -115,28 +120,41 @@ function spinWheel(callback) {
     const spinSound = document.getElementById('spin-sound');
     const totalSegments = 16;
     const segmentAngle = 360 / totalSegments;
-    const rotations = 360 * 5; // 5 full rotations
+    const rotations = 360 * 5; // 5 full rotations for dramatic spin
 
-    const multipliers = [0.3, 0.5, 0.9, 1, 1.3, 1.5, 1.9, 2, 2.3, 2.5, 2.9, 3, 3.3, 3.5, 3.9, 4];
-    
-    // Randomly select a segment index
-    const segmentIndex = Math.floor(Math.random() * multipliers.length);
-    const winningMultiplier = multipliers[segmentIndex];
+    const multipliers = [
+        { multiplier: 0.3, startAngle: 0, endAngle: 22.5 },
+        { multiplier: 0.5, startAngle: 22.5, endAngle: 45 },
+        { multiplier: 0.9, startAngle: 45, endAngle: 67.5 },
+        { multiplier: 1, startAngle: 67.5, endAngle: 90 },
+        { multiplier: 1.3, startAngle: 90, endAngle: 112.5 },
+        { multiplier: 1.5, startAngle: 112.5, endAngle: 135 },
+        { multiplier: 1.9, startAngle: 135, endAngle: 157.5 },
+        { multiplier: 2, startAngle: 157.5, endAngle: 180 },
+        { multiplier: 2.3, startAngle: 180, endAngle: 202.5 },
+        { multiplier: 2.5, startAngle: 202.5, endAngle: 225 },
+        { multiplier: 2.9, startAngle: 225, endAngle: 247.5 },
+        { multiplier: 3, startAngle: 247.5, endAngle: 270 },
+        { multiplier: 3.3, startAngle: 270, endAngle: 292.5 },
+        { multiplier: 3.5, startAngle: 292.5, endAngle: 315 },
+        { multiplier: 4, startAngle: 315, endAngle: 337.5 },
+        { multiplier: 4.5, startAngle: 337.5, endAngle: 360 }
+    ];
 
-    // Calculate the exact angle where the wheel should stop (center of the segment)
-    const landingAngle = (segmentIndex * segmentAngle) + (segmentAngle / 2);
+    // Randomly select a multiplier
+    const selectedMultiplier = multipliers[Math.floor(Math.random() * multipliers.length)];
+    const selectedAngle = (selectedMultiplier.startAngle + selectedMultiplier.endAngle) / 2;
 
-    // Adjust the landing angle if necessary (to match the visual indicator)
-    const visualOffset = -9; // Adjust this value as needed (in degrees)
-    const adjustedLandingAngle = landingAngle + visualOffset;
-
-    const spinAmount = rotations + adjustedLandingAngle;
+    // Calculate the spin amount based on the selected multiplier and angle
+    const spinAmount = rotations + selectedAngle;
 
     // Apply the cumulative rotation
     cumulativeRotation += spinAmount;
 
-    // Set the volume for the spin sound
-    spinSound.volume = 0.07; // Adjust this value between 0.0 and 1.0
+      // Set the volume (e.g., 50% volume)
+      spinSound.volume = 0.5; // Adjust this value between 0.0 and 1.0
+
+
 
     // Play the spin sound
     spinSound.currentTime = 0;
@@ -150,9 +168,10 @@ function spinWheel(callback) {
     setTimeout(() => {
         spinSound.pause();
         spinSound.currentTime = 0; // Reset the sound to the beginning
-        callback(winningMultiplier);
+        callback(selectedMultiplier.multiplier);
     }, 4000); // Match the duration of the spin
 }
+
 
   
 
