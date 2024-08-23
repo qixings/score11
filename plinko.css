@@ -1,500 +1,433 @@
-// Global Variables
-let balance = 55245.00;
-let currentBet = 0;
-let roundNumber = 1;
-let historyData = [];
-const roundsPerPage = 10;
-let currentPage = 1;
-const maxWidth = 335; // Make the width equal to the result slots width
-
-// DOM Elements
-const balanceAmount = document.getElementById('balance-amount');
-const betAmountInput = document.getElementById('bet-amount');
-const betButton = document.getElementById('bet');
-const plinkoBoard = document.getElementById('plinko-board');
-const resultSlots = document.getElementById('result-slots');
-const historyList = document.getElementById('history-list');
-const paginationContainer = document.getElementById('pagination');
-
-// Update balance display
-function updateBalanceDisplay() {
-    balanceAmount.textContent = balance.toFixed(2);
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, black, #28324d);
+    color: #ffffff;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+    align-items: center;
 }
 
-// Initialize Plinko board (Pins and Slots)
-function initializePlinkoBoard() {
-    createPins();
-    createResultSlots();
+.balance-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #395281;
+    width: 366px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
-function createPins(pinRows = 16) { // Default to 16 rows
-    const boardHeight = plinkoBoard.offsetHeight;
-    const triangleHeight = boardHeight * 0.8;
-    const pinSpacingY = triangleHeight / pinRows;
-    const verticalOffset = (boardHeight - triangleHeight) / 2;
+.balance-container button {
+    width: 81px;
+    height: 32px;
+    border-radius: 7px;
+    border: none;
+    background: #ff5700;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    color: white;
+}
 
-    plinkoBoard.innerHTML = ''; // Clear the Plinko board before adding new pins
+#balance-amount {
+    color: greenyellow;
+}
 
-    for (let row = 1; row <= pinRows; row++) {
-        const y = verticalOffset + row * pinSpacingY - pinSpacingY / 2;
-        const pinsInRow = row;
-        const rowWidth = row === 1 ? 0 : (pinsInRow / pinRows) * maxWidth;
+#balance {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
 
-        const rowDiv = document.createElement('div');
-        rowDiv.classList.add('pin-row');
-        rowDiv.style.width = `${rowWidth}px`;
-        rowDiv.style.position = 'absolute';
-        rowDiv.style.top = `${y}px`;
-        rowDiv.style.left = '49%';
-        rowDiv.style.transform = 'translateX(-50%)';
+.refresh {
+    width: 15px;
+    filter: invert();
+    margin-left: 5px;
+}
 
-        for (let col = 0; col < pinsInRow; col++) {
-            const pin = document.createElement('div');
-            pin.classList.add('pin');
-            pin.style.position = row === 1 ? 'relative' : 'absolute';
-            pin.style.left = row === 1 ? '50%' : `${(col * 100) / (pinsInRow - 1)}%`;
+.plinko-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #223546;
+    border-radius: 0px 0px 10px 10px;
+    width: 370px;
+    max-width: 500px;
+    overflow: hidden;
+    height: 691px;
+    gap: 16px;
+    
 
-            rowDiv.appendChild(pin);
-        }
+}
 
-        plinkoBoard.appendChild(rowDiv);
+.plinko-board {
+    position: relative;
+    width: 359px;
+    height: 419px;
+    background-color: #0e1c28;
+    border-radius: 10px;
+    overflow: hidden; /* Ensure no elements go outside the plinko board */
+    margin-top: -17px;
+}
+
+.pin-row {
+    position: relative;
+    height: 20px; /* Adjust height as needed */
+}
+.pin {
+    width: 7px;
+    height: 7px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+}
+
+
+.pin::after {
+    content: '';
+    position: absolute;
+    width: 10px; /* Initial size of the ripple */
+    height: 10px;
+    border-radius: 50%;
+    background: rgb(255, 255, 255); /* Ripple color */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+}
+
+.pin.ripple::after {
+    animation: rippleAnimation 0.4s ease-out;
+}
+
+@keyframes rippleAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
     }
-
-    createBoundaries(verticalOffset, triangleHeight, maxWidth);
-}
-
-function createBoundaries(verticalOffset, triangleHeight, maxWidth) {
-    const boundaryThickness = 2;
-
-    const leftBoundary = document.createElement('div');
-    leftBoundary.style.position = 'absolute';
-    leftBoundary.style.left = `calc(50% - ${maxWidth / 2}px)`;
-    leftBoundary.style.top = `${verticalOffset}px`;
-    leftBoundary.style.width = `${boundaryThickness}px`;
-    leftBoundary.style.height = `${triangleHeight}px`;
-    leftBoundary.style.backgroundColor = 'transparent';
-    leftBoundary.style.pointerEvents = 'none';
-    plinkoBoard.appendChild(leftBoundary);
-
-    const rightBoundary = document.createElement('div');
-    rightBoundary.style.position = 'absolute';
-    rightBoundary.style.left = `calc(50% + ${maxWidth / 2 - boundaryThickness}px)`;
-    rightBoundary.style.top = `${verticalOffset}px`;
-    rightBoundary.style.width = `${boundaryThickness}px`;
-    rightBoundary.style.height = `${triangleHeight}px`;
-    rightBoundary.style.backgroundColor = 'transparent';
-    rightBoundary.style.pointerEvents = 'none';
-    plinkoBoard.appendChild(rightBoundary);
-}
-
-// Create Result Slots
-function createResultSlots(pinRows = 16) {
-    const baseMultipliers = [5, 3, 2, 1.5, 1.2, 0.5, 0.2, 0.2, 0.5, 1.2, 1.5, 2, 3, 5];
-    const multipliers = baseMultipliers.map(m => {
-        return Math.max((m * (pinRows / 16)).toFixed(1), 0.1); // Adjust multiplier based on rows
-    });
-
-    resultSlots.innerHTML = ''; // Clear previous slots
-
-    multipliers.forEach(multiplier => {
-        const slot = document.createElement('div');
-        slot.classList.add('slot');
-
-        if (multiplier >= 5) {
-            slot.classList.add('slot-5x');
-        } else if (multiplier >= 3) {
-            slot.classList.add('slot-3x');
-        } else if (multiplier >= 2) {
-            slot.classList.add('slot-2x');
-        } else if (multiplier >= 1.5) {
-            slot.classList.add('slot-1_5x');
-        } else if (multiplier >= 1.2) {
-            slot.classList.add('slot-1_2x');
-        } else if (multiplier >= 0.5) {
-            slot.classList.add('slot-0_5x');
-        } else if (multiplier >= 0.2) {
-            slot.classList.add('slot-0_2x');
-        }
-
-        slot.textContent = `${multiplier}x`;
-        slot.dataset.multiplier = multiplier;
-        resultSlots.appendChild(slot);
-    });
-
-    plinkoBoard.appendChild(resultSlots);
-}
-
-// Drop the ball when the Bet button is clicked
-betButton.addEventListener('click', function () {
-    currentBet = parseFloat(betAmountInput.value);
-    if (isNaN(currentBet) || currentBet <= 0 || currentBet > balance) {
-        alert('Please enter a valid bet amount within your balance.');
-        return;
-    }
-
-    balance -= currentBet;
-    updateBalanceDisplay();
-    dropBall(); // Trigger the ball drop here
-});
-
-function dropBall() {
-    const ball = document.createElement('div');
-    ball.classList.add('plinko-ball');
-    plinkoBoard.appendChild(ball);
-
-    ball.style.left = `${plinkoBoard.offsetWidth / 2 - 7}px`;
-    ball.style.top = `-10px`;
-
-    const path = calculateBallPath();
-    animateBall(ball, path);
-}
-
-// Calculate ball path
-function calculateBallPath() {
-    const path = [];
-    let currentX = plinkoBoard.offsetWidth / 2;
-    const pinRowWidth = maxWidth;
-    const verticalSpacing = plinkoBoard.offsetHeight / 16;
-
-    for (let i = 0; i < 16; i++) {
-        const direction = weightedDirection(i);
-        const rowWidth = (i + 1) / 16 * pinRowWidth;
-        const minX = (plinkoBoard.offsetWidth / 2) - (rowWidth / 2);
-        const maxX = (plinkoBoard.offsetWidth / 2) + (rowWidth / 2);
-        const horizontalSpacing = 25;
-        currentX += direction * horizontalSpacing;
-
-        currentX = Math.max(minX, Math.min(currentX, maxX));
-
-        const yPosition = verticalSpacing * (i + 1);
-        path.push({ x: currentX, y: yPosition });
-    }
-
-    const slotWidth = resultSlots.offsetWidth / resultSlots.children.length;
-    let slotIndex = Math.floor(currentX / slotWidth);
-    slotIndex = Math.max(0, Math.min(slotIndex, resultSlots.children.length - 1));
-    const multiplier = parseFloat(resultSlots.children[slotIndex].dataset.multiplier);
-
-    return { pathPoints: path, multiplier: multiplier };
-}
-
-// Function to determine direction with row-based weighted probability
-function weightedDirection(row) {
-    const random = Math.random();
-
-    if (row < 5) {
-        if (random < 0.8) {
-            return 0;
-        } else {
-            return Math.random() < 0.5 ? -1 : 1;
-        }
-    } else if (row < 12) {
-        if (random < 0.8) {
-            return 0;
-        } else {
-            return Math.random() < 0.7 ? -1 : 1;
-        }
-    } else {
-        if (random < 0.6) {
-            return 0;
-        } else {
-            return Math.random() < 0.5 ? -1 : 1;
-        }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
     }
 }
 
-function animateBall(ball, pathData) {
-    const { pathPoints, multiplier } = pathData;
-    let index = 0;
-    let velocityY = 0.5;
-    let velocityX = 2;
-    let gravity = 0.1;
-    let damping = 0.3;
 
-    function moveBall() {
-        if (index < pathPoints.length) {
-            const point = pathPoints[index];
-            const targetX = point.x;
-            const targetY = point.y;
 
-            const currentX = parseFloat(ball.style.left);
-            const currentY = parseFloat(ball.style.top);
+.result-slots {
+    position: absolute;
+    bottom: 0; /* Position the result slots at the bottom */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    background: radial-gradient(#a6e100, #092d01);
+    border-radius: 0 0 10px 10px;
+    z-index: 999999; /* Ensure they are on top */
+}
 
-            velocityY += gravity;
-            velocityX = (targetX - currentX) * 0.1;
+.slot {
+    flex: 1;
+    margin: 0 2px;
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+    font-size: 8px;
+    background-color: red;
+    height: 30px;
+    align-items: center;
+    display: flex;
+    position: relative;
+    justify-content: center;
 
-            let newX = currentX + velocityX;
-            let newY = currentY + velocityY;
+}
 
-            const pins = document.querySelectorAll('.pin');
-            pins.forEach(pin => {
-                const pinRect = pin.getBoundingClientRect();
-                const ballRect = ball.getBoundingClientRect();
+.plinko-ball {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 50%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
 
-                const distX = Math.abs(ballRect.left + ballRect.width / 2 - (pinRect.left + pinRect.width / 2));
-                const distY = Math.abs(ballRect.top + ballRect.height / 2 - (pinRect.top + pinRect.height / 2));
 
-                if (distX < 5 && distY < 5) {
-                    createRippleEffect(pin);
-                }
-            });
+.bet-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
 
-            if (newY >= targetY && Math.abs(velocityY) > 0.1) {
-                velocityY = -velocityY * damping;
-                newY = targetY;
-                index++;
-            } else if (newY >= targetY && Math.abs(velocityY) <= 0.1) {
-                index++;
-            }
+.betting-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 11px;
+    background: linear-gradient(2deg, #1c324a, #224a5a);
+    width: 330px;
+    gap: 4px;
+    padding: 6px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    filter: drop-shadow(0px 1px 3px rgb(20, 35, 43));
+}
 
-            const minX = (plinkoBoard.offsetWidth - maxWidth) / 2;
-            const maxX = (plinkoBoard.offsetWidth + maxWidth) / 2;
-            newX = Math.max(minX, Math.min(newX, maxX));
+.pre-amount-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    width: 305px;
+}
 
-            ball.style.left = `${newX}px`;
-            ball.style.top = `${newY}px`;
+.pre-amount-buttons button {
+    background-color: #5f70db;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    width: 36px;
+    height: 26px;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    padding: 0;
+}
 
-            requestAnimationFrame(moveBall);
-        } else {
-            alignBallToSlot(ball, multiplier);
-        }
+.amount-controls {
+    display: flex;
+    justify-content: space-around;
+    width: 305px;
+    margin-bottom: 3px;
+}
+
+.amount-controls input {
+    width: 227px;
+    height: 30px;
+    font-size: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #1d2534;
+    color: white;
+    padding-left: 5px;
+}
+
+.amount-controls button {
+    background-color: #627790;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    width: 31px;
+    height: 32px;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.action-button {
+    background-color: #1fa400;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    height: 45px;
+    width: 77px;
+}
+
+.action-button:hover {
+    background-color: #17a300;
+}
+
+.history-section {
+    margin-top: 10px;
+    text-align: center;
+    width: 366px;
+    height: 397px;
+}
+
+.history-section h2 {
+    background: #394381;
+    margin: 0;
+    height: 30px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 11px;
+}
+
+.history-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+
+.history-section th {
+    background-color: #1d2534;
+    color: #ffffff;
+}
+
+.history-section td {
+    background-color: #1d2534;
+    color: #ffffff;
+    width: 50%;
+}
+
+#pagination {
+    margin-top: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+
+.history-section th, .history-section td {
+    padding: 10px;
+    text-align: center;
+    width: 33%; /* Adjusted for three columns */
+    font-size: 11px;
+    background: #1d2534;
+}
+
+.results-sidebar {
+    position: absolute;
+    width: 308px;
+    height: 19px;
+    border-radius: 7px;
+    overflow: hidden;
+    font-size: 14px;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    z-index: 999999;
+    top: 97px;
+
+}
+
+.result-item {
+    padding: 0px;
+    margin-right: 0.8px;
+    border-radius: 1px;
+    text-align: center;
+    font-size: 11px;
+    background: linear-gradient(358deg, #ff7400, #ff9c00);
+    height: 29px;
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+
+}
+
+
+/* Alert panel */
+.alert-panel {
+    margin: 8px;
+    margin-top: 5px;
+    background-color: #ffffff69;
+    padding: 5px;
+    text-align: center;
+    font-size: 10px;
+    border-radius: 15px;
+    z-index: 9999;
+    position: relative;
+    width: 350px;
+}
+
+
+
+@keyframes slotHighlight {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 3px #fff, 0 0 10px #fff;
     }
-
-    moveBall();
-}
-
-function createRippleEffect(pin) {
-    pin.classList.add('ripple');
-    setTimeout(() => {
-        pin.classList.remove('ripple');
-    }, 400);
-}
-
-function alignBallToSlot(ball, multiplier) {
-    const resultSlots = document.getElementById('result-slots');
-    const slotsRect = resultSlots.getBoundingClientRect();
-    const ballRect = ball.getBoundingClientRect();
-
-    const closestSlot = [...resultSlots.children].reduce((closest, slot) => {
-        const slotRect = slot.getBoundingClientRect();
-        const distance = Math.abs(ballRect.left + ballRect.width / 2 - (slotRect.left + slotRect.width / 2));
-        return distance < closest.distance ? { slot, distance } : closest;
-    }, { distance: Infinity }).slot;
-
-    const slotCenter = closestSlot.getBoundingClientRect().left + closestSlot.getBoundingClientRect().width / 2;
-    ball.style.left = `${slotCenter - ballRect.width / 2}px`;
-
-    closestSlot.classList.add('highlight');
-
-    setTimeout(() => {
-        closestSlot.classList.remove('highlight');
-    }, 500);
-
-    setTimeout(() => {
-        plinkoBoard.removeChild(ball);
-        calculateWinnings(multiplier);
-    }, 500);
-}
-
-function calculateWinnings(multiplier) {
-    const winnings = currentBet * multiplier;
-    balance += winnings;
-    updateBalanceDisplay();
-    addToHistory(roundNumber, winnings.toFixed(2), multiplier);
-    roundNumber++;
-    updateSidebar(multiplier);
-}
-
-function addToHistory(round, winnings, multiplier) {
-    const roundData = {
-        round: round,
-        amount: parseFloat(winnings).toFixed(2),
-        multiplier: multiplier.toFixed(2)
-    };
-
-    historyData.unshift(roundData);
-    renderHistory();
-    updatePaginationControls();
-}
-
-function updateSidebar(multiplier) {
-    const sidebar = document.getElementById('results-sidebar');
-    const multiplierItem = document.createElement('div');
-    multiplierItem.classList.add('result-item');
-    multiplierItem.textContent = `${multiplier}x`;
-
-    sidebar.prepend(multiplierItem);
-
-    const maxItems = 5;
-    while (sidebar.children.length > maxItems) {
-        sidebar.removeChild(sidebar.lastChild);
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 10px #ff0, 0 0 30px #ff0;
     }
-}
-
-function renderHistory() {
-    historyList.innerHTML = '';
-
-    const startIndex = (currentPage - 1) * roundsPerPage;
-    const endIndex = startIndex + roundsPerPage;
-
-    const roundsToDisplay = historyData.slice(startIndex, endIndex);
-
-    roundsToDisplay.forEach((round) => {
-        const row = document.createElement('tr');
-        const roundCell = document.createElement('td');
-        const multiplierCell = document.createElement('td');
-        const amountCell = document.createElement('td');
-
-        roundCell.textContent = `#${round.round}`;
-        multiplierCell.textContent = `${round.multiplier}x`;
-        amountCell.textContent = `₹${round.amount}`;
-
-        row.appendChild(roundCell);
-        row.appendChild(multiplierCell);
-        row.appendChild(amountCell);
-
-        historyList.appendChild(row);
-    });
-}
-
-function updatePaginationControls() {
-    paginationContainer.innerHTML = '';
-    const totalPages = Math.ceil(historyData.length / roundsPerPage);
-    const maxVisiblePages = 4;
-    let startPage = currentPage - Math.floor(maxVisiblePages / 2);
-    let endPage = currentPage + Math.floor(maxVisiblePages / 2);
-
-    if (startPage < 1) {
-        startPage = 1;
-        endPage = Math.min(maxVisiblePages, totalPages);
-    }
-    if (endPage > totalPages) {
-        endPage = totalPages;
-        startPage = Math.max(1, totalPages - maxVisiblePages + 1);
-    }
-
-    const prevButton = document.createElement('button');
-    prevButton.innerHTML = '◀️';
-    prevButton.style.border = "none";
-    prevButton.style.borderRadius = "2px";
-    prevButton.style.marginRight = "2px";
-    prevButton.style.background = "none";
-    prevButton.disabled = currentPage === 1;
-
-    prevButton.addEventListener('click', () => {
-        if (currentPage > 1) {
-            currentPage--;
-            renderHistory();
-            updatePaginationControls();
-        }
-    });
-
-    paginationContainer.appendChild(prevButton);
-
-    if (startPage > 1) {
-        const firstPageButton = createPageButton(1);
-        paginationContainer.appendChild(firstPageButton);
-
-        if (startPage > 2) {
-            const ellipsis = document.createElement('span');
-            ellipsis.textContent = '...';
-            ellipsis.style.margin = '0 5px';
-            paginationContainer.appendChild(ellipsis);
-        }
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-        const pageButton = createPageButton(i);
-        paginationContainer.appendChild(pageButton);
-    }
-
-    if (endPage < totalPages) {
-        if (endPage < totalPages - 1) {
-            const ellipsis = document.createElement('span');
-            ellipsis.textContent = '...';
-            ellipsis.style.margin = '0 5px';
-            paginationContainer.appendChild(ellipsis);
-        }
-
-        const lastPageButton = createPageButton(totalPages);
-        paginationContainer.appendChild(lastPageButton);
-    }
-
-    const nextButton = document.createElement('button');
-    nextButton.innerHTML = '▶️';
-    nextButton.style.border = "none";
-    nextButton.style.borderRadius = "2px";
-    nextButton.style.marginLeft = "2px";
-    nextButton.style.background = "none";
-    nextButton.disabled = currentPage === totalPages;
-
-    nextButton.addEventListener('click', () => {
-        if (currentPage < totalPages) {
-            currentPage++;
-            renderHistory();
-            updatePaginationControls();
-        }
-    });
-
-    paginationContainer.appendChild(nextButton);
-}
-
-function createPageButton(page) {
-    const pageButton = document.createElement('button');
-    pageButton.textContent = page;
-    pageButton.style.backgroundColor = page === currentPage ? "#00ffd5" : "";
-    pageButton.style.border = "none";
-    pageButton.style.borderRadius = "2px";
-    pageButton.style.marginLeft = "2px";
-    pageButton.style.color = "black";
-    pageButton.style.fontSize = "9px";
-    pageButton.style.height = "15px";
-
-    pageButton.addEventListener('click', () => {
-        currentPage = page;
-        renderHistory();
-        updatePaginationControls();
-    });
-
-    return pageButton;
-}
-
-document.querySelectorAll('.pre-amount-buttons button').forEach(button => {
-    button.addEventListener('click', () => {
-        const amount = parseFloat(button.textContent.replace('₹', '')) || balance;
-        setAmount(amount);
-    });
-});
-
-function setAmount(amount) {
-    if (amount === undefined) {
-        amount = balance;
-    }
-    betAmountInput.value = amount.toFixed(2);
-}
-
-function adjustAmount(multiplier) {
-    let currentAmount = parseFloat(betAmountInput.value);
-    if (!isNaN(currentAmount) && currentAmount > 0) {
-        currentAmount *= multiplier;
-        betAmountInput.value = currentAmount.toFixed(2);
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 3px #fff, 0 0 10px #fff;
     }
 }
 
-function updatePinRows() {
-    const rowCount = parseInt(document.getElementById('row-count').value);
-    plinkoBoard.innerHTML = '';
-    createPins(rowCount);
-    createResultSlots(rowCount);
+.slot.highlight {
+    animation: slotHighlight 0.5s ease-out;
 }
 
-initializePlinkoBoard();
-updateBalanceDisplay();
 
-function withdraw() {
-    window.location.href = 'withdraw.html';
+
+.slot-5x {
+    background-color: #FF1C1C; /* Bright Red */
 }
 
-function deposit() {
-    window.location.href = 'deposit.html';
+.slot-3x {
+    background-color: #FF5733; /* Darker Red */
+}
+
+.slot-2x {
+    background-color: #FF7F50; /* Coral */
+}
+
+.slot-1_5x {
+    background-color: #FFA500; /* Orange */
+}
+
+.slot-1_2x {
+    background-color: #ffa200; /* Gold */
+}
+
+.slot-0_5x {
+    background-color: #ffb32f; /* Yellow Green */
+}
+
+.slot-0_2x {
+    background-color: #fcc100; /* Lawn Green */
+}
+
+
+
+.pin-effect {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation: ripple 0.4s ease-out;
+    pointer-events: none; /* So the effect doesn't interfere with ball interaction */
+    z-index: 1000; /* Ensure the effect is on top */
+}
+
+
+.row-selection{
+    display: flex;
+    flex-direction: column;
+    width: 303px;
+    gap: 3px;
+}
+.row-selection label{
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+.row-selection select{
+    height: 32px;
+    background-color:#1d2534;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-bottom: 3px;
 }
