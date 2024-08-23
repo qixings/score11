@@ -10,7 +10,7 @@ body {
 }
 
 .logo-container{
-    width: 100%;
+    max-width: 390px;
     top: 0px;
     position: relative;
     height: 47px;
@@ -188,8 +188,7 @@ h1 {
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     justify-items: center;
-    background: rgb(255, 0, 0);
-    padding: 10px 38px;
+    padding: 10px 16px;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -597,31 +596,6 @@ h1 {
 
 
 
-
-
-
-
-
-
-
-
-
-
-.number {
-    padding: 10px;
-    font-size: 25px;
-    cursor: pointer;
-    border: none;
-    background-color: #ffffff;
-    color: #000000;
-    border-radius: 8px;
-    transition: background-color 0.3s;
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    line-height: 20px;
-}
-
 .number:hover {
         background-color: greenyellow;
         box-shadow: 0 0 10px #ffffff; /* Adjust the spread (third value) for glow intensity */
@@ -996,12 +970,22 @@ input {
     border-radius: 8px;
     transition: background-color 0.3s;
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     line-height: 20px;
 }
+
+
+.number-container{
+    background: #276e87;
+    border-radius: 10px;
+
+}
+
+
+
 #number11{
-    left: 100px;
+    left: 120px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -1011,8 +995,8 @@ input {
     flex-wrap: wrap;
 
  
-        height: 40px;
-        width: 40px;
+        height: 50px;
+        width: 50px;
         right: 0;
         top: 0;
         bottom: 0;
