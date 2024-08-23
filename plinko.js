@@ -422,6 +422,11 @@ function alignBallToSlot(ball, multiplier) {
 
     closestSlot.classList.add('highlight');
 
+    // Play the sound effect
+    const slotSound = document.getElementById('slot-sound');
+    slotSound.currentTime = 0; // Rewind to start to ensure it plays from the beginning
+    slotSound.play();
+
     setTimeout(() => {
         closestSlot.classList.remove('highlight');
         if (!isAutoMode || (isAutoMode && currentAutoRound === autoBetRounds)) {
@@ -434,6 +439,7 @@ function alignBallToSlot(ball, multiplier) {
         calculateWinnings(multiplier);
     }, 500);
 }
+
 
 
 
