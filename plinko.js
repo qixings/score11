@@ -1,112 +1,131 @@
 // Global Variables
 let balance = 55245.00;
 let currentBet = 0;
-let autoBetActive = false;
-let betInterval = null;
 let roundNumber = 1;
 let historyData = [];
-let currentPage = 1;
 const roundsPerPage = 10;
+let currentPage = 1;
+const maxWidth = 335; // Make the width equal to the result slots width
 
 // DOM Elements
 const balanceAmount = document.getElementById('balance-amount');
 const betAmountInput = document.getElementById('bet-amount');
-const manualButton = document.getElementById('manual-button');
-const autoButton = document.getElementById('auto-button');
-const manualSection = document.getElementById('manual-section');
-const autoSection = document.getElementById('auto-section');
 const betButton = document.getElementById('bet');
-const startAutoBetButton = document.getElementById('start-auto-bet');
-const stopAutoBetButton = document.getElementById('stop-auto-bet');
 const plinkoBoard = document.getElementById('plinko-board');
 const resultSlots = document.getElementById('result-slots');
 const historyList = document.getElementById('history-list');
 const paginationContainer = document.getElementById('pagination');
 
-// Initialize balance display
-updateBalanceDisplay();
+// Update balance display
+function updateBalanceDisplay() {
+    balanceAmount.textContent = balance.toFixed(2);
+}
 
-// Matter.js module aliases
-const Engine = Matter.Engine,
-      Render = Matter.Render,
-      Runner = Matter.Runner,
-      Bodies = Matter.Bodies,
-      Composite = Matter.Composite,
-      Events = Matter.Events;
+// Initialize Plinko board (Pins and Slots)
+function initializePlinkoBoard() {
+    createPins();
+    createResultSlots();
+}
 
-// Create an engine
-const engine = Engine.create();
-engine.world.gravity.y = 1; // Adjust gravity for more realistic movement
+function createPins(pinRows = 16) { // Default to 16 rows
+    const boardHeight = plinkoBoard.offsetHeight;
+    const triangleHeight = boardHeight * 0.8;
+    const pinSpacingY = triangleHeight / pinRows;
+    const verticalOffset = (boardHeight - triangleHeight) / 2;
 
-// Create a renderer
-const render = Render.create({
-    element: plinkoBoard,
-    engine: engine,
-    options: {
-        width: 450,
-        height: 402,
-        wireframes: false, // Solid shapes
-        background: '#0e1c28'
-    }
-});
+    plinkoBoard.innerHTML = ''; // Clear the Plinko board before adding new pins
 
-// Create pins
-function createPins() {
-    const pinRadius = 4;
-    const pinOffset = 30;
+    for (let row = 1; row <= pinRows; row++) {
+        const y = verticalOffset + row * pinSpacingY - pinSpacingY / 2;
+        const pinsInRow = row;
+        const rowWidth = row === 1 ? 0 : (pinsInRow / pinRows) * maxWidth;
 
-    for (let row = 1; row <= 16; row++) {
-        for (let col = 0; col < row; col++) {
-            const x = 225 + (col - row / 2) * pinOffset;
-            const y = row * pinOffset + 10;
-            const pin = Bodies.circle(x, y, pinRadius, { isStatic: true, render: { fillStyle: 'white' } });
-            Composite.add(engine.world, pin);
+        const rowDiv = document.createElement('div');
+        rowDiv.classList.add('pin-row');
+        rowDiv.style.width = `${rowWidth}px`;
+        rowDiv.style.position = 'absolute';
+        rowDiv.style.top = `${y}px`;
+        rowDiv.style.left = '49%';
+        rowDiv.style.transform = 'translateX(-50%)';
+
+        for (let col = 0; col < pinsInRow; col++) {
+            const pin = document.createElement('div');
+            pin.classList.add('pin');
+            pin.style.position = row === 1 ? 'relative' : 'absolute';
+            pin.style.left = row === 1 ? '50%' : `${(col * 100) / (pinsInRow - 1)}%`;
+
+            rowDiv.appendChild(pin);
         }
+
+        plinkoBoard.appendChild(rowDiv);
     }
+
+    createBoundaries(verticalOffset, triangleHeight, maxWidth);
 }
 
-// Create boundaries
-function createBoundaries() {
-    const ground = Bodies.rectangle(225, 395, 450, 20, { isStatic: true });
-    const leftWall = Bodies.rectangle(0, 200, 20, 402, { isStatic: true });
-    const rightWall = Bodies.rectangle(450, 200, 20, 402, { isStatic: true });
-    Composite.add(engine.world, [ground, leftWall, rightWall]);
+function createBoundaries(verticalOffset, triangleHeight, maxWidth) {
+    const boundaryThickness = 2;
+
+    const leftBoundary = document.createElement('div');
+    leftBoundary.style.position = 'absolute';
+    leftBoundary.style.left = `calc(50% - ${maxWidth / 2}px)`;
+    leftBoundary.style.top = `${verticalOffset}px`;
+    leftBoundary.style.width = `${boundaryThickness}px`;
+    leftBoundary.style.height = `${triangleHeight}px`;
+    leftBoundary.style.backgroundColor = 'transparent';
+    leftBoundary.style.pointerEvents = 'none';
+    plinkoBoard.appendChild(leftBoundary);
+
+    const rightBoundary = document.createElement('div');
+    rightBoundary.style.position = 'absolute';
+    rightBoundary.style.left = `calc(50% + ${maxWidth / 2 - boundaryThickness}px)`;
+    rightBoundary.style.top = `${verticalOffset}px`;
+    rightBoundary.style.width = `${boundaryThickness}px`;
+    rightBoundary.style.height = `${triangleHeight}px`;
+    rightBoundary.style.backgroundColor = 'transparent';
+    rightBoundary.style.pointerEvents = 'none';
+    plinkoBoard.appendChild(rightBoundary);
 }
 
-// Create result slots
-function createResultSlots() {
-    const slotWidth = 30;
-    const slotPositions = [40, 90, 140, 190, 240, 290, 340, 390];
-
-    slotPositions.forEach((x, index) => {
-        const slot = Bodies.rectangle(x, 380, slotWidth, 10, { isStatic: true, render: { fillStyle: '#ff4757' } });
-        slot.label = resultSlots.children[index].textContent; // Set the label to the multiplier
-        Composite.add(engine.world, slot);
+// Create Result Slots
+function createResultSlots(pinRows = 16) {
+    const baseMultipliers = [5, 3, 2, 1.5, 1.2, 0.5, 0.2, 0.2, 0.5, 1.2, 1.5, 2, 3, 5];
+    const multipliers = baseMultipliers.map(m => {
+        return Math.max((m * (pinRows / 16)).toFixed(1), 0.1); // Adjust multiplier based on rows
     });
+
+    resultSlots.innerHTML = ''; // Clear previous slots
+
+    multipliers.forEach(multiplier => {
+        const slot = document.createElement('div');
+        slot.classList.add('slot');
+
+        if (multiplier >= 5) {
+            slot.classList.add('slot-5x');
+        } else if (multiplier >= 3) {
+            slot.classList.add('slot-3x');
+        } else if (multiplier >= 2) {
+            slot.classList.add('slot-2x');
+        } else if (multiplier >= 1.5) {
+            slot.classList.add('slot-1_5x');
+        } else if (multiplier >= 1.2) {
+            slot.classList.add('slot-1_2x');
+        } else if (multiplier >= 0.5) {
+            slot.classList.add('slot-0_5x');
+        } else if (multiplier >= 0.2) {
+            slot.classList.add('slot-0_2x');
+        }
+
+        slot.textContent = `${multiplier}x`;
+        slot.dataset.multiplier = multiplier;
+        resultSlots.appendChild(slot);
+    });
+
+    plinkoBoard.appendChild(resultSlots);
 }
 
-// Drop the ball
-function dropBall() {
-    const ball = Bodies.circle(225, 10, 7, { restitution: 0.9, render: { fillStyle: 'yellow' } });
-    ball.label = 'ball';
-    Composite.add(engine.world, ball);
-}
-
-// Set up the Plinko board
-createPins();
-createBoundaries();
-createResultSlots();
-
-// Run the engine and renderer
-Engine.run(engine);
-Render.run(render);
-
-// Run the runner
-const runner = Runner.create();
-Runner.run(runner, engine);
-
-// Drop a ball when the Bet button is clicked
-betButton.addEventListener('click', function() {
+// Drop the ball when the Bet button is clicked
+betButton.addEventListener('click', function () {
     currentBet = parseFloat(betAmountInput.value);
     if (isNaN(currentBet) || currentBet <= 0 || currentBet > balance) {
         alert('Please enter a valid bet amount within your balance.');
@@ -118,120 +137,328 @@ betButton.addEventListener('click', function() {
     dropBall(); // Trigger the ball drop here
 });
 
-// Handle ball collision with slots
-Events.on(engine, 'collisionStart', function(event) {
-    const pairs = event.pairs;
+function dropBall() {
+    const ball = document.createElement('div');
+    ball.classList.add('plinko-ball');
+    plinkoBoard.appendChild(ball);
 
-    pairs.forEach(pair => {
-        const bodyA = pair.bodyA;
-        const bodyB = pair.bodyB;
+    ball.style.left = `${plinkoBoard.offsetWidth / 2 - 7}px`;
+    ball.style.top = `-10px`;
 
-        if (bodyA.label === 'ball' && bodyB.label) {
-            const multiplier = parseFloat(bodyB.label);
-            let winnings = currentBet * multiplier;
-            balance += winnings;
-            updateBalanceDisplay();
-            addToHistory(roundNumber, winnings.toFixed(2));
-            roundNumber++;
-        }
-    });
-});
-
-// Function to update balance display
-function updateBalanceDisplay() {
-    balanceAmount.textContent = balance.toFixed(2);
+    const path = calculateBallPath();
+    animateBall(ball, path);
 }
 
-// Function to add a result to the history
-function addToHistory(round, winnings) {
+// Calculate ball path
+function calculateBallPath() {
+    const path = [];
+    let currentX = plinkoBoard.offsetWidth / 2;
+    const pinRowWidth = maxWidth;
+    const verticalSpacing = plinkoBoard.offsetHeight / 16;
+
+    for (let i = 0; i < 16; i++) {
+        const direction = weightedDirection(i);
+        const rowWidth = (i + 1) / 16 * pinRowWidth;
+        const minX = (plinkoBoard.offsetWidth / 2) - (rowWidth / 2);
+        const maxX = (plinkoBoard.offsetWidth / 2) + (rowWidth / 2);
+        const horizontalSpacing = 25;
+        currentX += direction * horizontalSpacing;
+
+        currentX = Math.max(minX, Math.min(currentX, maxX));
+
+        const yPosition = verticalSpacing * (i + 1);
+        path.push({ x: currentX, y: yPosition });
+    }
+
+    const slotWidth = resultSlots.offsetWidth / resultSlots.children.length;
+    let slotIndex = Math.floor(currentX / slotWidth);
+    slotIndex = Math.max(0, Math.min(slotIndex, resultSlots.children.length - 1));
+    const multiplier = parseFloat(resultSlots.children[slotIndex].dataset.multiplier);
+
+    return { pathPoints: path, multiplier: multiplier };
+}
+
+// Function to determine direction with row-based weighted probability
+function weightedDirection(row) {
+    const random = Math.random();
+
+    if (row < 5) {
+        if (random < 0.8) {
+            return 0;
+        } else {
+            return Math.random() < 0.5 ? -1 : 1;
+        }
+    } else if (row < 12) {
+        if (random < 0.8) {
+            return 0;
+        } else {
+            return Math.random() < 0.7 ? -1 : 1;
+        }
+    } else {
+        if (random < 0.6) {
+            return 0;
+        } else {
+            return Math.random() < 0.5 ? -1 : 1;
+        }
+    }
+}
+
+function animateBall(ball, pathData) {
+    const { pathPoints, multiplier } = pathData;
+    let index = 0;
+    let velocityY = 0.5;
+    let velocityX = 2;
+    let gravity = 0.1;
+    let damping = 0.3;
+
+    function moveBall() {
+        if (index < pathPoints.length) {
+            const point = pathPoints[index];
+            const targetX = point.x;
+            const targetY = point.y;
+
+            const currentX = parseFloat(ball.style.left);
+            const currentY = parseFloat(ball.style.top);
+
+            velocityY += gravity;
+            velocityX = (targetX - currentX) * 0.1;
+
+            let newX = currentX + velocityX;
+            let newY = currentY + velocityY;
+
+            const pins = document.querySelectorAll('.pin');
+            pins.forEach(pin => {
+                const pinRect = pin.getBoundingClientRect();
+                const ballRect = ball.getBoundingClientRect();
+
+                const distX = Math.abs(ballRect.left + ballRect.width / 2 - (pinRect.left + pinRect.width / 2));
+                const distY = Math.abs(ballRect.top + ballRect.height / 2 - (pinRect.top + pinRect.height / 2));
+
+                if (distX < 5 && distY < 5) {
+                    createRippleEffect(pin);
+                }
+            });
+
+            if (newY >= targetY && Math.abs(velocityY) > 0.1) {
+                velocityY = -velocityY * damping;
+                newY = targetY;
+                index++;
+            } else if (newY >= targetY && Math.abs(velocityY) <= 0.1) {
+                index++;
+            }
+
+            const minX = (plinkoBoard.offsetWidth - maxWidth) / 2;
+            const maxX = (plinkoBoard.offsetWidth + maxWidth) / 2;
+            newX = Math.max(minX, Math.min(newX, maxX));
+
+            ball.style.left = `${newX}px`;
+            ball.style.top = `${newY}px`;
+
+            requestAnimationFrame(moveBall);
+        } else {
+            alignBallToSlot(ball, multiplier);
+        }
+    }
+
+    moveBall();
+}
+
+function createRippleEffect(pin) {
+    pin.classList.add('ripple');
+    setTimeout(() => {
+        pin.classList.remove('ripple');
+    }, 400);
+}
+
+function alignBallToSlot(ball, multiplier) {
+    const resultSlots = document.getElementById('result-slots');
+    const slotsRect = resultSlots.getBoundingClientRect();
+    const ballRect = ball.getBoundingClientRect();
+
+    const closestSlot = [...resultSlots.children].reduce((closest, slot) => {
+        const slotRect = slot.getBoundingClientRect();
+        const distance = Math.abs(ballRect.left + ballRect.width / 2 - (slotRect.left + slotRect.width / 2));
+        return distance < closest.distance ? { slot, distance } : closest;
+    }, { distance: Infinity }).slot;
+
+    const slotCenter = closestSlot.getBoundingClientRect().left + closestSlot.getBoundingClientRect().width / 2;
+    ball.style.left = `${slotCenter - ballRect.width / 2}px`;
+
+    closestSlot.classList.add('highlight');
+
+    setTimeout(() => {
+        closestSlot.classList.remove('highlight');
+    }, 500);
+
+    setTimeout(() => {
+        plinkoBoard.removeChild(ball);
+        calculateWinnings(multiplier);
+    }, 500);
+}
+
+function calculateWinnings(multiplier) {
+    const winnings = currentBet * multiplier;
+    balance += winnings;
+    updateBalanceDisplay();
+    addToHistory(roundNumber, winnings.toFixed(2), multiplier);
+    roundNumber++;
+    updateSidebar(multiplier);
+}
+
+function addToHistory(round, winnings, multiplier) {
     const roundData = {
         round: round,
-        amount: parseFloat(winnings).toFixed(2)
+        amount: parseFloat(winnings).toFixed(2),
+        multiplier: multiplier.toFixed(2)
     };
 
-    // Add the round data to the historyData array
     historyData.unshift(roundData);
-
-    // Render the updated history
     renderHistory();
-
-    // Update the pagination controls
     updatePaginationControls();
 }
 
-// Function to render the history based on the current page
-function renderHistory() {
-    historyList.innerHTML = ''; // Clear the current history display
+function updateSidebar(multiplier) {
+    const sidebar = document.getElementById('results-sidebar');
+    const multiplierItem = document.createElement('div');
+    multiplierItem.classList.add('result-item');
+    multiplierItem.textContent = `${multiplier}x`;
 
-    // Determine the start and end indices for the current page
+    sidebar.prepend(multiplierItem);
+
+    const maxItems = 5;
+    while (sidebar.children.length > maxItems) {
+        sidebar.removeChild(sidebar.lastChild);
+    }
+}
+
+function renderHistory() {
+    historyList.innerHTML = '';
+
     const startIndex = (currentPage - 1) * roundsPerPage;
     const endIndex = startIndex + roundsPerPage;
 
-    // Slice the historyData array to get the rounds for the current page
     const roundsToDisplay = historyData.slice(startIndex, endIndex);
 
-    // Render the rounds on the page
     roundsToDisplay.forEach((round) => {
         const row = document.createElement('tr');
         const roundCell = document.createElement('td');
+        const multiplierCell = document.createElement('td');
         const amountCell = document.createElement('td');
 
         roundCell.textContent = `#${round.round}`;
+        multiplierCell.textContent = `${round.multiplier}x`;
         amountCell.textContent = `₹${round.amount}`;
 
         row.appendChild(roundCell);
+        row.appendChild(multiplierCell);
         row.appendChild(amountCell);
 
         historyList.appendChild(row);
     });
 }
 
-// Function to update the pagination controls
 function updatePaginationControls() {
-    paginationContainer.innerHTML = ''; // Clear the existing pagination controls
-
-    // Calculate the total number of pages
+    paginationContainer.innerHTML = '';
     const totalPages = Math.ceil(historyData.length / roundsPerPage);
+    const maxVisiblePages = 4;
+    let startPage = currentPage - Math.floor(maxVisiblePages / 2);
+    let endPage = currentPage + Math.floor(maxVisiblePages / 2);
 
-    // Render the pagination controls
-    for (let i = 1; i <= totalPages; i++) {
-        const pageButton = document.createElement('button');
-        pageButton.textContent = i;
-        pageButton.style.backgroundColor = i === currentPage ? "#00ffd5" : ""; // Highlight the active page
-        pageButton.style.border = "none";
-        pageButton.style.borderRadius = "2px";
-        pageButton.style.marginLeft = "2px";
+    if (startPage < 1) {
+        startPage = 1;
+        endPage = Math.min(maxVisiblePages, totalPages);
+    }
+    if (endPage > totalPages) {
+        endPage = totalPages;
+        startPage = Math.max(1, totalPages - maxVisiblePages + 1);
+    }
 
-        // Add click event listener to change the page
-        pageButton.addEventListener('click', () => {
-            currentPage = i;
+    const prevButton = document.createElement('button');
+    prevButton.innerHTML = '◀️';
+    prevButton.style.border = "none";
+    prevButton.style.borderRadius = "2px";
+    prevButton.style.marginRight = "2px";
+    prevButton.style.background = "none";
+    prevButton.disabled = currentPage === 1;
+
+    prevButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
             renderHistory();
             updatePaginationControls();
-        });
+        }
+    });
 
+    paginationContainer.appendChild(prevButton);
+
+    if (startPage > 1) {
+        const firstPageButton = createPageButton(1);
+        paginationContainer.appendChild(firstPageButton);
+
+        if (startPage > 2) {
+            const ellipsis = document.createElement('span');
+            ellipsis.textContent = '...';
+            ellipsis.style.margin = '0 5px';
+            paginationContainer.appendChild(ellipsis);
+        }
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+        const pageButton = createPageButton(i);
         paginationContainer.appendChild(pageButton);
     }
-}
 
-// Switching between manual and auto mode
-manualButton.addEventListener('click', () => switchMode('manual'));
-autoButton.addEventListener('click', () => switchMode('auto'));
+    if (endPage < totalPages) {
+        if (endPage < totalPages - 1) {
+            const ellipsis = document.createElement('span');
+            ellipsis.textContent = '...';
+            ellipsis.style.margin = '0 5px';
+            paginationContainer.appendChild(ellipsis);
+        }
 
-function switchMode(mode) {
-    if (mode === 'manual') {
-        manualButton.classList.add('active');
-        autoButton.classList.remove('active');
-        manualSection.style.display = 'block';
-        autoSection.style.display = 'none';
-    } else if (mode === 'auto') {
-        autoButton.classList.add('active');
-        manualButton.classList.remove('active');
-        manualSection.style.display = 'none';
-        autoSection.style.display = 'block';
+        const lastPageButton = createPageButton(totalPages);
+        paginationContainer.appendChild(lastPageButton);
     }
+
+    const nextButton = document.createElement('button');
+    nextButton.innerHTML = '▶️';
+    nextButton.style.border = "none";
+    nextButton.style.borderRadius = "2px";
+    nextButton.style.marginLeft = "2px";
+    nextButton.style.background = "none";
+    nextButton.disabled = currentPage === totalPages;
+
+    nextButton.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderHistory();
+            updatePaginationControls();
+        }
+    });
+
+    paginationContainer.appendChild(nextButton);
 }
 
-// Set the pre-defined amounts when the buttons are clicked
+function createPageButton(page) {
+    const pageButton = document.createElement('button');
+    pageButton.textContent = page;
+    pageButton.style.backgroundColor = page === currentPage ? "#00ffd5" : "";
+    pageButton.style.border = "none";
+    pageButton.style.borderRadius = "2px";
+    pageButton.style.marginLeft = "2px";
+    pageButton.style.color = "black";
+    pageButton.style.fontSize = "9px";
+    pageButton.style.height = "15px";
+
+    pageButton.addEventListener('click', () => {
+        currentPage = page;
+        renderHistory();
+        updatePaginationControls();
+    });
+
+    return pageButton;
+}
+
 document.querySelectorAll('.pre-amount-buttons button').forEach(button => {
     button.addEventListener('click', () => {
         const amount = parseFloat(button.textContent.replace('₹', '')) || balance;
@@ -240,32 +467,34 @@ document.querySelectorAll('.pre-amount-buttons button').forEach(button => {
 });
 
 function setAmount(amount) {
+    if (amount === undefined) {
+        amount = balance;
+    }
     betAmountInput.value = amount.toFixed(2);
 }
 
-// Start and stop auto-betting
-startAutoBetButton.addEventListener('click', function() {
-    autoBetActive = true;
-    startAutoBet();
-    startAutoBetButton.style.display = 'none';
-    stopAutoBetButton.style.display = 'block';
-});
-
-stopAutoBetButton.addEventListener('click', function() {
-    stopAutoBet();
-    stopAutoBetButton.style.display = 'none';
-    startAutoBetButton.style.display = 'block';
-});
-
-function startAutoBet() {
-    if (autoBetActive) {
-        betInterval = setInterval(() => {
-            betButton.click(); // Simulate a bet click
-        }, 3000); // Adjust the interval timing as needed
+function adjustAmount(multiplier) {
+    let currentAmount = parseFloat(betAmountInput.value);
+    if (!isNaN(currentAmount) && currentAmount > 0) {
+        currentAmount *= multiplier;
+        betAmountInput.value = currentAmount.toFixed(2);
     }
 }
 
-function stopAutoBet() {
-    clearInterval(betInterval);
-    autoBetActive = false;
+function updatePinRows() {
+    const rowCount = parseInt(document.getElementById('row-count').value);
+    plinkoBoard.innerHTML = '';
+    createPins(rowCount);
+    createResultSlots(rowCount);
+}
+
+initializePlinkoBoard();
+updateBalanceDisplay();
+
+function withdraw() {
+    window.location.href = 'withdraw.html';
+}
+
+function deposit() {
+    window.location.href = 'deposit.html';
 }
