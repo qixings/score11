@@ -322,13 +322,14 @@ thead {
 .tip-message {
     color: #ffffff;
     text-align: center;
-    font-size: 12px;
+    font-size: 16px;
     padding: 20px;
-    background-color: rgb(16 126 131 / 20%);
+    background-color: rgb(137 189 0 / 50%);
     border-radius: 10px;
     width: 280px;
     height: 60px;
-    margin-top: 482px;margin-right: -264px;
+    margin-top: 260px;
+    margin-right: -264px;
     display: flex;
     align-items: center;
     justify-content: center;
