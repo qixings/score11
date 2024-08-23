@@ -123,7 +123,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 5px 0;
-    background: radial-gradient(#2100ff, #092d01);
+    background: radial-gradient(#2100ff, #0b1620);
     border-radius: 0 0 10px 10px;
     z-index: 999999; /* Ensure they are on top */
 }
