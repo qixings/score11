@@ -22,13 +22,20 @@
     <div class="balance-container">
         <div id="balance">Balance: ₹<span id="balance-amount">55245.00</span><img src="processing.png" alt=""  class="refresh"></div>
                 <div>
-       <button onclick="window.location.href='withdraw.html'">WITHDRAW</button>
-<button onclick="window.location.href='deposit.html'">DEPOSIT</button>
-
+        <button onclick="withdraw()">WITHDRAW</button>
+        <button onclick="deposit()">DEPOSIT</button>
     </div>
     </div>
 
     <div id="spinner-container">
+        <div>
+            <section class="alert-panel">
+                <marquee behavior="scroll" direction="left">Our customer support never sends links to members. If you receive
+                    any, please report it immediately.</marquee>
+            </section>
+        </div>
+
+        <div class="wheel-container">
         <div id="indicator">
             <img src="indicator-arrow.png" alt="Indicator Arrow">
         </div>
@@ -36,6 +43,7 @@
             <!-- Wheel design goes here -->
             <img src="spinner-wheel.png" alt="Spinner Wheel">
         </div>
+    </div>
 
 
 
@@ -52,6 +60,8 @@
                     <button onclick="setAmount(90)">₹90</button>
                     <button onclick="setAmount(270)">₹270</button>
                     <button onclick="setAmount(810)">₹810</button>
+                    <button onclick="setAmount(2430)">₹2430</button>
+                    <button onclick="setAmount()" style="width: 48px;">All In</button>
                 </div>
                 
                 <div class="amount-controls">
@@ -66,11 +76,13 @@
             <div class="betting-section">
                 <h2>Auto Spin</h2>
                 <div class="pre-amount-buttons">
-                    <button onclick="setAutoAmount(10)">₹10</button>
-                    <button onclick="setAutoAmount(30)">₹30</button>
-                    <button onclick="setAutoAmount(90)">₹90</button>
-                    <button onclick="setAutoAmount(270)">₹270</button>
-                    <button onclick="setAutoAmount(810)">₹810</button>
+                    <button onclick="setAmount(10)">₹10</button>
+                    <button onclick="setAmount(30)">₹30</button>
+                    <button onclick="setAmount(90)">₹90</button>
+                    <button onclick="setAmount(270)">₹270</button>
+                    <button onclick="setAmount(810)">₹810</button>
+                    <button onclick="setAmount(2430)">₹2430</button>
+                    <button onclick="setAmount()" style="width: 48px;">All In</button>
                 </div>
                 
                 <div class="amount-controls">
