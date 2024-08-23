@@ -16,7 +16,7 @@ body {
     top: 0;
     width: 100%;
     max-width: 414px;
-    background: linear-gradient(45deg, #5749d0, transparent);
+    background: linear-gradient(45deg, #4d70aa, transparent);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -53,7 +53,7 @@ body {
     white-space: nowrap;
     scroll-behavior: smooth;
     margin: 9px;
-    background: #284455;
+    background: #223546;
     padding: 10px;
     border-radius: 8px;
 }
@@ -282,7 +282,7 @@ position: fixed;
     font-size: 12px;
     font-weight: bold;
     font-style: italic;
-    width: 80%;
+    width: 80%;;
     color: #ffffff;
 
 }
@@ -354,7 +354,7 @@ position: fixed;
 }
 
 .footer p{
-    font-size: 10px;
+    font-size: 11px;
     margin: 0px;
     margin-top: -10px;
     margin-bottom: 35px;
