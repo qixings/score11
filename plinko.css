@@ -123,7 +123,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 5px 0;
-    background: radial-gradient(#a6e100, #092d01);
+    background: radial-gradient(#2100ff, #092d01);
     border-radius: 0 0 10px 10px;
     z-index: 999999; /* Ensure they are on top */
 }
@@ -169,7 +169,7 @@ body {
     flex-direction: column;
     align-items: center;
     border-radius: 11px;
-    background: linear-gradient(2deg, #1c324a, #224a5a);
+    background: linear-gradient(2deg, #1c324a, #184f7f);
     width: 330px;
     gap: 4px;
     padding: 6px;
@@ -480,4 +480,19 @@ body {
     display: flex;
     align-items: center;
     gap: 3px;
+}
+
+.action-button.running {
+    background-color: orange; /* Orange color when auto bet is running */
+}
+
+#remaining-rounds {
+    background-color: #1d2534;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    text-align: center;
+    width: 100px;
+    margin-top: 5px;
 }
