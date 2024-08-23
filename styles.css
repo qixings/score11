@@ -32,7 +32,7 @@ img{
 #game-container {
     display: grid;
     justify-items: center;
-    background: linear-gradient(349deg, #7900ff, #c33dff);
+    background: #223546;
     border-radius: 0px 0px 20px 20px;
     width: 335px;
     padding: 20px;
@@ -43,9 +43,8 @@ img{
 
 .balance-container {
     display: grid;
-    background: linear-gradient(356deg, #000002, #6008ff);
+    background: linear-gradient(2deg, #1c324a, #184f7f);
     border-radius: 9px;
-    box-shadow: 0 0 20px rgb(255 215 251);
     width: 208px;
     padding: 10px;
     padding-bottom: 2px;
@@ -53,6 +52,7 @@ img{
     color: white;
     position: relative;
     bottom: 17px;
+    filter: drop-shadow(0px 1px 3px rgb(20, 35, 43));
 }
 
 .fa-wallet{
@@ -117,7 +117,7 @@ img{
 #header {
     display: flex;
     align-items: center;
-    background-color: rgba(83, 0, 135, 0.343);
+    background-color: #0e1c28;
     border-radius:10px;
     flex-direction: column;
     width: 100%;
@@ -795,7 +795,7 @@ i{
     flex: 1;
     padding: 7px 38px;
     cursor: pointer;
-    background-color: #7727fd;
+    background-color: #394381;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -1078,7 +1078,7 @@ th, td {
 }
 
 th {
-    background-color: #8e75f9;
+    background-color: #394381;
     width: 200px; /* Adjust this value as needed */
     text-align: center;
     font-size: 12px;
@@ -1087,7 +1087,7 @@ th {
 td {
     text-align: center;
     font-size: 11px;
-    background-color: #de0cff14;
+    background-color: #1d2534;
 }
 
 #public-bets table, #game-history table, #my-bets table {
