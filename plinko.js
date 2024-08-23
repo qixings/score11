@@ -7,6 +7,21 @@ const roundsPerPage = 10;
 let currentPage = 1;
 const maxWidth = 335; // Make the width equal to the result slots width
 
+
+
+// New Variables for Auto Mode
+let isAutoMode = false;
+let autoBetRounds = 0;
+let currentAutoRound = 0;
+
+// DOM Elements for Switches
+const manualBetButton = document.getElementById('mannualBet');
+const autoBetButton = document.getElementById('autoBet');
+
+
+// DOM Element for Row Selection
+const rowCountSelect = document.getElementById('row-count');
+
 // DOM Elements
 const balanceAmount = document.getElementById('balance-amount');
 const betAmountInput = document.getElementById('bet-amount');
@@ -15,6 +30,67 @@ const plinkoBoard = document.getElementById('plinko-board');
 const resultSlots = document.getElementById('result-slots');
 const historyList = document.getElementById('history-list');
 const paginationContainer = document.getElementById('pagination');
+
+
+
+
+const switchesContainer = document.querySelector('.switches');
+const amountControls = document.querySelector('.amount-controls');
+
+// Add an additional section for Auto mode
+const autoBetSection = document.createElement('div');
+autoBetSection.classList.add('auto-bet-section');
+autoBetSection.innerHTML = `
+    <input type="number" id="auto-rounds" min="1" placeholder="Number of Rounds">
+`;
+amountControls.appendChild(autoBetSection);
+autoBetSection.style.display = 'none'; // Initially hide the auto-bet section
+
+
+
+
+
+// Set initial active mode
+manualBetButton.classList.add('active');
+betButton.textContent = 'Bet';
+
+// Event Listeners for Mode Switching
+manualBetButton.addEventListener('click', function() {
+    isAutoMode = false;
+    manualBetButton.classList.add('active');
+    autoBetButton.classList.remove('active');
+    autoBetSection.style.display = 'none'; // Hide auto-bet section
+    betButton.textContent = 'Bet'; // Change button text back to Bet
+});
+
+autoBetButton.addEventListener('click', function() {
+    isAutoMode = true;
+    manualBetButton.classList.remove('active');
+    autoBetButton.classList.add('active');
+    autoBetSection.style.display = 'block'; // Show auto-bet section
+    betButton.textContent = 'Start'; // Change button text to Start
+});
+
+
+
+
+
+
+// Disable Row Selection
+function disableRowSelection() {
+    rowCountSelect.disabled = true;
+}
+
+// Enable Row Selection
+function enableRowSelection() {
+    rowCountSelect.disabled = false;
+}
+
+
+
+
+
+
 
 // Update balance display
 function updateBalanceDisplay() {
@@ -31,7 +107,7 @@ function createPins(pinRows = 16) { // Default to 16 rows
     const boardHeight = plinkoBoard.offsetHeight;
     const triangleHeight = boardHeight * 0.8;
     const pinSpacingY = triangleHeight / pinRows;
-    const verticalOffset = (boardHeight - triangleHeight) / 2;
+    const verticalOffset = (boardHeight - triangleHeight) / 2-10;
 
     plinkoBoard.innerHTML = ''; // Clear the Plinko board before adding new pins
 
@@ -124,8 +200,22 @@ function createResultSlots(pinRows = 16) {
     plinkoBoard.appendChild(resultSlots);
 }
 
-// Drop the ball when the Bet button is clicked
-betButton.addEventListener('click', function () {
+// Handle Bet/Start button click
+betButton.addEventListener('click', function() {
+    if (isAutoMode) {
+        autoBetRounds = parseInt(document.getElementById('auto-rounds').value);
+        if (isNaN(autoBetRounds) || autoBetRounds <= 0) {
+            alert('Please enter a valid number of rounds for auto betting.');
+            return;
+        }
+        startAutoBetting();
+    } else {
+        placeBet(); // Ensure this function exists and is being called
+    }
+});
+
+// Modify the placeBet function to disable the row selection when a bet starts
+function placeBet() {
     currentBet = parseFloat(betAmountInput.value);
     if (isNaN(currentBet) || currentBet <= 0 || currentBet > balance) {
         alert('Please enter a valid bet amount within your balance.');
@@ -134,8 +224,51 @@ betButton.addEventListener('click', function () {
 
     balance -= currentBet;
     updateBalanceDisplay();
+    disableRowSelection(); // Disable row selection when the bet starts
     dropBall(); // Trigger the ball drop here
+}
+
+
+
+// Modify the startAutoBetting function to disable the row selection for the entire auto-bet session
+function startAutoBetting() {
+    currentAutoRound = 0;
+    disableRowSelection(); // Disable row selection when auto-bet starts
+    autoBet();
+}
+
+function autoBet() {
+    if (currentAutoRound < autoBetRounds) {
+        placeBet();
+        currentAutoRound++;
+        setTimeout(autoBet, 1000); // Adjust the delay between auto-bets as needed
+    } else {
+        enableRowSelection(); // Enable row selection after all auto-bet rounds are completed
+    }
+}
+
+
+// Event Listeners for Mode Switching
+manualBetButton.addEventListener('click', function() {
+    isAutoMode = false;
+    manualBetButton.classList.add('active');
+    autoBetButton.classList.remove('active');
+    autoBetSection.style.display = 'none'; // Hide auto-bet section
+    betButton.textContent = 'Bet'; // Change button text back to Bet
 });
+
+autoBetButton.addEventListener('click', function() {
+    isAutoMode = true;
+    manualBetButton.classList.remove('active');
+    autoBetButton.classList.add('active');
+    autoBetSection.style.display = 'block'; // Show auto-bet section
+    betButton.textContent = 'Start'; // Change button text to Start
+});
+
+
+
+
+
 
 function dropBall() {
     const ball = document.createElement('div');
@@ -154,7 +287,7 @@ function calculateBallPath() {
     const path = [];
     let currentX = plinkoBoard.offsetWidth / 2;
     const pinRowWidth = maxWidth;
-    const verticalSpacing = plinkoBoard.offsetHeight / 16;
+    const verticalSpacing = (plinkoBoard.offsetHeight - 30)/ 16;
 
     for (let i = 0; i < 16; i++) {
         const direction = weightedDirection(i);
@@ -206,9 +339,9 @@ function weightedDirection(row) {
 function animateBall(ball, pathData) {
     const { pathPoints, multiplier } = pathData;
     let index = 0;
-    let velocityY = 0.5;
+    let velocityY = 5;
     let velocityX = 2;
-    let gravity = 0.1;
+    let gravity = 0.3;
     let damping = 0.3;
 
     function moveBall() {
@@ -270,6 +403,9 @@ function createRippleEffect(pin) {
     }, 400);
 }
 
+
+
+// Modify the alignBallToSlot function to enable the row selection after the bet ends (only in manual mode)
 function alignBallToSlot(ball, multiplier) {
     const resultSlots = document.getElementById('result-slots');
     const slotsRect = resultSlots.getBoundingClientRect();
@@ -288,6 +424,9 @@ function alignBallToSlot(ball, multiplier) {
 
     setTimeout(() => {
         closestSlot.classList.remove('highlight');
+        if (!isAutoMode || (isAutoMode && currentAutoRound === autoBetRounds)) {
+            enableRowSelection(); // Re-enable row selection after the ball touches the result slot and auto mode is done
+        }
     }, 500);
 
     setTimeout(() => {
@@ -295,6 +434,10 @@ function alignBallToSlot(ball, multiplier) {
         calculateWinnings(multiplier);
     }, 500);
 }
+
+
+
+
 
 function calculateWinnings(multiplier) {
     const winnings = currentBet * multiplier;
