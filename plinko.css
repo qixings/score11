@@ -57,7 +57,7 @@ body {
     width: 370px;
     max-width: 500px;
     overflow: hidden;
-    height: 691px;
+    height: 690px;
     gap: 16px;
     
 
@@ -66,7 +66,7 @@ body {
 .plinko-board {
     position: relative;
     width: 359px;
-    height: 419px;
+    height:350px;
     background-color: #0e1c28;
     border-radius: 10px;
     overflow: hidden; /* Ensure no elements go outside the plinko board */
@@ -205,6 +205,8 @@ body {
     justify-content: space-around;
     width: 305px;
     margin-bottom: 3px;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .amount-controls input {
@@ -225,7 +227,7 @@ body {
     color: #fff;
     cursor: pointer;
     width: 31px;
-    height: 32px;
+    height: 31px;
     font-size: 9px;
     font-weight: bold;
 }
@@ -237,9 +239,14 @@ body {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.2s;
-    height: 45px;
-    width: 77px;
+    transition: transform 0.1s ease, background-color 0.2s;
+    height: 100%;
+    width: 305px;
+}
+
+.action-button:active {
+    transform: scale(0.95); /* Makes the button slightly smaller to simulate a press */
+    background-color: #158a00; /* Darker color when pressed */
 }
 
 .action-button:hover {
@@ -271,6 +278,10 @@ body {
 }
 
 
+
+#manual-section{
+    margin-bottom: 5px;
+}
 
 .history-section th {
     background-color: #1d2534;
@@ -430,4 +441,43 @@ body {
     border-radius: 6px;
     font-size: 12px;
     margin-bottom: 3px;
+    width: 304px;
+}
+
+.switches{
+    background: rgb(25, 40, 52);
+    width: 305px;
+    border-radius: 25px;
+    display: flex;
+    height: 35px;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 12px;
+}
+
+.bet-switch.active {
+    background-color: #2d7794; /* Green background for active switch */
+    color: white; /* Ensure the text color contrasts well */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.bet-switch {
+    border-radius: 25px;
+    width: 50%;
+    text-align: center;
+    cursor: pointer; /* Add a pointer cursor to indicate it's clickable */
+    height: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#auto-rounds{
+    width: 298px;
+}
+.amount-inserts{
+    display: flex;
+    align-items: center;
+    gap: 3px;
 }
