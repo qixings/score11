@@ -341,7 +341,7 @@ function animateBall(ball, pathData) {
     let index = 0;
     let velocityY = 5;
     let velocityX = 2;
-    let gravity = 0.3;
+    let gravity = 0.5;
     let damping = 0.3;
 
     function moveBall() {
