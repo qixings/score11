@@ -18,7 +18,7 @@ body {
     top: 0px;
     position: relative;
     height: 47px;
-    background: linear-gradient(45deg, #5749d0, #274792);
+    background: linear-gradient(45deg, #4d70aa, transparent);
     z-index: 1;
 }
 
