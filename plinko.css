@@ -304,7 +304,7 @@ body {
 
 
 .history-section th, .history-section td {
-    padding: 10px;
+    padding: 8px;
     text-align: center;
     width: 33%; /* Adjusted for three columns */
     font-size: 11px;
