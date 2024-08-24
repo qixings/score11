@@ -21,38 +21,30 @@ function redirectToGame(game) {
     window.location.href = game + '.html';
 }
 
-// Function to redirect to color trading game
-function redirectToOptiontrading() {
+// Function to redirect to Option Trading game
+function redirectToOptionTrading() {
     window.location.href = 'optiontrading.html';
+}
+
+// Function to redirect to aviator game
+function redirectToMines() {
+    window.location.href = 'mines.html';
+}
 
 // Function to redirect to color trading game
 function redirectToColortrading() {
     window.location.href = 'colortrading.html';
-}
-// Function to redirect to Mines game
-function redirectToMines() {
-    window.location.href = 'mines.html';
 }
 
 // Function to redirect to big small game
 function redirectToBigsmall() {
     window.location.href = 'bigsmall.html';
 }
-// Function to redirect to Spin Win game
-function redirectToPlinko() {
-    window.location.href = 'plinko.html';
-}
-// Function to redirect to Mines game
-function redirectToSatta() {
-    window.location.href = 'satta.html';
-}
 
 // Function to redirect to Spin Win game
 function redirectToSpinwin() {
     window.location.href = 'spinwin.html';
 }
-
-
 
 // Function to handle horizontal scroll
 function scrollGamesContainer(direction) {
@@ -65,14 +57,14 @@ function scrollGamesContainer(direction) {
 document.addEventListener("DOMContentLoaded", function() {
 
     // Attach event listeners for game icons
-       document.querySelector('.games-section .game:nth-child(1)').addEventListener('click', redirectToOptiontrading);
-   document.querySelector('.games-section .game:nth-child(2)').addEventListener('click', redirectToColortrading);
-document.querySelector('.games-section .game:nth-child(3)').addEventListener('click', redirectToMines);
-document.querySelector('.games-section .game:nth-child(4)').addEventListener('click', redirectToBigsmall);
-document.querySelector('.games-section .game:nth-child(5)').addEventListener('click', redirectToPlinko);
-document.querySelector('.games-section .game:nth-child(6)').addEventListener('click', redirectToSatta);
-document.querySelector('.games-section .game:nth-child(7)').addEventListener('click', redirectToSpinwin);
 
+   document.querySelector('.games-section .game:nth-child(1)').addEventListener('click', redirectToOptionTrading);
+    document.querySelector('.games-section .game:nth-child(2)').addEventListener('click', redirectToColortrading);
+    document.querySelector('.games-section .game:nth-child(3)').addEventListener('click', redirectToMines);
+    document.querySelector('.games-section .game:nth-child(4)').addEventListener('click', redirectToBigsmall);
+    document.querySelector('.games-section .game:nth-child(5)').addEventListener('click', redirectToPlinko);
+    document.querySelector('.games-section .game:nth-child(6)').addEventListener('click', redirectToGame.bind(null, './satta'));
+    document.querySelector('.games-section .game:nth-child(7)').addEventListener('click', redirectToSpinwin);
 
     const navItems = document.querySelectorAll('.navigation-menu .nav-item');
     navItems[0].addEventListener('click', function() { navigateTo('home'); });
@@ -81,6 +73,7 @@ document.querySelector('.games-section .game:nth-child(7)').addEventListener('cl
     navItems[3].addEventListener('click', function() { navigateTo('agent'); });
     navItems[4].addEventListener('click', function() { navigateTo('user-profile'); });
 });
+
 
 // JavaScript for banner slider
 let slideIndex = 0;
