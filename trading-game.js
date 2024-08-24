@@ -2,11 +2,14 @@ let balance = 55245.00;
 let currentPrice = 1000;
 let betAmount = null;
 let chart;
-let timerDuration = 60; // Default to 1 minute
+let timerDuration = 10; // Default to 1 minute
 
 let activeBet = null; // Track active bet data
 let updateInterval = 1000; // Default update interval (1 second)
-let slowUpdate = false; // Flag for slower updates in longer time frames
+
+let historyData = []; // To store all history data
+let currentPage = 1;
+const itemsPerPage = 10; // Show 10 rounds per page
 
 function initChart() {
     const canvas = document.getElementById('trading-graph');
@@ -23,12 +26,12 @@ function initChart() {
             labels: [], // Time labels
             datasets: [{
                 label: 'Price',
-                backgroundColor: 'rgba(0, 255, 221, 0.2)', // Fill color under the line
+                backgroundColor: 'rgb(0 129 174 / 20%)', // Fill color under the line
                 borderColor: '#ffffff', // Line color
-                borderWidth: 2, // Thickness of the main line
+                borderWidth: 1, // Thickness of the main line
                 data: [], // Price data
                 fill: true, // Fill area under the line
-                pointRadius: 2, // Show points
+                pointRadius: 1, // Show points
                 tension: 0.3, // Add some smoothing to the line
             }, {
                 label: 'Bet Line', // Dataset for bet line
@@ -46,7 +49,7 @@ function initChart() {
             layout: {
                 padding: {
                     left: 0, // No padding on the left
-                    right: 0, // No padding on the right
+                    right: 5, // No padding on the right
                     top: 20,
                     bottom: 10
                 }
@@ -117,8 +120,15 @@ function updateYAxisScale() {
 
 function updateChart() {
     const now = new Date();
+    const timeBuffer = 5000; // 5 seconds buffer
+
     chart.data.labels.push(now);
     chart.data.datasets[0].data.push(currentPrice);
+
+    // Maintain the x-axis range to the last selected timeframe
+    const startTime = new Date(now.getTime() - timerDuration * 1000);
+    chart.options.scales.x.min = startTime;
+    chart.options.scales.x.max = new Date(now.getTime() + timeBuffer); // Add buffer to keep right end inside
 
     // Update the bet line
     if (activeBet) {
@@ -126,10 +136,8 @@ function updateChart() {
         const remainingTime = timerDuration - elapsedTime; // Remaining time for the bet
         const endTime = new Date(activeBet.startTime.getTime() + (timerDuration * 1000));
 
-        // Both dots remain fixed, zoom out the graph instead
-        const midpoint = new Date(activeBet.startTime.getTime() + (timerDuration * 1000 * 0.5));
         chart.data.datasets[1].data = [
-            { x: midpoint, y: activeBet.priceLevel }, 
+            { x: activeBet.startTime, y: activeBet.priceLevel }, 
             { x: endTime, y: activeBet.priceLevel } 
         ];
 
@@ -141,7 +149,8 @@ function updateChart() {
         }
     }
 
-    if (chart.data.labels.length > 20) {
+    // Limit the number of data points displayed (for performance reasons)
+    if (chart.data.labels.length > timerDuration * 2) {
         chart.data.labels.shift();
         chart.data.datasets[0].data.shift();
     }
@@ -162,28 +171,92 @@ function setTimeFrame(seconds, button) {
     updateInterval = slowUpdate ? 15000 : 1000; // Update every 15 seconds for longer frames, otherwise every 1 second
     document.querySelectorAll('.timer-button').forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
+
+    const now = new Date();
+    const startTime = new Date(now.getTime() - seconds * 1000);
+
+    chart.options.scales.x.min = startTime;
+    chart.options.scales.x.max = now;
+
+    chart.update();
 }
 
 function setBetAmount(amount) {
     if (amount === 'all') {
-        betAmount = balance;
+        betAmount = Math.round(balance * 100) / 100; // Round to 2 decimal places
     } else {
         betAmount = amount;
     }
-    document.getElementById('bet-amount').value = betAmount;
+    document.getElementById('bet-amount').value = betAmount.toFixed(2); // Ensure the input shows exactly 2 decimal places
     updateReturnAmount();
 }
 
+
+document.getElementById('bet-amount').addEventListener('input', function (e) {
+    // Remove any non-numeric characters
+    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+
+    // Update the return amount based on the valid input
+    updateReturnAmount();
+});
+
+document.getElementById('bet-amount').addEventListener('input', updateReturnAmount);
+
 function updateReturnAmount() {
-    const returnAmount = betAmount * 1.96;
-    document.getElementById('return-amount').textContent = `+₹${returnAmount.toFixed(2)}`;
+    const betAmountInput = document.getElementById('bet-amount').value;
+    if (!betAmountInput || parseFloat(betAmountInput) <= 0) {
+        document.getElementById('return-amount').textContent = '+₹0.00'; // Display 0.00 when input is empty
+    } else {
+        const returnAmount = parseFloat(betAmountInput) * 1.96;
+        document.getElementById('return-amount').textContent = `+₹${returnAmount.toFixed(2)}`;
+    }
+}
+
+function disableButtons() {
+    document.querySelectorAll('.bet-buttons button').forEach(button => {
+        button.disabled = true;
+        button.style.opacity = 0.5; // Optional: make buttons look disabled
+
+        // Add event listener to show warning message if a disabled button is clicked
+        button.addEventListener('click', showWarningMessage);
+    });
+
+    document.querySelectorAll('.graph-controls button').forEach(button => {
+        button.disabled = true;
+        button.style.opacity = 0.5; // Optional: make buttons look disabled
+
+        // Add event listener to show warning message if a disabled button is clicked
+        button.addEventListener('click', showWarningMessage);
+    });
+}
+
+function enableButtons() {
+    document.querySelectorAll('.bet-buttons button').forEach(button => {
+        button.disabled = false;
+        button.style.opacity = 1; // Optional: reset button opacity
+
+        // Remove the warning message event listener when buttons are enabled
+        button.removeEventListener('click', showWarningMessage);
+    });
+
+    document.querySelectorAll('.graph-controls button').forEach(button => {
+        button.disabled = false;
+        button.style.opacity = 1; // Optional: reset button opacity
+
+        // Remove the warning message event listener when buttons are enabled
+        button.removeEventListener('click', showWarningMessage);
+    });
+}
+
+function showWarningMessage() {
+    displayMessage('A bet is already running. Please wait for the result.', false);
 }
 
 function placeBet(direction) {
     betAmount = parseFloat(document.getElementById('bet-amount').value);
 
     if (!betAmount || betAmount <= 0 || betAmount > balance) {
-        alert('Please enter a valid bet amount within your balance.');
+        displayMessage('Please enter a valid bet amount within your balance.');
         return;
     }
 
@@ -196,62 +269,164 @@ function placeBet(direction) {
         startTime: startTime
     };
 
-    // Draw bet line with both dots fixed
+    // Draw bet line with fixed left dot and moving right dot
     const endTime = new Date(startTime.getTime() + (timerDuration * 1000));
-    const midpoint = new Date(startTime.getTime() + (timerDuration * 1000 * 0.5));
     chart.data.datasets[1].data = [
-        { x: midpoint, y: initialPrice }, 
+        { x: startTime, y: initialPrice }, 
         { x: endTime, y: initialPrice } 
     ];
+
+    // Immediately update the chart to show the bet line without any delay
+    chart.update('none');  // The 'none' parameter skips animations
+
+    disableButtons(); // Disable the bet and time buttons after placing a bet
 }
 
 function checkBetResult(result) {
     const betDirection = activeBet.direction;
     const betPriceLevel = activeBet.priceLevel;
+    const finalPrice = currentPrice;
+    let winnings = 0;
 
-    const isWin = (betDirection === 'up' && currentPrice > betPriceLevel) || 
-                  (betDirection === 'down' && currentPrice < betPriceLevel);
+    const isWin = (betDirection === 'up' && finalPrice > betPriceLevel) || 
+                  (betDirection === 'down' && finalPrice < betPriceLevel);
 
     if (isWin) {
-        const winnings = betAmount * 1.96;
+        winnings = betAmount * 1.96;
         balance += winnings;
-        alert(`You won! Your balance is now ₹${balance.toFixed(2)}`);
+        displayMessage(`Congratulations! You won +₹${winnings.toFixed(2)}`, true);
     } else {
+        winnings = -betAmount;
         balance -= betAmount; // Deduct bet amount from balance
-        alert(`You lost! Better luck next time.`);
+        displayMessage(`Sorry! You lost -₹${betAmount.toFixed(2)}. Better luck next time!`, false);
     }
 
     document.getElementById('balance-amount').textContent = balance.toFixed(2);
 
+    // Update history with the bet amount, winnings, and direction
+    addToHistory(betAmount, winnings, betDirection);
+
     // Clear bet line after result is checked
     chart.data.datasets[1].data = [];
+
+    enableButtons(); // Re-enable buttons after the bet result
+
+    // Clear the active bet
+    activeBet = null;
 }
 
-function addToHistory(initialPrice, finalPrice, winnings) {
+function displayMessage(message, isWin) {
+    const messageBox = document.getElementById('message-box');
+    
+    // Set the message text and color based on whether it's a win or loss
+    if (isWin) {
+        messageBox.innerHTML = `<span style="color: #7cff00;">${message}</span>`;
+    } else {
+        messageBox.innerHTML = `<span style="color: #ff0000;">${message}</span>`;
+    }
+
+    messageBox.style.display = 'block';
+
+    setTimeout(() => {
+        messageBox.style.display = 'none';
+    }, 3000); // Display message for 3 seconds
+}
+
+function addToHistory(betAmount, winnings, direction) {
+    const round = historyData.length + 1;
+    historyData.unshift({ round, betAmount, winnings, direction }); // Add new history at the beginning
+    displayHistory(); // Display the current page history
+}
+
+
+function displayHistory() {
     const historyList = document.getElementById('history-list');
-    const round = historyList.children.length + 1;
+    historyList.innerHTML = ''; // Clear the current display
 
-    const row = document.createElement('tr');
-    row.innerHTML = `<td>${round}</td><td>₹${winnings.toFixed(2)}</td>`;
-    historyList.appendChild(row);
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const paginatedItems = historyData.slice(start, end);
+
+    paginatedItems.forEach(item => {
+        const row = document.createElement('tr');
+
+        // Round Number Cell
+        const roundCell = document.createElement('td');
+        roundCell.textContent = item.round;
+        row.appendChild(roundCell);
+
+        // Bet Amount Cell
+        const betAmountCell = document.createElement('td');
+        betAmountCell.textContent = `₹${item.betAmount.toFixed(2)}`;
+        row.appendChild(betAmountCell);
+
+        // Bet On (Direction) Cell
+        const directionCell = document.createElement('td');
+        directionCell.textContent = item.direction.toUpperCase();
+        directionCell.style.fontWeight = 'bold'; // Make bold
+        if (item.direction.toLowerCase() === 'down') {
+            directionCell.style.color = '#ff0000'; // Red color for DOWN
+        } else if (item.direction.toLowerCase() === 'up') {
+            directionCell.style.color = '#00ff00'; // Green color for UP
+        }
+        row.appendChild(directionCell);
+
+        // Winning Amount Cell
+        const winningsCell = document.createElement('td');
+        const winningsText = item.winnings < 0 
+            ? `-₹${Math.abs(item.winnings).toFixed(2)}` 
+            : `₹${item.winnings.toFixed(2)}`;
+        winningsCell.textContent = winningsText;
+        winningsCell.style.color = item.winnings < 0 ? '#ff0000' : '#00ff00'; // Red for losses, green for gains
+        row.appendChild(winningsCell);
+
+        historyList.appendChild(row);
+    });
+
+    document.getElementById('page-number').textContent = ` ${currentPage}`;
+    updatePaginationButtons();
 }
 
-function animateEndpoint() {
-    const lastPoint = chart.data.datasets[0].data[chart.data.datasets[0].data.length - 1];
-    if (lastPoint) {
-        const ctx = chart.ctx;
-        const pointIndex = chart.data.datasets[0].data.length - 1;
-        const meta = chart.getDatasetMeta(0);
-        const position = meta.data[pointIndex].getCenterPoint();
 
-        ctx.beginPath();
-        ctx.arc(position.x, position.y, 6, 0, 2 * Math.PI);
-        ctx.strokeStyle = 'rgba(255, 255, 0, 0.8)';
-        ctx.lineWidth = 2;
-        ctx.stroke();
+
+
+
+function updatePaginationButtons() {
+    document.getElementById('prev-page').disabled = currentPage === 1;
+    document.getElementById('next-page').disabled = currentPage * itemsPerPage >= historyData.length;
+}
+
+function prevPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        displayHistory();
     }
 }
 
+function nextPage() {
+    if (currentPage * itemsPerPage < historyData.length) {
+        currentPage++;
+        displayHistory();
+    }
+}
+
+// Call displayHistory initially to show the first page
+displayHistory();
+
+function withdraw() {
+    window.location.href = 'withdraw.html'; // Redirect to withdraw page
+}
+
+function deposit() {
+    window.location.href = 'deposit.html'; // Redirect to deposit page
+}
+
+// Run the graph update continuously even when the tab is not active
+function continuousUpdate() {
+    fluctuatePrice();
+    setTimeout(continuousUpdate, updateInterval);
+}
+
 initChart();
-setInterval(fluctuatePrice, updateInterval); // Adjust update frequency based on the selected time frame
+continuousUpdate(); // Start the continuous update loop
 setInterval(animateEndpoint, 500); // Blink the end point every half second
