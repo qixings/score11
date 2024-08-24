@@ -290,6 +290,7 @@ body {
 #pagination-controls {
     margin-top: 10px;
     text-align: center;
+        margin-bottom: 30px;
 }
 
 #pagination-controls button {
