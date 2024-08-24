@@ -288,22 +288,29 @@ function checkBetResult(result) {
     const finalPrice = currentPrice;
     let winnings = 0;
 
-    const isWin = (betDirection === 'up' && finalPrice > betPriceLevel) || 
-                  (betDirection === 'down' && finalPrice < betPriceLevel);
-
-    if (isWin) {
-        winnings = betAmount * 1.96;
-        balance += winnings;
-        displayMessage(`Congratulations! You won +₹${winnings.toFixed(2)}`, true);
+    // Check for a draw scenario
+    if (finalPrice === betPriceLevel) {
+        displayMessage(`Draw! Your bet of ₹${betAmount.toFixed(2)} has been refunded.`, true);
+        // No change to balance, just a refund
+        winnings = 0;
     } else {
-        winnings = -betAmount;
-        balance -= betAmount; // Deduct bet amount from balance
-        displayMessage(`Sorry! You lost -₹${betAmount.toFixed(2)}. Better luck next time!`, false);
+        const isWin = (betDirection === 'up' && finalPrice > betPriceLevel) || 
+                      (betDirection === 'down' && finalPrice < betPriceLevel);
+
+        if (isWin) {
+            winnings = betAmount * 1.96;
+            balance += winnings;
+            displayMessage(`Congratulations! You won +₹${winnings.toFixed(2)}`, true);
+        } else {
+            winnings = -betAmount;
+            balance -= betAmount; // Deduct bet amount from balance
+            displayMessage(`Sorry! You lost -₹${betAmount.toFixed(2)}. Better luck next time!`, false);
+        }
     }
 
     document.getElementById('balance-amount').textContent = balance.toFixed(2);
 
-    // Update history with the bet amount, winnings, and direction
+    // Update history with the bet amount and winnings
     addToHistory(betAmount, winnings, betDirection);
 
     // Clear bet line after result is checked
@@ -365,9 +372,9 @@ function displayHistory() {
         directionCell.textContent = item.direction.toUpperCase();
         directionCell.style.fontWeight = 'bold'; // Make bold
         if (item.direction.toLowerCase() === 'down') {
-            directionCell.style.color = '#ff0000'; // Red color for DOWN
+            directionCell.style.color = 'rgb(255 76 76)'; // Red color for DOWN
         } else if (item.direction.toLowerCase() === 'up') {
-            directionCell.style.color = '#00ff00'; // Green color for UP
+            directionCell.style.color = 'rgb(76 175 80)'; // Green color for UP
         }
         row.appendChild(directionCell);
 
