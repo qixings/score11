@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="optiontrading.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script> <!-- Include date adapter -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@1.0.0"></script> <!-- Include Chart.js Zoom Plugin -->
 </head>
 
 <body>
@@ -67,17 +68,31 @@
             <thead>
                 <tr>
                     <th>Round</th>
+                    <th>Bet Amount</th>
+                    <th>Bet On</th> <!-- Add this column -->
                     <th>Winning Amount</th>
                 </tr>
             </thead>
+            
             <tbody id="history-list"></tbody>
         </table>
+    
+        
+        
     </div>
-
+    <div id="pagination-controls">
+        <button id="prev-page" onclick="prevPage()">&#9664;</button> <!-- Left arrow symbol -->
+        <span id="page-number">Page 1</span>
+        <button id="next-page" onclick="nextPage()">&#9654;</button> <!-- Right arrow symbol -->
+    </div>
+    
+    
+    <!-- Message Box for Displaying Alerts -->
+    <div id="message-box">
+    </div>
 
     <script src="trading-game.js"></script>
 
-    
 </body>
 
 </html>
