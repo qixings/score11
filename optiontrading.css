@@ -1,0 +1,270 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, black, #28324d);
+    color: #ffffff;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+    align-items: center;
+}
+
+
+.balance-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #395281;
+    width: 366px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.balance-container button {
+    width: 81px;
+    height: 32px;
+    border-radius: 7px;
+    border: none;
+    background: #ff5700;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+.balance-container button:hover {
+    background-color: #ff4500; /* Darker shade on hover */
+    transition: background-color 0.3s ease;
+}
+
+#balance-amount {
+    color: greenyellow;
+}
+
+.trading-container {
+    margin: 0px 12px;
+    background: #223546;
+    border-bottom-right-radius: 14px;
+    border-bottom-left-radius: 14px;
+    height: 690px;
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#trading-graph {
+    background-color: #0e1c28;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+.alert-panel {
+    margin: 8px;
+    margin-top: 5px;
+    background-color: #ffffff69;
+    padding: 5px;
+    text-align: center;
+    font-size: 10px;
+    border-radius: 15px;
+    z-index: 9999;
+    position: relative;
+    width: 350px;
+}
+
+.graph-controls {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    width: 351px;
+}
+
+.graph-controls button {
+    background-color: #627790;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    width: 65px;
+    height: 49px;
+    font-size: 10px;
+}
+
+.graph-controls button:hover {
+    background-color: #50667f; /* Darker shade on hover */
+    transition: background-color 0.3s ease;
+}
+
+.bet-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 11px;
+    background: linear-gradient(2deg, #1c324a, #184f7f);
+    width: 346px;
+    gap: 4px;
+    padding: 6px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    filter: drop-shadow(0px 1px 3px rgb(20, 35, 43));
+}
+
+.bet-amounts {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 338px;
+}
+
+.bet-amounts button {
+    background-color: #5f70db;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    font-size: 12px;
+}
+
+.bet-amounts button:hover {
+    background-color: #4e5fb7; /* Darker shade on hover */
+    transition: background-color 0.3s ease;
+}
+
+.bet-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 5px;
+    width: 338px;
+    font-size: 12px;
+}
+
+.bet-details div {
+    display: flex;
+    flex-direction: column;
+}
+
+#bet-amount {
+    background-color: #1d2534;
+    border: none;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: left;
+    height: 32px;
+    width: 150px;
+}
+
+#return-amount {
+    background-color: #1d2534;
+    border: none;
+    color: rgb(106, 255, 0);
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    height: 32px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bet-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 338px;
+}
+
+.bet-buttons button {
+    width: 160px;
+    height: 71px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.bet-down {
+    background-color: #ff4c4c;
+}
+
+.bet-up {
+    background-color: #4caf50;
+}
+
+.bet-buttons button:hover {
+    background-color: #ff3c3c; /* Darker red for down */
+    transition: background-color 0.3s ease;
+}
+
+.bet-up:hover {
+    background-color: #43a047; /* Darker green for up */
+}
+
+.history-section {
+    margin-top: 10px;
+    text-align: center;
+    width: 366px;
+    height: 397px;
+}
+
+.history-section h2 {
+    background: #394381;
+    margin: 0;
+    height: 30px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 11px;
+}
+
+.history-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.history-section th {
+    background-color: #1d2534;
+    color: #ffffff;
+}
+
+.history-section td {
+    background-color: #1d2534;
+    color: #ffffff;
+}
+
+.history-section th,
+.history-section td {
+    padding: 8px;
+    text-align: center;
+    font-size: 11px;
+    background: #1d2534;
+}
+
+.timer-button.active {
+    background-color: #ffcc00;
+    color: #000;
+    border-color: #ffcc00;
+}
+
+.label {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+button:focus,
+input:focus {
+    outline: 2px solid #ffcc00;
+    outline-offset: 2px;
+}

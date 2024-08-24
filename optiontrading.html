@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Game</title>
+    <link rel="stylesheet" href="optiontrading.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script> <!-- Include date adapter -->
+</head>
+
+<body>
+
+    <div class="balance-container">
+        <div id="balance">Balance: ₹<span id="balance-amount">55245.00</span></div>
+        <div>
+            <button onclick="withdraw()">WITHDRAW</button>
+            <button onclick="deposit()">DEPOSIT</button>
+        </div>
+    </div>
+
+    <div class="trading-container">
+        <section class="alert-panel">
+            <marquee behavior="scroll" direction="left">Our customer support never sends links to members. If you receive any, please report it immediately.</marquee>
+        </section>
+
+        <div class="graph-controls">
+            <button class="timer-button" onclick="setTimeFrame(10, this)">10 sec</button>
+            <button class="timer-button" onclick="setTimeFrame(30, this)">30 sec</button>
+            <button class="timer-button active" onclick="setTimeFrame(60, this)">1 min</button>
+            <button class="timer-button" onclick="setTimeFrame(300, this)">5 min</button>
+            <button class="timer-button" onclick="setTimeFrame(600, this)">10 min</button>
+        </div>
+
+        <canvas id="trading-graph" width="360" height="310"></canvas>
+
+        <div class="bet-container">
+            <div class="bet-amounts">
+                <button onclick="setBetAmount(10)">₹10</button>
+                <button onclick="setBetAmount(90)">₹90</button>
+                <button onclick="setBetAmount(270)">₹270</button>
+                <button onclick="setBetAmount(810)">₹810</button>
+                <button onclick="setBetAmount('all')">ALL IN</button>
+            </div>
+            <div class="bet-details">
+                <div>
+                    <span class="label">Investment Amount:</span>
+                    <input type="number" id="bet-amount" min="1" placeholder="Enter amount">
+                </div>
+                <div>
+                    <span class="label">Return (196%):</span>
+                    <span id="return-amount">+₹0.00</span>
+                </div>
+            </div>
+
+            <div class="bet-buttons">
+                <button onclick="placeBet('down')" class="bet-down">DOWN</button>
+                <button onclick="placeBet('up')" class="bet-up">UP</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="history-section">
+        <h2>My History</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Round</th>
+                    <th>Winning Amount</th>
+                </tr>
+            </thead>
+            <tbody id="history-list"></tbody>
+        </table>
+    </div>
+
+
+    <script src="trading-game.js"></script>
+
+    
+</body>
+
+</html>
