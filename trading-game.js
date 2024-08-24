@@ -37,8 +37,8 @@ function initChart() {
                 label: 'Bet Line', // Dataset for bet line
                 data: [], // Horizontal line data
                 borderColor: '#ffcc00', // Yellow color for the bet line
-                borderWidth: 2,
-                pointRadius: 5,
+                borderWidth: 1.5,
+                pointRadius: 3,
                 showLine: true,
                 fill: false,
                 borderDash: [5, 5], // Dashed line for the bet
@@ -106,7 +106,30 @@ function initChart() {
             }
         }
     });
+
+    // Pre-populate with some initial data
+    prePopulateGraphData();
 }
+
+function prePopulateGraphData() {
+    const now = new Date();
+    let price = currentPrice;
+
+    // Generate data points for the last 5 minutes (or whatever timeframe you prefer)
+    for (let i = 60; i >= 0; i--) {
+        const timestamp = new Date(now.getTime() - i * 1000);
+        const priceChange = (Math.random() * 2 - 1) * 5; // Same fluctuation logic
+        price = Math.max(940, Math.min(1060, price + priceChange));
+
+        chart.data.labels.push(timestamp);
+        chart.data.datasets[0].data.push(price);
+    }
+
+    // Make sure the Y-axis scales are properly set
+    updateYAxisScale();
+    chart.update();
+}
+
 
 function updateYAxisScale() {
     const prices = chart.data.datasets[0].data;
