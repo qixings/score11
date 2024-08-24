@@ -43,6 +43,10 @@ body {
     color: greenyellow;
 }
 
+#balance{
+    font-size: 12px;
+}
+
 .trading-container {
     margin: 0px 12px;
     background: #223546;
@@ -57,7 +61,7 @@ body {
 
 
 #trading-graph {
-    background-color: #0e1c28;
+    background: linear-gradient(5deg, black, #244868);
     border-radius: 5px;
     margin-bottom: 10px;
 }
@@ -95,8 +99,9 @@ body {
 }
 
 .graph-controls button:hover {
-    background-color: #50667f; /* Darker shade on hover */
+    background-color: #3c4d61;
     transition: background-color 0.3s ease;
+    color: white;
 }
 
 .bet-container {
@@ -105,7 +110,7 @@ body {
     flex-direction: column;
     align-items: center;
     border-radius: 11px;
-    background: linear-gradient(2deg, #1c324a, #184f7f);
+    background: linear-gradient(2deg, #0e1c28, #1c3c58);
     width: 346px;
     gap: 4px;
     padding: 6px;
@@ -122,7 +127,7 @@ body {
 }
 
 .bet-amounts button {
-    background-color: #5f70db;
+    background-color: #4a6da2;
     border: none;
     border-radius: 5px;
     color: #ffffff;
@@ -152,7 +157,7 @@ body {
 }
 
 #bet-amount {
-    background-color: #1d2534;
+    background-color: #0c151c;
     border: none;
     color: white;
     padding: 5px;
@@ -163,7 +168,7 @@ body {
 }
 
 #return-amount {
-    background-color: #1d2534;
+    background-color: #0c151c;
     border: none;
     color: rgb(106, 255, 0);
     padding: 5px;
@@ -202,12 +207,8 @@ body {
 }
 
 .bet-buttons button:hover {
-    background-color: #ff3c3c; /* Darker red for down */
+    /* Darker red for down */
     transition: background-color 0.3s ease;
-}
-
-.bet-up:hover {
-    background-color: #43a047; /* Darker green for up */
 }
 
 .history-section {
@@ -250,12 +251,12 @@ body {
     text-align: center;
     font-size: 11px;
     background: #1d2534;
+    width: 25px;
 }
 
 .timer-button.active {
     background-color: #ffcc00;
     color: #000;
-    border-color: #ffcc00;
 }
 
 .label {
@@ -263,8 +264,57 @@ body {
     margin-bottom: 5px;
 }
 
-button:focus,
-input:focus {
-    outline: 2px solid #ffcc00;
-    outline-offset: 2px;
+
+
+#message-box{
+    display: none;
+    background-color: #050e18d4;
+    color: white;
+    position: fixed;
+    bottom: 469px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 9999;
+    width: 250px;
+    height: 150px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+
+
+#pagination-controls {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#pagination-controls button {
+    background-color: #00b3ff;
+    border: none;
+    border-radius: 2px;
+    color: #ffffff;
+    cursor: pointer;
+    padding:1px 5px;
+    margin: 0 5px;
+}
+
+#pagination-controls button:hover {
+    background-color: #0068df;
+    transition: background-color 0.3s ease;
+}
+
+#page-number {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+
+
+#pagination-controls button:disabled {
+    color: #ffffff; /* A darker color for disabled buttons */
+    cursor: not-allowed;
 }
