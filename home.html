@@ -45,12 +45,18 @@
 <section class="banner-slider" ><a href="activity.html">
     <div class="slider-wrapper">
         <div class="slider">
+
+            <div class="slide">
+                <img src="banner 3.png" alt="Banner 3" class="banner-image">
+            </div>
+
             <div class="slide">
                 <img src="banner 1.png" alt="Banner 1" class="banner-image">
             </div>
             <div class="slide">
                 <img src="banner 2.png" alt="Banner 2" class="banner-image">
             </div>
+
             <!-- Add more slides as needed -->
         </div>
     </div>
@@ -63,30 +69,37 @@
     </div>
 
 <!-- Games section with horizontal scrolling -->
+
+<button class="scroll-button left" onclick="scrollGames('left')">←</button>
+<button class="scroll-button right" onclick="scrollGames('right')">→</button>
+
 <div class="games-container">
     <section class="games-section">
-        <div class="game" onclick="redirectToOptionTrading('./optiontrading')">
-            <img src="trade.png" alt="Option Trading">
-        </div>
-        <div class="game" onclick="redirectToColortrading('./colortrading')">
-            <img src="colortrading.png" alt="Color Trading">
-        </div>
-        <div class="game" onclick="redirectToMines('./mines')">
-            <img src="MINES.png" alt="Mines">
-        </div>
-        <div class="game" onclick="redirectToBigsmall('./bigsmall')">
-            <img src="bigsmall.png" alt="Big Small">
-        </div>
-        <div class="game" onclick="redirectToPlinko('./plinko')">
-            <img src="PLINKO.png" alt="Plinko">
-        </div>
-        <div class="game" onclick="redirectToGame('./satta')">
-            <img src="SATTA.png" alt="Satta Game">
-        </div>
-        <div class="game" onclick="redirectToSpinwin('./spinwin')">
-            <img src="SPINWIN.png" alt="Spin & Win">
+        <div class="games-wrapper">
+            <div class="game" onclick="redirectToGame('./optiontrading')">
+                <img src="trading.png" alt="Option Trading">
+            </div>
+            <div class="game" onclick="redirectToColortrading('./colortrading')">
+                <img src="colortrading.png" alt="Color Trading">
+            </div>
+            <div class="game" onclick="redirectToMines('./mines')">
+                <img src="MINES.png" alt="Mines">
+            </div>
+            <div class="game" onclick="redirectToBigsmall('./bigsmall')">
+                <img src="bigsmall.png" alt="Big Small">
+            </div>
+            <div class="game" onclick="redirectToPlinko('./plinko')">
+                <img src="PLINKO.png" alt="Spin & Win">
+            </div>
+            <div class="game" onclick="redirectToGame('./satta')">
+                <img src="SATTA.png" alt="Satta Game">
+            </div>
+            <div class="game" onclick="redirectToSpinwin('./spinwin')">
+                <img src="SPINWIN.png" alt="Spin & Win">
+            </div>
         </div>
     </section>
+   
 </div>
 
 
