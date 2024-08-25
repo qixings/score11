@@ -21,50 +21,82 @@ function redirectToGame(game) {
     window.location.href = game + '.html';
 }
 
-// Function to redirect to Option Trading game
+// Function to redirect to specific games
 function redirectToOptionTrading() {
     window.location.href = 'optiontrading.html';
 }
 
-// Function to redirect to aviator game
 function redirectToMines() {
     window.location.href = 'mines.html';
 }
 
-// Function to redirect to color trading game
 function redirectToColortrading() {
     window.location.href = 'colortrading.html';
 }
 
-// Function to redirect to big small game
 function redirectToBigsmall() {
     window.location.href = 'bigsmall.html';
 }
-
-// Function to redirect to Spin Win game
+function redirectToPlinko() {
+    window.location.href = 'plinko.html';
+}
 function redirectToSpinwin() {
     window.location.href = 'spinwin.html';
 }
 
-// Function to handle horizontal scroll
-function scrollGamesContainer(direction) {
-    const container = document.querySelector('.games-container');
-    const scrollAmount = direction === 'left' ? -200 : 200; // Adjust scroll step as needed
-    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+
+
+
+function scrollGames(direction) {
+    const gamesContainer = document.querySelector('.games-container');
+    const gameWidth = 120 + 8; // Icon width (120px) + gap (8px)
+
+    if (direction === 'right') {
+        gamesContainer.scrollBy({
+            left: gameWidth * 1, // Scroll by three icons at a time
+            behavior: 'smooth'
+        });
+    } else if (direction === 'left') {
+        gamesContainer.scrollBy({
+            left: -gameWidth * 1, // Scroll back by three icons at a time
+            behavior: 'smooth'
+        });
+    }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const gamesContainer = document.querySelector('.games-container');
+
+    // Reset scroll to start after load
+    gamesContainer.scrollLeft = 0;
+
+    // Snapping to position after manual scrolling
+    gamesContainer.addEventListener('scroll', () => {
+        clearTimeout(gamesContainer.snapTimeout);
+        gamesContainer.snapTimeout = setTimeout(() => {
+            let currentScroll = gamesContainer.scrollLeft;
+            let nearestPosition = Math.round(currentScroll / (120 + 8)) * (120 + 8);
+            gamesContainer.scrollTo({
+                left: nearestPosition,
+                behavior: 'smooth'
+            });
+        }, 100); // Adjust timeout as needed
+    });
+});
+
+
 
 // Initial function calls to set up event listeners on load
 document.addEventListener("DOMContentLoaded", function() {
-
     // Attach event listeners for game icons
-
-   document.querySelector('.games-section .game:nth-child(1)').addEventListener('click', redirectToOptionTrading);
+    document.querySelector('.games-section .game:nth-child(1)').addEventListener('click', redirectToOptionTrading);
     document.querySelector('.games-section .game:nth-child(2)').addEventListener('click', redirectToColortrading);
     document.querySelector('.games-section .game:nth-child(3)').addEventListener('click', redirectToMines);
     document.querySelector('.games-section .game:nth-child(4)').addEventListener('click', redirectToBigsmall);
-    document.querySelector('.games-section .game:nth-child(5)').addEventListener('click', redirectToPlinko);
-    document.querySelector('.games-section .game:nth-child(6)').addEventListener('click', redirectToGame.bind(null, './satta'));
+    document.querySelector('.games-section .game:nth-child(5)').addEventListener('click', redirectToPlinko); // Plinko should be here
+    document.querySelector('.games-section .game:nth-child(6)').addEventListener('click', function() { redirectToGame('satta'); });
     document.querySelector('.games-section .game:nth-child(7)').addEventListener('click', redirectToSpinwin);
+
 
     const navItems = document.querySelectorAll('.navigation-menu .nav-item');
     navItems[0].addEventListener('click', function() { navigateTo('home'); });
@@ -73,7 +105,6 @@ document.addEventListener("DOMContentLoaded", function() {
     navItems[3].addEventListener('click', function() { navigateTo('agent'); });
     navItems[4].addEventListener('click', function() { navigateTo('user-profile'); });
 });
-
 
 // JavaScript for banner slider
 let slideIndex = 0;
