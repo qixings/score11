@@ -47,40 +47,91 @@ body {
     display: none; /* Hide the balance section */
 }
 
-/* Games section */
-.games-container {
-    overflow-x: auto;
-    white-space: nowrap;
-    scroll-behavior: smooth;
-    margin: 9px;
-    background: #223546;
-    padding: 10px;
-    border-radius: 8px;
-}
+
 .guide-game{
     font-size: 10px;
     color: #eeff00;
 }
 
+
+
+
+.games-container {
+    position: relative;
+    width: 100%;
+    max-width: 414px;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    background: #314d67;
+    padding: 10px 0; /* Top and bottom padding */
+    border-radius: 8px;
+    margin: 0 auto;
+    margin-top: -14px;
+    display: flex;
+    scroll-snap-type: x mandatory; /* Enable snapping */
+    scroll-padding: 16px; /* Padding for snapping */
+    scroll-behavior: smooth; /* Smooth scrolling behavior */
+}
 .games-section {
     display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    justify-content: center;
+    transition: transform 0.3s ease;
 }
 
+.games-wrapper {
+    display: flex;
+    gap: 8px;
+    padding-left: 7px;
+    padding-right: 7px;
+    width: max-content;
+
+}
+.games-section .game {
+    flex: 0 0 auto;
+    width: 120px;
+    scroll-snap-align: start; /* Ensure each icon snaps to start */
+}
 .games-section .game img {
-    width: 102px;
-    height: 107px;
+    width: 120px;
+    height: 150px;
     filter: drop-shadow(0.9px 5px 5px rgb(15, 37, 63));
     display: block;
     cursor: pointer;
 }
 
-/* Optional: Hide scrollbar in WebKit browsers (Chrome, Safari) */
+.scroll-button {
+    background-color: rgb(56 95 135 / 50%);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.scroll-button.left {
+    width: 65px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    margin-left: 238px;
+
+}
+
+.scroll-button.right {
+    right: 10px;
+    top: 263px;
+    width: 65px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* Hide scrollbars for a cleaner look */
 .games-container::-webkit-scrollbar {
     display: none;
 }
+
+
+
+
 
 /* Banners section */
 .banner-slider {
@@ -95,7 +146,6 @@ body {
 .slider-wrapper {
     overflow: hidden;
     border-radius: 10px;
-    border: 2px solid white;
 }
 
 .slider {
@@ -111,7 +161,7 @@ body {
 
 .banner-image {
     width: 100%;
-    height: 150px;
+    height: 175pxpx;
     display: block;
     border-radius: 10px;
     transition: transform 5s ease-in-out;
@@ -157,7 +207,7 @@ body {
 
 /* Navigation menu */
 .navigation-menu {
-position: fixed;
+    position: fixed;
     bottom: 0;
     width: 100%;
     max-width: 414px;
@@ -168,7 +218,7 @@ position: fixed;
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     border-top-left-radius: 15px;
-    border-top-right-radius: 15px
+    border-top-right-radius: 15px;
 }
 
 .navigation-menu .nav-item.active img {
@@ -184,7 +234,7 @@ position: fixed;
 
 .navigation-menu .nav-item p {
     margin: 0;
-        font-size: 11px;
+    font-size: 11px;
     font-weight: bold;
 }
 
@@ -197,7 +247,6 @@ position: fixed;
     justify-content: center;
     margin: 9px;
     margin-top: 10px;
-   
 }
 
 .winner-month-section {
@@ -269,7 +318,7 @@ position: fixed;
 .section-label1 {
     text-align: left;
     margin: 0px;
-    margin-bottom: -13px;
+    margin-bottom: -24px;
     font-size: 13px;
     margin-left: 10px;
 }
@@ -282,9 +331,8 @@ position: fixed;
     font-size: 12px;
     font-weight: bold;
     font-style: italic;
-    width: 80%;;
+    width: 80%;
     color: #ffffff;
-
 }
 
 .payment-partners h2{
@@ -296,21 +344,19 @@ position: fixed;
     text-align: left;
     padding-top: 8px;
     color:#a8a8a8;
-
 }
 
 .payment-partner-container{
     background: linear-gradient(45deg, #1f355075, #1f355075);
     border-radius: 14px;
     margin: 9px;
-
 }
 
 .winner-month-section h3{
     text-align: left;
     margin: 0px;
     font-size: 14px;
-    color: #a8a8a8 ;
+    color: #a8a8a8;
     margin-bottom: 15px;
     margin-top: -27px;
     margin-left: -115px;
@@ -325,17 +371,19 @@ position: fixed;
     border-bottom: 2px solid #0d2a33;
     padding-bottom: 14px;
 }
+
 .connect-with-us{
     display: grid;
     text-align: left;
     gap: 6px;
     grid-template-columns: auto auto;
 }
+
 .connect-with-us a{
     display: flex;
     text-decoration: none;
     gap: 10px;
-    color: skyblue ;
+    color: skyblue;
     font-size: 13px;
     align-items: center;
     margin-left: 35px;
