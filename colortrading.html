@@ -1,231 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
 
-<head>
-    <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="theme-color" content="#28324d" />
 
-  <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="theme-color" content="#28324d">
-
-    <link rel="apple-touch-icon" href="./favicon.png">
-    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./favicon.png" />
+    <link rel="manifest" href="./manifest.json" />
 
     <title>Score11</title>
-    <link rel="shortcut icon" href="./main-home-page/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="colortrading.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+    <link
+      rel="shortcut icon"
+      href="./main-home-page/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="colortrading.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="logo-container">
-        <a href="../lottery-game/main-home-page/home.html"><img src="topbarlogo.png" alt=""></a>
+      <a href="../lottery-game/main-home-page/home.html"
+        ><img src="topbarlogo.png" alt=""
+      /></a>
     </div>
-    <div id="game-container" style="display: grid; justify-content: center; ">
-        <div class="balance-container">
-            <div id="balance">₹<span id="balance-amount">55555.45</span><i id="refresh-icon"
-                    class="fa-solid fa-arrows-rotate"></i></div>
-            <p class="wallet"> <i class="fa-solid fa-wallet"></i> Wallet Balance</p>
-            <div class="money">
-                <button onclick="withdraw()" class="money-button"><b>Withdraw</b></button>
-                <button onclick="deposit()" class="money-button"><b>Deposit</b></button>
-            </div>
+    <div id="game-container" style="display: grid; justify-content: center">
+      <div class="balance-container">
+        <div id="balance">
+          ₹<span id="balance-amount">55555.45</span
+          ><i id="refresh-icon" class="fa-solid fa-arrows-rotate"></i>
         </div>
-        <div id="header">
-            <div id="betting-section">
+        <p class="wallet"><i class="fa-solid fa-wallet"></i> Wallet Balance</p>
+        <div class="money">
+          <button onclick="withdraw()" class="money-button">
+            <b>Withdraw</b>
+          </button>
+          <button onclick="deposit()" class="money-button">
+            <b>Deposit</b>
+          </button>
+        </div>
+      </div>
+      <div id="header">
+        <div id="betting-section">
+          <div id="info">
+            <div class="info-section">
+              <div id="serial" class="label1">Serial:</div>
+              <span id="serial-number" class="value">2024061800001</span>
+            </div>
+            <div class="info-section">
+              <div id="timer" class="label2">Result Timer:</div>
+              <span id="timer-value" class="value">00:01:00</span>
+            </div>
+          </div>
 
-                <div id="info">
-                    <div class="info-section">
-                        <div id="serial" class="label1">Serial:</div>
-                        <span id="serial-number" class="value">2024061800001</span>
-                    </div>
-                    <div class="info-section">
-                        <div id="timer" class="label2">Result Timer:</div>
-                        <span id="timer-value" class="value">00:01:00</span>
-                    </div>
-                </div>
-
-                <div id="numbers" style="gap: 0px;display: flex; padding: 10px 16px;">
-                    <div class="stripe-container"  style="    background: linear-gradient(45deg, #ff9aa7, #fff400);">
-                        <div class="stripe1"></div>
-                        <div class="stripe2"></div>
-                        <div class="stripe3"></div>
-                        <div class="stripe4"></div>
-                        <div class="stripe5"></div>
-                        <div class="stripe6 "></div>
-                        <div class="stripe7"></div>
-                        <div class="stripe8"></div>
-                        <div class="stripe9"></div>
-                        <div class="stripe10"></div>
-                        <div class="stripe11"></div>
-                        <div class="stripe12 "></div>
-                        <div class="stripe13"></div>
-                        <div class="stripe14"></div>
-                        <div class="stripe15"></div>
-                        <div class="stripe16"></div>
-                        <div class="stripe17 "></div>
-                        <div class="stripe18"></div>
-                        <div class="stripe19"></div>
-                        <div class="stripe20"></div>
-                        <div class="stripe21"></div>
-                        <div class="stripe22"></div>
-                        <div class="stripe23"></div>
-                        <div class="stripe24"></div>
-                        <div class="stripe25"></div>
-                        <div class="stripe26"></div>
-                        <div class="stripe27"></div>
-                        <div class="stripe28"></div>
-                        <div class="stripe29"></div>
-                        <div class="stripe30"></div>
-                        <div class="stripe31"></div>
-                        <div class="stripe32"></div>
-
-                    </div>
-
-                    <div class="colors">
-                        <div class="color" id="red" > <img src="red.png" alt="" style="left: 0px; top: 0px; width: 103px;"></div>
-                        <div class="color" id="purple"><img src="PURPLE.png" alt="" style="left: 0px; top: 0px;  width: 103px;"></div>
-                        <div class="color" id="green"><img src="GREEN.png" alt="" style="left: 0px; top: 0px;  width: 103px"></div>
-                    </div>
-
-                </div>
+          <div
+            id="numbers"
+            style="
+              position: relative;
+              gap: 0px;
+              display: flex;
+              padding: 10px 16px;
+              flex-direction: column;
+            "
+          >
+            <div
+              class="stripe-container"
+              style="background: linear-gradient(45deg, #ff9aa7, #fff400)"
+            >
+              <div class="stripe1"></div>
+              <div class="stripe2"></div>
+              <div class="stripe3"></div>
+              <div class="stripe4"></div>
+              <div class="stripe5"></div>
+              <div class="stripe6"></div>
+              <div class="stripe7"></div>
+              <div class="stripe8"></div>
+              <div class="stripe9"></div>
+              <div class="stripe10"></div>
+              <div class="stripe11"></div>
+              <div class="stripe12"></div>
+              <div class="stripe13"></div>
+              <div class="stripe14"></div>
+              <div class="stripe15"></div>
+              <div class="stripe16"></div>
+              <div class="stripe17"></div>
+              <div class="stripe18"></div>
+              <div class="stripe19"></div>
+              <div class="stripe20"></div>
+              <div class="stripe21"></div>
+              <div class="stripe22"></div>
+              <div class="stripe23"></div>
+              <div class="stripe24"></div>
+              <div class="stripe25"></div>
+              <div class="stripe26"></div>
+              <div class="stripe27"></div>
+              <div class="stripe28"></div>
+              <div class="stripe29"></div>
+              <div class="stripe30"></div>
+              <div class="stripe31"></div>
+              <div class="stripe32"></div>
             </div>
 
-            <div class="guide">*Tap on your predicted color to place bet*</div>
-
-            <div id="notices">
-
-                <div id="notice-container">
-                    <div id="scrolling-notices">
-                        <div class="notice">Welcome to the best online earning app 2024, Score 11, be the dream version
-                            of
-                            you</div>
-                        <div class="notice">Welcome to the betting game!Welcome to the betting game!Welcome to
-                            thejjjjjjj
-                        </div>
-                        <div class="notice">Welcome to the betting game!Welcome to the betting game!Welcome to
-                            thejjjjjjj
-                        </div>
-                        <div class="notice">Welcome to the betting game!Welcome to the betting game!Welcome to
-                            thejjjjjjj
-                        </div>
-                        <div class="notice">Welcome to the betting game!Welcome to the betting game!Welcome to
-                            thejjjjjjj
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lrn-icons">
-                    <i class="fa-solid fa-bullhorn"></i>
-                    <button class="lrnr"><a href="https://t.me/bharatclubchannel" target="_blank" class="tg-b">Learn
-                            more</a></button>
-                </div>
+            <div class="colors">
+              <div class="color" id="red">
+                <img
+                  src="red.png"
+                  alt=""
+                  style="left: 0px; top: 0px; width: 103px"
+                />
+              </div>
+              <div class="color" id="purple">
+                <img
+                  src="PURPLE.png"
+                  alt=""
+                  style="left: 0px; top: 0px; width: 103px"
+                />
+              </div>
+              <div class="color" id="green">
+                <img
+                  src="GREEN.png"
+                  alt=""
+                  style="left: 0px; top: 0px; width: 103px"
+                />
+              </div>
             </div>
+
+            <div id="countdown-popup" class="countdown-popup"></div>
+          </div>
         </div>
 
-        <div class="tg-links">
-            <div class="tg1"><i class="fa-brands fa-telegram"></i><a href="https://t.me/sattalogchannel"
-                    target="_blank" class="tg-a">Official prediction channel</a></div>
-            <div class="tg2">
-                <a href="https://t.me/sattalogchannel" target="_blank" class="tg-a">Learn how to play?</a>
+        <div class="guide">*Tap on your predicted color to place bet*</div>
+
+        <div id="notices">
+          <div id="notice-container">
+            <div id="scrolling-notices">
+              <div class="notice">
+                Welcome to the best online earning app 2024, Score 11, be the
+                dream version of you
+              </div>
+              <div class="notice">
+                Welcome to the betting game!Welcome to the betting game!Welcome
+                to thejjjjjjj
+              </div>
+              <div class="notice">
+                Welcome to the betting game!Welcome to the betting game!Welcome
+                to thejjjjjjj
+              </div>
+              <div class="notice">
+                Welcome to the betting game!Welcome to the betting game!Welcome
+                to thejjjjjjj
+              </div>
+              <div class="notice">
+                Welcome to the betting game!Welcome to the betting game!Welcome
+                to thejjjjjjj
+              </div>
             </div>
+          </div>
+
+          <div class="lrn-icons">
+            <i class="fa-solid fa-bullhorn"></i>
+            <button class="lrnr">
+              <a
+                href="https://t.me/bharatclubchannel"
+                target="_blank"
+                class="tg-b"
+                >Learn more</a
+              >
+            </button>
+          </div>
         </div>
+      </div>
+
+      <div class="tg-links">
+        <div class="tg1">
+          <i class="fa-brands fa-telegram"></i
+          ><a href="https://t.me/sattalogchannel" target="_blank" class="tg-a"
+            >Official prediction channel</a
+          >
+        </div>
+        <div class="tg2">
+          <a href="https://t.me/sattalogchannel" target="_blank" class="tg-a"
+            >Learn how to play?</a
+          >
+        </div>
+      </div>
     </div>
 
     <div class="data-container">
-        <div id="below-section">
-            <div class="tab-buttons">
-                <button onclick="showTab('public-bets')">Public Bets</button>
-                <button onclick="showTab('game-history')">History/Trend</button>
-                <button onclick="showTab('my-bets')">My Bets</button>
-            </div>
+      <div id="below-section">
+        <div class="tab-buttons">
+          <button onclick="showTab('public-bets')">Public Bets</button>
+          <button onclick="showTab('game-history')">History/Trend</button>
+          <button onclick="showTab('my-bets')">My Bets</button>
         </div>
+      </div>
 
-        <div class="below-section-content">
-            <div id="public-bets" class="tab-content active">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Serial</th>
-                            <th>Bet on</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody id="public-bets-list"></tbody>
-                </table>
-            </div>
-            <div id="game-history" class="tab-content">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Serial</th>
-                            <th>Winning Number</th>
-                        </tr>
-                    </thead>
-                    <tbody id="game-history-list"></tbody>
-                </table>
-            </div>
-            <div id="my-bets" class="tab-content">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Serial</th>
-                            <th>Bet on</th>
-                            <th>Amount</th>
-                            <th>Result</th>
-                        </tr>
-                    </thead>
-                    <tbody id="my-bets-list"></tbody>
-                </table>
-            </div>
+      <div class="below-section-content">
+        <div id="public-bets" class="tab-content active">
+          <table>
+            <thead>
+              <tr>
+                <th>Serial</th>
+                <th>Bet on</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody id="public-bets-list"></tbody>
+          </table>
         </div>
-
+        <div id="game-history" class="tab-content">
+          <table>
+            <thead>
+              <tr>
+                <th>Serial</th>
+                <th>Winning Number</th>
+              </tr>
+            </thead>
+            <tbody id="game-history-list"></tbody>
+          </table>
+        </div>
+        <div id="my-bets" class="tab-content">
+          <table>
+            <thead>
+              <tr>
+                <th>Serial</th>
+                <th>Bet on</th>
+                <th>Amount</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody id="my-bets-list"></tbody>
+          </table>
+        </div>
+      </div>
     </div>
-
-
-
 
     <div id="bet-popup" class="popup">
-        <div class="popup-content">
-            <div class="pre-amount-buttons">
-                <button class="pre-amount-button" onclick="setAmount(100)">₹100</button>
-                <button class="pre-amount-button" onclick="setAmount(300)">₹300</button>
-                <button class="pre-amount-button" onclick="setAmount(900)">₹900</button>
-                <button class="pre-amount-button" onclick="setAmount(2700)">₹2700</button>
-                <button class="pre-amount-button" onclick="setAmount(8100)">₹8100</button>
-            </div>
-            <label for="bet-amount">Enter Bet Amount:</label>
-
-            <div class="quick-amount">
-                <input type="number" id="bet-amount" min="1" placeholder="Enter amount">
-                <button class="quick-deposit" onclick="quickDeposit()">Quick Deposit</button>
-            </div>
-
-            <div class="popup-buttons">
-                <button onclick="cancelBet()">Cancel</button>
-                <p class="tips">Tips: Always follow 3x investment method to get profit everytime</p>
-                <button onclick="placeBet()">Bet</button>
-            </div>
+      <div class="popup-content">
+        <div class="pre-amount-buttons">
+          <button class="pre-amount-button" onclick="setAmount(100)">
+            ₹100
+          </button>
+          <button class="pre-amount-button" onclick="setAmount(300)">
+            ₹300
+          </button>
+          <button class="pre-amount-button" onclick="setAmount(900)">
+            ₹900
+          </button>
+          <button class="pre-amount-button" onclick="setAmount(2700)">
+            ₹2700
+          </button>
+          <button class="pre-amount-button" onclick="setAmount(8100)">
+            ₹8100
+          </button>
         </div>
-    </div>
+        <label for="bet-amount">Enter Bet Amount:</label>
 
+        <div class="quick-amount">
+          <input
+            type="number"
+            id="bet-amount"
+            min="1"
+            placeholder="Enter amount"
+          />
+          <button class="quick-deposit" onclick="quickDeposit()">
+            Quick Deposit
+          </button>
+        </div>
+
+        <div class="popup-buttons">
+          <button onclick="cancelBet()">Cancel</button>
+          <p class="tips">
+            Tips: Always follow 3x investment method to get profit everytime
+          </p>
+          <button onclick="placeBet()">Bet</button>
+        </div>
+      </div>
+    </div>
 
     <div id="result-popup" class="result-popup">
-        <div class="result-background"></div>
-        <div class="wontext">
-            <span class="close" onclick="closeResultPopup()" style="color: red; font-size: 35px;">&times;</span>
-            <p id="result-message"></p>
-            <p id="serial-number" style="color: #8100ff; margin: 13px; font-size: 12px;"></p>
-            <p id="bet-number"></p>
-            <p id="winning-amount"></p>
-        </div>
+      <div class="result-background"></div>
+      <div class="wontext">
+        <span
+          class="close"
+          onclick="closeResultPopup()"
+          style="color: red; font-size: 35px"
+          >&times;</span
+        >
+        <p id="result-message"></p>
+        <p
+          id="serial-number"
+          style="color: #8100ff; margin: 13px; font-size: 12px"
+        ></p>
+        <p id="bet-number"></p>
+        <p id="winning-amount"></p>
+      </div>
     </div>
-    
-    <script src="colortrading.js"></script>
-</body>
 
+    <script src="colortrading.js"></script>
+  </body>
 </html>
