@@ -56,24 +56,6 @@ main {
     font-size: 1.2em;
 }
 
-.colors {
-    display: flex;
-    justify-content: space-around;
-    margin:40px 0px;
-    gap: 25px;
-}
-
-.color {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: zoom 1.5s infinite alternate;
-}
-
 @keyframes zoom {
     0% {
         transform: scale(1);
@@ -86,8 +68,8 @@ main {
 
 
 .color {
-    width: 70px;
-    height: 70px;
+    width: 74px;
+    height: 120px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -106,7 +88,7 @@ main {
     display: flex;
     justify-content: space-around;
     margin: 40px 0;
-    gap: 25px;
+    gap: 41px;
     position: relative;
 }
 
@@ -158,21 +140,21 @@ main {
 }
 
 .popup {
-    display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    left: 0;
+    width: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(100%);
 }
 
 .popup .popup-content {
     background-color: #fff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 20px;
     text-align: center;
 }
 
