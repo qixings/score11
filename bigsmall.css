@@ -56,11 +56,7 @@ main {
     font-size: 1.2em;
 }
 
-
-
-
-
-
+/* Game Container Styling */
 .colors {
     display: flex;
     justify-content: space-around;
@@ -71,6 +67,7 @@ main {
     perspective: 1000px; /* Perspective for the 3D effect */
 }
 
+/* Button Styling and Effects */
 .size-button {
     width: 120px;
     height: 120px;
@@ -101,25 +98,29 @@ main {
     filter: drop-shadow(2px 4px 6px black);
 }
 
+/* Zoom Effects for Results */
 .size-button.big-zoom {
-    transform: scale(1.5) translate(50%, 0); /* BIG image zooms to the right */
+    transform: scale(1.5) translate(42%, 0); /* BIG image zooms to the right */
     left: 50%; /* Ensure it zooms towards the center */
     z-index: 2;
     box-shadow: 0 0 20px 5px rgb(255, 234, 0);
 }
 
 .size-button.small-zoom {
-    transform: scale(1.5) translate(-50%, 0); /* SMALL image zooms to the left */
+    transform: scale(1.5) translate(-42%, 0); /* SMALL image zooms to the left */
     right: 50%; /* Ensure it zooms towards the center */
     z-index: 2;
     box-shadow: 0 0 20px 5px rgb(255, 234, 0);
 }
 
 .size-button.fade-out {
-    opacity: 0; /* Completely hide the other image */
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out; /* Ensure this transition timing matches */
     z-index: 1;
 }
 
+
+/* Cylinder Rotate Animations */
 @keyframes big-cylinder-rotate {
     0% { transform: translateX(0) rotateY(0deg); }
     50% { transform: translateX(150px) rotateY(180deg); }
@@ -139,5 +140,47 @@ main {
 .size-button.shuffle.small-shuffle {
     animation: small-cylinder-rotate 1.0s ease-in-out infinite;
 }
+
+/* Breathing Animation */
+@keyframes breathing {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.09);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.size-button.breathing {
+    animation: breathing 4s ease-in-out infinite;
+}
+
+/* Countdown Overlay */
+.countdown-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px; /* Larger font size for countdown */
+    color: #ffffff;
+    font-weight: bold;
+    z-index: 3;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for better visibility */
+}
+
+.countdown-overlay.show {
+    opacity: 1; /* Show the overlay */
+}
+
 
 
