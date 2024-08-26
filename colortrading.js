@@ -19,6 +19,7 @@ function startTimer() {
 
         if (timeRemaining <= 5) {
             disableBetting();
+            closeBetPopup(); // Automatically close the bet popup if open
             showCountdownPopup(timeRemaining);
         }
 
@@ -29,6 +30,40 @@ function startTimer() {
         }
     }, 1000);
 }
+
+
+
+function closeBetPopup() {
+    const betPopup = document.getElementById('bet-popup');
+    if (betPopup.classList.contains('show')) {
+        betPopup.classList.remove('show'); // Close the popup if it's open
+    }
+}
+
+function placeBet() {
+    const betAmount = parseFloat(document.getElementById('bet-amount').value);
+    if (isNaN(betAmount) || betAmount <= 0) {
+        alert('Please enter a valid bet amount.');
+        return;
+    }
+
+    if (betAmount > balance) {
+        alert('Insufficient balance.');
+        return;
+    }
+
+    if (timerDuration <= 5) { // Disable placing bet during last 5 seconds
+        alert('Betting is closed. Please wait for the next round.');
+        return;
+    }
+
+    balance -= betAmount;
+    document.getElementById('balance-amount').textContent = balance.toFixed(2);
+    addBetToLists(selectedColor, betAmount);
+    closeBetPopup(); // Close the popup after placing the bet
+}
+
+
 
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
@@ -265,23 +300,73 @@ function addBetToLists(color, amount) {
 function addPublicBet(betEntry) {
     const publicBetsList = document.getElementById('public-bets-list');
     const listItem = document.createElement('tr');
-    listItem.innerHTML = `<td>${betEntry.serial}</td><td>${betEntry.color}</td><td>₹${betEntry.amount.toFixed(2)}</td>`;
-    publicBetsList.prepend(listItem); // Add to the top
+    
+    // Create the image element for the bet color
+    const colorImage = document.createElement('img');
+    colorImage.style.width = '30px'; // Set the size of the image
+    colorImage.style.height = '30px'; // Set the size of the image
+    colorImage.style.left = '0px';
+    if (betEntry.color === 'red') {
+        colorImage.src = 'red.png'; // Path to the red image
+    } else if (betEntry.color === 'purple') {
+        colorImage.src = 'PURPLE.png'; // Path to the purple image
+    } else if (betEntry.color === 'green') {
+        colorImage.src = 'GREEN.png'; // Path to the green image
+    }
+
+    listItem.innerHTML = `<td>${betEntry.serial}</td><td></td><td>₹${betEntry.amount.toFixed(2)}</td>`;
+    listItem.children[1].appendChild(colorImage); // Append the image to the "Bet on" cell
+    publicBetsList.prepend(listItem); // Add to the top of the public bets list
 }
+
 
 function addMyBet(betEntry) {
     const myBetsList = document.getElementById('my-bets-list');
     const listItem = document.createElement('tr');
-    listItem.innerHTML = `<td>${betEntry.serial}</td><td>${betEntry.color}</td><td>₹${betEntry.amount.toFixed(2)}</td><td id="my-bet-${betEntry.serial}"></td>`;
-    myBetsList.prepend(listItem); // Add to the top
+    
+    // Create the image element for the bet color
+    const colorImage = document.createElement('img');
+    colorImage.style.width = '30px'; // Set the size of the image
+    colorImage.style.height = '30px'; // Set the size of the image
+    colorImage.style.left = '0px';
+    
+    if (betEntry.color === 'red') {
+        colorImage.src = 'red.png'; // Path to the red image
+    } else if (betEntry.color === 'purple') {
+        colorImage.src = 'PURPLE.png'; // Path to the purple image
+    } else if (betEntry.color === 'green') {
+        colorImage.src = 'GREEN.png'; // Path to the green image
+    }
+
+    listItem.innerHTML = `<td>${betEntry.serial}</td><td></td><td>₹${betEntry.amount.toFixed(2)}</td><td id="my-bet-${betEntry.serial}"></td>`;
+    listItem.children[1].appendChild(colorImage); // Append the image to the "Bet on" cell
+    myBetsList.prepend(listItem); // Add to the top of the my bets list
 }
+
 
 function addGameHistory(resultEntry) {
     const gameHistoryList = document.getElementById('game-history-list');
     const listItem = document.createElement('tr');
-    listItem.innerHTML = `<td>${resultEntry.serial}</td><td>${resultEntry.result}</td>`;
-    gameHistoryList.prepend(listItem); // Add to the top
+    
+    // Create the image element for the winning color
+    const colorImage = document.createElement('img');
+    colorImage.style.width = '30px'; // Set the size of the image
+    colorImage.style.height = '30px'; // Set the size of the image
+    colorImage.style.left = '0px';
+    
+    if (resultEntry.result === 'red') {
+        colorImage.src = 'red.png'; // Path to the red image
+    } else if (resultEntry.result === 'purple') {
+        colorImage.src = 'PURPLE.png'; // Path to the purple image
+    } else if (resultEntry.result === 'green') {
+        colorImage.src = 'GREEN.png'; // Path to the green image
+    }
+
+    listItem.innerHTML = `<td>${resultEntry.serial}</td><td></td>`;
+    listItem.children[1].appendChild(colorImage); // Append the image to the second cell
+    gameHistoryList.prepend(listItem); // Add to the top of the history list
 }
+
 
 function showTab(tabName) {
     // Hide all tab contents
