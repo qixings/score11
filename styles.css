@@ -23,6 +23,7 @@ img{
     left: 33px;
     position: relative;
     top: -3px;
+    filter:drop-shadow(2px 4px 6px rgba(5, 5, 5, 0.678)) ;
 }
 
 #game-container {
@@ -191,6 +192,9 @@ h1 {
     padding: 10px 16px;
     border-radius: 10px;
     overflow: hidden;
+    width: 306px;
+    height: 200px;
+    align-items: center;
 }
 
 .stripe-container {
@@ -977,7 +981,7 @@ input {
 
 
 .number-container{
-    background: #276e87;
+    background: linear-gradient(45deg, #98a6ff, #ff84fc);
     border-radius: 10px;
 
 }
