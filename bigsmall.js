@@ -1,6 +1,6 @@
 let balance = 55555.45;
 let serialNumber = 2024061800001;
-let timerDuration = 5; // 1 minute in seconds
+let timerDuration = 15; // 15 seconds
 let timerInterval;
 let selectedSize;
 let myBets = [];
@@ -13,15 +13,60 @@ function startTimer() {
     let timeRemaining = timerDuration;
     document.getElementById('timer-value').textContent = formatTime(timeRemaining);
 
+    // Start the breathing effect
+    const bigButton = document.getElementById('big');
+    const smallButton = document.getElementById('small');
+    bigButton.classList.add('breathing');
+    smallButton.classList.add('breathing');
+
     timerInterval = setInterval(() => {
         timeRemaining--;
         document.getElementById('timer-value').textContent = formatTime(timeRemaining);
 
+        // When 5 seconds are left, disable betting and show countdown
+        if (timeRemaining <= 5 && timeRemaining > 0) {
+            disableBetting();
+            showCountdown(timeRemaining);
+        }
+
         if (timeRemaining <= 0) {
             clearInterval(timerInterval);
+
+            // Stop the breathing effect before showing the result
+            bigButton.classList.remove('breathing');
+            smallButton.classList.remove('breathing');
+
+            hideCountdown();
             showResult();
         }
     }, 1000);
+}
+
+function disableBetting() {
+    const betButtons = document.querySelectorAll('.money-button, .pre-amount-button');
+    betButtons.forEach(button => {
+        button.disabled = true;
+        button.style.opacity = '0.5'; // Optional: Make buttons look disabled
+    });
+}
+
+function enableBetting() {
+    const betButtons = document.querySelectorAll('.money-button, .pre-amount-button');
+    betButtons.forEach(button => {
+        button.disabled = false;
+        button.style.opacity = '1'; // Reset button opacity
+    });
+}
+
+function showCountdown(seconds) {
+    const countdownOverlay = document.querySelector('.countdown-overlay');
+    countdownOverlay.textContent = seconds;
+    countdownOverlay.classList.add('show');
+}
+
+function hideCountdown() {
+    const countdownOverlay = document.querySelector('.countdown-overlay');
+    countdownOverlay.classList.remove('show');
 }
 
 function formatTime(seconds) {
@@ -31,11 +76,19 @@ function formatTime(seconds) {
 }
 
 function showResult() {
-    let possibleSizes = ['big', 'small']; // Options for BIG and SMALL
+    let possibleSizes = ['big', 'small'];
     currentResult = possibleSizes[Math.floor(Math.random() * possibleSizes.length)];
     const bigButton = document.getElementById('big');
     const smallButton = document.getElementById('small');
 
+    // Ensure all previous animations are cleared
+    bigButton.classList.remove('big-zoom', 'fade-out');
+    smallButton.classList.remove('small-zoom', 'fade-out');
+    
+    // Trigger reflow to reset the CSS animation (forces the browser to recognize the removed classes)
+    void bigButton.offsetWidth;
+    void smallButton.offsetWidth;
+    
     // Add shuffle effect before deciding the result
     bigButton.classList.add('shuffle', 'big-shuffle');
     smallButton.classList.add('shuffle', 'small-shuffle');
@@ -46,7 +99,7 @@ function showResult() {
         bigButton.classList.remove('shuffle', 'big-shuffle');
         smallButton.classList.remove('shuffle', 'small-shuffle');
 
-        // Apply respective zoom classes
+        // Apply respective zoom and fade classes
         if (currentResult === 'big') {
             bigButton.classList.add('big-zoom');
             smallButton.classList.add('fade-out');
@@ -75,23 +128,25 @@ function showResult() {
     // Reset after showing the result
     setTimeout(() => {
         // Explicitly remove zoom and fade-out classes
-        bigButton.classList.remove('big-zoom', 'fade-out', 'winner');
-        smallButton.classList.remove('small-zoom', 'fade-out', 'winner');
+        bigButton.classList.remove('big-zoom', 'fade-out');
+        smallButton.classList.remove('small-zoom', 'fade-out');
 
-        // Reset any inline styles that may have been applied
-        bigButton.style.transform = '';
-        smallButton.style.transform = '';
-        bigButton.style.opacity = 1;
-        smallButton.style.opacity = 1;
-
-        // Reset for the next round
+        // Start the next round
         startNewRound();
     }, 4000); // Duration to show winning size
 }
 
+function startNewRound() {
+    updateSerialNumber();
+    enableBetting();
+    startTimer();
 
-
-
+    // Ensure animations are reset before starting the next round
+    const bigButton = document.getElementById('big');
+    const smallButton = document.getElementById('small');
+    bigButton.classList.remove('big-zoom', 'fade-out');
+    smallButton.classList.remove('small-zoom', 'fade-out');
+}
 
 function updateMyBets() {
     myBets.forEach(bet => {
@@ -111,11 +166,6 @@ function updateMyBets() {
             }
         }
     });
-}
-
-function startNewRound() {
-    updateSerialNumber();
-    startTimer();
 }
 
 function updateSerialNumber() {
@@ -235,7 +285,7 @@ function showResultPopup() {
         } else {
             resultMessage.textContent = 'Sorry, You Lost!';
             winningAmount.textContent = `Losing Amount: -₹${myBets[0].amount.toFixed(2)}`;
-            // Apply black and white effect
+            // Apply black-and-white effect
             resultPopup.classList.add('black-and-white');
         }
     } else {
@@ -257,7 +307,7 @@ function closeResultPopup() {
 
 // Initial function calls
 document.addEventListener('DOMContentLoaded', () => {
-    startTimer(); // Assuming this is for starting some game timer or process
+    startTimer(); // Start the game timer
 
     // Add click event listeners to the BIG and SMALL buttons
     const sizes = document.querySelectorAll('.size-button');
@@ -269,7 +319,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // Function to refresh the balance
 function refreshBalance() {
     // Simulate fetching balance from the server
-    // In a real application, you would make an API call here and update the balance variable
     const updatedBalance = balance; // Simulate fetched balance (no change in this demo)
     document.getElementById('balance-amount').textContent = updatedBalance.toFixed(2);
 
@@ -284,3 +333,8 @@ function refreshBalance() {
 }
 
 document.querySelector('.fa-arrows-rotate').addEventListener('click', refreshBalance);
+
+
+
+
+
