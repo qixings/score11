@@ -1,6 +1,6 @@
 let balance = 55555.45;
 let serialNumber = 2024061800001;
-let timerDuration = 60; // 1 minute in seconds
+let timerDuration = 10; // 1 minute in seconds
 let timerInterval;
 let selectedColor;
 let myBets = [];
@@ -17,8 +17,14 @@ function startTimer() {
         timeRemaining--;
         document.getElementById('timer-value').textContent = formatTime(timeRemaining);
 
+        if (timeRemaining <= 5) {
+            disableBetting();
+            showCountdownPopup(timeRemaining);
+        }
+
         if (timeRemaining <= 0) {
             clearInterval(timerInterval);
+            hideCountdownPopup();
             showResult();
         }
     }, 1000);
@@ -30,30 +36,87 @@ function formatTime(seconds) {
     return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 }
 
+function disableBetting() {
+    const colors = document.querySelectorAll('.color');
+    colors.forEach(color => {
+        color.style.pointerEvents = 'none';
+        color.style.opacity = '0.5'; // Reduce opacity to indicate disabled state
+    });
+}
+
+function showCountdownPopup(secondsRemaining) {
+    const countdownPopup = document.getElementById('countdown-popup');
+    countdownPopup.textContent = secondsRemaining; // Display the remaining seconds
+    countdownPopup.classList.add('show');
+}
+
+function hideCountdownPopup() {
+    const countdownPopup = document.getElementById('countdown-popup');
+    countdownPopup.classList.remove('show');
+}
 
 
 
 
+
+
+
+function startBreathingEffect() {
+    const colors = document.querySelectorAll('.color');
+    colors.forEach(color => {
+        color.classList.add('breathing'); // Add the breathing effect
+    });
+}
+
+function stopBreathingEffect() {
+    const colors = document.querySelectorAll('.color');
+    colors.forEach(color => {
+        color.classList.remove('breathing'); // Remove the breathing effect
+    });
+}
 
 function showResult() {
-    // Possible colors: 'red', 'purple', 'green'
-    let possibleColors = ['red', 'purple', 'green', 'green', 'green']; // Adjust probability for purple
-    currentResult = possibleColors[Math.floor(Math.random() * possibleColors.length)];
+    stopBreathingEffect(); // Stop the breathing effect before shuffling
+
+    let possibleColors = ['red', 'purple', 'green'];
+    let shuffleInterval;
+    let shuffleDuration = 2000; // Total duration of shuffling (in milliseconds)
+    let shuffleSpeed = 100; // Speed of shuffling (time between switches in milliseconds)
+
     const colors = document.querySelectorAll('.color');
+    const serialNumberElement = document.getElementById('serial-number');
 
-    // Shuffle animation
-    colors.forEach(color => {
-        color.style.animation = 'shuffle 1s infinite';
-    });
-
-    // Show winning color with zoom effect after shuffle animation
-    setTimeout(() => {
+    // Start shuffling with a smooth transition
+    shuffleInterval = setInterval(() => {
+        let randomColor = possibleColors[Math.floor(Math.random() * possibleColors.length)];
         colors.forEach(color => {
-            color.style.animation = '';
+            color.style.transition = 'opacity 0.3s, transform 0.5s'; // Smooth transition
+            color.style.opacity = (color.id === randomColor) ? 1 : 0.5;
+            color.style.transform = (color.id === randomColor) ? 'scale(1.5)' : 'scale(1)';
+        });
+    }, shuffleSpeed);
+
+    // Stop shuffling and show the result after shuffleDuration
+    setTimeout(() => {
+        clearInterval(shuffleInterval);
+        currentResult = possibleColors[Math.floor(Math.random() * possibleColors.length)];
+
+        colors.forEach(color => {
             if (color.id === currentResult) {
                 color.classList.add('zoom');
+                color.style.position = 'absolute';
+                color.style.top = '50%';
+                color.style.left = '50%';
+                color.style.transform = 'translate(-50%, -50%) scale(2)'; // Increased zoom
+                color.style.zIndex = '10'; // Bring the winning color to the front
+                color.style.opacity = 1; // Ensure the winning color is fully visible
+
+                // Adjust serial number position based on the zoomed image position
+                serialNumberElement.style.position = 'relative';
+                serialNumberElement.style.left = '50%';
+                serialNumberElement.style.transform = 'translateX(-50%)';
             } else {
-                color.style.opacity = 0;
+                color.style.opacity = 0; // Hide the other colors
             }
         });
 
@@ -70,19 +133,34 @@ function showResult() {
             showResultPopup();
         }
 
-        // Reset selectedColor
-        selectedColor = null;
-    }, 2000); // Duration of shuffle animation
+        // Reset colors for next round
+        setTimeout(() => {
+            colors.forEach(color => {
+                color.classList.remove('zoom');
+                color.style.position = '';
+                color.style.top = '';
+                color.style.left = '';
+                color.style.transform = 'scale(1)';
+                color.style.zIndex = '';
+                color.style.opacity = 1; // Reset opacity for all colors
 
-    // Reset after showing the result
-    setTimeout(() => {
-        colors.forEach(color => {
-            color.classList.remove('zoom');
-            color.style.opacity = 1;
-        });
-        startNewRound();
-    }, 4000); // Duration to show winning color
+                // Reset serial number position
+                serialNumberElement.style.position = 'relative';
+                serialNumberElement.style.left = '0';
+                serialNumberElement.style.transform = 'none';
+            });
+            startBreathingEffect(); // Restart the breathing effect for the next round
+            startNewRound();
+        }, 4000);
+    }, shuffleDuration);
 }
+
+
+
+
+
+
+
 
 function updateMyBets() {
     myBets.forEach(bet => {
@@ -110,15 +188,18 @@ function updateMyBets() {
     });
 }
 
-
-
-
-
-
-
 function startNewRound() {
     updateSerialNumber();
     startTimer();
+    enableBetting(); // Re-enable betting for the new round
+}
+
+function enableBetting() {
+    const colors = document.querySelectorAll('.color');
+    colors.forEach(color => {
+        color.style.pointerEvents = 'auto';
+        color.style.opacity = '1'; // Restore opacity
+    });
 }
 
 function updateSerialNumber() {
@@ -127,8 +208,10 @@ function updateSerialNumber() {
 }
 
 function showBetPopup(color) {
-    selectedColor = color;
-    document.getElementById('bet-popup').classList.add('show');
+    if (timerDuration > 5) { // Ensure betting is allowed only when more than 5 seconds are remaining
+        selectedColor = color;
+        document.getElementById('bet-popup').classList.add('show');
+    }
 }
 
 function cancelBet() {
@@ -148,6 +231,11 @@ function placeBet() {
 
     if (betAmount > balance) {
         alert('Insufficient balance.');
+        return;
+    }
+
+    if (timerDuration <= 5) { // Disable placing bet during last 5 seconds
+        alert('Betting is closed. Please wait for the next round.');
         return;
     }
 
@@ -186,26 +274,6 @@ function addMyBet(betEntry) {
     const listItem = document.createElement('tr');
     listItem.innerHTML = `<td>${betEntry.serial}</td><td>${betEntry.color}</td><td>₹${betEntry.amount.toFixed(2)}</td><td id="my-bet-${betEntry.serial}"></td>`;
     myBetsList.prepend(listItem); // Add to the top
-}
-
-function updateMyBets() {
-    myBets.forEach(bet => {
-        if (bet.result === null) {
-            bet.result = bet.color === currentResult ? 'Won' : 'Lost';
-            const listItem = document.getElementById(`my-bet-${bet.serial}`);
-            if (listItem) {
-                let winnings = 0;
-                if (bet.result === 'Won') {
-                    winnings = bet.amount * 2; // Adjust multiplier for winnings based on color odds
-                    balance += winnings;
-                    document.getElementById('balance-amount').textContent = balance.toFixed(2);
-                } else {
-                    winnings = -bet.amount;
-                }
-                listItem.textContent = `${bet.result} - ₹${winnings.toFixed(2)}`;
-            }
-        }
-    });
 }
 
 function addGameHistory(resultEntry) {
@@ -302,9 +370,6 @@ function refreshBalance() {
 
 document.querySelector('.fa-arrows-rotate').addEventListener('click', refreshBalance);
 
-document.addEventListener('DOMContentLoaded', () => {
-    startTimer();
-});
 document.addEventListener('DOMContentLoaded', () => {
     startTimer();
 
