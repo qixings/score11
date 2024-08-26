@@ -224,3 +224,15 @@ main {
 
 
 
+
+
+#game-history-list img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#public-bets-list img, #my-bets-list img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
