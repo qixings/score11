@@ -2,7 +2,7 @@ let balance = 55245.00;
 let currentPrice = 1000;
 let betAmount = null;
 let chart;
-let timerDuration = 10; // Default to 1 minute
+let timerDuration = 30; // Default to 1 minute
 
 let activeBet = null; // Track active bet data
 let updateInterval = 1000; // Default update interval (1 second)
