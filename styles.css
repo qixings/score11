@@ -135,22 +135,30 @@ h1 {
 #info {
     display: flex;
     justify-content: space-between;
-    margin-bottom: -2px;
+    margin-bottom: 7px;
     margin-top: -12px;
     font-size: 10px;
     align-items: center;
 }
 
 .info-section {
-    text-align: center;
-    margin-bottom: 10px;
+    position: relative; /* Keep the serial number container in place */
+    text-align: center; /* Center the text within the container */
+    z-index: 10; /* Ensure it stays above the zoomed image */
 }
+
+#serial-number {
+    position: relative; /* Ensure the serial number is positioned relative to its container */
+    z-index: 1000; /* Keep it above the zoomed image */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center within its container */
+}
+
 
 .label1 {
     right: 26px;
     position: relative;
     font-size: 12px;
-    padding-bottom: 9px;
 }
 .label2{
     font-size: 12px;
@@ -1065,22 +1073,21 @@ table {
     margin: 0px 0;
 }
 
-th, td {
-    padding: 10px;
-    
-}
+
 
 th {
     background-color: #394381;
     width: 200px; /* Adjust this value as needed */
     text-align: center;
     font-size: 12px;
+    padding: 10px;
 }
 
 td {
     text-align: center;
     font-size: 11px;
     background-color: #1d2534;
+    padding: 5px;
 }
 
 #public-bets table, #game-history table, #my-bets table {
