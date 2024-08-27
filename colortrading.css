@@ -192,9 +192,9 @@ main {
     background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
     color: #fff;
     padding: 20px;
-    border-radius: 13px;
+    border-radius:5px;
     text-align: center;
-    font-size: 60px; /* Larger font size for the countdown number */
+    font-size: 200px; /* Larger font size for the countdown number */
     z-index: 1000;
     width: 299px;
     height: 182px;/* Fixed height for circular shape */
