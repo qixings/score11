@@ -7,6 +7,12 @@ let myBets = [];
 let gameHistory = [];
 let publicBets = [];
 let currentResult;
+let isBettingAllowed = true;
+
+
+
+
+
 
 function startTimer() {
     clearInterval(timerInterval);
@@ -23,9 +29,10 @@ function startTimer() {
         timeRemaining--;
         document.getElementById('timer-value').textContent = formatTime(timeRemaining);
 
-        // When 5 seconds are left, disable betting and show countdown
+        // When 5 seconds are left, disable betting, close the popup, and show countdown
         if (timeRemaining <= 5 && timeRemaining > 0) {
             disableBetting();
+            closeBetPopup(); // Close the bet popup
             showCountdown(timeRemaining);
         }
 
@@ -42,7 +49,19 @@ function startTimer() {
     }, 1000);
 }
 
+
+
+function closeBetPopup() {
+    const betPopup = document.getElementById('bet-popup');
+    if (betPopup.classList.contains('show')) {
+        cancelBet(); // Close the popup using the existing cancel function
+    }
+}
+
+
+
 function disableBetting() {
+    isBettingAllowed = false; // Disable betting
     const betButtons = document.querySelectorAll('.money-button, .pre-amount-button');
     betButtons.forEach(button => {
         button.disabled = true;
@@ -51,12 +70,14 @@ function disableBetting() {
 }
 
 function enableBetting() {
+    isBettingAllowed = true; // Enable betting
     const betButtons = document.querySelectorAll('.money-button, .pre-amount-button');
     betButtons.forEach(button => {
         button.disabled = false;
         button.style.opacity = '1'; // Reset button opacity
     });
 }
+
 
 function showCountdown(seconds) {
     const countdownOverlay = document.querySelector('.countdown-overlay');
@@ -93,6 +114,9 @@ function showResult() {
     bigButton.classList.add('shuffle', 'big-shuffle');
     smallButton.classList.add('shuffle', 'small-shuffle');
 
+    // Disable betting during the shuffle and result reveal
+    disableBetting();
+
     // Decide and reveal the result
     setTimeout(() => {
         // Remove shuffle effect
@@ -125,16 +149,17 @@ function showResult() {
         selectedSize = null;
     }, 2000); // Duration of shuffle effect
 
-    // Reset after showing the result
+    // Reset after showing the result and re-enable betting
     setTimeout(() => {
         // Explicitly remove zoom and fade-out classes
         bigButton.classList.remove('big-zoom', 'fade-out');
         smallButton.classList.remove('small-zoom', 'fade-out');
 
-        // Start the next round
+        // Start the next round (which re-enables betting)
         startNewRound();
     }, 4000); // Duration to show winning size
 }
+
 
 function startNewRound() {
     updateSerialNumber();
@@ -148,6 +173,7 @@ function startNewRound() {
     smallButton.classList.remove('small-zoom', 'fade-out');
 }
 
+
 function updateMyBets() {
     myBets.forEach(bet => {
         if (bet.result === null) {
@@ -159,14 +185,18 @@ function updateMyBets() {
                     winnings = bet.amount * 2; // 2x multiplier for BIG/SMALL
                     balance += winnings;
                     document.getElementById('balance-amount').textContent = balance.toFixed(2);
+                    listItem.textContent = `${bet.result}  +₹${winnings.toFixed(2)}`;
+                    listItem.style.color = '#a7ff00'; // Set text color to green for a win
                 } else {
                     winnings = -bet.amount;
+                    listItem.textContent = `${bet.result}  ₹${winnings.toFixed(2)}`;
+                    listItem.style.color = '#ff2f00'; // Set text color to red for a loss
                 }
-                listItem.textContent = `${bet.result} - ₹${winnings.toFixed(2)}`;
             }
         }
     });
 }
+
 
 function updateSerialNumber() {
     serialNumber++;
@@ -174,8 +204,10 @@ function updateSerialNumber() {
 }
 
 function showBetPopup(size) {
-    selectedSize = size;
-    document.getElementById('bet-popup').classList.add('show');
+    if (isBettingAllowed) {
+        selectedSize = size;
+        document.getElementById('bet-popup').classList.add('show');
+    }
 }
 
 function cancelBet() {
@@ -224,21 +256,24 @@ function addBetToLists(size, amount) {
 function addPublicBet(betEntry) {
     const publicBetsList = document.getElementById('public-bets-list');
     const listItem = document.createElement('tr');
-    listItem.innerHTML = `<td>${betEntry.serial}</td><td>${betEntry.size.toUpperCase()}</td><td>₹${betEntry.amount.toFixed(2)}</td>`;
+    const sizeImage = betEntry.size === 'big' ? 'big.png' : 'small.png';
+    listItem.innerHTML = `<td>${betEntry.serial}</td><td><img src="${sizeImage}" alt="${betEntry.size}" class="size-icon"></td><td>₹${betEntry.amount.toFixed(2)}</td>`;
     publicBetsList.prepend(listItem); // Add to the top
 }
 
 function addMyBet(betEntry) {
     const myBetsList = document.getElementById('my-bets-list');
     const listItem = document.createElement('tr');
-    listItem.innerHTML = `<td>${betEntry.serial}</td><td>${betEntry.size.toUpperCase()}</td><td>₹${betEntry.amount.toFixed(2)}</td><td id="my-bet-${betEntry.serial}"></td>`;
+    const sizeImage = betEntry.size === 'big' ? 'big.png' : 'small.png';
+    listItem.innerHTML = `<td>${betEntry.serial}</td><td><img src="${sizeImage}" alt="${betEntry.size}" class="size-icon"></td><td>₹${betEntry.amount.toFixed(2)}</td><td id="my-bet-${betEntry.serial}"></td>`;
     myBetsList.prepend(listItem); // Add to the top
 }
 
 function addGameHistory(resultEntry) {
     const gameHistoryList = document.getElementById('game-history-list');
+    const sizeImage = resultEntry.result === 'big' ? 'big.png' : 'small.png';
     const listItem = document.createElement('tr');
-    listItem.innerHTML = `<td>${resultEntry.serial}</td><td>${resultEntry.result.toUpperCase()}</td>`;
+    listItem.innerHTML = `<td>${resultEntry.serial}</td><td><img src="${sizeImage}" alt="${resultEntry.result}" class="size-icon"></td>`;
     gameHistoryList.prepend(listItem); // Add to the top
 }
 
@@ -333,6 +368,8 @@ function refreshBalance() {
 }
 
 document.querySelector('.fa-arrows-rotate').addEventListener('click', refreshBalance);
+
+
 
 
 
