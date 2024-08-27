@@ -1,6 +1,6 @@
 let balance = 55555.45;
 let serialNumber = 2024061800001;
-let timerDuration = 10; // 1 minute in seconds
+let timerDuration = 30; // 1 minute in seconds
 let timerInterval;
 let selectedColor;
 let myBets = [];
@@ -146,10 +146,11 @@ function showResult() {
                 color.style.zIndex = '10'; // Bring the winning color to the front
                 color.style.opacity = 1; // Ensure the winning color is fully visible
 
-                // Adjust serial number position based on the zoomed image position
-                serialNumberElement.style.position = 'relative';
+                // Reset serial number to be centered above the zoomed image
+                serialNumberElement.style.position = 'absolute';
                 serialNumberElement.style.left = '50%';
                 serialNumberElement.style.transform = 'translateX(-50%)';
+                serialNumberElement.style.zIndex = '20'; // Ensure it stays on top of zoomed images
             } else {
                 color.style.opacity = 0; // Hide the other colors
             }
@@ -180,9 +181,9 @@ function showResult() {
                 color.style.opacity = 1; // Reset opacity for all colors
 
                 // Reset serial number position
-                serialNumberElement.style.position = 'relative';
-                serialNumberElement.style.left = '0';
-                serialNumberElement.style.transform = 'none';
+                serialNumberElement.style.position = 'absolute';
+                serialNumberElement.style.left = '50%';
+                serialNumberElement.style.transform = 'translateX(-50%)';
             });
             startBreathingEffect(); // Restart the breathing effect for the next round
             startNewRound();
@@ -200,24 +201,29 @@ function showResult() {
 function updateMyBets() {
     myBets.forEach(bet => {
         if (bet.result === null) {
+            const betResultElement = document.getElementById(`my-bet-${bet.serial}`);
+            
             if (bet.color === currentResult) {
                 if (currentResult === 'purple') {
                     bet.result = 'Won 3.96x';
                     let winnings = bet.amount * 3.96; // 4x multiplier for purple
                     balance += winnings;
                     document.getElementById('balance-amount').textContent = balance.toFixed(2);
-                    document.getElementById(`my-bet-${bet.serial}`).textContent = `${bet.result} - ₹${winnings.toFixed(2)}`;
+                    betResultElement.textContent = `${bet.result} - ₹${winnings.toFixed(2)}`;
+                    betResultElement.style.color = '#a7ff00'; // Set color to greenyellow
                 } else {
                     bet.result = 'Won';
                     let winnings = bet.amount * 1.96; // Adjust multiplier for other colors if needed
                     balance += winnings;
                     document.getElementById('balance-amount').textContent = balance.toFixed(2);
-                    document.getElementById(`my-bet-${bet.serial}`).textContent = `${bet.result} - ₹${winnings.toFixed(2)}`;
+                    betResultElement.textContent = `${bet.result}  +₹${winnings.toFixed(2)}`;
+                    betResultElement.style.color = '#a7ff00'; // Set color to greenyellow
                 }
             } else {
                 bet.result = 'Lost';
                 let winnings = -bet.amount;
-                document.getElementById(`my-bet-${bet.serial}`).textContent = `${bet.result} - ₹${winnings.toFixed(2)}`;
+                betResultElement.textContent = `${bet.result} - ₹${winnings.toFixed(2)}`;
+                betResultElement.style.color = '#ff2f00'; // Set color to red
             }
         }
     });
