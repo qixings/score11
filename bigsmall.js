@@ -1,6 +1,6 @@
 let balance = 55555.45;
 let serialNumber = 2024061800001;
-let timerDuration = 15; // 15 seconds
+let timerDuration = 30; // 15 seconds
 let timerInterval;
 let selectedSize;
 let myBets = [];
