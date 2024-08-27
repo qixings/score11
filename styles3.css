@@ -31,14 +31,16 @@ body {
 /* Alert panel */
 .alert-panel {
     margin: 8px;
-    margin-top: 57px;
-    background-color: #ffffff69;
+    margin-top: 58px;
+    background-color: #8a8a8a;
     padding: 5px;
     text-align: center;
-    font-size: 10px;
-    border-radius: 15px;
+    font-size: 12px;
+    border-radius: 13px;
     z-index: 9999;
     position: relative;
+    height: 20px;
+    display: flex;
 }
 
 /* Removed balance-container and balance-section */
@@ -146,6 +148,7 @@ body {
 .slider-wrapper {
     overflow: hidden;
     border-radius: 10px;
+    height: 175px;
 }
 
 .slider {
