@@ -44,8 +44,8 @@
                     </div>
                 </div>
 
-                <div id="numbers" style="gap: 0px;display: flex; padding: 0 25px;">
-                    <div class="stripe-container"  style="background-color: #ffd76c;;">
+                <div id="numbers" style="gap: 0px;display: flex; padding: 0 25px; justify-content: center;  height: 220px;     width: 288px;">
+                    <div class="stripe-container"  style="background: linear-gradient(45deg, #00f4ff, #ffef00);">
                         <div class="stripe1"></div>
                         <div class="stripe2"></div>
                         <div class="stripe3"></div>
@@ -88,6 +88,7 @@
                         <div class="size-button" id="small">
                             <img src="small.png" alt="SMALL" class="size-image" style="left: 0px; top: 0px;">
                         </div>
+                        
                     </div>
                     
                     
@@ -143,7 +144,7 @@
         <div id="below-section">
             <div class="tab-buttons">
                 <button onclick="showTab('public-bets')">Public Bets</button>
-                <button onclick="showTab('game-history')">History/Trend</button>
+                <button onclick="showTab('game-history')" >History/Trend</button>
                 <button onclick="showTab('my-bets')">My Bets</button>
             </div>
         </div>
@@ -160,6 +161,7 @@
                     </thead>
                     <tbody id="public-bets-list"></tbody>
                 </table>
+                <div class="pagination" id="public-bets-pagination"></div>
             </div>
             <div id="game-history" class="tab-content">
                 <table>
@@ -171,6 +173,7 @@
                     </thead>
                     <tbody id="game-history-list"></tbody>
                 </table>
+                <div class="pagination" id="game-history-pagination"></div>
             </div>
             <div id="my-bets" class="tab-content">
                 <table>
@@ -184,6 +187,7 @@
                     </thead>
                     <tbody id="my-bets-list"></tbody>
                 </table>
+                <div class="pagination" id="my-bets-pagination"></div>
             </div>
         </div>
 
@@ -231,7 +235,8 @@
 
     <script src="bigsmall.js"></script>
 
-    <script src="scripts.js"></script>
+ 
+    
 
 </body>
 
