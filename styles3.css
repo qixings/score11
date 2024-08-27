@@ -8,6 +8,7 @@ body {
     margin: auto;
     background: linear-gradient(45deg, black, #28324d);
     background-repeat: no-repeat;
+    font-weight: bold;
 }
 
 /* Fixed header */
@@ -100,10 +101,10 @@ body {
 }
 
 .scroll-button {
-    background-color: rgb(56 95 135 / 50%);
+    background-color: rgb(69 115 195);
     color: white;
     border: none;
-    padding: 10px;
+    padding: 7px;
     cursor: pointer;
     z-index: 2;
     top: 50%;
@@ -111,17 +112,18 @@ body {
 }
 
 .scroll-button.left {
-    width: 65px;
+    width: 50px;
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
-    margin-left: 238px;
+    margin-left: 265px;
+    margin-bottom: 4px;
 
 }
 
 .scroll-button.right {
     right: 10px;
     top: 263px;
-    width: 65px;
+    width: 50px;
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
 }
@@ -322,7 +324,7 @@ body {
     text-align: left;
     margin: 0px;
     margin-bottom: -24px;
-    font-size: 13px;
+    font-size: 12px;
     margin-left: 10px;
 }
 
