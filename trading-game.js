@@ -37,8 +37,8 @@ function initChart() {
                 label: 'Bet Line', // Dataset for bet line
                 data: [], // Horizontal line data
                 borderColor: '#ffcc00', // Yellow color for the bet line
-                borderWidth: 1.5,
-                pointRadius: 3,
+                borderWidth: 2,
+                pointRadius: 5,
                 showLine: true,
                 fill: false,
                 borderDash: [5, 5], // Dashed line for the bet
@@ -107,16 +107,16 @@ function initChart() {
         }
     });
 
-    // Pre-populate with some initial data
-    prePopulateGraphData();
+    // Pre-populate with some initial data for 10 minutes
+    prePopulateGraphData(10);
 }
 
-function prePopulateGraphData() {
+function prePopulateGraphData(minutes) {
     const now = new Date();
     let price = currentPrice;
 
-    // Generate data points for the last 5 minutes (or whatever timeframe you prefer)
-    for (let i = 60; i >= 0; i--) {
+    // Generate data points for the last 'minutes' minutes
+    for (let i = minutes * 60; i >= 0; i--) {
         const timestamp = new Date(now.getTime() - i * 1000);
         const priceChange = (Math.random() * 2 - 1) * 5; // Same fluctuation logic
         price = Math.max(940, Math.min(1060, price + priceChange));
@@ -129,7 +129,6 @@ function prePopulateGraphData() {
     updateYAxisScale();
     chart.update();
 }
-
 
 function updateYAxisScale() {
     const prices = chart.data.datasets[0].data;
@@ -198,6 +197,7 @@ function setTimeFrame(seconds, button) {
     const now = new Date();
     const startTime = new Date(now.getTime() - seconds * 1000);
 
+    // Adjust the x-axis min and max based on the selected timeframe
     chart.options.scales.x.min = startTime;
     chart.options.scales.x.max = now;
 
