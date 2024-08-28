@@ -200,7 +200,7 @@ body {
 }
 
 .multiplier-value {
-    font-size: 3em;
+    font-size: 5em;
     color: #ffffff;
 }
 
@@ -340,6 +340,7 @@ label{
     font-size: 10px;
     width: 41px;
     height: 28px;
+        font-weight: bold;
 }
 
 
