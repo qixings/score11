@@ -15,13 +15,16 @@ body {
 }
 
 .top-bar {
+    margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #2c3240;
-    width: 358px;
-    margin-bottom: 8px;
+    padding: 10px;
+    background-color: #395281;
+    width: 366px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    height: 33px;
 }
 
 
@@ -35,7 +38,7 @@ body {
     height: 32px;
     border-radius: 7px;
     border: none;
-    background: #5881e6;
+    background: #ffa307;
     font-weight: bold;
     font-size: 10px;
     text-align: center;
@@ -88,14 +91,14 @@ body {
 .game-container {
     padding: 0;
     display: flex;
-    gap: 11px;
+    gap: 5px;
     flex-direction: column;
     width: 358px;
 }
 
 .multiplier-section {
-    background-color: #2c3240;
-    padding: 8px 0px;
+    background-color: #3a4764;
+    padding: 8px 4px;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
@@ -183,7 +186,7 @@ body {
 
 .graph {
     height: 340px;
-    background-color: #242834;
+    background: radial-gradient(circle at top, #fff000, #b3ff0057);
     border-radius: 10px;
     position: relative;
 }
@@ -386,21 +389,7 @@ label{
     width: 100%;
 }
 
-.message-popup {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #ffffff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    z-index: 1000;
-    font-size: 1em;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.3s ease, top 0.3s ease;
-}
+
 
 .message-popup.show {
     opacity: 1;
@@ -411,15 +400,19 @@ label{
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(60, 111, 148, 0.594);
     color: #ffffff;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     z-index: 1000;
-    font-size: 1em;
+    font-size: 20px;
     text-align: center;
     opacity: 0;
     transition: opacity 0.3s ease, top 0.3s ease;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    align-content: center;
 }
 
 .message-popup.show {
