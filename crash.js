@@ -52,6 +52,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Re-enable auto cashout toggle
         autoCashoutCheckbox.disabled = false;
 
+        // Re-enable bet amount inputs, cashout inputs, and buttons
+        disableBetAmountInputs(false);
+
         setTimeout(() => {
             statusBar.style.width = "0%";
         }, 10);
