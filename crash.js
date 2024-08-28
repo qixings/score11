@@ -72,32 +72,32 @@ document.addEventListener('DOMContentLoaded', function() {
     function startGame() {
         isGameRunning = true;
         betLocked = true;
-    
+
         // If bet is placed, change button to Cashout
         if (betPlaced) {
             betButton.innerHTML = `Cash Out<br><span class="winning-amount">₹0.00</span>`;
             betButton.style.backgroundColor = '#ff7f00'; // Change button color to orange
         }
-    
+
         // Disable the auto cashout toggle, bet amount inputs, and "Cashout At" input
         autoCashoutCheckbox.disabled = true;
         disableBetAmountInputs(true);
-    
+
         multiplierValue.textContent = `${currentMultiplier.toFixed(2)}×`;
         statusButton.style.display = 'none';
-    
+
         gameInterval = setInterval(() => {
             if (!isGameRunning) {
                 clearInterval(gameInterval);
                 return;
             }
-    
+
             if (currentMultiplier < maxMultiplier) {
                 currentMultiplier += 0.05;
             }
-    
+
             multiplierValue.textContent = `${currentMultiplier.toFixed(2)}×`;
-    
+
             // Auto cashout logic
             if (autoCashoutCheckbox.checked && cashoutMultiplier === 0) {
                 const autoCashoutValue = parseFloat(cashoutAtInput.value);
@@ -105,36 +105,34 @@ document.addEventListener('DOMContentLoaded', function() {
                     cashout();
                 }
             }
-    
+
             // Update the button to show potential winnings
             if (betPlaced && cashoutMultiplier === 0) {
                 let potentialWinnings = betAmount * currentMultiplier;
                 betButton.innerHTML = `Cash Out<br><span class="winning-amount">₹${potentialWinnings.toFixed(2)}</span>`;
             }
-    
+
             if (Math.random() < 0.01 || currentMultiplier >= maxMultiplier) {
                 isGameRunning = false;
                 multiplierValue.style.color = "#ff0000";
                 gameOverText.textContent = "CRASHED"; // Update text to "CRASHED"
                 gameOverText.style.display = "block";
-    
+
                 if (cashoutMultiplier === 0 && betPlaced) {
                     // User did not cash out, they lose the bet
                     showMessage(`Multiplier crashed at ${currentMultiplier.toFixed(2)}×. You lost ₹${betAmount}.`);
                     resetButton(); // Reset the button back to "Bet"
                 }
-    
+
                 // Save the multiplier and update past multipliers
                 updatePastMultipliers(currentMultiplier);
-    
+
                 setTimeout(() => {
                     startCountdown();
                 }, 3000);
             }
         }, 100);
     }
-    
-    
 
     betButton.addEventListener('click', function() {
         if (!betLocked && countdown > 0 && !betPlaced) {
@@ -170,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
             updateBalance();
             betPlaced = false;
             showMessage("Bet canceled.");
-            
+
             // Reset button to Bet
             resetButton();
         }
@@ -192,12 +190,12 @@ document.addEventListener('DOMContentLoaded', function() {
         betPlaced = false;
         betButton.textContent = "Bet";
         betButton.style.backgroundColor = '#32cd32'; // Reset button color to green
-    
+
         // Re-enable auto cashout toggle and bet amount inputs for the next round
         autoCashoutCheckbox.disabled = false;
         disableBetAmountInputs(false);
     }
-    
+
     function disableBetAmountInputs(disable) {
         betAmountInput.disabled = disable;
         cashoutAtInput.disabled = disable; // Disable the "Cashout At" input
@@ -205,36 +203,50 @@ document.addEventListener('DOMContentLoaded', function() {
         halfButton.disabled = disable;
         doubleButton.disabled = disable;
     }
-    
-    
 
     // Event listeners for pre-defined amounts
     preAmountButtons.forEach(button => {
         button.addEventListener('click', function() {
-            let amountValue = this.getAttribute('data-amount');
-            let amount = (amountValue === 'all') ? userBalance : parseFloat(amountValue);
-            
-            // Ensure correct amount is inserted
-            if (!isNaN(amount) && amount > 0) {
-                betAmountInput.value = amount.toFixed(2);
-            }
+            temporarilyEnableInput(() => {
+                let amountValue = this.getAttribute('data-amount');
+                let amount = (amountValue === 'all') ? userBalance : parseFloat(amountValue);
+
+                // Ensure correct amount is inserted
+                if (!isNaN(amount) && amount > 0) {
+                    betAmountInput.value = amount.toFixed(2);
+                }
+            });
         });
     });
 
     // Event listeners for ½ and 2x buttons
     halfButton.addEventListener('click', function() {
-        let currentAmount = parseFloat(betAmountInput.value) || 0;
-        if (currentAmount > 0) {
-            betAmountInput.value = (currentAmount / 2).toFixed(2);
-        }
+        temporarilyEnableInput(() => {
+            let currentAmount = parseFloat(betAmountInput.value) || 0;
+            if (currentAmount > 0) {
+                betAmountInput.value = (currentAmount / 2).toFixed(2);
+            }
+        });
     });
 
     doubleButton.addEventListener('click', function() {
-        let currentAmount = parseFloat(betAmountInput.value) || 0;
-        if (currentAmount > 0) {
-            betAmountInput.value = (currentAmount * 2).toFixed(2);
-        }
+        temporarilyEnableInput(() => {
+            let currentAmount = parseFloat(betAmountInput.value) || 0;
+            if (currentAmount > 0) {
+                betAmountInput.value = (currentAmount * 2).toFixed(2);
+            }
+        });
     });
+
+    // Temporarily enable the betAmountInput for input modifications
+    function temporarilyEnableInput(action) {
+        const wasDisabled = betAmountInput.disabled;
+        if (wasDisabled) betAmountInput.disabled = false;
+
+        action();
+
+        if (wasDisabled) betAmountInput.disabled = true;
+    }
 
     // Update past multipliers
     function updatePastMultipliers(multiplier) {
@@ -253,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const div = document.createElement('div');
             div.className = 'multiplier';
             div.textContent = multiplier;
-            
+
             // Apply color based on multiplier value
             const multiplierValue = parseFloat(multiplier);
             if (multiplierValue < 2.00) {
@@ -265,11 +277,10 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (multiplierValue >= 10.00) {
                 div.style.color = '#84ff00';
             }
-    
+
             pastMultipliersContainer.appendChild(div);
         });
     }
-    
 
     // Update the full history page
     function updateHistoryPage() {
@@ -278,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const div = document.createElement('div');
             div.className = 'multiplier';
             div.textContent = multiplier;
-            
+
             // Apply color based on multiplier value
             const multiplierValue = parseFloat(multiplier);
             if (multiplierValue < 2.00) {
@@ -290,11 +301,11 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (multiplierValue >= 10.00) {
                 div.style.color = '#84ff00';
             }
-    
+
             historyContent.appendChild(div);
         });
     }
-    
+
     // Event listeners for history button and close button
     historyButton.addEventListener('click', function() {
         historyPage.style.display = 'flex';
