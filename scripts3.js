@@ -45,6 +45,10 @@ function redirectToSpinwin() {
 }
 
 
+function redirectToCrash() {
+    window.location.href = 'crash.html';
+}
+
 
 
 function scrollGames(direction) {
@@ -88,14 +92,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Initial function calls to set up event listeners on load
 document.addEventListener("DOMContentLoaded", function() {
-    // Attach event listeners for game icons
-    document.querySelector('.games-section .game:nth-child(1)').addEventListener('click', redirectToOptionTrading);
-    document.querySelector('.games-section .game:nth-child(2)').addEventListener('click', redirectToColortrading);
-    document.querySelector('.games-section .game:nth-child(3)').addEventListener('click', redirectToMines);
-    document.querySelector('.games-section .game:nth-child(4)').addEventListener('click', redirectToBigsmall);
-    document.querySelector('.games-section .game:nth-child(5)').addEventListener('click', redirectToPlinko); // Plinko should be here
-    document.querySelector('.games-section .game:nth-child(6)').addEventListener('click', function() { redirectToGame('satta'); });
-    document.querySelector('.games-section .game:nth-child(7)').addEventListener('click', redirectToSpinwin);
+    document.querySelector('.games-section .game:nth-child(1)').addEventListener('click', redirectToCrash);
+    document.querySelector('.games-section .game:nth-child(2)').addEventListener('click', redirectToOptionTrading);
+    document.querySelector('.games-section .game:nth-child(3)').addEventListener('click', redirectToColortrading);
+    document.querySelector('.games-section .game:nth-child(4)').addEventListener('click', redirectToMines);
+    document.querySelector('.games-section .game:nth-child(5)').addEventListener('click', redirectToBigsmall);
+    document.querySelector('.games-section .game:nth-child(6)').addEventListener('click', redirectToPlinko);
+    document.querySelector('.games-section .game:nth-child(7)').addEventListener('click', function() { redirectToGame('satta'); });
+    document.querySelector('.games-section .game:nth-child(8)').addEventListener('click', redirectToSpinwin);
 
 
     const navItems = document.querySelectorAll('.navigation-menu .nav-item');
