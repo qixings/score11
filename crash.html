@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crash Game</title>
+    <link rel="stylesheet" href="crash.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+        <div class="wallet-info">
+            <span id="user-balance">₹0.00</span>
+        </div>
+
+        <div class="top-buttons">
+            <a href="withdraw.html" class="action-button">WITHDRAW</a>
+            <a href="deposit.html" class="action-button">DEPOSIT</a>
+        </div>
+    </div>
+
+    <div class="game-container">
+      <div class="multiplier-section">
+        <div class="past-multipliers">
+          <!-- This section will be populated dynamically with JavaScript -->
+        </div>
+        <div>
+        <button id="multiplier-history-button" class="history-button">⮟</button>
+    </div>
+      </div>
+
+      <div class="graph">
+        <div id="graph-container"></div>
+        <div class="current-multiplier">
+          <span class="multiplier-value">1.00×</span>
+          <span id="game-over" class="game-over-text" style="display: none">
+            Game Over</span
+          >
+          <div class="status-button">
+            <div class="status-bar"></div>
+            <span id="countdown" class="status-text"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="betting-section">
+        <div class="bet-inputs">
+          <div class="bet-amount">
+            <div class="quick-bet">
+              <button class="pre-amount" data-amount="10">₹10</button>
+              <button class="pre-amount" data-amount="30">₹30</button>
+              <button class="pre-amount" data-amount="90">₹90</button>
+              <button class="pre-amount" data-amount="270">₹270</button>
+              <button class="pre-amount" data-amount="810">₹810</button>
+              <button class="pre-amount" data-amount="2430">₹2430</button>
+              <button class="pre-amount" data-amount="all">All In</button>
+            </div>
+
+            <div class="bet-amount-input">
+              <div class="bet-amount-input2">
+                <label for="bet-amount">Bet Amount</label>
+                <input type="number" id="bet-amount" placeholder="₹0.00" />
+              </div>
+
+              <div class="halfdouble">
+                <button>½</button>
+                <button>2×</button>
+              </div>
+            </div>
+          </div>
+          <div class="cashout-at">
+            <div class="bet-amount-input2">
+              <label for="cashout">Auto Cashout At</label>
+              <input type="number" id="cashout" placeholder="2.00×" />
+            </div>
+            <div class="cashout-toggle">
+              <label class="switch">
+                <input type="checkbox" id="auto-cashout" />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <button
+            class="manual-cashout"
+            id="manual-cashout"
+            style="display: none"
+          >
+            Cash Out
+          </button>
+          <button
+            id="cancel-next-bet"
+            class="cancel-button"
+            style="display: none"
+          >
+            Cancel Next Bet
+          </button>
+        </div>
+        <button class="bet-button">BET</button>
+      </div>
+
+      <div class="history-section">
+        <div class="history-tabs">
+          <button id="public-bets-tab" class="history-tab active">Public Bets</button>
+          <button id="my-bets-tab" class="history-tab">My Bets</button>
+        </div>
+        <div class="history-content" id="public-bets">
+          <!-- Public Bets will be displayed here -->
+        </div>
+        <div class="history-content" id="my-bets" style="display: none;">
+          <!-- My Bets will be displayed here -->
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- Dropdown Page for viewing all multipliers -->
+    <div id="multiplier-history-page" class="history-page2" style="display:none;">
+      <div class="history-header2">
+        <button id="close-history-page">Close</button>
+      </div>
+      <div class="history-content2" id="history-content">
+        <!-- Full history will be displayed here -->
+      </div>
+    </div>
+
+    <div class="message-popup" id="message-popup" style="display: none">
+      <span id="popup-text"></span>
+    </div>
+
+    <script src="crash.js"></script>
+  </body>
+</html>
