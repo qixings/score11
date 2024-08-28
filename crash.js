@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let betPlaced = false;
     let betAmount = 0;
     let cashoutMultiplier = 0;
-    let userBalance = 1000; // Starting balance
+    let userBalance = 55458; // Starting balance
     let maxMultiplier = 8.00;
     let betLocked = false;
     let gameInterval;
