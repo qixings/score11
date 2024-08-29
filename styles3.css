@@ -474,6 +474,7 @@ body {
     margin: 0;
     width: 370px;
     height: 48px;
+        padding-bottom: 25px;
 }
 
 /* Common styles for icons (attachment, emoji, microphone, send) */
