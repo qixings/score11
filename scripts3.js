@@ -37,37 +37,38 @@ function redirectToColortrading() {
 function redirectToBigsmall() {
     window.location.href = 'bigsmall.html';
 }
+
 function redirectToPlinko() {
     window.location.href = 'plinko.html';
 }
+
 function redirectToSpinwin() {
     window.location.href = 'spinwin.html';
 }
-
 
 function redirectToCrash() {
     window.location.href = 'crash.html';
 }
 
-
-
+// Function to handle horizontal scrolling of games
 function scrollGames(direction) {
     const gamesContainer = document.querySelector('.games-container');
     const gameWidth = 120 + 8; // Icon width (120px) + gap (8px)
 
     if (direction === 'right') {
         gamesContainer.scrollBy({
-            left: gameWidth * 1, // Scroll by three icons at a time
+            left: gameWidth * 1, // Scroll by one icon at a time
             behavior: 'smooth'
         });
     } else if (direction === 'left') {
         gamesContainer.scrollBy({
-            left: -gameWidth * 1, // Scroll back by three icons at a time
+            left: -gameWidth * 1, // Scroll back by one icon at a time
             behavior: 'smooth'
         });
     }
 }
 
+// Initial setup when the document is loaded
 document.addEventListener("DOMContentLoaded", function () {
     const gamesContainer = document.querySelector('.games-container');
 
@@ -86,12 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }, 100); // Adjust timeout as needed
     });
-});
 
-
-
-// Initial function calls to set up event listeners on load
-document.addEventListener("DOMContentLoaded", function() {
+    // Set up event listeners for the game icons
     document.querySelector('.games-section .game:nth-child(1)').addEventListener('click', redirectToCrash);
     document.querySelector('.games-section .game:nth-child(2)').addEventListener('click', redirectToOptionTrading);
     document.querySelector('.games-section .game:nth-child(3)').addEventListener('click', redirectToColortrading);
@@ -101,13 +98,21 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('.games-section .game:nth-child(7)').addEventListener('click', function() { redirectToGame('satta'); });
     document.querySelector('.games-section .game:nth-child(8)').addEventListener('click', redirectToSpinwin);
 
-
+    // Set up event listeners for the navigation menu items
     const navItems = document.querySelectorAll('.navigation-menu .nav-item');
     navItems[0].addEventListener('click', function() { navigateTo('home'); });
     navItems[1].addEventListener('click', function() { navigateTo('activity'); });
-    navItems[2].addEventListener('click', function() { navigateTo('refer'); });
-    navItems[3].addEventListener('click', function() { navigateTo('agent'); });
-    navItems[4].addEventListener('click', function() { navigateTo('user-profile'); });
+    navItems[2].addEventListener('click', function() { navigateTo('chat'); }); // Update for Chat
+    navItems[3].addEventListener('click', function() { navigateTo('refer'); });
+    navItems[4].addEventListener('click', function() { navigateTo('agent'); });
+    navItems[5].addEventListener('click', function() { navigateTo('user-profile'); });
+
+    // Set initial active state based on the current page
+    const currentPath = window.location.pathname.split('/').pop().split('.').shift();
+    const activeItem = document.querySelector(`.nav-item[onclick="navigateTo('${currentPath}')"]`);
+    if (activeItem) {
+        activeItem.classList.add('active');
+    }
 });
 
 // JavaScript for banner slider
@@ -133,6 +138,7 @@ function nextSlide() {
 // Automatically advance slides every few seconds
 setInterval(nextSlide, 5000); // Adjust timing as needed
 
+// Function to navigate and update active state in the navigation menu
 function navigateTo(page) {
     // Remove active class from all nav items
     const navItems = document.querySelectorAll('.navigation-menu .nav-item');
