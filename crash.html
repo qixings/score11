@@ -45,18 +45,23 @@
       </div>
 
       <div class="graph">
-        <div id="graph-container"></div>
-        <div class="current-multiplier">
-          <span class="multiplier-value">1.00×</span>
-          <span id="game-over" class="game-over-text" style="display: none">
-            Game Over</span
-          >
-          <div class="status-button">
-            <div class="status-bar"></div>
-            <span id="countdown" class="status-text"></span>
-          </div>
+        <div id="graph-container">
+            <svg id="expanding-circle-svg" width="100%" height="100%" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <!-- Start the circle from the bottom-left corner (cx="0", cy="100%") -->
+                <circle id="expanding-circle" cx="0" cy="380" r="10" fill="#afff00" />
+            </svg>
         </div>
-      </div>
+        <div class="current-multiplier">
+            <span class="multiplier-value">1.00×</span>
+            <span id="game-over" class="game-over-text" style="display: none">Game Over</span>
+            <div class="status-button">
+                <div class="status-bar"></div>
+                <span id="countdown" class="status-text"></span>
+            </div>
+        </div>
+    </div>
+    
+    
 
       <div class="betting-section">
         <div class="bet-inputs">
@@ -147,3 +152,4 @@
     <script src="crash.js"></script>
   </body>
 </html>
+
