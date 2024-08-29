@@ -185,13 +185,7 @@ body {
     gap: 9px;
 }
 
-.graph {
-    height: 340px;
-    background: radial-gradient(circle at top, #243147, #07090c);
-    border-radius: 10px;
-    position: relative;
-    width: 355px;
-}
+
 
 .current-multiplier {
     position: absolute;
@@ -400,19 +394,19 @@ label{
 
 .message-popup.show {
     opacity: 1;
-    top: 50px;
+    top: 181px;
 }
 .message-popup {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 130, 147, 0.406);
+    background-color: rgb(255, 111, 0);
     color: #ffffff;
     padding: 10px 20px;
-    border-radius: 10px;
+    border-radius: 30px;
     z-index: 1000;
-    font-size: 20px;
+    font-size: 25px;
     text-align: center;
     opacity: 0;
     transition: opacity 0.3s ease, top 0.3s ease;
@@ -420,11 +414,6 @@ label{
     height: 250px;
     display: flex;
     align-content: center;
-}
-
-.message-popup.show {
-    opacity: 1;
-    top: 50px;
 }
 
 /* Toggle Switch */
@@ -548,7 +537,7 @@ input:checked + .slider:after {
     background: #192f41;
     border-bottom-right-radius: 14px;
     border-bottom-left-radius: 14px;
-    height: 780px;
+    height: 766px;
     width: 370px;
     display: flex;
     flex-direction: column;
@@ -569,3 +558,46 @@ input:checked + .slider:after {
     position: relative;
     width: 350px;
 }
+
+
+
+
+
+.graph {
+    height: 340px;
+    background: radial-gradient(circle at top, #243147, #07090c);
+    border-radius: 10px;
+    position: relative;
+    width: 355px;
+    overflow: hidden; /* Ensure that the circle doesn't overflow the container */
+}
+
+#expanding-circle-svg {
+    width: 100%;
+    height: 100%;
+}
+
+#expanding-circle {
+    transition: r 1.5s ease-in-out, fill 1s ease-in-out;
+
+    stroke: rgb(255, 255, 255); /* For the ripple effect */
+    stroke-width: 2;
+    animation: ripple 1s infinite;
+}
+
+@keyframes ripple {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+    }
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+    }
+}
+
+
