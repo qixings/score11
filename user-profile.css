@@ -135,13 +135,13 @@ body {
 
 
 .navbar{
-    background: rgb(0, 110, 255);
+    background: rgb(2 107 180);
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 12px;
     margin-top: 3px;
     display: flex;
     justify-content: center;
-    filter: drop-shadow(0px 7px 19px rgb(0, 118, 208));
+
 }
 
 .main-nav{
@@ -154,7 +154,7 @@ body {
 .main-nav button{
     background: none;
     border: none;
-    color: #00ffe5;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -174,15 +174,19 @@ body {
     border-radius: 15px;
     z-index: 9999;
     position: relative;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
    
 }
 
 
 .main-cont{
     display: flex;
-    background: rgba(255, 255, 255, 0.059);
+    background: rgb(26 51 75 / 99%);
     margin: 9px;
-    margin-top: -12px;
+    margin-top: -10px;
     border-radius: 12px;
     padding: 20px 15px;
     gap: 10px;
@@ -208,7 +212,7 @@ body {
     filter:invert();
 }
 .section-content{
-    background: #1a56eb;
+    background: #354e65;
     width: 112px;
     height: 50px;
     border-radius: 6px;
@@ -262,7 +266,7 @@ margin-top: 0px;
    
 }
 .logout{
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 #logoutButton{
@@ -288,6 +292,6 @@ margin-top: 0px;
 }
 
 .bottom-cont{
-    height: 30vh;
+    height: 50vh;
     margin-top: -12px;
 }
