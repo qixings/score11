@@ -17,8 +17,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const historyContent = document.getElementById('history-content');
     const historyButton = document.getElementById('multiplier-history-button');
     const closeHistoryButton = document.getElementById('close-history-page');
+    const expandingCircle = document.getElementById('expanding-circle'); // Circle element for expanding animation
 
-    let initialCountdown = 10;
+    const publicBetsTab = document.getElementById('public-bets-tab');
+    const myBetsTab = document.getElementById('my-bets-tab');
+    const publicBetsContent = document.getElementById('public-bets');
+    const myBetsContent = document.getElementById('my-bets');
+
+    let initialCountdown = 5;
     let countdown = initialCountdown;
     let currentMultiplier = 1.00;
     let isGameRunning = false;
@@ -26,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let betAmount = 0;
     let cashoutMultiplier = 0;
     let userBalance = 55458; // Starting balance
-    let maxMultiplier = 8.00;
+    let maxMultiplier = 30.00;
     let betLocked = false;
     let gameInterval;
     let pastMultipliers = [];
@@ -43,24 +49,34 @@ document.addEventListener('DOMContentLoaded', function() {
         multiplierValue.style.color = "#ffffff";
         gameOverText.style.display = "none";
         statusButton.style.display = 'block';
-        statusBar.style.transition = `width ${initialCountdown}s linear`;
-        statusBar.style.width = "100%";
+    
+        // Fully reset the status bar's width and transition properties
+        statusBar.style.transition = 'none'; // Remove transition temporarily
+        statusBar.style.width = "100%"; // Reset width to 100%
+        statusBar.offsetHeight; // Trigger a reflow, flushing the CSS changes
+        
         betLocked = false;
         betPlaced = false;
         cashoutMultiplier = 0;
-
+    
+        // Reset circle for the next round
+        expandingCircle.setAttribute('r', '30'); // Reset radius
+        expandingCircle.setAttribute('fill', '#6100c6'); // Reset color
+    
         // Re-enable auto cashout toggle
         autoCashoutCheckbox.disabled = false;
-
+    
         // Re-enable bet amount inputs, cashout inputs, and buttons
         disableBetAmountInputs(false);
-
+    
+        // Apply the transition and start the countdown animation after a small delay
         setTimeout(() => {
-            statusBar.style.width = "0%";
-        }, 10);
-
+            statusBar.style.transition = `width ${initialCountdown}s linear`;
+            statusBar.style.width = "0%"; // Animate to 0% over initialCountdown seconds
+        }, 10); // Slight delay to ensure the transition is reapplied
+    
         statusText.textContent = `Starting in ${countdown}`;
-
+    
         const countdownInterval = setInterval(() => {
             countdown--;
             if (countdown > 0) {
@@ -96,7 +112,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             if (currentMultiplier < maxMultiplier) {
-                currentMultiplier += 0.05;
+                currentMultiplier += 0.01;
+                updateCircle(currentMultiplier); // Update the circle as the multiplier grows
             }
 
             multiplierValue.textContent = `${currentMultiplier.toFixed(2)}×`;
@@ -135,6 +152,66 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 3000);
             }
         }, 100);
+    }
+
+    function updateCircle(multiplier) {
+        const maxRadius = 375; // Set a maximum radius for the circle's growth
+        const baseGrowthRate = 5; // Set a base growth rate for the circle
+    
+        // Calculate the new radius based on the multiplier
+        let newRadius = 350 + multiplier * baseGrowthRate;
+    
+        // Cap the radius growth at maxRadius but ensure smooth transition
+        if (newRadius > maxRadius) {
+            newRadius = maxRadius;
+        }
+    
+        // Apply the calculated radius to the circle
+        expandingCircle.setAttribute('r', newRadius.toString());
+    
+        // Adjust 'cy' to always place the circle at the bottom of the container
+        const svgHeight = document.getElementById('expanding-circle-svg').clientHeight;
+        expandingCircle.setAttribute('cx', '0'); // Keep it at the left
+        expandingCircle.setAttribute('cy', (svgHeight + 25).toString()); // Adjusted by 25 pixels to align perfectly
+    
+        // Change color based on multiplier value
+        if (multiplier >= 1.50 && multiplier < 2.00) {
+            expandingCircle.setAttribute('fill', '#0157a9'); // Slightly lighter blue
+        } else if (multiplier >= 2.00 && multiplier < 2.50) {
+            expandingCircle.setAttribute('fill', '#014ca9'); // Slightly deeper blue
+        } else if (multiplier >= 2.50 && multiplier < 3.00) {
+            expandingCircle.setAttribute('fill', '#013ba9'); // A bit darker blue
+        } else if (multiplier >= 3.00 && multiplier < 3.50) {
+            expandingCircle.setAttribute('fill', '#1233a9'); // Transition to purple-blue
+        } else if (multiplier >= 3.50 && multiplier < 4.00) {
+            expandingCircle.setAttribute('fill', '#2528a9'); // Deeper purple-blue
+        } else if (multiplier >= 4.00 && multiplier < 4.50) {
+            expandingCircle.setAttribute('fill', '#4a0074'); // More purple
+        } else if (multiplier >= 4.50 && multiplier < 5.00) {
+            expandingCircle.setAttribute('fill', '#2a0090'); // Transitioning to purple-pink
+        } else if (multiplier >= 5.00 && multiplier < 5.50) {
+            expandingCircle.setAttribute('fill', '#145bba'); // Deeper purple-pink
+        } else if (multiplier >= 5.50 && multiplier < 6.00) {
+            expandingCircle.setAttribute('fill', '#4a0da9'); // Slightly more pink
+        } else if (multiplier >= 6.00 && multiplier < 6.50) {
+            expandingCircle.setAttribute('fill', '#44006c'); // Darker purple-pink
+        } else if (multiplier >= 6.50 && multiplier < 7.00) {
+            expandingCircle.setAttribute('fill', '#3a05a9'); // Transitioning to pink
+        } else if (multiplier >= 7.00 && multiplier < 7.50) {
+            expandingCircle.setAttribute('fill', '#ad01a9'); // Pinker
+        } else if (multiplier >= 7.50 && multiplier < 8.00) {
+            expandingCircle.setAttribute('fill', '#002c7a'); // Pinkish-red
+        } else if (multiplier >= 8.00 && multiplier < 8.50) {
+            expandingCircle.setAttribute('fill', '#6e01c3'); // Deeper red-pink
+        } else if (multiplier >= 8.50 && multiplier < 9.00) {
+            expandingCircle.setAttribute('fill', '#550080'); // Even deeper red
+        } else if (multiplier >= 9.00 && multiplier < 9.50) {
+            expandingCircle.setAttribute('fill', '#7f009f'); // Almost red
+        } else if (multiplier >= 9.50 && multiplier < 10.00) {
+            expandingCircle.setAttribute('fill', '#4201e3'); // Vibrant red
+        } else if (multiplier >= 10.00) {
+            expandingCircle.setAttribute('fill', '#8100ff'); // Dark red
+        }
     }
 
     betButton.addEventListener('click', function() {
@@ -316,6 +393,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     closeHistoryButton.addEventListener('click', function() {
         historyPage.style.display = 'none';
+    });
+
+    // Switch between Public Bets and My Bets
+    publicBetsTab.addEventListener('click', function() {
+        publicBetsTab.classList.add('active');
+        myBetsTab.classList.remove('active');
+        publicBetsContent.style.display = 'block';
+        myBetsContent.style.display = 'none';
+    });
+
+    myBetsTab.addEventListener('click', function() {
+        myBetsTab.classList.add('active');
+        publicBetsTab.classList.remove('active');
+        publicBetsContent.style.display = 'none';
+        myBetsContent.style.display = 'block';
     });
 
     function showMessage(message) {
