@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score11 Chat</title>
+    <link rel="stylesheet" href="styles3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body id="chat">
+    <header class="fixed-header">
+        <div class="logo-container">
+            <img src="topbarlogo.png" alt="Score11 Logo">
+        </div>
+        <div class="support-icon">
+            <a href="home.html">
+                <img src="back-icon.png" alt="Back Icon" style="filter: invert(); width: 25px; height: 25px; margin-right: 15px;">
+            </a>
+        </div>
+    </header>
+
+    <section class="chat-container">
+        <div class="messages-container" id="messages-container">
+            <!-- Messages will be dynamically loaded here -->
+        </div>
+
+        <div class="chat-input-container">
+            <label for="upload-image" id="upload-image-label" class="icon-button">
+                <i class="fas fa-paperclip"></i>
+                <input type="file" id="upload-image" accept="image/*" style="display: none;">
+            </label>
+            <input type="text" id="chat-input" placeholder="Write a message..." maxlength="500">
+            <button id="emoji-button" class="icon-button">
+                <i class="fas fa-smile"></i>
+            </button>
+            <button id="record-voice-button" class="icon-button">
+                <i class="fas fa-microphone"></i>
+            </button>
+            <!-- Add the send button here -->
+            <button id="send-message-btn" class="icon-button">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Include socket.io and emoji-button library -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Add this to your HTML head or just before the closing body tag -->
+<script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@4.6.1/dist/emoji-button.min.js"></script>
+
+    <script src="chat.js"></script>
+</body>
+</html>
