@@ -42,7 +42,7 @@ body {
     position: relative;
     height: 20px;
     display: flex;
-        align-items: center;
+    align-items: center;
 }
 
 /* Removed balance-container and balance-section */
@@ -413,4 +413,153 @@ body {
     margin-top: -10px;
     margin-bottom: 35px;
     color: #aaaaaa;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Chat container */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 60px);
+    margin-top: 55px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* Messages container with custom background */
+.messages-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #0a141b;
+    width: 368px;
+    
+    /* Custom background image */
+    background-image: url('chat-theme.png'); /* Replace 'chat-theme.png' with your actual image file name */
+    background-size: cover; /* Ensures the image covers the entire container */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+/* Chat input container fixed at the bottom */
+.chat-input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #1a1e22;
+    border-top-right-radius: 13px;
+    border-top-left-radius: 13px;
+    position: fixed;
+    bottom: 0;
+    margin: 0;
+    width: 370px;
+    height: 48px;
+}
+
+/* Common styles for icons (attachment, emoji, microphone, send) */
+.icon-button {
+    background-color: transparent;
+    border: none;
+    color: #90949c; /* Light grey color for icons */
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* Chat input field */
+#chat-input {
+    flex-grow: 1;
+    border: none;
+    background-color: transparent;
+    color: #fff; /* White text */
+    padding: 10px;
+    font-size: 12px;
+    outline: none; /* Remove default outline */
+}
+
+/* Adjust icon size */
+.icon-button i {
+    font-size: 18px;
+}
+
+/* Optional: Add hover effects for buttons */
+.icon-button:hover {
+    color: #ffffff; /* White color on hover */
+}
+
+/* Additional styles for the send button */
+#send-message-btn {
+
+       color: white;
+
+  
+       cursor: pointer;
+       margin-left: 10px;
+}
+
+#send-message-btn i {
+    font-size: 16px;
+}
+
+
+/* Chat message container */
+.message {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    background-color: #2b3844;
+    max-width: 90%;
+    font-size: 10px;
+    flex-direction: column;
+    text-align: left;
+}
+
+/* Username styling */
+.message strong {
+    color: #ffcc00; /* Highlight color for username */
+    margin-right: 8px;
+}
+
+/* Message text styling */
+.message span {
+    color: #ffffff; /* White color for message text */
+}
+
+/* Time styling */
+.message .time {
+    color: #b7e900c7; /* Grey color for time */
+    font-size: 12px;
+    margin-left: auto; /* Push the time to the right */
+    font-size: 8px;
+}
+
+/* Example for different user roles or specific users */
+.message.moderator strong {
+    color: #00d1ff; /* Different color for moderators */
+}
+
+.message.vip strong {
+    color: #ff79c6; /* Different color for VIP users */
 }
