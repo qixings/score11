@@ -64,16 +64,20 @@
         </div>
     </div>
 
-    <div class="referral-link">
+    <div class="referral-link" id="referral-section">
         <h2>Your Referral Link</h2>
         <input type="text" value="https://score11.com/referral/user123" readonly>
-        <button>Copy Link</button>
+        <button id="copy-link-button">Copy Link</button> <!-- Added id for targeting -->
         <div class="social-buttons">
             <img src="whatsappicon.png" alt="Share on WhatsApp">
             <img src="facebookicon.png" alt="Share on Facebook">
             <img src="twittericon.png" alt="Share on Twitter">
         </div>
+        <p class="copy-feedback" id="copy-feedback">Referral link copied!</p> <!-- Feedback Message -->
     </div>
+    
+    
+    
 
     <div class="rewards">
         <h2>What You’ll Earn</h2>
@@ -154,8 +158,10 @@
         </div>
     </nav>
 
-    <script src="script.js"></script>
+    <script src="refer.js"></script>
+
     <script src="scripts3.js"></script>
+    
 </body>
 
 </html>
