@@ -234,7 +234,7 @@ body {
 
 .navigation-menu .nav-item img {
     height: 25px;
-    filter: greyscale(1);
+    filter: grayscale(1);
     width: 25px;
 }
 
