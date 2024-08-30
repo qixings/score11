@@ -8,43 +8,49 @@ body {
     align-items: center;
 }
 .header {
- background-image: url(referhead.png);
+ background:radial-gradient(at top, #1b6184, #000000);
     color: #fff;
-    padding: 40px 20px;
+    padding: 27px 20px;
     text-align: center;
     width: 333px;
     border-radius: 10px;
-    margin-bottom: 11px;
+    margin-bottom: 0px;
     background-size:375px 255px ;
     background-repeat: no-repeat;
-    height: 168px;
+    height: 93px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-
+.header h1 {
+    margin: 0;
+    font-size: 29px;
+}
 .header p {
-    font-size: 18px;
-    margin: 10px 0 20px;
+    font-size: 14px;
+    margin: 0px 0 20px;
 }
 .cta-button {
-    background-color: #ffffff;
-    color: #7800ff;
-    padding: 15px 25px;
+    background: linear-gradient(178deg, #ff0000, #fbaa00);
+    color: #ffffff;
+    padding: 10px 14px;
     border: none;
-    border-radius: 5px;
+    border-radius: 9px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 12px;
     text-transform: uppercase;
-    margin-top: 114px;
     font-weight: bold;
 }
 .how-it-works {
     text-align: center;
-    background: linear-gradient(71deg, #1e3948, #00a6ff);
+    background: linear-gradient(71deg, #1e3948, #364f6d69);
     width: 368px;
     border-radius: 10px;
     padding: 23px 0px;
 }
 .how-it-works h2 {
-    font-size: 24px;
+    font-size: 18px;
     margin: 4px 0px;
 }
 .steps {
@@ -67,27 +73,32 @@ body {
     font-size: 12px;
 }
 .referral-link {
-    background-color: #183c62;
+    background: radial-gradient(at top, #344a64, #00000000);
     text-align: center;
     width: 368px;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 8px 0px;
-    padding: 33px 0px;
+    margin: 0px;
+    padding: 0px 0px;
+    margin-bottom: 5px;
+}
+.referral-link h2{
+    font-size: 16px;
+    margin: 8px;
 }
 .referral-link input {
-    padding: 10px;
+    padding: 7px 8px;
     width: 70%;
-    font-size: 14px;
-    border: 1px solid #ccc;
+    font-size: 12px;
+    border: none;
     border-radius: 5px;
     margin-bottom: 12px;
 }
 .referral-link button {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 6px 6px;
+    font-size: 12px;
     background-color: #00b821;
     color: #fff;
     border: none;
@@ -96,15 +107,16 @@ body {
     cursor: pointer;
 }
 .social-buttons {
-    margin-top: 20px;
+    margin-top: 9px;
 }
 .social-buttons img {
-    width: 30px;
+    width: 25px;
     margin: 0 10px;
     cursor: pointer;
 }
+
 .rewards {
-    background: radial-gradient(at top, #02699c, #00000000);
+    
     text-align: center;
     width: 368px;
     border-radius: 12px;
@@ -113,35 +125,27 @@ body {
     align-items: center;
 }
 .rewards h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 16px;
+    margin-bottom: 6px;
 }
 .rewards table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 16px;
+    font-size: 12px;
     margin-bottom: 20px;
+    font-weight: normal;
 }
 .rewards table, .rewards th, .rewards td {
-    border: 1px solid #ccc;
-    padding: 15px;
+    border: 1px solid #247d89;
+    padding: 5px;
     width: 333px;
+    color: greenyellow;
+    background: #00000038;
 }
-.progress-tracker {
-    background: radial-gradient(at top, #0f308deb, #11152a);
-    text-align: center;
-    width: 368px;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 8px 0px;
-    padding: 38px 0px;
-}
+
 .progress-tracker .progress-bar {
     width: 80%;
     background-color: #dcdde1;
-    margin: 15px auto;
     height: 30px;
     border-radius: 15px;
     overflow: hidden;
@@ -152,7 +156,7 @@ body {
 .progress-tracker .progress-bar .progress {
     width: 50%; /* Dynamic width based on progress */
     height: 100%;
-    background-color: #27ae60;
+    background-color: #b5ff00;
 }
 .terms {
     padding: 13px 20px;
@@ -160,16 +164,15 @@ body {
     margin-bottom: 12px;
 }
 .terms h2 {
-    font-size: 20px;
+    font-size: 17px;
     text-align: center;
-    background: #d35138;
-    border-radius: 7px;
-    padding: 10px;
+    background: radial-gradient(at top, #fff000, #d80e07);
+    padding: 6px;
 }
 .terms p {
-    font-size: 12px;
-    line-height: 1.6;
+    font-size: 11px;
     text-align: left;
+    font-weight: normal;
 }
 footer {
     color: #fff;
@@ -183,12 +186,13 @@ footer p {
 }
 
 .copy-feedback {
-    color: #d4ff00; /* Success green color */
-    font-size: 14px;
+    color: #d4ff00;
+    font-size: 10px;
     margin-top: 10px;
-    display: none; /* Hidden by default */
+    display: none;
     text-align: center;
-    animation: fadeInOut 3s forwards; /* Fades out after 3 seconds */
+    animation: fadeInOut 3s forwards;
+    font-weight: normal;
 }
 
 @keyframes fadeInOut {
@@ -196,4 +200,152 @@ footer p {
     10% { opacity: 1; }
     90% { opacity: 1; }
     100% { opacity: 0; }
+}
+
+
+.progress-tracker {
+    background: #52a29714;
+    text-align: center;
+    width: 368px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px 9px;
+    padding: 13px 0px;
+}
+
+.progress-tracker h2 {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.progress-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    gap: 5px; /* Space between grid items */
+    margin-bottom: 9px;
+    width: 88%;
+    text-align: center;
+}
+
+.grid-item {
+    background: #404b56;
+    border-radius: 10px;
+    padding: 4px;
+    color: #ffffff;
+}
+
+.grid-item span {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.grid-item p {
+    font-size: 11px;
+    margin: 0;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #dcdde1;
+    margin: 10px 0;
+    height: 30px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar::before {
+    content: 'Progress: ' attr(data-progress) '%';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    color: #000;
+    z-index: 1;
+}
+
+.progress-bar .progress {
+    width: 50%; /* This should be dynamically set based on progress */
+    height: 100%;
+    background-color: #27ae60;
+    position: relative;
+    z-index: 0;
+    transition: width 0.4s ease;
+}
+
+
+
+
+
+
+/* Modal container */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Modal content box */
+.modal-content {
+    background-color: #1c2a31;
+    margin: 15% auto;
+    padding: 20px;
+    height: 465px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+.modal-content h2{
+    color: rgb(255, 136, 0);
+}
+
+/* Grid layout for modal content */
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+/* Close button */
+.close-button {
+    color: #bc0000;
+    float: right;
+    font-size: 34px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.placeholder {
+    color: #ffd900; /* Customize this color as needed */
+
 }
