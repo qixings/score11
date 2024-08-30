@@ -14,9 +14,7 @@
     <title>Activity</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="refer.css">
 </head>
 
 <body id="home">
@@ -41,16 +39,94 @@
 
 
 
-    <div style="display: flex;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: center;">
-        <h1> coming soon....</h1>
+
+
+    <div class="header">
+
+        <button class="cta-button">Get Your Referral Link</button>
     </div>
 
+    <div class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <img src="share-icon.png" alt="Share Link">
+                <p>1. Share your unique referral link with friends.</p>
+            </div>
+            <div class="step">
+                <img src="signup-icon.png" alt="Friends Join">
+                <p>2. Your friends sign up using your link and make a deposit.</p>
+            </div>
+            <div class="step">
+                <img src="earn-icon.png" alt="Earn Rewards">
+                <p>3. Earn rewards when they start playing!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="referral-link">
+        <h2>Your Referral Link</h2>
+        <input type="text" value="https://score11.com/referral/user123" readonly>
+        <button>Copy Link</button>
+        <div class="social-buttons">
+            <img src="whatsappicon.png" alt="Share on WhatsApp">
+            <img src="facebookicon.png" alt="Share on Facebook">
+            <img src="twittericon.png" alt="Share on Twitter">
+        </div>
+    </div>
+
+    <div class="rewards">
+        <h2>What You’ll Earn</h2>
+        <table>
+            <tr>
+                <th>Referral Count</th>
+                <th>Reward</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>₹50</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>₹300</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>₹700</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="progress-tracker">
+        <h2>Your Referral Progress</h2>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <p>Total Referrals: X</p>
+        <p>Successful Referrals: Y</p>
+        <p>Total Earnings: ₹Z</p>
+        <button class="cta-button">View Detailed Stats</button>
+    </div>
+
+    <div class="terms">
+        <h2>Terms & Conditions</h2>
+        <p>• You must have an active account to participate in the referral program.</p>
+        <p>• Rewards are credited once your friend makes their first deposit.</p>
+        <p>• The referral program is subject to change at any time.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 YourApp. All rights reserved.</p>
+    </footer>
 
 
-      <!-- Navigation menu -->
+
+
+
+  
+
+
+    <!-- Navigation menu -->
     <nav class="navigation-menu">
         <div class="nav-item" onclick="navigateTo('home')">
             <img src="home.png" alt="Home">
