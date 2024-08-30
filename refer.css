@@ -204,7 +204,7 @@ footer p {
 
 
 .progress-tracker {
-    background: #52a29714;
+    background: radial-gradient(at top, #344a64, #00000000);
     text-align: center;
     width: 368px;
     border-radius: 12px;
