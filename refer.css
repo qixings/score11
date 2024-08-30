@@ -73,7 +73,7 @@ body {
     font-size: 12px;
 }
 .referral-link {
-    background: radial-gradient(at top, #344a64, #00000000);
+    background: radial-gradient(at top, #415c7b, #0000006e);
     text-align: center;
     width: 368px;
     border-radius: 12px;
@@ -204,7 +204,7 @@ footer p {
 
 
 .progress-tracker {
-    background: radial-gradient(at top, #344a64, #00000000);
+    background: radial-gradient(at top, #415c7b, #0000006e);
     text-align: center;
     width: 368px;
     border-radius: 12px;
