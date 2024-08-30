@@ -40,17 +40,115 @@
     </section>
 
 
+    <div class="dashboard-container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <h1>Agent Dashboard</h1>
+                <div class="commission-overview">
+                    <h2>Today's Total Commission</h2>
+                    <p class="commission-amount">₹0</p>
+                    <p class="commission-upgrade">Upgrade your level to increase commission income</p>
+                </div>
+            </div>
+        </header>
 
-    <div style="display: flex;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: center;">
-        <h1> coming soon....</h1>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Quick Stats Section -->
+            <section class="quick-stats">
+                <table class="stat-table">
+                    <thead>
+                        <tr>
+                            <th>Subordinate Type</th>
+                            <th>Register</th>
+                            <th>Deposit Number</th>
+                            <th>Deposit Amount</th>
+                            <th>First Deposits</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Direct Subordinates</td>
+                            <td id="directRegister">0</td>
+                            <td id="directDepositNumber">1</td>
+                            <td id="directDepositAmount">₹4000</td>
+                            <td id="directFirstDeposits">0</td>
+                        </tr>
+                        <tr>
+                            <td>Team Subordinates</td>
+                            <td id="teamRegister">2</td>
+                            <td id="teamDepositNumber">12</td>
+                            <td id="teamDepositAmount">₹730609</td>
+                            <td id="teamFirstDeposits">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+
+                               <!-- Chart Section -->
+    <div class="chart-container">
+        <h3>Subordinate Growth Over Time</h3>
+        <div class="date-selection">
+            <label for="dateRange">Select Date Range: </label>
+            <select id="dateRange">
+                <option value="7">Last 7 Days</option>
+                <option value="30">Last 30 Days</option>
+                <option value="90">Last 90 Days</option>
+                <option value="180">Last 6 Months</option>
+            </select>
+        </div>
+        <canvas id="subordinateChart"></canvas>
+    </div>
+    <div class="all-subordinate">
+        <button style="margin-top: -13px; width: 368px;" class="action-btn" onclick="window.location.href='subordinatedata.html'">View All Subordinate Data<img src="right-arrow2.png" alt="Right Arrow" class="right-arrow-icon"></button>
+    </div>
+
+            <!-- Actionable Buttons -->
+            <section class="action-buttons">
+                <button class="action-btn primary">
+                    How to become an agent<img src="right-arrow2.png" alt="Right Arrow" class="right-arrow-icon">
+                </button>
+                <button class="action-btn">
+                    View subordinate data
+                    <img src="right-arrow2.png" alt="Right Arrow" class="right-arrow-icon">
+                </button>
+                <button class="action-btn">
+                    View commission details
+                    <img src="right-arrow2.png" alt="Right Arrow" class="right-arrow-icon">
+                </button>
+                <button class="action-btn">Rebate ratio<img src="right-arrow2.png" alt="Right Arrow" class="right-arrow-icon"></button>
+            </section>
+            
+
+            <!-- Promotion Data Section -->
+            <div class="promotion-data">
+                <h3>Promotion Data</h3>
+                <div class="promotion-stats">
+                    <div class="promo-stat-box">
+                        <p>This Week</p>
+                        <h4 id="thisWeekRegistrations">0</h4>
+                    </div>
+                    <div class="promo-stat-box">
+                        <p>Total Commission</p>
+                        <h4 id="totalCommission">₹6565.69</h4>
+                    </div>
+                    <div class="promo-stat-box">
+                        <p>Direct Subordinates</p>
+                        <h4 id="totalDirectSubordinates">159</h4>
+                    </div>
+                    <div class="promo-stat-box">
+                        <p>Total Team Subordinates</p>
+                        <h4 id="totalTeamSubordinates">505</h4>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
 
-
-   <!-- Navigation menu -->
+    <!-- Navigation menu -->
     <nav class="navigation-menu">
         <div class="nav-item" onclick="navigateTo('home')">
             <img src="home.png" alt="Home">
@@ -78,8 +176,9 @@
         </div>
     </nav>
 
-    <script src="script.js"></script>
+ 
     <script src="scripts3.js"></script>
+    <script src="agent.js"></script>
 </body>
 
 </html>
