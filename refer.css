@@ -38,7 +38,7 @@ body {
 }
 .how-it-works {
     text-align: center;
-    background: #003b5f;
+    background: linear-gradient(71deg, #1e3948, #00a6ff);
     width: 368px;
     border-radius: 10px;
     padding: 23px 0px;
@@ -55,7 +55,8 @@ body {
 .step {
   
     margin: 4px 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgb(0 0 0 / 24%);
+    border-radius: 10px;
 
 }
 .step img {
@@ -64,11 +65,9 @@ body {
 }
 .step p {
     font-size: 12px;
-    margin: 0px;
-    background: #111f286d;
 }
 .referral-link {
-    background-color: #3b4b74;
+    background-color: #183c62;
     text-align: center;
     width: 368px;
     border-radius: 12px;
@@ -105,7 +104,7 @@ body {
     cursor: pointer;
 }
 .rewards {
-    background-color: #18232d;
+    background: radial-gradient(at top, #02699c, #00000000);
     text-align: center;
     width: 368px;
     border-radius: 12px;
@@ -129,7 +128,7 @@ body {
     width: 333px;
 }
 .progress-tracker {
-    background-color: #182a3a;
+    background: radial-gradient(at top, #0f308deb, #11152a);
     text-align: center;
     width: 368px;
     border-radius: 12px;
@@ -163,7 +162,7 @@ body {
 .terms h2 {
     font-size: 20px;
     text-align: center;
-    background: #006d9e;
+    background: #d35138;
     border-radius: 7px;
     padding: 10px;
 }
@@ -173,14 +172,14 @@ body {
     text-align: left;
 }
 footer {
-    background-color: #1a1a2e;
     color: #fff;
-    padding: 20px;
+    font-size: 12px;
     text-align: center;
+    margin-bottom: 82px;
 }
 footer p {
     margin: 0;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .copy-feedback {
