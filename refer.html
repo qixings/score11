@@ -42,15 +42,84 @@
 
 
     <div class="header">
-
+        <h1>REFER AND EARN BIG!</h1>
+        <p>Invite friends to join and earn rewards for each successful referral.</p>
         <button class="cta-button">Get Your Referral Link</button>
     </div>
+
+
+
+    <div class="progress-tracker">
+        <h2>MY REFERRAL PROGRESS</h2>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div class="progress-grid">
+            <div class="grid-item">
+                <span id="total-referrals">X</span>
+                <p>Total Referrals</p>
+            </div>
+            <div class="grid-item">
+                <span id="successful-referrals">Y</span>
+                <p>Successful Referrals</p>
+            </div>
+            <div class="grid-item">
+                <span id="total-earnings">₹Z</span>
+                <p>Total Earnings</p>
+            </div>
+            <div class="grid-item">
+                <span id="next-referrals">N</span>
+                <p>Next Reward: ₹<span id="next-reward">R</span></p>
+            </div>
+        </div>
+        
+        <button class="cta-button" >View Detailed Stats</button>
+    </div>
+    
+    <div class="referral-link" id="referral-section">
+        
+        <h2>Your Referral Link</h2>
+        <input type="text" value="https://score11.com/referral/user123" readonly>
+        <button id="copy-link-button">Copy Link</button> <!-- Added id for targeting -->
+        <div class="social-buttons">
+            <img src="whatsappicon.png" alt="Share on WhatsApp">
+            <img src="facebookicon.png" alt="Share on Facebook">
+            <img src="twittericon.png" alt="Share on Twitter">
+        </div>
+        <p class="copy-feedback" id="copy-feedback">Referral link copied!</p> <!-- Feedback Message -->
+        
+        <div class="rewards">
+            <h2>What You’ll Earn</h2>
+            <table>
+                <tr>
+                    <th style="color: #ffd800;">Referral Count</th>
+                    <th style="color: #ffd800;">Reward</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>₹50</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>₹300</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>₹700</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+
+
+
 
     <div class="how-it-works">
         <h2>How It Works</h2>
         <div class="steps">
             <div class="step">
-                <img src="Share-icon.png" alt="Share Link">
+                <img src="share-icon.png" alt="Share Link">
                 <p>1. Share your unique referral link with friends.</p>
             </div>
             <div class="step">
@@ -64,53 +133,9 @@
         </div>
     </div>
 
-    <div class="referral-link" id="referral-section">
-        <h2>Your Referral Link</h2>
-        <input type="text" value="https://score11.com/referral/user123" readonly>
-        <button id="copy-link-button">Copy Link</button> <!-- Added id for targeting -->
-        <div class="social-buttons">
-            <img src="whatsappicon.png" alt="Share on WhatsApp">
-            <img src="facebookicon.png" alt="Share on Facebook">
-            <img src="twittericon.png" alt="Share on Twitter">
-        </div>
-        <p class="copy-feedback" id="copy-feedback">Referral link copied!</p> <!-- Feedback Message -->
-    </div>
-    
-    
     
 
-    <div class="rewards">
-        <h2>What You’ll Earn</h2>
-        <table>
-            <tr>
-                <th>Referral Count</th>
-                <th>Reward</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>₹50</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>₹300</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>₹700</td>
-            </tr>
-        </table>
-    </div>
 
-    <div class="progress-tracker">
-        <h2>Your Referral Progress</h2>
-        <div class="progress-bar">
-            <div class="progress"></div>
-        </div>
-        <p>Total Referrals: X</p>
-        <p>Successful Referrals: Y</p>
-        <p>Total Earnings: ₹Z</p>
-        <button class="cta-button" style="margin-top: 20px; ">View Detailed Stats</button>
-    </div>
 
     <div class="terms">
         <h2>Terms & Conditions</h2>
@@ -127,6 +152,36 @@
 
 
 
+    <div class="modal" id="stats-modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-modal">&times;</span>
+            <h2>DETAILED STATISTICS</h2>
+            <div class="modal-grid">
+                <div class="grid-item">
+                    <p>Total Referrals</p>
+                    <span id="modal-total-referrals">--</span>
+                </div>
+                <div class="grid-item">
+                    <p>Successful Referrals</p>
+                    <span id="modal-successful-referrals">--</span>
+                </div>
+                <div class="grid-item">
+                    <p>Total Earnings</p>
+                    <span id="modal-total-earnings">--</span>
+                </div>
+                <div class="grid-item">
+                    <p>Next Reward in Referrals</p>
+                    <span id="modal-next-referrals">--</span>
+                    <p>₹<span id="modal-next-reward">--</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+
+    
 
   
 
@@ -166,4 +221,3 @@
 </body>
 
 </html>
-
