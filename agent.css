@@ -7,7 +7,7 @@ body {
     min-height: 100vh;
     max-width: 414px;
     margin: auto;
-    background: linear-gradient(45deg, black, #28324d);
+    background: linear-gradient(45deg, black, #283b4d);
     background-repeat: no-repeat;
     font-weight: bold;
 }
@@ -28,7 +28,7 @@ body {
     text-align: center;
     width: 333px;
     border-radius: 10px;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
     background-size: 375px 255px;
     background-repeat: no-repeat;
     height: 93px;
@@ -65,6 +65,7 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
+    gap: 15px;
 }
 
 
@@ -119,12 +120,14 @@ body {
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 8px;
-    font-size: 11px;
+    font-size: 12px;
     transition: background-color 0.3s;
     width: 179px;
     text-align: left;
     height: 49px;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 
@@ -187,7 +190,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 348px;
-    margin-top: -8px;
+    margin-top: 0px;
     text-align: left;
     height: 360px; /* Increase the height slightly */
 }
@@ -219,7 +222,8 @@ body {
     font-size: 12px;
     border-radius: 15px;
     border: none;
-    background: #00dcff;
+    background: #ffffff;
+    color: black;
 }
 
 
