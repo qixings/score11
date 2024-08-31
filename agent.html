@@ -22,166 +22,228 @@
 <body id="home">
     <!-- Fixed header section -->
     <header class="fixed-header">
-        <div class="logo-container">
-            <a href="home.html"><img src="topbarlogo.png" alt="Score11 Logo"></a>
-            
-        </div>
-        <div class="support-icon">
-            <a href="https://t.me/ronyforPremiumAgents">
-                <img src="cs.png" alt="Support Icon"
-                    style="filter: invert(); width: 25px; height: 25px; margin-right: 15px;"></a>
-        </div>
+      <div class="logo-container">
+        <a href="home.html"><img src="topbarlogo.png" alt="Score11 Logo" /></a>
+      </div>
+      <div class="support-icon">
+        <a href="https://t.me/ronyforPremiumAgents">
+          <img
+            src="cs.png"
+            alt="Support Icon"
+            style="
+              filter: invert();
+              width: 25px;
+              height: 25px;
+              margin-right: 15px;
+            "
+        /></a>
+      </div>
     </header>
 
     <!-- Alert panel -->
     <section class="alert-panel">
-        <marquee behavior="scroll" direction="left">Our customer support never sends links to members. If you receive
-            any, please report it immediately.</marquee>
+      <marquee behavior="scroll" direction="left"
+        >Our customer support never sends links to members. If you receive any,
+        please report it immediately.</marquee
+      >
     </section>
 
-
     <div class="dashboard-container">
-        <!-- Header Section -->
-         <div>
-        <header class="header">
+      <!-- Blurred Section for Non-Agents -->
+      <div id="agentToolsBlurred" class="blurred-container">
+        <div class="blurred-content">
+          <!-- Header Section -->
+          <header class="header">
             <div class="header-content">
-                <h1>Agent Dashboard</h1>
-                <div class="commission-overview">
-                    <h2>Today's Total Commission</h2>
-                    <p class="commission-amount">₹0</p>
-                    <p class="commission-upgrade">Upgrade your level to increase commission income</p>
-                </div>
+              <h1>Agent Dashboard</h1>
+              <div class="commission-overview">
+                <h2>Today's Total Commission</h2>
+                <p class="commission-amount">₹0</p>
+                <p class="commission-upgrade">
+                  Upgrade your level to increase commission income
+                </p>
+              </div>
             </div>
-        </header>
-    </div>
+          </header>
 
-        <!-- Main Content -->
-        <main class="main-content">
+          <!-- Main Content -->
+          <main class="main-content">
             <!-- Quick Stats Section -->
             <section class="quick-stats">
-                <table class="stat-table">
-                    <thead>
-                        <tr>
-                            <th>Subordinate Type</th>
-                            <th>Register</th>
-                            <th>Deposit Number</th>
-                            <th>Deposit Amount</th>
-                            <th>First Deposits</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Direct Subordinates</td>
-                            <td id="directRegister">0</td>
-                            <td id="directDepositNumber">1</td>
-                            <td id="directDepositAmount">₹4000</td>
-                            <td id="directFirstDeposits">0</td>
-                        </tr>
-                        <tr>
-                            <td>Team Subordinates</td>
-                            <td id="teamRegister">2</td>
-                            <td id="teamDepositNumber">12</td>
-                            <td id="teamDepositAmount">₹730609</td>
-                            <td id="teamFirstDeposits">0</td>
-                        </tr>
-                    </tbody>
-                </table>
+              <table class="stat-table">
+                <thead>
+                  <tr>
+                    <th>Subordinate Type</th>
+                    <th>Register</th>
+                    <th>Deposit Number</th>
+                    <th>Deposit Amount</th>
+                    <th>First Deposits</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Direct Subordinates</td>
+                    <td id="directRegister">0</td>
+                    <td id="directDepositNumber">1</td>
+                    <td id="directDepositAmount">₹4000</td>
+                    <td id="directFirstDeposits">0</td>
+                  </tr>
+                  <tr>
+                    <td>Team Subordinates</td>
+                    <td id="teamRegister">2</td>
+                    <td id="teamDepositNumber">12</td>
+                    <td id="teamDepositAmount">₹730609</td>
+                    <td id="teamFirstDeposits">0</td>
+                  </tr>
+                </tbody>
+              </table>
             </section>
-            
 
-                               <!-- Chart Section -->
-    <div class="chart-container">
-        <h3>Subordinate Growth Over Time</h3>
-        <div class="date-selection">
-            <label for="dateRange">Select Date Range: </label>
-            <select id="dateRange">
-                <option value="7">Last 7 Days</option>
-                <option value="30">Last 30 Days</option>
-                <option value="90">Last 90 Days</option>
-                <option value="180">Last 6 Months</option>
-            </select>
-        </div>
-        <canvas id="subordinateChart"></canvas>
-    </div>
-    <div class="all-subordinate">
-        <button style="margin-top: -13px; width: 368px;     margin-bottom: 6px;" class="action-btn" onclick="window.location.href='subordinatedata.html'">View All Subordinate Data<img src="right-arrow2.png" alt="Right Arrow" class="right-arrow-icon"></button>
-    </div>
-
-            <!-- Actionable Buttons -->
-            <section class="action-buttons">
-                <button class="action-btn">
-                    How to become an agent<img src="right-arrow2.png" alt="Right Arrow" class="right-arrow-icon"  onclick="window.location.href='how-to-become-agent.html'">
-                </button>
-                <button class="action-btn">
-                    Agent activity programs
-                    <img src="right-arrow2.png" alt="Right Arrow" class="right-arrow-icon">
-                </button>
-                <button class="action-btn">
-                    View commission details
-                    <img src="right-arrow2.png" alt="Right Arrow" class="right-arrow-icon">
-                </button>
-                <button class="action-btn">VIP level/Rebate ratio<img src="right-arrow2.png" alt="Right Arrow" class="right-arrow-icon"></button>
-            </section>
-            
-
-            <!-- Promotion Data Section -->
-            <div class="promotion-data">
-                <h3>Promotion Data</h3>
-                <div class="promotion-stats">
-                    <div class="promo-stat-box">
-                        <p>This Week</p>
-                        <h4 id="thisWeekRegistrations">0</h4>
-                    </div>
-                    <div class="promo-stat-box">
-                        <p>Total Commission</p>
-                        <h4 id="totalCommission">₹6565.69</h4>
-                    </div>
-                    <div class="promo-stat-box">
-                        <p>Direct Subordinates</p>
-                        <h4 id="totalDirectSubordinates">159</h4>
-                    </div>
-                    <div class="promo-stat-box">
-                        <p>Total Team Subordinates</p>
-                        <h4 id="totalTeamSubordinates">505</h4>
-                    </div>
-                </div>
+            <!-- Chart Section -->
+            <div class="chart-container">
+              <h3>Subordinate Growth Over Time</h3>
+              <div class="date-selection">
+                <label for="dateRange">Select Date Range: </label>
+                <select id="dateRange">
+                  <option value="7">Last 7 Days</option>
+                  <option value="30">Last 30 Days</option>
+                  <option value="90">Last 90 Days</option>
+                  <option value="180">Last 6 Months</option>
+                </select>
+              </div>
+              <canvas id="subordinateChart"></canvas>
             </div>
-        </main>
-    </div>
+          </main>
+        </div>
 
+        <!-- Overlay -->
+        <div class="blurred-overlay">
+          <p>YOU NEED TO BECOME AN AGENT TO GET ACCESS TO THESE TOOLS!</p>
+          <button
+            onclick="window.location.href='how-to-become-agent.html'"
+            class="learn-agent-btn"
+          >
+            Learn how to become an agent
+          </button>
+   
+        </div>
+      </div>
+
+
+
+      <button id="toggleBlurBtn" class="toggle-blur-btn">CHECK DEMO</button>
+
+
+
+      <button
+        class="action-btn"
+        style="margin-top:17px; width: 368px; margin-bottom: 6px"
+        onclick="window.location.href='subordinatedata.html'"
+      >
+        View All Subordinate Data<img
+          src="right-arrow2.png"
+          alt="Right Arrow"
+          class="right-arrow-icon"
+        />
+      </button>
+
+      <!-- The Red Boxed Content (Visible to all users) -->
+      <section class="action-buttons">
+        <button
+          class="action-btn"
+          onclick="window.location.href='how-to-become-agent.html'"
+        >
+          How to become an agent<img
+            src="right-arrow2.png"
+            alt="Right Arrow"
+            class="right-arrow-icon"
+          />
+        </button>
+        <button
+          class="action-btn"
+          onclick="window.location.href='agent-activity-programs.html'"
+        >
+          Agent activity programs<img
+            src="right-arrow2.png"
+            alt="Right Arrow"
+            class="right-arrow-icon"
+          />
+        </button>
+        <button
+          class="action-btn"
+          onclick="window.location.href='view-commission-details.html'"
+        >
+          View commission details<img
+            src="right-arrow2.png"
+            alt="Right Arrow"
+            class="right-arrow-icon"
+          />
+        </button>
+        <button
+          class="action-btn"
+          onclick="window.location.href='vip-level-rebate-ratio.html'"
+        >
+          VIP level/Rebate ratio<img
+            src="right-arrow2.png"
+            alt="Right Arrow"
+            class="right-arrow-icon"
+          />
+        </button>
+      </section>
+
+      <!-- Promotion Data Section -->
+      <div class="promotion-data">
+        <h3>Promotion Data</h3>
+        <div class="promotion-stats">
+          <div class="promo-stat-box">
+            <p>This Week</p>
+            <h4 id="thisWeekRegistrations">0</h4>
+          </div>
+          <div class="promo-stat-box">
+            <p>Total Commission</p>
+            <h4 id="totalCommission">₹6565.69</h4>
+          </div>
+          <div class="promo-stat-box">
+            <p>Direct Subordinates</p>
+            <h4 id="totalDirectSubordinates">159</h4>
+          </div>
+          <div class="promo-stat-box">
+            <p>Total Team Subordinates</p>
+            <h4 id="totalTeamSubordinates">505</h4>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Navigation menu -->
     <nav class="navigation-menu">
-        <div class="nav-item" onclick="navigateTo('home')">
-            <img src="home.png" alt="Home">
-            <p>Home</p>
-        </div>
-        <div class="nav-item" onclick="navigateTo('activity')">
-            <img src="activity.png" alt="Activity">
-            <p>Activity</p>
-        </div>
-        <div class="nav-item" onclick="navigateTo('chat')">
-            <img src="chat-icon.png" alt="Chat">
-            <p>Chat</p>
-        </div>
-        <div class="nav-item" onclick="navigateTo('refer')">
-            <img src="refer.png" alt="Refer & Earn">
-            <p>Refer & Earn</p>
-        </div>
-        <div class="nav-item" onclick="navigateTo('agent')">
-            <img src="agent.png" alt="Agent">
-            <p>Agent</p>
-        </div>
-        <div class="nav-item" onclick="navigateTo('user-profile')">
-            <img src="user.png" alt="Profile">
-            <p>Profile</p>
-        </div>
+      <div class="nav-item" onclick="navigateTo('home')">
+        <img src="home.png" alt="Home" />
+        <p>Home</p>
+      </div>
+      <div class="nav-item" onclick="navigateTo('activity')">
+        <img src="activity.png" alt="Activity" />
+        <p>Activity</p>
+      </div>
+      <div class="nav-item" onclick="navigateTo('chat')">
+        <img src="chat-icon.png" alt="Chat" />
+        <p>Chat</p>
+      </div>
+      <div class="nav-item" onclick="navigateTo('refer')">
+        <img src="refer.png" alt="Refer & Earn" />
+        <p>Refer & Earn</p>
+      </div>
+      <div class="nav-item" onclick="navigateTo('agent')">
+        <img src="agent.png" alt="Agent" />
+        <p>Agent</p>
+      </div>
+      <div class="nav-item" onclick="navigateTo('user-profile')">
+        <img src="user.png" alt="Profile" />
+        <p>Profile</p>
+      </div>
     </nav>
 
- 
     <script src="scripts3.js"></script>
     <script src="agent.js"></script>
-</body>
-
+  </body>
 </html>
-
