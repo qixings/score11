@@ -208,9 +208,13 @@ body {
     margin-left: 10px;
 }
 
-.icon{
-    filter:invert();
+
+.icon img{
+    width: 34px;
+    margin-right: 10px;
+
 }
+
 .section-content{
     background: #354e65;
     width: 112px;
