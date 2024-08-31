@@ -6,7 +6,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-        gap: 6px;
+    gap: 6px;
 }
 .header {
  background:radial-gradient(at top, #1b6184, #000000);
@@ -205,7 +205,7 @@ footer p {
 
 
 .progress-tracker {
-    background: radial-gradient(at top, #415c7b, #0000006e);
+    background: radial-gradient(at top, #2b3d52, #0000006e);
     text-align: center;
     width: 368px;
     border-radius: 12px;
@@ -233,7 +233,7 @@ footer p {
 }
 
 .grid-item {
-    background: #404b56;
+    background: #515e6b;
     border-radius: 10px;
     padding: 4px;
     color: #ffffff;
