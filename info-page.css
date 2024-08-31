@@ -52,6 +52,7 @@ section p, section ul, .faq h3, .faq p {
     color: #ffffff;
     line-height: 1.5;
     font-weight: normal;
+    margin: 7px;
 
 }
 
@@ -71,12 +72,12 @@ ul li {
 }
 
 .faq h3 {
-    font-size: 16px;
+    font-size: 14px;
     color: #76ba00;
 }
 
 .faq p {
-    font-size: 14px;
+    font-size: 12px;
     color: #ddd;
 }
 
