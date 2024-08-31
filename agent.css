@@ -362,7 +362,7 @@ body {
 /* Toggle Blur Button */
 .toggle-blur-btn {
     position: absolute;
-    bottom: 53px;
+    bottom: 40px;
     right: 16px;
     background-color: #4c00ff;
     color: white;
