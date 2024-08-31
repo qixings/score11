@@ -119,11 +119,12 @@ body {
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 8px;
-    font-size: 12px;
+    font-size: 10px;
     transition: background-color 0.3s;
     width: 179px;
     text-align: left;
     height: 49px;
+    font-weight: bold;
 }
 
 
