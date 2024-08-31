@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Subordinate Data</title>
+    <link rel="stylesheet" href="styles3.css">
+    <link rel="stylesheet" href="subordinate.css">
+     <!-- Mobiscroll Date Picker Library -->
+    <link rel="stylesheet" href="https://cdn.mobiscroll.com/5.17.1/css/mobiscroll.min.css">
+    <script src="https://cdn.mobiscroll.com/5.17.1/js/mobiscroll.min.js"></script>
+</head>
+<body id="subordinate-data-page">
+
+    <!-- Fixed Header -->
+    <header class="fixed-header">
+        <div class="logo-container">
+            <a href="home.html"><img src="topbarlogo.png" alt="Score11 Logo"></a>
+        </div>
+        <div class="support-icon">
+            <a href="https://t.me/ronyforPremiumAgents">
+                <img src="cs.png" alt="Support Icon" style="filter: invert(); width: 25px; height: 25px; margin-right: 15px;">
+            </a>
+        </div>
+    </header>
+
+    <!-- Alert Panel -->
+    <div class="alert-panel">
+        <marquee behavior="scroll" direction="left">Our customer support never sends links to members. If you receive any, please report it immediately.</marquee>
+    </div>
+
+    <div class="dashboard-container">
+        <!-- Summary Section -->
+        <section class="summary-section">
+            <h1>Subordinate Data Overview</h1>
+            <div class="summary-metrics">
+                <div class="metric-box">
+                    <h2>Deposit Number</h2>
+                    <p id="depositNumber">13</p>
+                </div>
+                <div class="metric-box">
+                    <h2>Deposit Amount</h2>
+                    <p id="depositAmount">₹734609</p>
+                </div>
+                <div class="metric-box">
+                    <h2>Total Bet</h2>
+                    <p id="totalBet">₹1855213.4</p>
+                </div>
+            </div>
+            <div class="summary-metrics">
+                <div class="metric-box">
+                    <h2>Number of Bettors</h2>
+                    <p id="numberOfBettors">17</p>
+                </div>
+                <div class="metric-box">
+                    <h2>First Deposit Amount</h2>
+                    <p id="firstDepositAmount">₹0</p>
+                </div>
+                <div class="metric-box">
+                    <h2>First Deposits</h2>
+                    <p id="firstDeposits">0</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter and Search Section -->
+        <section class="filter-section">
+            <div class="filter-options">
+            <input type="text" id="dateRangeSelector" class="date-input" placeholder="Select a date">
+                <select id="dateRange">
+                    <option value="today">Today</option>
+                    <option value="yesterday">Yesterday</option>
+                    <option value="7">Last 7 Days</option>
+                    <option value="30">Last 30 Days</option>
+                    <option value="90">Last 90 Days</option>
+                    <option value="180">Last 6 Months</option>
+                </select>
+                <select id="levelSelector" class="level-selector" style="width: 183px;">
+                    <option value="all">All Levels</option>
+                    <option value="1">Level 1</option>
+                    <option value="2">Level 2</option>
+                    <option value="3">Level 3</option>
+                    <option value="4">Level 4</option>
+                    <option value="5">Level 5</option>
+                    <option value="6">Level 6</option>
+                </select>
+                <select id="depositStatus">
+                    <option value="all">All</option>
+                    <option value="deposited">Deposited</option>
+                    <option value="notDeposited">Not Deposited</option>
+                </select>
+            </div>
+            <input type="text" id="searchBar" placeholder="Search Subordinates">
+            <button id="searchBtn" class="search-btn">Search</button>
+        </section>
+
+        <!-- Subordinate Data Table -->
+        <section class="subordinate-table-section">
+            <table class="subordinate-table">
+                <thead>
+                    <tr>
+                        <th>Level</th>
+                        <th>User ID</th>
+                        <th>Deposit Amount</th>
+                        <th>Bet Amount</th>
+                        <th>Commission</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="subordinateTableBody">
+                    <!-- Dynamic rows will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+        </section>
+       
+    </div>
+    
+    <!-- Pagination -->
+    <div class="pagination">
+        <button id="prevPage" class="pagination-btn"><img src="left-arrow.png" alt="" width="30px"></button>
+        <span id="currentPage">1</span>
+        <button id="nextPage" class="pagination-btn"><img src="right-arrow.png"  alt="" width="30px" ></button>
+    </div>
+    
+
+    <script src="scripts3.js"></script>
+    <script src="subordinate.js"></script>
+</body>
+</html>
