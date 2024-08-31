@@ -10,6 +10,7 @@ body {
     background: linear-gradient(45deg, black, #283b4d);
     background-repeat: no-repeat;
     font-weight: bold;
+
 }
 
 .dashboard-container {
@@ -289,4 +290,93 @@ body {
 }
 
 
+
+
+
+
+
+
+
+
+
+/* Blurred Content */
+.blurred-container {
+    position: relative;
+    width: 96%;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.blurred-content {
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.blurred-overlay {
+    position: absolute;
+    top: 0;
+    width: 91%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    padding: 15px;
+}
+
+.blurred-overlay p {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.learn-agent-btn {
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.learn-agent-btn:hover {
+    background-color: #e88f00;
+}
+
+
+
+
+
+
+/* Existing CSS */
+
+/* Toggle Blur Button */
+.toggle-blur-btn {
+    position: absolute;
+    bottom: 53px;
+    right: 16px;
+    background-color: #4c00ff;
+    color: white;
+    padding: 6px 6px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    z-index: 3;
+}
+
+.toggle-blur-btn:hover {
+    background-color: #4c00ff;
+}
+
+/* Rest of the CSS */
 
