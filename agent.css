@@ -22,16 +22,16 @@ body {
 }
 
 .header {
-    background:radial-gradient(at top, #03588a, #000000);
+    background: radial-gradient(at top, #03588a, #000000);
     color: #fff;
     padding: 27px 20px;
     text-align: center;
     width: 333px;
     border-radius: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 13px;
     background-size: 375px 255px;
     background-repeat: no-repeat;
-    height: 93px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -65,7 +65,7 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
-    gap: 15px;
+    gap: 3px;
 }
 
 
