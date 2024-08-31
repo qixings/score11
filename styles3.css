@@ -6,7 +6,7 @@ body {
     min-height: 100vh;
     max-width: 414px;
     margin: auto;
-    background: linear-gradient(45deg, black, #28324d);
+       background: linear-gradient(45deg, black, #283b4d);
     background-repeat: no-repeat;
     font-weight: bold;
 }
