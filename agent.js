@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
         thisWeekRegistrations: 0,
         totalCommission: 6565.69,
         totalDirectSubordinates: 159,
-        totalTeamSubordinates: 505
+        totalTeamSubordinates: 505,
+        isAgent: false // Simulated flag to indicate if the user is an agent
     };
 
     // Populate the direct and team data
@@ -24,11 +25,50 @@ document.addEventListener("DOMContentLoaded", () => {
     populateData('teamDepositAmount', `₹${agentData.team.depositAmount}`);
     populateData('teamFirstDeposits', agentData.team.firstDeposits);
 
-    // Populate the invitation code and promotion data
-    populateData('thisWeekRegistrations', agentData.thisWeekRegistrations);
-    populateData('totalCommission', `₹${agentData.totalCommission}`);
-    populateData('totalDirectSubordinates', agentData.totalDirectSubordinates);
-    populateData('totalTeamSubordinates', agentData.totalTeamSubordinates);
+    // Function to remove blur effect
+    function removeBlurEffect() {
+        const blurredContainer = document.getElementById("agentToolsBlurred");
+
+        if (blurredContainer) {
+            // Remove the blur by clearing the class that applies the blur effect
+            blurredContainer.querySelector(".blurred-content").style.filter = "none";
+            blurredContainer.querySelector(".blurred-content").style.opacity = "1";
+            blurredContainer.querySelector(".blurred-overlay").style.display = "none";
+            blurredContainer.querySelector(".blurred-content").style.pointerEvents = "auto";
+        }
+    }
+
+    // Function to add blur effect
+    function addBlurEffect() {
+        const blurredContainer = document.getElementById("agentToolsBlurred");
+
+        if (blurredContainer) {
+            // Add the blur back by reapplying the blur effect
+            blurredContainer.querySelector(".blurred-content").style.filter = "blur(3px)";
+            blurredContainer.querySelector(".blurred-content").style.opacity = "0.5";
+            blurredContainer.querySelector(".blurred-overlay").style.display = "flex";
+            blurredContainer.querySelector(".blurred-content").style.pointerEvents = "none";
+        }
+    }
+
+    // Toggle Blur Effect
+    const toggleBlurEffect = () => {
+        const blurredContent = document.querySelector(".blurred-content");
+
+        if (blurredContent.style.filter === "none") {
+            addBlurEffect();
+        } else {
+            removeBlurEffect();
+        }
+    };
+
+    // Add event listener to the toggle button
+    document.getElementById("toggleBlurBtn").addEventListener("click", toggleBlurEffect);
+
+    // Example: Automatically remove the blur if the user is an agent
+    if (agentData.isAgent) {
+        removeBlurEffect();
+    }
 
     // Sample subordinate data for the chart
     const subordinateData = {
