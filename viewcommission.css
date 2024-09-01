@@ -25,12 +25,10 @@ body {
     justify-content: space-between;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    padding: 7px;
-    width: 376px;
 }
 
 .fixed-header .logo-container img {
-    height: 40px;
+  width: 100px;
 }
 
 .fixed-header .support-icon img {
