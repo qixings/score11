@@ -18,32 +18,43 @@ let foodRemaining = 0;
 let multipliers = [];
 let gameActive = false;
 let balance = 50000;
+let roundNumber = 1; // Track the number of rounds played
 
 const balanceElement = document.getElementById('balance-amount');
 const betButton = document.getElementById('bet');
-const cashoutButton = document.getElementById('cashout');
 const betAmountInput = document.getElementById('bet-amount');
+const remainingFoodElement = document.getElementById('remainingFood');
+const historyList = document.getElementById('history-list');
 
 // Initialize the game with a bet
 function initGame() {
+    if (gameActive) {
+        cancelBet();
+        return;
+    }
+
     document.getElementById('tip-message').style.display = 'none';
     snake = [{ x: 140, y: 140 }];
     direction = { x: 0, y: 0 };
     score = 0;
     totalMultiplier = 0;
-    foodRemaining = foodCount;
+    foodRemaining = parseInt(document.getElementById('food').value, 10); // Get food count from selection
     bombPositions = [];
-    multipliers = generateMultipliers(foodCount);
+    multipliers = generateMultipliers(foodRemaining);
     gameActive = true;
     betAmount = parseFloat(betAmountInput.value) || 0;
 
     if (betAmount <= 0 || betAmount > balance) {
         showPopup('Please enter a valid bet amount.');
+        gameActive = false;
+        updateButtonsState();
         return;
     }
 
     balance -= betAmount;
     updateBalanceDisplay();
+    updateRemainingFoodDisplay();
+    setBombCountBasedOnFood(foodRemaining);
     placeFood();
     placeBombs();
     gameInterval = setInterval(gameLoop, 100);
@@ -81,19 +92,22 @@ function generateMultipliers(count) {
     return multipliers.sort(() => Math.random() - 0.5);
 }
 
-// Place food on the board
+// Update the remaining food display
+function updateRemainingFoodDisplay() {
+    remainingFoodElement.value = foodRemaining;
+}
+
+// Set bomb count based on the number of food
+function setBombCountBasedOnFood(foodCount) {
+    bombCount = Math.floor(foodCount / 2); // Example: 1 bomb per 2 food items
+}
+
 // Place food on the board
 function placeFood() {
     food.x = Math.floor(Math.random() * (canvas.width / 20)) * 20;
     food.y = Math.floor(Math.random() * (canvas.height / 20)) * 20;
     totalMultiplier += multipliers.pop();
-
-    // Position the food element with ripple effect
-    const foodElement = document.getElementById('food');
-    foodElement.style.left = `${food.x}px`;
-    foodElement.style.top = `${food.y}px`;
 }
-
 
 // Place bombs on the board
 function placeBombs() {
@@ -147,7 +161,7 @@ function checkCollision() {
 function eatFood() {
     snake.push({ ...snake[snake.length - 1] });
     foodRemaining--;
-    cashoutButton.disabled = false;
+    updateRemainingFoodDisplay();
     if (foodRemaining > 0) {
         placeFood();
     } else {
@@ -168,7 +182,7 @@ function draw() {
         ctx.fill();
     });
 
-    // Animate the food
+    // Draw food with a ripple effect
     ctx.fillStyle = 'red';
     ctx.beginPath();
     ctx.arc(food.x + 10, food.y + 10, 10, 0, 2 * Math.PI);
@@ -186,23 +200,59 @@ function draw() {
 // End the game
 function endGame(win) {
     clearInterval(gameInterval);
+    let result = win ? "Win" : "Lose";
+    let amount = win ? (betAmount * totalMultiplier) : -betAmount;
+
     if (win) {
         showPopup(`You won! Your total multiplier is ${totalMultiplier.toFixed(2)}x`);
-        balance += betAmount * totalMultiplier;
+        balance += amount;
     } else {
         showPopup("Game Over! You lost your bet.");
     }
+
+    addToHistory(result, amount); // Add result to history
     updateBalanceDisplay();
     resetGame();
 }
 
-// Cash out the current winnings
-function cashout() {
+// Cancel the bet and reset the game
+function cancelBet() {
     clearInterval(gameInterval);
-    showPopup(`You cashed out with a multiplier of ${totalMultiplier.toFixed(2)}x`);
-    balance += betAmount * totalMultiplier;
+    showPopup("Bet cancelled.");
+
+    addToHistory("Cancelled", betAmount); // Add cancellation to history
+
+    balance += betAmount; // Refund the bet amount
     updateBalanceDisplay();
     resetGame();
+}
+
+// Add game result to history
+function addToHistory(result, amount) {
+    const newRow = document.createElement('tr');
+
+    const roundCell = document.createElement('td');
+    roundCell.textContent = `#${roundNumber}`;
+    newRow.appendChild(roundCell);
+
+    const resultCell = document.createElement('td');
+    resultCell.textContent = result;
+    newRow.appendChild(resultCell);
+
+    const amountCell = document.createElement('td');
+    if (amount < 0) {
+        amountCell.textContent = `-₹${Math.abs(amount).toFixed(2)}`;
+        amountCell.style.color = 'red';
+    } else {
+        amountCell.textContent = `+₹${amount.toFixed(2)}`;
+        amountCell.style.color = 'greenyellow';
+    }
+    newRow.appendChild(amountCell);
+
+    // Add the new row at the top of the history list
+    historyList.insertBefore(newRow, historyList.firstChild);
+
+    roundNumber++;
 }
 
 // Reset the game
@@ -216,8 +266,11 @@ function resetGame() {
 
 // Update buttons state
 function updateButtonsState() {
-    betButton.disabled = gameActive;
-    cashoutButton.disabled = !gameActive;
+    if (gameActive) {
+        betButton.textContent = "CANCEL BET";
+    } else {
+        betButton.textContent = "BET";
+    }
 }
 
 // Update balance display
@@ -226,13 +279,7 @@ function updateBalanceDisplay() {
 }
 
 // Event listeners
-betButton.addEventListener('click', () => {
-    foodCount = parseInt(document.getElementById('food').value);
-    bombCount = parseInt(document.getElementById('bombs').value);
-    initGame();
-});
-
-cashoutButton.addEventListener('click', cashout);
+betButton.addEventListener('click', initGame);
 
 document.getElementById('upBtn').addEventListener('click', () => {
     if (direction.y === 0) direction = { x: 0, y: -20 };
