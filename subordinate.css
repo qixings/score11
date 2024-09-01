@@ -46,6 +46,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 30%;
     margin-bottom: 6px;
+        height: 85px;
 }
 
 .metric-box h2 {
