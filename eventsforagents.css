@@ -1,0 +1,170 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    max-width: 414px;
+    margin: auto;
+    background: linear-gradient(45deg, black, #283b4d);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fixed-header {
+    background-color: #1a2e4b;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 414px;
+    background: linear-gradient(45deg, #4d70aa, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.fixed-header .logo-container img {
+    height: 40px;
+}
+.navigation a {
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    background-color: #283b4d;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+
+}
+.navigation{
+    display: flex;
+    gap: 10px;
+    margin-top: 42px;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    justify-content: center;
+
+}
+
+
+.fixed-header .navigation a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.fixed-header .navigation a:hover {
+    background-color: #283b4d;
+}
+
+
+
+.featured-event {
+    background:radial-gradient(at top, #006bff, #1e375882);
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 0px 9px;
+}
+
+.featured-event .event-banner img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.featured-event .event-details h1 {
+    margin: 20px 0 10px;
+    font-size: 16px;
+}
+p{
+    font-size: 10px;
+}
+
+.featured-event .join-event-btn {
+    background-color: #ffcf00;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.featured-event .join-event-btn:hover {
+    background-color: #e6b800;
+}
+
+.upcoming-events, .ongoing-events, .past-events {
+    margin-bottom: 0px;
+}
+
+.upcoming-events h2, .ongoing-events h2, .past-events h2 {
+    margin-bottom: 0px;
+    font-size: 18px;
+}
+
+.event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.event-item {
+    background-color: #2a4063a1;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 9px;
+}
+
+.event-item h3 {
+    margin: 0;
+    font-size: 16px;
+    text-align: left;
+    color: #bdbdbd;
+}
+
+.event-item button{
+    width: 87px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rsvp-btn, .continue-btn {
+    background-color: #ffcf00;
+    color: #000;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.rsvp-btn:hover, .continue-btn:hover {
+    background-color: #e6b800;
+}
+
+footer {
+    padding: 8px;
+    text-align: center;
+}
+
+
+.navigation a.active {
+    background-color: #5092f578; /* Highlight color */
+
+}
