@@ -45,7 +45,6 @@ body {
 .navigation{
     display: flex;
     gap: 10px;
-    margin-top: 52px;
     color: #fff;
     text-decoration: none;
     padding: 10px;
@@ -168,4 +167,21 @@ footer {
 .navigation a.active {
     background-color: #256f85; /* Highlight color */
 
+}
+
+
+/* Alert panel */
+.alert-panel {
+    margin: 8px;
+    margin-top: 58px;
+    background-color: #8a8a8a;
+    padding: 5px;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 13px;
+    z-index: 9999;
+    position: relative;
+    height: 20px;
+    display: flex;
+    align-items: center;
 }
