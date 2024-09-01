@@ -41,7 +41,6 @@ body {
     display: flex;
     justify-content: center;
     gap: 7px;
-    margin-top: 70px;
     width: 368px;
 }
 
@@ -314,4 +313,22 @@ footer {
     width: 100%;
     max-width: 414px;
     font-weight: normal;
+    
+}
+
+
+/* Alert panel */
+.alert-panel {
+    margin: 8px;
+    margin-top: 58px;
+    background-color: #8a8a8a;
+    padding: 5px;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 13px;
+    z-index: 9999;
+    position: relative;
+    height: 20px;
+    display: flex;
+    align-items: center;
 }
