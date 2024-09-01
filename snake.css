@@ -94,7 +94,6 @@ canvas {
     z-index: 1;
 }
 
-
 .betting-section {
     display: flex;
     flex-direction: column;
@@ -146,22 +145,40 @@ canvas {
     font-weight: bold;
 }
 
+.food-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    width: 305px;
+}
+
+.food-selector, .remaining-food {
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+}
+
+.food-selector select, .remaining-food input {
+    height: 39px;
+    padding: 1px 2px;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    background: #1d2534;
+    color: white;
+    padding-left: 5px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .action-button {
     height: 48px;
     width: 125px;
     background: #1fa400;
-    border: none;
-    border-radius: 7px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.cashout-button {
-    height: 48px;
-    width: 125px;
-    background: rgb(0 166 177);
     border: none;
     border-radius: 7px;
     color: white;
@@ -197,7 +214,7 @@ table {
 th, td {
     padding: 10px;
     text-align: center;
-    width: 50%;
+    width: 33%;
     font-size: 11px;
     background: #1d2534;
 }
@@ -207,41 +224,6 @@ thead {
     color: #fff;
     font-size: 12px;
 }
-
-.food-bomb-selector {
-    display: flex;
-    flex-direction: column;
-    margin-top: 3px;
-    width: 170px;
-}
-
-.food-bomb-selector select {
-    height: 39px;
-    padding: 1px 2px;
-    border: none;
-    border-radius: 6px;
-    font-size: 12px;
-    background: #1d2534;
-    color: white;
-    padding-left: 5px;
-}
-
-.actions {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.food-bomb-section {
-    font-size: 11px;
-    gap: 5px;
-    display: flex;
-    width: 305px;
-    justify-content: space-between;
-}
-
-
 
 /* Alert panel */
 .alert-panel {
@@ -259,7 +241,6 @@ thead {
     align-items: center;
 }
 
-
 .joystick-container {
     display: flex;
     align-items: center;
@@ -272,7 +253,6 @@ thead {
     padding: 10px;
     border-radius: 54px;
     filter: drop-shadow(2px 13px 10px #191919);
-
 }
 
 .joystick-container button {
@@ -286,13 +266,11 @@ thead {
     cursor: pointer;
     transition: background-color 0.3s ease;
     position: relative;
-    
 }
 
 .joystick-container button:hover {
     background-color: #1fa400;
 }
-
 
 #leftBtn{
     right: 5px;
@@ -301,13 +279,12 @@ thead {
     left: 5px;
 }
 
-.midcircle{
+.midcircle {
     width: 80px;
     background: radial-gradient(#4bff00, #cba707);
     border-radius: 50%;
     height: 80px;
 }
-
 
 /* Popup Overlay */
 .popup-overlay {
@@ -358,7 +335,6 @@ thead {
     background-color: #158b00;
 }
 
-
 .pulse {
     animation: pulse 1s infinite;
 }
@@ -374,4 +350,3 @@ thead {
         transform: scale(1);
     }
 }
-
