@@ -1,0 +1,290 @@
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    max-width: 414px;
+    margin: auto;
+    background: linear-gradient(45deg, black, #283b4d);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fixed-header {
+    background-color: #1a2e4b;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 414px;
+    background: linear-gradient(45deg, #4d70aa, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+.fixed-header .logo-container img {
+    width: 100px;
+}
+
+.fixed-header .support-icon img {
+    width: 25px;
+    height: 25px;
+}
+
+/* Navigation Styling */
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    width: 368px;
+}
+
+.navigation a {
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    background-color: #344e67;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    width: 66px;
+    justify-content: center;
+}
+
+.navigation a.active {
+    background-color: #256f85;
+}
+
+.navigation a:hover {
+    background-color: #3b4f6a;
+}
+
+/* Intro Section Styling */
+.intro-section {
+    padding: 20px;
+    text-align: left;
+    background: radial-gradient(at top, #1e2e41, #0000006e);
+    margin: 10px 10px;
+    border-radius: 15px;
+    width: 333px;
+}
+
+.intro-section h1 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #00ddff;
+}
+
+.intro-section p {
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: normal;
+}
+
+/* VIP Criteria Section */
+.vip-criteria {
+    margin: 8px 10px;
+    padding: 20px;
+    background: radial-gradient(at top, #3b4f6a, #1e2e41);
+    border-radius: 15px;
+    text-align: left;
+    width: 333px;
+}
+
+.vip-criteria h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #00ddff;
+}
+
+.vip-criteria p {
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.vip-criteria ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.vip-criteria ul li {
+    font-size: 12px;
+    color: #bfbfbf;
+    margin-bottom: 5px;
+}
+
+/* VIP Levels Table Styling */
+.vip-table-section {
+    padding: 15px;
+    background: radial-gradient(at top, #2a415b, #0000006e);
+    border-radius: 15px;
+    text-align: center;
+    width: 352px;
+    margin: 10px 10px;
+}
+
+.vip-table-section h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #00ddff;
+}
+
+.vip-table-section p {
+    font-size: 12px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.vip-table, .rebate-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+}
+
+.vip-table th, .rebate-table th, 
+.vip-table td, .rebate-table td {
+    padding: 8px;
+    border: 1px solid #237ca3;
+}
+
+.rebate-table-section{
+    margin: 8px 10px;
+    padding: 20px;
+    background: radial-gradient(at top, #293f5a, #030911);
+    border-radius: 15px;
+    text-align: left;
+    width: 333px;
+
+}
+.rebate-table-section h2{
+    font-size: 18px;
+    color: #00ddff;
+}
+
+.vip-table th, .rebate-table th {
+    background-color: #1b6184;
+    color: #ffffff;
+    font-size: 10px;
+}
+
+.vip-table td, .rebate-table td {
+    background-color: rgba(65, 92, 123, 0.2);
+    font-weight: normal;
+    font-size: 10px;
+}
+
+/* Example Scenarios Styling */
+.example-scenarios {
+    margin: 6px 10px;
+    padding: 20px;
+    background: radial-gradient(at top, #3b4f6a, #1e2e41);
+    border-radius: 15px;
+    text-align: left;
+    width: 333px;
+}
+
+.example-scenarios h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #00ddff;
+}
+
+.example-scenarios p {
+    font-size: 12px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+/* Rebate Explanation Styling */
+.rebate-explanation {
+    margin: 6px 10px;
+    padding: 20px;
+    background: radial-gradient(at top, #3b4f6a, #1e2e41);
+    border-radius: 15px;
+    text-align: left;
+    width: 333px;
+}
+
+.rebate-explanation h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #00ddff;
+}
+
+.rebate-explanation p {
+    font-size: 12px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+/* FAQs Section Styling */
+.faqs {
+    margin: 6px 10px;
+    padding: 20px;
+    background: radial-gradient(at top, #3b4f6a, #1e2e41);
+    border-radius: 15px;
+    text-align: left;
+    width: 333px;
+}
+
+.faqs h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #00ddff;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+}
+
+.faq-item h3 {
+    font-size: 14px;
+    color: #76ba00;
+    margin-bottom: 5px;
+}
+
+.faq-item p {
+    font-size: 12px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+/* Footer Styling */
+footer {
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 9px;
+    color: #ffffff;
+    position: relative;
+    width: 100%;
+    max-width: 414px;
+    font-weight: normal;
+}
+
+
+/* Alert panel */
+.alert-panel {
+    margin: 8px;
+    margin-top: 58px;
+    background-color: #8a8a8a;
+    padding: 5px;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 13px;
+    z-index: 9999;
+    position: relative;
+    height: 20px;
+    display: flex;
+    align-items: center;
+}
