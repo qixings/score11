@@ -50,6 +50,9 @@ function redirectToCrash() {
     window.location.href = 'crash.html';
 }
 
+function redirectToSnake() {
+    window.location.href = 'snake.html';
+}
 // Function to handle horizontal scrolling of games
 function scrollGames(direction) {
     const gamesContainer = document.querySelector('.games-container');
@@ -92,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('.games-section .game:nth-child(1)').addEventListener('click', redirectToCrash);
     document.querySelector('.games-section .game:nth-child(2)').addEventListener('click', redirectToOptionTrading);
     document.querySelector('.games-section .game:nth-child(3)').addEventListener('click', redirectToColortrading);
+document.querySelector('.games-section .game:nth-child(9)').addEventListener('click', redirectToSnake); // Added Snake game
     document.querySelector('.games-section .game:nth-child(4)').addEventListener('click', redirectToMines);
     document.querySelector('.games-section .game:nth-child(5)').addEventListener('click', redirectToBigsmall);
     document.querySelector('.games-section .game:nth-child(6)').addEventListener('click', redirectToPlinko);
