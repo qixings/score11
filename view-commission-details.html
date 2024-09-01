@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commission Details Overview</title>
+    <link rel="stylesheet" href="viewcommission.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="fixed-header">
+        <div class="logo-container">
+            <a href="home.html"><img src="topbarlogo.png" alt="Logo"></a>
+        </div>
+        <div class="support-icon">
+            <a href="https://t.me/Support">
+                <img src="cs.png" alt="Support" style="width: 25px; height: 25px; filter: invert();">
+            </a>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navigation">
+        <a href="agent.html">Dashboard</a>
+        <a href="eventsforagents.html">Events for Agents</a>
+        <a href="activity.html">Exclusive Offers</a>
+        <a href="commissions.html" class="active">Commission Details</a>
+    </nav>
+
+    <!-- Introduction/Overview -->
+    <section class="intro-section">
+        <h1>Commission Details Overview</h1>
+        <p>Welcome to the Commission Details page. Here, you'll find everything you need to know about how commissions are earned, the different types of commissions available, and a detailed breakdown of your earnings.</p>
+    </section>
+
+    <!-- Commission Structures -->
+    <section class="commission-structures">
+        <h2>Commission Structures</h2>
+        <h3>Referral Commission</h3>
+        <p>Earn commissions by referring new users to the platform. For each user that signs up and makes a deposit, you earn a percentage of their deposit amount.</p>
+
+        <h3>Bet Commission</h3>
+        <p>Earn commissions on the bets placed by the users you referred. The more they bet, the more you earn!</p>
+
+        <h3>Bonus Commission</h3>
+        <p>Special bonuses or promotional commissions are available during certain events or milestones. Keep an eye out for these opportunities!</p>
+
+        <h4>Commission Tiers</h4>
+        <p>As your activity level increases, you may qualify for higher commission tiers, earning you even more for your efforts.</p>
+    </section>
+    <section class="vip-commission-table">
+        <h2>Commission Rates by VIP Level</h2>
+        <p>Your commission rates depend on your VIP level. The table below outlines the percentage commissions you earn based on your level and the level of your subordinates.</p>
+    
+        <table class="vip-table">
+            <thead>
+                <tr>
+                    <th>VIP Level</th>
+                    <th>Direct Level 1 (Members)</th>
+                    <th>Level 2</th>
+                    <th>Level 3</th>
+                    <th>Level 4</th>
+                    <th>Level 5</th>
+                    <th>Level 6</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>VIP 1</td>
+                    <td>5%</td>
+                    <td>3%</td>
+                    <td>2%</td>
+                    <td>1%</td>
+                    <td>0.5%</td>
+                    <td>0.25%</td>
+                </tr>
+                <tr>
+                    <td>VIP 2</td>
+                    <td>6%</td>
+                    <td>4%</td>
+                    <td>3%</td>
+                    <td>2%</td>
+                    <td>1%</td>
+                    <td>0.5%</td>
+                </tr>
+                <tr>
+                    <td>VIP 3</td>
+                    <td>7%</td>
+                    <td>5%</td>
+                    <td>4%</td>
+                    <td>3%</td>
+                    <td>2%</td>
+                    <td>1%</td>
+                </tr>
+                <tr>
+                    <td>VIP 4</td>
+                    <td>8%</td>
+                    <td>6%</td>
+                    <td>5%</td>
+                    <td>4%</td>
+                    <td>3%</td>
+                    <td>2%</td>
+                </tr>
+                <tr>
+                    <td>VIP 5</td>
+                    <td>10%</td>
+                    <td>8%</td>
+                    <td>6%</td>
+                    <td>5%</td>
+                    <td>4%</td>
+                    <td>3%</td>
+                </tr>
+                <tr>
+                    <td>VIP 6</td>
+                    <td>12%</td>
+                    <td>10%</td>
+                    <td>8%</td>
+                    <td>6%</td>
+                    <td>5%</td>
+                    <td>4%</td>
+                </tr>
+                <!-- Add more VIP levels as needed -->
+            </tbody>
+        </table>
+    </section>
+    
+
+    <!-- Earning Examples -->
+    <section class="earning-examples">
+        <h2>Earning Examples</h2>
+        <p><strong>Example 1:</strong> If you refer a user who deposits ₹100, you earn 5% of the deposit.</p>
+        <p><strong>Example 2:</strong> For every ₹1,000 wagered by users you referred, you earn a 2% commission.</p>
+    </section>
+
+    <!-- Summary Section -->
+    <section class="summary-section">
+        <h2>Commission Overview</h2>
+        <div class="summary-metrics">
+            <div class="metric-box">
+                <h3>Total Commissions</h3>
+                <p id="totalCommissions">₹123,456</p>
+            </div>
+            <div class="metric-box">
+                <h3>Paid Commissions</h3>
+                <p id="paidCommissions">₹78,910</p>
+            </div>
+            <div class="metric-box">
+                <h3>Pending Commissions</h3>
+                <p id="pendingCommissions">₹44,546</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commission History/Details Table -->
+    <section class="commission-details">
+        <h2>Commission History</h2>
+        <div class="filters">
+            <input type="text" id="dateRangeSelector" placeholder="Select Date Range">
+            <select id="commissionTypeSelector">
+                <option value="all">All Types</option>
+                <option value="referral">Referral Commission</option>
+                <option value="bet">Bet Commission</option>
+            </select>
+            <select id="statusSelector">
+                <option value="all">All Status</option>
+                <option value="paid">Paid</option>
+                <option value="pending">Pending</option>
+            </select>
+            <input type="text" id="searchBar" placeholder="Search">
+        </div>
+        <table class="commission-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic rows generated by JavaScript -->
+            </tbody>
+        </table>
+      
+    </section>
+    
+  <!-- Pagination Controls -->
+  <div class="pagination">
+    <button id="prevPage" class="pagination-btn"><img src="left-arrow.png" alt="" width="25px"></button>
+    <span id="currentPage">1</span>
+    <button id="nextPage" class="pagination-btn"><img src="right-arrow.png" alt="" width="25px"></button>
+</div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Score11. All rights reserved.</p>
+    </footer>
+
+    <script src="viewcommission.js"></script>
+</body>
+</html>

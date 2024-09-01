@@ -1,0 +1,319 @@
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    max-width: 414px;
+    margin: auto;
+    background: linear-gradient(45deg, black, #283b4d);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fixed-header {
+    background-color: #1a2e4b;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 414px;
+    background: linear-gradient(45deg, #4d70aa, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 7px;
+    width: 376px;
+}
+
+.fixed-header .logo-container img {
+    height: 40px;
+}
+
+.fixed-header .support-icon img {
+    width: 25px;
+    height: 25px;
+}
+
+/* Navigation Styling */
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 70px;
+    width: 368px;
+}
+
+.navigation a {
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    background-color: #344e67;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    width: 66px;
+    justify-content: center;
+}
+
+.navigation a.active {
+    background-color: #256f85;
+}
+
+.navigation a:hover {
+    background-color: #3b4f6a;
+}
+
+/* Intro Section Styling */
+.intro-section {
+    padding: 20px;
+    text-align: left;
+    background: radial-gradient(at top, #1e2e41, #0000006e);
+    margin: 10px 10px;
+    border-radius: 15px;
+}
+
+.intro-section h1 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #ffcf00;
+}
+
+.intro-section p {
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: normal;
+}
+
+/* Commission Structures Styling */
+.commission-structures {
+    margin: 8px 10px;
+    padding: 20px;
+    background: radial-gradient(at top, #3b4f6a, #1e2e41);
+    border-radius: 15px;
+    text-align: left;
+}
+
+.commission-structures h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #ffcf00;
+}
+
+.commission-structures h3 {
+    font-size: 15px;
+    margin: 0px 0;
+    color: #ffffff;
+}
+
+.commission-structures p {
+    color: #bfbfbf;
+    font-weight: normal;
+    font-size: 12px;
+
+}
+
+/* VIP Commission Table Styling */
+.vip-commission-table {
+    padding: 15px;
+    background: radial-gradient(at top, #2a415b, #0000006e);
+    border-radius: 15px;
+    text-align: center;
+    width: 352px;
+}
+
+.vip-commission-table h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #ffcf00;
+}
+
+.vip-commission-table p {
+    font-size: 12px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.vip-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+}
+
+.vip-table th, .vip-table td {
+    padding: 10px;
+    border: 1px solid #237ca3;
+}
+
+.vip-table th {
+    background-color: #1b6184;
+    color: #ffffff;
+    font-size: 10px;
+}
+
+.vip-table td {
+    background-color: rgba(65, 92, 123, 0.2);
+    font-weight: normal;
+    font-size: 10px;
+}
+
+/* Earning Examples Styling */
+.earning-examples {
+    margin: 6px 10px;
+    padding: 20px;
+    background: radial-gradient(at top, #3b4f6a, #1e2e41);
+    border-radius: 15px;
+    text-align: left;
+}
+
+.earning-examples h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #ffcf00;
+}
+
+.earning-examples p {
+    font-size: 12px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+/* Summary Section Styling */
+.summary-section {
+    margin: 10px 9px;
+    padding: 20px;
+    background: radial-gradient(at top, #3b4f6a, #1e2e41);
+    border-radius: 15px;
+    text-align: left;
+    height: 167px;
+    width: 328px;
+}
+
+.summary-section h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #ffcf00;
+}
+
+.summary-metrics {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.metric-box {
+    background: #1a2631;
+    padding: 10px;
+    border-radius: 10px;
+    width: 30%;
+    text-align: center;
+}
+
+.metric-box h3 {
+    font-size: 12px;
+    color: #ffcf00;
+    margin-bottom: 10px;
+    margin: 5px;
+}
+
+.metric-box p {
+    font-size: 16px;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* Commission History Table Styling */
+.commission-details {
+    margin: 8px 10px;
+    padding: 20px;
+    background: radial-gradient(at top, #3b4f6a, #1e2e41);
+    border-radius: 15px;
+    width: 328px;
+}
+
+.commission-details h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #ffcf00;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.filters input, .filters select {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    font-size: 9px;
+    background-color: #515b64;
+    color: #ffffff;
+    width: 71px;
+}
+
+.commission-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.commission-table th, .commission-table td {
+    padding: 8px;
+    border-bottom: 1px solid #022539;
+}
+
+.commission-table th {
+    background-color: #1b6184;
+    color: #ffffff;
+    font-size: 10px;
+}
+
+.commission-table td {
+    background-color: rgba(65, 92, 123, 0.2);
+    font-size: 10px;
+    font-weight: normal;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.pagination-btn {
+    background: none;
+    color: #ffffff;
+    border: none;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination-btn:hover {
+    background-color: #4e637a20;
+}
+
+/* Footer Styling */
+footer {
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 9px;
+    color: #ffffff;
+    position: relative;
+    width: 100%;
+    max-width: 414px;
+    font-weight: normal;
+}
