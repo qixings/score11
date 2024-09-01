@@ -27,24 +27,25 @@ body {
 }
 
 .fixed-header .logo-container img {
-    height: 40px;
+    width: 100px;
 }
 .navigation a {
     color: #fff;
     padding: 10px;
     border-radius: 5px;
     transition: background 0.3s ease;
-    background-color: #283b4d;
+    background-color: #344e67;
     text-decoration: none;
     display: flex;
     align-items: center;
-    font-size: 12px;
-
+    font-size: 10px;
+    width: 85px;
+    justify-content: center;
 }
 .navigation{
     display: flex;
     gap: 10px;
-    margin-top: 42px;
+    margin-top: 52px;
     color: #fff;
     text-decoration: none;
     padding: 10px;
@@ -165,6 +166,6 @@ footer {
 
 
 .navigation a.active {
-    background-color: #5092f578; /* Highlight color */
+    background-color: #256f85; /* Highlight color */
 
 }
