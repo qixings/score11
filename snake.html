@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="theme-color" content="#28324d">
-
     <link rel="apple-touch-icon" href="./favicon.png">
     <link rel="manifest" href="./manifest.json">
     <title>Snake Betting Game</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="snake.css">
-</head>
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
 
+</head>
 <body>
     <!-- Balance and navigation container -->
     <div class="balance-container">
@@ -39,40 +38,24 @@
             </div>
         </div>
 
+        <!-- Popup Overlay -->
+        <div id="popup-overlay" class="popup-overlay" style="display: none;">
+            <div id="popup-box" class="popup-box">
+                <p id="popup-message"></p>
+                <button id="popup-close-button" class="popup-close-button">OK</button>
+            </div>
+        </div>
 
-<!-- Popup Overlay -->
-<div id="popup-overlay" class="popup-overlay" style="display: none;">
-    <div id="popup-box" class="popup-box">
-        <p id="popup-message"></p>
-        <button id="popup-close-button" class="popup-close-button">OK</button>
-    </div>
-</div>
-
-        
-                <!-- Directional Buttons -->
-                <div class="joystick-container">
-                    <button id="upBtn">▲</button>
-                    <div style="display: flex;    align-items: center;">  
-                        <div> <button id="leftBtn">◄</button>
-                        </div>
-                        
-                       
-
-                        <div class="midcircle"></div>
-
-
-                        <div><button id="rightBtn">►</button></div>
-
-                        
-                    
-                    </div>
-                  
-                    <button id="downBtn">▼</button>
-                   
-                </div>
-
-
-
+        <!-- Directional Buttons -->
+        <div class="joystick-container">
+            <button id="upBtn">▲</button>
+            <div style="display: flex; align-items: center;">
+                <div><button id="leftBtn">◄</button></div>
+                <div class="midcircle"></div>
+                <div><button id="rightBtn">►</button></div>
+            </div>
+            <button id="downBtn">▼</button>
+        </div>
 
         <div class="bet-container">
             <div class="betting-section">
@@ -92,32 +75,24 @@
                     <button onclick="adjustAmount(2)">2x</button>
                 </div>
 
-                <div class="food-bomb-section">
-                    <div class="food-bomb-count">
-                        <div class="food-bomb-selector">
-                            <label for="food">Number of Food</label>
-                            <select id="food">
-                                <option value="1">1</option>
-                                <option value="5">5</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
-                        <div class="food-bomb-selector">
-                            <label for="bombs">Number of Bombs</label>
-                            <select id="bombs">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                        </div>
+                <div class="food-section">
+                    <div class="food-selector">
+                        <label for="food">Number of Food</label>
+                        <select id="food">
+                            <option value="1">1</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                        </select>
                     </div>
-
-                    <div class="actions">
-                        <button id="bet" class="action-button">BET</button>
-                        <button id="cashout" class="cashout-button" disabled>CASHOUT</button>
+                    <div class="remaining-food">
+                        <label for="remainingFood">Remaining Food</label>
+                        <input type="text" id="remainingFood" value="0" readonly>
                     </div>
                 </div>
 
+                <div class="actions">
+                    <button id="bet" class="action-button">BET</button>
+                </div>
             </div>
         </div>
     </div>
@@ -128,6 +103,7 @@
             <thead>
                 <tr>
                     <th>Round</th>
+                    <th>status</th>
                     <th>Winning Amount</th>
                 </tr>
             </thead>
@@ -138,5 +114,4 @@
 
     <script src="snake.js"></script>
 </body>
-
 </html>
