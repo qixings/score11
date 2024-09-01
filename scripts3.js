@@ -95,12 +95,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('.games-section .game:nth-child(1)').addEventListener('click', redirectToCrash);
     document.querySelector('.games-section .game:nth-child(2)').addEventListener('click', redirectToOptionTrading);
     document.querySelector('.games-section .game:nth-child(3)').addEventListener('click', redirectToColortrading);
-document.querySelector('.games-section .game:nth-child(9)').addEventListener('click', redirectToSnake); // Added Snake game
-    document.querySelector('.games-section .game:nth-child(4)').addEventListener('click', redirectToMines);
-    document.querySelector('.games-section .game:nth-child(5)').addEventListener('click', redirectToBigsmall);
-    document.querySelector('.games-section .game:nth-child(6)').addEventListener('click', redirectToPlinko);
-    document.querySelector('.games-section .game:nth-child(7)').addEventListener('click', function() { redirectToGame('satta'); });
-    document.querySelector('.games-section .game:nth-child(8)').addEventListener('click', redirectToSpinwin);
+document.querySelector('.games-section .game:nth-child(4)').addEventListener('click', redirectToSnake); // Added Snake game
+    document.querySelector('.games-section .game:nth-child(5)').addEventListener('click', redirectToMines);
+    document.querySelector('.games-section .game:nth-child(6)').addEventListener('click', redirectToBigsmall);
+    document.querySelector('.games-section .game:nth-child(7)').addEventListener('click', redirectToPlinko);
+    document.querySelector('.games-section .game:nth-child(8)').addEventListener('click', function() { redirectToGame('satta'); });
+    document.querySelector('.games-section .game:nth-child(9)').addEventListener('click', redirectToSpinwin);
 
     // Set up event listeners for the navigation menu items
     const navItems = document.querySelectorAll('.navigation-menu .nav-item');
