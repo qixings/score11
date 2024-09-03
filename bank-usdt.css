@@ -223,3 +223,90 @@ footer {
     display: block; /* Ensure it's on a new line */
     font-weight: normal;
 }
+
+
+
+/* Popup Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #1d5da9;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: none;
+    width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 8px;
+    text-align: center;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#popupMessage {
+    margin-bottom: 20px;
+}
+
+#popupActionButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#popupActionButton:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Note Section Styles */
+.note-section {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 15px;
+    margin: 15px auto;
+    border-radius: 8px;
+    max-width: 338px;
+    text-align: left;
+    font-size: 12px;
+    line-height: 1.6;
+    font-weight: normal;
+}
+
+.note-section h3 {
+    color: #ff1900;
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.note-section p {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-weight: normal;
+}
