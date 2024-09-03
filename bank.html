@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="bank-usdt.css">
 </head>
 
+
 <body>
 
     <!-- Header -->
@@ -58,7 +59,7 @@
                 <span class="error-message" id="accountHolderNameError"></span>
 
                 <label for="bankName">Bank Name <span class="required-asterisk">*</span></label>
-                       <select style="height: 37px;" id="bankName" name="bankName" required>
+                <select style="height: 37px;" id="bankName" name="bankName" required>
                     <option value="">Select Bank </option>
                     <option value="SBI">State Bank of India (SBI)</option>
                     <option value="HDFC">HDFC Bank</option>
@@ -131,6 +132,29 @@
         </div>
 
     </div>
+
+    <!-- Popup Modal Structure -->
+<div id="popupModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="closePopup()">&times;</span>
+        <p id="popupMessage"></p>
+        <button id="popupActionButton" onclick="closePopup()">OK</button>
+    </div>
+</div>
+
+<!-- Note Section -->
+<div class="note-section">
+    <h3>Important Notice</h3>
+    <p>
+        Please be careful when adding your bank account or USDT wallet details. You can manually add your bank information only once. 
+        Any modifications or changes afterward will require you to contact customer support and provide the necessary 
+        documentation as proof.
+    </p>
+    <p>
+        Ensure that all details are correct before submitting to avoid any issues with withdrawals or account management.
+    </p>
+</div>
+
 
     <!-- Footer -->
     <footer>
