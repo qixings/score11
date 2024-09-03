@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank & USDT Wallet</title>
+    <link rel="stylesheet" href="bank-usdt.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="fixed-header">
+        <div class="logo-container">
+            <a href="home.html"><img src="topbarlogo.png" alt="Logo"></a>
+        </div>
+        <div class="support-icon">
+            <a href="https://t.me/Support">
+                <img src="cs.png" alt="Support" style="width: 25px;
+                height: 25px;
+                margin-right: 15px;
+            filter: invert();">
+            </a>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navigation">
+        <a href="user-profile.html">Profile</a>
+        <a href="deposit.html">Deposit</a>
+        <a href="withdraw.html">Withdraw</a>
+        <a href="bank-usdt.html" class="active">Bank/USDT</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="openTab('bankAccount')">Bank Account</button>
+            <button class="tab-btn" onclick="openTab('usdtWallet')">USDT Wallet</button>
+        </div>
+
+        <!-- Bank Account Section -->
+        <div id="bankAccount" class="tab-content active">
+            <h2>Add/Update Bank Account</h2>
+            <form id="bankForm" onsubmit="event.preventDefault(); requestOTP();">
+                <label for="accountHolderName">Account Holder's Name <span class="required-asterisk">*</span></label>
+                <input type="text" id="accountHolderName" name="accountHolderName" required
+                    oninput="validateAccountHolderName(this)">
+                <span class="error-message" id="accountHolderNameError"></span>
+
+                <label for="bankName">Bank Name <span class="required-asterisk">*</span></label>
+                <select id="bankName" name="bankName" required>
+                    <option value="">Select Bank </option>
+                    <option value="SBI">State Bank of India (SBI)</option>
+                    <option value="HDFC">HDFC Bank</option>
+                    <option value="ICICI">ICICI Bank</option>
+                    <!-- Add more banks as needed -->
+                </select>
+                <span class="error-message" id="bankNameError"></span>
+
+                <label for="accountNumber">Account Number <span class="required-asterisk">*</span></label>
+                <input type="text" id="accountNumber" name="accountNumber" required minlength="11" maxlength="16"
+                    oninput="validateAccountNumber(this)">
+                <span class="error-message" id="accountNumberError"></span>
+
+                <label for="ifscCode">IFSC Code <span class="required-asterisk">*</span></label>
+                <input type="text" id="ifscCode" name="ifscCode" required oninput="validateIFSCCode(this)">
+                <span class="error-message" id="ifscCodeError"></span>
+
+                <label for="phoneNumber">Phone Number (linked to bank account) <span
+                        class="required-asterisk">*</span></label>
+                <input type="text" id="phoneNumber" name="phoneNumber" required minlength="10" maxlength="10"
+                    oninput="validatePhoneNumber(this)">
+                <span class="error-message" id="phoneNumberError"></span>
+
+                <button type="submit">Request OTP</button>
+            </form>
+
+            <div id="otpSection" style="display:none;">
+                <h3>Enter OTP</h3>
+                <form id="otpForm" onsubmit="event.preventDefault(); verifyOTP();">
+                    <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
+                    <button type="submit">Verify OTP</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- USDT Wallet Section -->
+        <div id="usdtWallet" class="tab-content">
+            <h2>Add/Update USDT Wallet</h2>
+            <form id="usdtForm" onsubmit="event.preventDefault(); addUSDTWallet();">
+                <label for="walletAddress">Wallet Address <span class="required-asterisk">*</span></label>
+                <input type="text" id="walletAddress" name="walletAddress" required>
+
+                <label for="networkType">Network Type <span class="required-asterisk">*</span></label>
+                <select id="networkType" name="networkType" required>
+                    <option value="ERC20">ERC20 (Ethereum)</option>
+                    <option value="TRC20">TRC20 (Tron)</option>
+                    <option value="BEP20">BEP20 (Binance Smart Chain)</option>
+                </select>
+
+                <label for="walletScreenshot">Upload Wallet Screenshot <span class="required-asterisk">*</span></label>
+                <input style="color: #b500ff;" type="file" id="walletScreenshot" name="walletScreenshot" required
+                    accept="image/*">
+
+                <span class="error-message" id="walletScreenshotError"></span>
+                <button type="submit">Save USDT Wallet</button>
+            </form>
+        </div>
+
+        <!-- Saved Accounts Section -->
+        <div class="saved-accounts" id="savedAccountsSection" style="display: none;">
+            <h2>Your Accounts</h2>
+            <div style="display: grid; justify-items: center; grid-template-columns: auto auto;">
+                <div id="bankAccountInfo" class="saved-item">
+                    <!-- Dynamic Bank Account Information will be inserted here -->
+                </div>
+                <div id="usdtWalletInfo" class="saved-item">
+                    <!-- Dynamic USDT Wallet Information will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Score11. All rights reserved.</p>
+    </footer>
+
+    <script src="bank-usdt.js"></script> <!-- Link to JavaScript file -->
+</body>
+
+</html>

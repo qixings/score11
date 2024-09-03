@@ -1,0 +1,225 @@
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    max-width: 414px;
+    margin: auto;
+    background: linear-gradient(45deg, black, #283b4d);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fixed-header {
+    background-color: #1a2e4b;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 414px;
+    background: linear-gradient(45deg, #4d70aa, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.logo-container img {
+    width: 100px;
+}
+
+.support-icon img {
+    width: 25px;
+    height: 25px;
+}
+
+/* Navigation Styling */
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 70px;
+    width: 368px;
+}
+
+.navigation a {
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #344e67;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    width: 75px;
+    justify-content: center;
+}
+
+.navigation a.active {
+    background-color: #256f85;
+}
+
+/* Container and Tab Navigation */
+.container {
+    margin: 9px;
+    background-color: #1c4a63;
+    padding: 15px;
+    border-radius: 8px;
+    width: 338px;
+}
+
+.tab-navigation {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    border-radius: 19px;
+    background: #111d24;
+}
+
+.tab-btn {
+    background: none;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+.tab-btn.active {
+    background-color: #3f7c96;
+    border-radius: 19px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content h2{
+    font-size: 18px;
+    color: rgb(0, 221, 255);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content.active h2 {
+    font-size: 18px;
+    color: rgb(0, 221, 255);
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+form label {
+    text-align: left;
+    font-size: 12px;
+}
+
+form input, form select {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    color: #000000;
+}
+
+form button {
+    background: linear-gradient(181deg, #0f8cff, #a902ff);
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #e6b800;
+}
+
+/* Saved Accounts Section */
+.saved-accounts {
+    margin-top: 20px;
+    text-align: left;
+    gap: 10px; /* Add some gap between the grid items */
+}
+
+.saved-item {
+    background-color: #16232f;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    width: 143px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden; /* Ensure content doesn't overflow */
+    text-align: left; /* Ensure text aligns to the left */
+}
+
+.saved-item h3 {
+    margin: 0;
+    font-size: 14px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Show ellipsis for overflowing text */
+}
+
+.saved-item p {
+    margin: 5px 0;
+    font-size: 9px;
+    word-wrap: break-word; /* Ensure long text breaks onto the next line */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Show ellipsis for overflowing text */
+}
+
+.saved-item button {
+    background-color: #ffcf00;
+    color: #000;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    align-self: flex-start; /* Align the button to the start of the saved item */
+}
+
+.saved-item button:hover {
+    background-color: #e6b800;
+}
+
+/* Footer Styling */
+footer {
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.error-message::before {
+    color: red; /* Make the asterisk red as well */
+}
+
+.required-asterisk {
+    color: red; /* Make the asterisk red */
+    font-size: 14px; /* Adjust the size if needed */
+}
+
+.error-message {
+    color: red; /* Error messages in red */
+    font-size: 9px; /* Smaller font size */
+    display: block; /* Ensure it's on a new line */
+    font-weight: normal;
+}
