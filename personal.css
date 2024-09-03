@@ -1,0 +1,266 @@
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    max-width: 414px;
+    margin: auto;
+    background: linear-gradient(45deg, black, #283b4d);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fixed-header {
+    background-color: #1a2e4b;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 414px;
+    background: linear-gradient(45deg, #4d70aa, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.logo-container img {
+    width: 100px;
+}
+
+.support-icon img {
+    width: 25px;
+    height: 25px;
+}
+
+/* Navigation Styling */
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 70px;
+    width: 368px;
+}
+
+.navigation a {
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #344e67;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    width: 75px;
+    justify-content: center;
+}
+
+.navigation a.active {
+    background-color: #256f85;
+}
+
+/* Container Styling */
+.container {
+    margin: 9px;
+    background-color: #151f30;
+    padding: 15px;
+    border-radius: 8px;
+    width: 338px;
+}
+
+h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: rgb(0, 221, 255);
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    text-align: left;
+    font-size: 14px;
+}
+
+form input, form select {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    color: #000;
+}
+
+form button {
+    background: linear-gradient(181deg, #ac00ff, #0292ff);
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 121px;
+}
+
+form button:hover {
+    background-color: #e6b800;
+}
+
+/* Profile Picture Styling */
+.profile-pic-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-pic-container img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.profile-pic-container button {
+    background-color: #ffcf00;
+    color: #000;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.profile-pic-container button:hover {
+    background-color: #e6b800;
+}
+
+/* Error Message Styling */
+.error-message {
+    color: red;
+    font-size: 10px;
+    display: block;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.required-asterisk {
+    color: red;
+    font-size: 14px;
+}
+
+/* Notifications Section */
+.notifications-info {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.notifications-info p {
+    margin-bottom: 10px;
+}
+
+.notifications-info form label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Important Notes Section */
+.important-notes {
+    margin-top: 20px;
+    text-align: left;
+    font-size: 12px;
+    color: #ffcf00;
+}
+
+/* Footer Styling */
+footer {
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+
+
+/* Popup Message Styling */
+.popup-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #444;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Display Info Section */
+#savedAddressSection {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #2c4a63;
+    border-radius: 8px;
+    text-align: left;
+    color: #fff;
+}
+
+#savedAddressSection h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#savedAddressSection p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+#savedAddressSection button {
+    background-color: #ffcf00;
+    color: #ffffff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#savedAddressSection button:hover {
+    background-color: #e6b800;
+}
+
+
+
+/* Important Notes Styling */
+.important-notes {
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.important-notes h4 {
+    margin-top: 0;
+    font-size: 16px;
+    color: #d9534f; /* Red color for the heading to grab attention */
+}
+
+.important-notes ul {
+    padding-left: 20px;
+}
+
+.important-notes li {
+    margin-bottom: 10px;
+    font-size: 14px;
+}

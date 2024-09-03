@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Information</title>
+    <link rel="stylesheet" href="personal.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="fixed-header">
+        <div class="logo-container">
+            <a href="home.html"><img src="topbarlogo.png" alt="Logo"></a>
+        </div>
+        <div class="support-icon">
+            <a href="https://t.me/Support">
+                <img src="cs.png" alt="Support" style="width: 25px; height: 25px; filter: invert();">
+            </a>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navigation">
+        <a href="user-profile.html">Profile</a>
+        <a href="deposit.html">Deposit</a>
+        <a href="withdraw.html">Withdraw</a>
+        <a href="bank-usdt.html">Bank/USDT</a>
+        <a href="personal.html" class="active">Personal</a>
+    </nav> 
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- User Greeting -->
+        <section class="greeting">
+            <h2>Welcome, <span id="userName"> Name</span></h2>
+            <div class="profile-pic-container">
+                <img src="user.png" alt="Profile Picture" id="profilePic">
+                <button onclick="changeProfilePic()">Change Picture</button>
+            </div>
+        </section>
+
+        <!-- Personal Information Form -->
+      <!-- Personal Information Form -->
+<section class="personal-info">
+    <h3>Personal Information</h3>
+    <form id="personalForm" onsubmit="event.preventDefault(); savePersonalInfo();">
+        <label for="username">Username <span class="required-asterisk">*</span></label>
+        <input type="text" id="username" name="username" value="Default Name" required>
+
+        <label for="phoneNumber">Phone Number <span class="required-asterisk">*</span></label>
+        <input type="text" id="phoneNumber" name="phoneNumber" value="9876543210" readonly>
+
+        <div id="addressInputSection" style="display: flex;
+        flex-direction: column;
+        gap: 10px;">
+            <label for="address">Address</label>
+            <input type="text" id="street" name="street" placeholder="Street Address">
+            <input type="text" id="city" name="city" placeholder="City">
+            <input type="text" id="state" name="state" placeholder="State">
+            <input type="text" id="postalCode" name="postalCode" placeholder="Postal Code">
+        </div>
+
+        <div id="savedAddressSection" style="display:none;">
+            <h3>Address Details</h3>
+            <p id="displayAddress"></p>
+            <button type="button" onclick="enableAddressEdit()">Edit</button>
+        </div> 
+
+        <!-- OTP Input Section (hidden by default) -->
+        <div id="otpInputSection" style="display:none;">
+            <label for="otp">Enter OTP <span class="required-asterisk">*</span></label>
+            <input type="text" id="otp" name="otp" placeholder="Enter OTP">
+            <button type="button" onclick="verifySubmittedOTP()">Submit OTP</button>
+        </div>
+
+        <button type="submit" style="width: 100%;">Save Changes</button>
+    </form>
+</section>
+
+
+
+
+        
+
+        
+<!-- Important Notes Section -->
+<section class="important-notes">
+    <h4>Important Notes:</h4>
+    <ul>
+        <li>Your registered phone number is used for OTP verification and cannot be changed directly through this portal.</li>
+        <li>Make sure to enter a valid address. You can edit your address later, but you will need to verify your identity with an OTP sent to your registered phone number.</li>
+        <li>For any modifications to your registered phone number or other critical details, please contact customer support with the required documentation.</li>
+        <li>If you face any issues while updating your information, feel free to reach out to our customer support team for assistance.</li>
+    </ul>
+</section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Score11. All rights reserved.</p>
+    </footer>
+
+    <script src="personal.js"></script> <!-- Link to JavaScript file -->
+</body>
+</html>
