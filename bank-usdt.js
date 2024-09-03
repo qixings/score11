@@ -90,12 +90,12 @@ function requestOTP() {
         currentPhoneNumber = phoneNumber;
 
         // Simulate sending OTP to the phone number
-        alert(`OTP has been sent to ${phoneNumber}`);
+        showPopup(`OTP has been sent to ${phoneNumber}`);
 
         // Show the OTP section
         document.getElementById('otpSection').style.display = 'block';
     } else {
-        alert('Please fill out all fields correctly before requesting OTP.');
+        showPopup('Please fill out all fields correctly before requesting OTP.');
     }
 }
 
@@ -105,7 +105,7 @@ function verifyOTP() {
 
     // Simulate OTP verification
     if (otp === '123456') {
-        alert('OTP verified successfully.');
+        showPopup('OTP verified successfully.');
 
         // Save the account details and update the account info display
         saveBankAccountDetails();
@@ -113,11 +113,10 @@ function verifyOTP() {
         // Hide the OTP section
         document.getElementById('otpSection').style.display = 'none';
     } else {
-        alert('Invalid OTP. Please try again.');
+        showPopup('Invalid OTP. Please try again.');
     }
 }
 
-// Function to save and display bank account details
 // Function to save and display bank account details
 function saveBankAccountDetails() {
     const accountHolderName = document.getElementById('accountHolderName').value;
@@ -142,7 +141,6 @@ function saveBankAccountDetails() {
     document.getElementById('savedAccountsSection').style.display = 'block';
 }
 
-// Function to save and display USDT wallet details
 // Function to save and display USDT wallet details
 function addUSDTWallet() {
     const walletAddress = document.getElementById('walletAddress').value;
@@ -172,5 +170,18 @@ function disableForm(formId) {
 
 // Function to show support message when user clicks on "Edit"
 function showSupportMessage() {
-    alert('If you need to change/modify your bank account, please contact customer support with required document proof.');
+    showPopup('If you need to change/modify your bank account, please contact customer support with required document proof.');
+}
+
+// Function to show a popup modal
+function showPopup(message) {
+    const popupModal = document.getElementById('popupModal');
+    const popupMessage = document.getElementById('popupMessage');
+    popupMessage.textContent = message;
+    popupModal.style.display = 'block';
+}
+
+// Function to close the popup modal
+function closePopup() {
+    document.getElementById('popupModal').style.display = 'none';
 }
