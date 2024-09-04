@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox</title>
+    <link rel="stylesheet" href="inbox.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="fixed-header">
+        <div class="logo-container">
+            <a href="home.html"><img src="topbarlogo.png" alt="Logo"></a>
+        </div>
+        <div class="support-icon">
+            <a href="https://t.me/Support">
+                <img src="cs.png" alt="Support" style="filter: invert();
+                width: 25px;
+                height: 25px;
+                margin-right: 15px;">
+            </a>
+        </div>
+    </header>
+     <!-- Alert panel -->
+     <div>
+        <section class="alert-panel">
+            <marquee behavior="scroll" direction="left">Our customer support never sends links to members. If you receive
+                any, please report it immediately.</marquee>
+        </section>
+    </div>
+
+    <!-- Message Categories Navigation -->
+    <nav class="category-navigation">
+        <a href="#" class="category-btn active" onclick="filterMessages('all')">All Messages</a>
+        <a href="#" class="category-btn" onclick="filterMessages('unread')">Unread</a>
+        <a href="#" class="category-btn" onclick="filterMessages('promotions')">Promotions</a>
+        <a href="#" class="category-btn" onclick="filterMessages('alerts')">System Alerts</a>
+        <a href="#" class="category-btn" onclick="filterMessages('support')">Support</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search in Inbox..." oninput="searchMessages()">
+        </div>
+
+        <!-- Message List -->
+        <div id="messageList" class="message-list">
+            <!-- Message items will be dynamically loaded here -->
+        </div>
+
+        <!-- Message Details -->
+        <div id="messageDetails" class="message-details" style="display:none;">
+            <h3 id="messageSubject"></h3>
+            <p id="messageSender"></p>
+            <p id="messageTimestamp"></p>
+            <p id="messageContent"></p>
+            <button onclick="backToList()">Back to Inbox</button>
+            <button onclick="deleteMessage()">Delete</button>
+            <button onclick="toggleReadStatus()">Mark as Unread</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Score11. All rights reserved.</p>
+    </footer>
+
+    <script src="inbox.js"></script> <!-- Link to JavaScript file -->
+</body>
+</html>

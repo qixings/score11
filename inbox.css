@@ -1,0 +1,197 @@
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(45deg, black, #283b4d);
+    align-items: center;
+}
+
+/* Ensure the header stays fixed */
+.fixed-header {
+    background-color: #1a2e4b;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 414px;
+    background: linear-gradient(45deg, #4d70aa, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.logo-container img {
+    width: 100px;
+}
+
+.support-icon img {
+    width: 25px;
+    height: 25px;
+}
+
+/* Category Navigation Styling */
+.category-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    width: 368px;
+}
+
+.category-btn {
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #344e67;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    width: 75px;
+    justify-content: center;
+}
+
+.category-btn.active {
+    background-color: #256f85;
+}
+
+/* Container Styling */
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 368px;
+    margin: 7px 9px;
+}
+
+/* Search Bar Styling */
+.search-bar {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.search-bar input {
+    width: 348px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    color: #000;
+    filter: drop-shadow(0px 2px 2px rgb(0, 133, 250));
+}
+
+/* Message List Styling */
+.message-list {
+    border-radius: 8px;
+    max-height: 300px;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.message-item {
+    background-color: #283b4d;
+    padding: 10px;
+    margin-bottom: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.message-item.unread {
+    font-weight: bold;
+    color: #a9ff00;
+}
+
+.message-item h4 {
+    margin: 0;
+    font-size: 12px;
+}
+
+.message-item p {
+    margin: 5px 0;
+    font-size: 10px;
+}
+
+/* Message Details Styling */
+.message-details {
+    background-color: #2f404f;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    display: none;
+    width: 338px;
+    height: 632px;
+}
+
+.message-details h3 {
+    margin-top: 0;
+    font-size: 14px;
+    color: rgb(0, 221, 255);
+}
+
+.message-details p {
+    margin: 5px 0;
+    font-size: 10px;
+}
+
+.message-details button {
+    background-color: #ffcf00;
+    color: #000000;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    width: 99px;
+    font-size: 9px;
+}
+
+.message-details button:hover {
+    background-color: #e6b800;
+}
+
+/* Footer Styling */
+footer {
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: #ffffff;
+    width: 368px;
+}
+
+/* Popup Message Styling */
+.popup-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #444;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+
+/* Alert panel */
+.alert-panel {
+    margin: 8px;
+    margin-top: 58px;
+    background-color: #8a8a8a;
+    padding: 5px;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 13px;
+    z-index: 9999;
+    position: relative;
+    height: 20px;
+    display: flex;
+    align-items: center;
+}
