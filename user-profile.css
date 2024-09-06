@@ -232,7 +232,11 @@ body {
     text-align: left;
     display: flex;
     align-items: center; 
-    text-decoration: none;
+}
+
+a{
+    text-decoration: none;  
+    color: white;
 }
 
 
@@ -241,6 +245,9 @@ body {
 
 }
 
+p a{
+    color: greenyellow;
+}
 .section-content p{
 font-size: 10px;
 font-weight: normal;
