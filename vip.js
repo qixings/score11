@@ -15,8 +15,18 @@ let rewardClaimed = {
 // Timer for reward reset (e.g., 5 minutes)
 const rewardResetTime = 5 * 60 * 1000; // 5 minutes in milliseconds
 
-// Initialize user's balance (example starting balance)
-let userBalance = 10000; // ₹10,000 initial balance
+// Initialize user's balance and betting points (example starting values)
+let userBalance = 55545; // ₹10,000 initial balance
+let playerTotalBets = 125500; // Example: initial betting points
+
+// Define the required betting points for each level
+const vipLevels = {
+    bronze: { requiredPoints: 150000 },
+    silver: { requiredPoints: 350000 },
+    gold: { requiredPoints: 700000 },
+    platinum: { requiredPoints: 1500000 },
+    diamond: { requiredPoints: 3000000 }
+};
 
 document.addEventListener("DOMContentLoaded", () => {
     // Initialize the scroll behavior
@@ -33,10 +43,68 @@ document.addEventListener("DOMContentLoaded", () => {
     // Show default benefits (Bronze level)
     showBenefits("bronze");
 
-    // Update the initial balance display
+    // Update the user balance and betting points in the UI dynamically
     updateUserBalance(userBalance);
+    updateBettingPoints(playerTotalBets);
+
+    // Update VIP progress based on player's total bets
+    updateVipProgress();
 });
 
+// Function to update user balance dynamically
+function updateUserBalance(newBalance) {
+    userBalance = newBalance; // Update the user balance variable
+    document.querySelector('.user-balance').textContent = `₹${userBalance}`;
+}
+
+// Function to update betting points dynamically
+function updateBettingPoints(newBettingPoints) {
+    playerTotalBets = newBettingPoints; // Update playerTotalBets with new value
+    document.querySelector('.betting-points').textContent = newBettingPoints;
+    
+    // Recalculate and update VIP progress based on new betting points
+    updateVipProgress();
+}
+
+// Function to update the progress bars based on player's total bets
+function updateVipProgress() {
+    Object.keys(vipLevels).forEach(level => {
+        const vipCard = document.querySelector(`.vip-level-card.${level}`);
+        const progressBar = vipCard.querySelector(".progress");
+        const betProgress = vipCard.querySelector(".bet-progress");
+        const progressPercentDisplay = vipCard.querySelector(".progress-percent");
+        const achievedStatus = vipCard.querySelector('.achieved-status span');
+        const statusIndicator = vipCard.querySelector('.status-indicator');
+
+        const levelData = vipLevels[level];
+        const requiredPoints = levelData.requiredPoints;
+
+        // Calculate percentage progress
+        const progressPercent = Math.min((playerTotalBets / requiredPoints) * 100, 100);
+
+        // Update progress bar width
+        progressBar.style.width = `${progressPercent}%`;
+
+        // Update the betting progress text
+        betProgress.textContent = `${Math.min(playerTotalBets, requiredPoints)}/${requiredPoints}`;
+
+        // Update the percentage completed display
+        progressPercentDisplay.textContent = `${Math.floor(progressPercent)}%`;
+
+        // Update achieved status and color change for the level
+        if (progressPercent === 100) {
+            achievedStatus.textContent = "Achieved";
+            statusIndicator.style.backgroundColor = "#00ff00"; // Green color for achieved
+            vipCard.style.filter = "drop-shadow(0px 0px 10px #00ff00)"; // Highlight fully achieved levels
+        } else {
+            achievedStatus.textContent = "Pending";
+            statusIndicator.style.backgroundColor = "#ffcf00"; // Yellow for pending
+            vipCard.style.filter = ""; // Remove highlight if not fully achieved
+        }
+    });
+}
+
+// Function to handle snapping scroll
 function handleScrollSnap() {
     const scrollContainer = document.getElementById("vipLevelsScroll");
     const cards = document.querySelectorAll(".vip-level-card");
@@ -61,7 +129,6 @@ function handleScrollSnap() {
         showBenefits(level); // Call showBenefits based on the level card that is centered
     }
 }
-
 
 // Function to show VIP benefits based on level
 function showBenefits(level) {
@@ -162,11 +229,6 @@ function showRewardItem(type) {
     if (allClaimedMessage) {
         allClaimedMessage.remove();
     }
-}
-
-// Example function to update user balance dynamically
-function updateUserBalance(newBalance) {
-    document.querySelector('.user-balance').textContent = `₹${newBalance}`;
 }
 
 // Function to display the "All rewards have been claimed" message
