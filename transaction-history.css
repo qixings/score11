@@ -38,26 +38,52 @@ body {
     color: #ffd700;
 }
 
-/* Filter Section */
-.filters {
+.totals {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 12px;
+    margin-bottom: 6px;
 }
 
-.filter-dropdown, .filter-date, .filter-amount {
-    padding: 8px;
+.totals p {
+    background: #00000041;
+    padding: 25px;
+    border-radius: 10px;
+
+}
+
+/* Filter Section - Grid Layout for Proper Alignment */
+.filters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 8px;
+    margin-bottom: 15px;
+}
+
+.filter-dropdown,
+.filter-date,
+.filter-amount {
+    padding: 3px;
     background-color: #344e67;
     color: #ffffff;
     border: none;
     border-radius: 5px;
-    font-size: 10px;
+    font-size: 12px;
+    height: 28px;
+}
+
+label {
     margin-bottom: 5px;
 }
 
-.filter-date, .filter-amount {
-    width: 100px;
+input {
+    margin-bottom: 10px;
+}
+
+.filter-dropdown {
+    grid-column: span 2;
+    /* Make dropdown span two columns */
+    height: 35px;
 }
 
 #applyFilters {
@@ -67,8 +93,10 @@ body {
     color: white;
     cursor: pointer;
     border-radius: 5px;
-    height: 33px;
+    height: 35px;
     font-size: 12px;
+    grid-column: span 2;
+    /* Make apply button span two columns */
 }
 
 #applyFilters:hover {
