@@ -15,7 +15,7 @@ body {
 .container {
     max-width: 600px;
     margin: 0px 9px;
-    background: radial-gradient(#00213b96, #070c10);
+    background: radial-gradient(at top, #416e8a, #000000);
     padding-bottom: 13px;
     border-radius: 0 0 8px 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -135,12 +135,15 @@ body {
 
 
 .navbar{
-    background: rgb(51 84 114);
+    background-image: url(user-ban.png);
     padding: 10px;
     border-radius: 12px;
     margin-top: 3px;
     display: flex;
     justify-content: center;
+    height: 150px;
+    background-size: 396px;
+    background-repeat: no-repeat;
 
 }
 
@@ -149,6 +152,8 @@ body {
     justify-content: space-around;
     gap: 5px;
     width: 375px;
+    display: grid;
+    grid-template-columns: auto auto auto;
 }
 
 .main-nav button{
@@ -166,7 +171,9 @@ body {
 
 
 .alert-panel2 {
-    margin:17px 9px;
+    margin: 9px;
+    margin-top:119px;
+    margin-bottom:18px;
     background-color: #ffffff69;
     padding: 5px;
     text-align: center;
@@ -184,7 +191,7 @@ body {
 
 .main-cont{
     display: flex;
-    background: rgb(26 51 75 / 99%);
+    background: #25363f;
     margin: 9px;
     margin-top: -10px;
     border-radius: 12px;
@@ -295,6 +302,6 @@ margin-top: 0px;
 }
 
 .bottom-cont{
-    height: 50vh;
+    height: 35vh;
     margin-top: -12px;
 }
