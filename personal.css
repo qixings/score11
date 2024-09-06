@@ -97,9 +97,8 @@ form input, form select {
     border-radius: 5px;
     border: none;
     font-size: 14px;
-       color: #ffffff;
+    color: #ffffff;
     background: #26323e;
-}
 }
 
 form button {
@@ -111,6 +110,7 @@ form button {
     cursor: pointer;
     font-weight: bold;
     width: 121px;
+    height: 37px;
 }
 
 form button:hover {
