@@ -9,6 +9,7 @@ const transactionHistory = [
     { type: "Deposit", amount: 2000, date: "2024-09-07", time: "03:15 PM" },
     { type: "Withdrawal", amount: 1800, date: "2024-09-08", time: "06:45 PM" },
     { type: "Deposit", amount: 3000, date: "2024-09-09", time: "11:15 AM" },
+    // Add more transactions if needed...
     { type: "Deposit", amount: 1000, date: "2024-09-01", time: "10:30 AM" },
     { type: "Withdrawal", amount: 500, date: "2024-09-02", time: "02:15 PM" },
     { type: "Deposit", amount: 1500, date: "2024-09-03", time: "08:45 PM" },
@@ -27,16 +28,6 @@ const transactionHistory = [
     { type: "Deposit", amount: 2000, date: "2024-09-07", time: "03:15 PM" },
     { type: "Withdrawal", amount: 1800, date: "2024-09-08", time: "06:45 PM" },
     { type: "Deposit", amount: 3000, date: "2024-09-09", time: "11:15 AM" },
-    { type: "Deposit", amount: 1000, date: "2024-09-01", time: "10:30 AM" },
-    { type: "Withdrawal", amount: 500, date: "2024-09-02", time: "02:15 PM" },
-    { type: "Deposit", amount: 1500, date: "2024-09-03", time: "08:45 PM" },
-    { type: "Deposit", amount: 1200, date: "2024-09-04", time: "12:30 PM" },
-    { type: "Withdrawal", amount: 500, date: "2024-09-05", time: "09:30 PM" },
-    { type: "Deposit", amount: 800, date: "2024-09-06", time: "01:30 PM" },
-    { type: "Deposit", amount: 2000, date: "2024-09-07", time: "03:15 PM" },
-    { type: "Withdrawal", amount: 1800, date: "2024-09-08", time: "06:45 PM" },
-    { type: "Deposit", amount: 3000, date: "2024-09-09", time: "11:15 AM" },
-    // Add more transactions as needed...
 ];
 
 let currentPage = 1;
@@ -63,6 +54,7 @@ function loadTransactionHistoryPage(page, filteredHistory) {
     }
 
     updatePagination(page, filteredHistory);
+    updateTotals(filteredHistory);  // Update totals whenever the page is loaded
 }
 
 // Update pagination display
@@ -76,6 +68,21 @@ function updatePagination(page, filteredHistory) {
 
     prevButton.disabled = page === 1;
     nextButton.disabled = page === totalPages;
+}
+
+// Calculate and update the total deposited and withdrawn amounts
+function updateTotals(filteredHistory) {
+    const totalDeposited = filteredHistory
+        .filter(item => item.type === "Deposit")
+        .reduce((sum, item) => sum + item.amount, 0);
+
+    const totalWithdrawn = filteredHistory
+        .filter(item => item.type === "Withdrawal")
+        .reduce((sum, item) => sum + item.amount, 0);
+
+    // Update the DOM elements with the calculated totals
+    document.getElementById("totalDeposited").textContent = totalDeposited;
+    document.getElementById("totalWithdrawn").textContent = totalWithdrawn;
 }
 
 // Pagination Event Listeners
