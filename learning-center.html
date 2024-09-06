@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Center</title>
+    <link rel="stylesheet" href="learning-center.css">
+</head>
+<body>
+
+    <!-- Learning Center Container -->
+    <div class="learning-center-container">
+        <h2>Learning Center</h2>
+
+        <!-- Tutorial Content Section (Now placed above the game list) -->
+        <div class="tutorial-content" id="tutorialContent">
+            <h3>Welcome to the Learning Center!</h3>
+            <iframe id="tutorialVideo" width="100%" height="200" src="https://www.youtube.com/embed/example" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p>Select a tutorial from the list below to view its content.</p>
+        </div>
+
+        <!-- Game List Section (Now in a 4-column grid) -->
+        <div class="game-list">
+            <h3>Select a Tutorial:</h3>
+            <ul>
+                <li><button class="game-button" onclick="showGameTutorial('Crash')">Crash</button></li>
+                <li><button class="game-button" onclick="showGameTutorial('Trading')">Trading</button></li>
+                <li><button class="game-button" onclick="showGameTutorial('Snake')">Snake</button></li>
+                <li><button class="game-button" onclick="showGameTutorial('Color Trading')">Color Trading</button></li>
+                <li><button class="game-button" onclick="showGameTutorial('Big Small')">Big Small</button></li>
+                <li><button class="game-button" onclick="showGameTutorial('Mines')">Mines</button></li>
+                <li><button class="game-button" onclick="showGameTutorial('Plinko')">Plinko</button></li>
+                <li><button class="game-button" onclick="showGameTutorial('Number Trading')">Number Trading</button></li>
+                <li><button class="game-button" onclick="showGameTutorial('Spin Win')">Spin Win</button></li>
+                <li><button class="game-button" onclick="showGameTutorial('Deposit')">Deposit</button></li>
+                <li><button class="game-button" onclick="showGameTutorial('Withdraw')">Withdraw</button></li>
+                <li><button class="game-button" onclick="showGameTutorial('Add Bank Account')">Add Bank Account</button></li>
+                <li><button class="game-button" onclick="showGameTutorial('Gift Code')">Gift Code</button></li>
+                <li><button class="game-button" onclick="showGameTutorial('Become Agent')">Become Agent</button></li>
+            </ul>
+        </div>
+
+        <!-- FAQs Section -->
+        <div class="faqs">
+            <h3>Frequently Asked Questions (FAQs)</h3>
+            <ul>
+                <li>
+                    <strong>How do I place a bet?</strong>
+                    <p>To place a bet, select the game you want to play, choose your bet amount, and confirm your bet by pressing the "Place Bet" button.</p>
+                </li>
+                <li>
+                    <strong>How do I know if I won?</strong>
+                    <p>Your game will notify you with a win message if your bet is successful, and your account balance will be updated automatically.</p>
+                </li>
+                <li>
+                    <strong>What are the different types of bets?</strong>
+                    <p>There are various betting types, such as single bets, multi-bets, and special game bets. You can find more details in the game rules section for each game.</p>
+                </li>
+                <li>
+                    <strong>Can I play for free?</strong>
+                    <p>Yes, many games offer a "practice mode" where you can play without using real money. This is great for learning the mechanics before you start betting.</p>
+                </li>
+                <li>
+                    <strong>How do I withdraw my winnings?</strong>
+                    <p>You can withdraw your winnings by navigating to the "Withdraw" section, choosing your payment method, and following the on-screen instructions.</p>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+
+    <script src="learning-center.js"></script>
+
+</body>
+</html>

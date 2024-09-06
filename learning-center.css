@@ -1,0 +1,114 @@
+/* Full-Screen Layout */
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    height: auto;
+    min-height: 100vh;
+    max-width: 414px;
+    margin: auto;
+    background: linear-gradient(45deg, black, #283b4d);
+    background-repeat: no-repeat;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Learning Center Container */
+.learning-center-container {
+    width: 350px;
+    max-width: 400px;
+    padding: 15px;
+    background-color: #1f2b38;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 9px;
+}
+
+/* Header Styles */
+.learning-center-container h2, .learning-center-container h3 {
+    color: #00e9ff;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Tutorial Content Section */
+.tutorial-content {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #16222c;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.tutorial-content h3 {
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+
+.tutorial-content iframe {
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.tutorial-content p {
+    font-size: 12px;
+}
+
+/* Game List Section - 4 Column Grid */
+.game-list {
+    margin-bottom: 20px;
+}
+
+.game-list ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-gap: 10px; /* Spacing between buttons */
+}
+
+.game-button {
+    padding: 10px;
+    background-color: #008cba;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    width: 77px;
+    height: 64px;
+}
+
+.game-button:hover {
+    background-color: #ff7300;
+}
+
+/* FAQs Section */
+.faqs {
+    padding: 15px;
+    background-color: #16222c;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.faqs h3 {
+    color: #ffd700;
+}
+
+.faqs ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.faqs li {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+
+li p{
+    color: #26c2ba;
+    font-weight: normal;
+}
