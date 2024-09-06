@@ -150,6 +150,7 @@ body {
     margin-top: 10px;
     width: 99px;
     font-size: 9px;
+        height: 25px;
 }
 
 .message-details button:hover {
