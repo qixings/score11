@@ -174,14 +174,6 @@ form button:hover {
     margin-bottom: 10px;
 }
 
-/* Important Notes Section */
-.important-notes {
-    margin-top: 20px;
-    text-align: left;
-    font-size: 12px;
-    color: #ffcf00;
-}
-
 /* Footer Styling */
 footer {
     padding: 10px;
@@ -244,7 +236,7 @@ footer {
 
 /* Important Notes Styling */
 .important-notes {
-    background-color: #f9f9f9;
+    background-color: #cccccc;
     color: #333;
     padding: 15px;
     border-radius: 8px;
