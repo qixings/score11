@@ -157,7 +157,6 @@ body {
 }
 
 .main-nav button{
-    background: none;
     border: none;
     color: #ffffff;
     display: flex;
@@ -165,7 +164,10 @@ body {
     align-items: center;
     gap: 5px;
     font-size: 12px;
-    width: 50px;
+    width: 114px;
+    background: rgb(0 0 0 / 13%);
+    border-radius: 8px;
+    justify-content: center;
     
 }
 
