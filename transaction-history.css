@@ -1,0 +1,139 @@
+/* Full-Screen Layout */
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    height: auto;
+    min-height: 100vh;
+    max-width: 414px;
+    margin: auto;
+    background: linear-gradient(45deg, black, #283b4d);
+    background-repeat: no-repeat;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Full-Screen Container */
+.transaction-history-container {
+    width: 360px;
+    height: 100%;
+    max-width: 400px;
+    padding: 9px;
+    background-color: #1f2b38;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 9px;
+}
+
+/* Transaction History Header */
+.transaction-history-container h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #ffd700;
+}
+
+/* Filter Section */
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-dropdown, .filter-date, .filter-amount {
+    padding: 8px;
+    background-color: #344e67;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+.filter-date, .filter-amount {
+    width: 100px;
+    height: 17px;
+}
+
+#applyFilters {
+    padding: 8px 15px;
+    background-color: #008cba;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 33px;
+    font-size: 12px;
+}
+
+#applyFilters:hover {
+    background-color: #0079a1;
+}
+
+/* Transaction History List */
+.transaction-history-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+/* Individual Transaction Item */
+.transaction-item {
+    background-color: #16222c;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.transaction-item p {
+    margin: 5px 0;
+    font-size: 12px;
+    text-align: left;
+}
+
+.type {
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.deposit {
+    color: #00ff00;
+}
+
+.withdrawal {
+    color: #ff4500;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.prev-page,
+.next-page {
+    background-color: #008cba;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.prev-page:hover,
+.next-page:hover {
+    background-color: #0079a1;
+}
+
+.page-numbers {
+    color: #ffffff;
+    font-size: 0.9rem;
+}

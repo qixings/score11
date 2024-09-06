@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History</title>
+    <link rel="stylesheet" href="transaction-history.css">
+</head>
+<body>
+
+    <!-- Full-Screen Container for Transaction History -->
+    <div class="transaction-history-container">
+        <h2>Transaction History</h2>
+
+        <!-- Filter Section -->
+        <div class="filters">
+            <select id="filterTransactionType" class="filter-dropdown">
+                <option value="">All Types</option>
+                <option value="Deposit">Deposit</option>
+                <option value="Withdrawal">Withdrawal</option>
+            </select>
+
+            <!-- Date Range Filters -->
+            <input type="date" id="startDate" class="filter-date" placeholder="Start Date" />
+            <input type="date" id="endDate" class="filter-date" placeholder="End Date" />
+
+            <!-- Optional: Amount Range -->
+            <input type="number" id="minAmount" class="filter-amount" placeholder="Min Amount" />
+            <input type="number" id="maxAmount" class="filter-amount" placeholder="Max Amount" />
+
+            <button id="applyFilters">Apply</button>
+        </div>
+
+        <!-- Transaction History List -->
+        <div class="transaction-history-list" id="transactionHistoryList">
+            <!-- Dynamic transaction items will be injected here -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+            <button class="prev-page">Previous</button>
+            <span class="page-numbers">1 of 5</span>
+            <button class="next-page">Next</button>
+        </div>
+    </div>
+
+    <script src="transaction-history.js"></script>
+
+</body>
+</html>
