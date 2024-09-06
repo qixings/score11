@@ -72,6 +72,10 @@ const tutorials = {
     }
 };
 
+function goBack() {
+    window.location.href = 'user-profile.html'; // Redirect to user-profile page
+}
+
 // Function to display the selected tutorial
 function showGameTutorial(game) {
     const tutorialContent = tutorials[game];
