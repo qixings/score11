@@ -24,6 +24,11 @@ body {
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     margin: 9px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+
 }
 
 /* Header Styles */
@@ -36,10 +41,11 @@ body {
 /* Tutorial Content Section */
 .tutorial-content {
     margin-bottom: 20px;
-    padding: 15px;
+    padding:8px;
     background-color: #16222c;
     border-radius: 10px;
     text-align: left;
+    width: 350px;
 }
 
 .tutorial-content h3 {
@@ -111,4 +117,24 @@ body {
 li p{
     color: #26c2ba;
     font-weight: normal;
+}
+
+/* Styling for the Back Button */
+.back-button {
+    position: fixed; /* Keep it fixed on the screen */
+    top: 15px; /* Distance from the top of the screen */
+    right: 15px; /* Distance from the right edge */
+    background-color: #0044ff74; /* Button color */
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it is on top of other elements */
+    font-weight: bolder;
+}
+
+.back-button:hover {
+    background-color: #ff6500; /* Hover color */
 }
