@@ -231,7 +231,8 @@ body {
     border-radius: 6px;
     text-align: left;
     display: flex;
-    align-items: center;    
+    align-items: center; 
+    text-decoration: none;
 }
 
 
