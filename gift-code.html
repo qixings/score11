@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Code Redemption</title>
+    <link rel="stylesheet" href="gift-code.css">
+</head>
+<body>
+
+    <!-- Gift Code Container -->
+    <div class="gift-code-container">
+        <h2>Claim Your Gift Code</h2>
+
+        <!-- Gift Code Input Section -->
+        <div class="gift-code-input-section">
+            <input type="text" id="giftCodeInput" maxlength="20" placeholder="Enter 20-digit Gift Code" />
+            <button onclick="claimGiftCode()">Claim</button>
+        </div>
+
+        <!-- Tabs Section -->
+        <div class="tabs">
+            <button class="tab-link active" onclick="switchTab('history')">History</button>
+            <button class="tab-link" onclick="switchTab('rules')">Rules</button>
+        </div>
+
+        <!-- Gift Code History Section -->
+        <div id="history" class="tab-content active">
+            <h3>Gift Code Claim History</h3>
+            <ul id="giftCodeHistoryList">
+                <!-- Gift code history items will be dynamically inserted here -->
+            </ul>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="prev-page" onclick="changePage(-1)">Previous</button>
+                <span class="page-info">Page <span id="currentPage">1</span></span>
+                <button class="next-page" onclick="changePage(1)">Next</button>
+            </div>
+        </div>
+
+        <!-- Gift Code Rules Section -->
+        <div id="rules" class="tab-content">
+            <h3>Gift Code Rules</h3>
+            <ul>
+                <li>Each code can only be redeemed once.</li>
+                <li>Gift codes are valid for a limited time only.</li>
+                <li>You cannot transfer gift codes to another user.</li>
+                <li>Check the expiry date before redeeming.</li>
+                <li>Gift codes cannot be exchanged for cash.</li>
+            </ul>
+        </div>
+
+        
+    </div>
+  <!-- Popup Notification -->
+  <div id="popupMessage" class="popup-message"></div>
+
+
+    <script src="gift-code.js"></script>
+
+</body>
+</html>

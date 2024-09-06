@@ -1,0 +1,198 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    height: auto;
+    min-height: 100vh;
+    max-width: 414px;
+    margin: auto;
+    background: linear-gradient(45deg, black, #283b4d);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Gift Code Container */
+.gift-code-container {
+    width: 360px;
+    padding: 8px;
+    background-color: #1f2b38;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+/* Header Styling */
+.gift-code-container h2, .gift-code-container h3 {
+    color: #00e0ff;
+    margin-bottom: 15px;
+    text-align: left;
+}
+/* Gift Code Input Section */
+.gift-code-input-section {
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: #0f1824;
+    padding: 29px;
+    height: 150px;
+    border-radius: 15px;
+    
+}
+
+.gift-code-input-section input {
+    padding: 17px;
+    width: 94%;
+    border-radius: 5px;
+    border: none;
+    background-color: #344e67;
+    color: #fff;
+    font-size: 14px;
+}
+
+.gift-code-input-section button {
+    padding: 22px 20px;
+    background-color: #008cba;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 145px;
+}
+
+.gift-code-input-section button:hover {
+    background-color: #0079a1;
+}
+
+/* Tabs Section */
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    background: #0000003d;
+}
+
+.tab-link {
+    background:none;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: background-color 0.3s ease;
+    width: 175px;
+
+}
+
+.tab-link.active {
+    background-color: #ffd700;
+    color: black;
+}
+
+.tab-link:hover {
+    background-color: #ffd700;
+}
+
+/* Tab Content Styling */
+.tab-content {
+    display: none;
+    background-color: #16222c;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Gift Code History Section */
+.gift-code-history ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    background-color: #16222c;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.gift-code-history li {
+    padding: 10px 0;
+    border-bottom: 1px solid #344e67;
+    font-size: 12px;
+    
+}
+
+li{
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.gift-code-history li:last-child {
+    border-bottom: none;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.prev-page, .next-page {
+    background-color: #008cba;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.page-info {
+    color: #fff;
+    font-size: 14px;
+}
+
+/* Gift Code Rules Section */
+.gift-code-rules ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.gift-code-rules li {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+
+
+/* Popup Notification Styling */
+.popup-message {
+    position: fixed;
+    bottom: 465px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000000ab;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+    z-index: 1000;
+    width: 200px;
+    height: 150px;
+}
+
+.popup-message.show {
+    opacity: 1;
+    visibility: visible;
+}
