@@ -54,12 +54,10 @@ body {
     border-radius: 5px;
     font-size: 10px;
     width: 85px;
-    height: 35px;
 }
 
 .filter-date {
     width: 97px;
-    height: 19px;
 }
 
 #applyFilters {
