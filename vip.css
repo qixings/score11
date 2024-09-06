@@ -140,7 +140,7 @@ p{
     background-color: #2f404f;
     border-radius: 5px;
     overflow: hidden;
-    margin: 10px 0;
+    margin: 0px 0;
     height: 10px;
 }
 
@@ -378,4 +378,19 @@ footer {
     font-size: 12px;
     color: #fff;
     margin-top: 10px;
+}
+
+.betting-progress {
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+
+}
+
+.betting-progress .bet-progress {
+    color: #6bff00; /* Can adjust color */
+    font-weight: bold;
 }
