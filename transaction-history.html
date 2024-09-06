@@ -19,6 +19,12 @@
     <div class="transaction-history-container">
         <h2>Transaction History</h2>
 
+        <!-- Totals Section -->
+        <div class="totals">
+            <p>Total Deposited: <br> ₹<span id="totalDeposited">0</span></p>
+            <p>Total Withdrawn: <br> ₹<span id="totalWithdrawn">0</span></p>
+        </div>
+
         <!-- Filter Section -->
         <div class="filters">
             <select id="filterTransactionType" class="filter-dropdown">
@@ -27,13 +33,23 @@
                 <option value="Withdrawal">Withdrawal</option>
             </select>
 
-            <!-- Date Range Filters -->
-            <input type="date" id="startDate" class="filter-date" placeholder="Start Date" />
-            <input type="date" id="endDate" class="filter-date" placeholder="End Date" />
+            <!-- Date Range Filters with labels -->
+            <div class="date-filters" style="    display: flex;
+    flex-direction: column;">
+                <label for="startDate" style="font-size: 10px; text-align: left;">From</label>
+                <input type="date" id="startDate" class="filter-date" placeholder="Start Date" />
+                <label for="endDate" style="font-size: 10px; text-align: left;">To</label>
+                <input type="date" id="endDate" class="filter-date" placeholder="End Date" />
+            </div>
 
+            <div style="    display: flex;
+    flex-direction: column;">
             <!-- Optional: Amount Range -->
+            <label for="minAmount" style="font-size: 10px; text-align: left;">Minimum Amount</label>
             <input type="number" id="minAmount" class="filter-amount" placeholder="Min Amount" />
+            <label for="maxAmount" style="font-size: 10px; text-align: left;">Maximum Amount</label>
             <input type="number" id="maxAmount" class="filter-amount" placeholder="Max Amount" />
+        </div>
 
             <button id="applyFilters">Apply</button>
         </div>
