@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIP Page</title>
+    <link rel="stylesheet" href="vip.css" />
+  </head>
+
+  <body>
+    <!-- User Info Section -->
+    <div class="user-info">
+      <img src="user.png" alt="Profile Picture" class="profile-pic" />
+      <div class="user-details">
+          <h2>USERNAME</h2>
+          <p>VIP Level: <span class="vip-level" class="h3">BRONZE</span></p>
+          <p>Betting Points: <span class="betting-points">125500</span></p>
+          
+      </div>
+      <p style="text-align: center;">Balance: <span class="user-balance">₹10,000</span></p> <!-- New Balance Section -->
+  </div>
+  
+
+    <!-- VIP Levels Horizontal Scroll -->
+    <div class="vip-levels-scroll" id="vipLevelsScroll">
+      <div
+        class="vip-level-card"
+        style="background: radial-gradient(at top, #febf71, rgb(52, 37, 27))"
+      >
+        <div class="vip-info">
+          <p>VIP Level</p>
+          <div style="display: flex; align-items: center">
+            <h3 class="h3">BRONZE</h3>
+            <div class="achieved-status">
+              <span>Achieved</span>
+            </div>
+            <div
+              class="status-indicator"
+              style="
+                background-color: #00ff00;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+              "
+            ></div>
+          </div>
+
+          <div class="vip-icon-container">
+            <span class="completion-status">100% Completed</span>
+          </div>
+
+          <div class="progress-bar">
+            <div class="progress"></div>
+            <!-- Progress is 100% in this case -->
+          </div>
+
+          <p class="congrats-text">
+            Congratulations! You have received all the Bronze level benefits.
+          </p>
+        </div>
+        <div class="icon-cont">
+          <div class="vip-icon bronze"></div>
+        </div>
+      </div>
+
+
+      
+
+      <div
+        class="vip-level-card silver"
+        style="background: radial-gradient(at top, #b2b2b2, rgb(61, 61, 61))"
+        onclick="showBenefits('silver')"
+      >
+        <div style="display: flex; align-items: center">
+          <div class="vip-info">
+            <p>VIP Level</p>
+            <h3 class="h3">SILVER</h3>
+            <div class="progress-bar">
+              <div class="progress" style="width: 42%"></div>
+            </div>
+            <p>42% Completed</p>
+          </div>
+
+          <div class="icon-cont">
+            <div class="vip-icon silver"></div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="vip-level-card gold"
+        style="background: radial-gradient(at top, #ffa600, rgb(123, 41, 0))"
+        onclick="showBenefits('gold')"
+      >
+        <div style="display: flex; align-items: center">
+          <div class="vip-info">
+            <p>VIP Level</p>
+            <h3 class="h3">GOLD</h3>
+            <div class="progress-bar">
+              <div class="progress" style="width: 30%"></div>
+            </div>
+            <p>30% Completed</p>
+          </div>
+
+          <div class="icon-cont">
+            <div class="vip-icon gold"></div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="vip-level-card platinum"
+        style="background: radial-gradient(at top, #00a6ff, rgb(0, 63, 88))"
+        onclick="showBenefits('platinum')"
+      >
+        <div style="display: flex; align-items: center">
+          <div class="vip-info">
+            <p>VIP Level</p>
+            <h3 class="h3">PLATINUM</h3>
+            <div class="progress-bar">
+              <div class="progress" style="width: 0%"></div>
+            </div>
+            <p>Not Achieved</p>
+          </div>
+
+          <div class="icon-cont">
+            <div class="vip-icon platinum"></div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="vip-level-card diamond"
+        style="background: radial-gradient(at top, #9d00ff, rgb(60, 0, 88))"
+        onclick="showBenefits('diamond')"
+      >
+        <div style="display: flex; align-items: center">
+          <div class="vip-info">
+            <p>VIP Level</p>
+            <h3 class="h3">DIAMOND</h3>
+            <div class="progress-bar">
+              <div class="progress" style="width: 0%"></div>
+            </div>
+            <p>Not Achieved</p>
+          </div>
+
+          <div class="icon-cont">
+            <div class="vip-icon diamond"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIP Level Benefits Section -->
+    <div class="vip-benefits">
+      <h3>VIP Level Benefits</h3>
+      <div class="benefit-item">
+        <div class="benefit-icon gift"></div>
+        <div style="width: 160px;">
+      
+          <h4>Subordinate Deposit Commission:</h4>
+          <p>You can receive this daily based on your team deposit.</p>
+        </div>
+        <div>
+          <strong>Up to 5%</strong>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon money"></div>
+        <div style="width: 160px;">
+          <h4>Monthly Rebate:</h4>
+          <p>You can receive this every month.</p>
+          <p><strong>₹30</strong></p>
+        </div>
+      </div>
+    </div>
+
+    
+<!-- Rewards Section -->
+<div class="rewards">
+  <p style="text-align: left; font-size: 12px; font-weight: bold; margin-bottom: 10px;">REWARDS</p>
+  
+  <div class="rewards-container" style="display: flex; justify-content: center; gap: 25px;">
+    <div class="reward-item deposit">
+      <div class="reward-icon deposit"></div>
+      <p>₹3000</p>
+      <button class="claim-btn" onclick="claimReward('deposit')">CLAIM</button>
+    </div>
+    <div class="reward-item rebate">
+      <div class="reward-icon rebate"></div>
+      <p>₹30</p>
+      <button class="claim-btn" onclick="claimReward('rebate')">CLAIM</button>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- VIP History and Rules Tabs -->
+<div class="vip-tabs">
+  <button class="tab-link active" onclick="showTab('history')">History</button>
+  <button class="tab-link" onclick="showTab('rules')">Rules</button>
+</div>
+
+<!-- History Tab Content -->
+<div id="history" class="tab-content active">
+  <div class="history-list" id="historyList">
+    <!-- History items will be dynamically populated here -->
+  </div>
+  <div class="pagination" id="pagination">
+    <!-- Pagination will be dynamically populated here -->
+  </div>
+</div>
+
+<!-- Rules Tab Content -->
+<div id="rules" class="tab-content">
+  <h3>VIP Level Rules</h3>
+  <ul class="rules-list">
+    <li>VIP rewards are distributed at 2:00 AM on the 1st of every month.</li>
+    <li>Monthly rebate is calculated based on your total betting points.</li>
+    <li>Each VIP level unlocks additional rewards and commission rates.</li>
+    <li>Subordinate deposit commission is calculated daily based on your team's deposits.</li>
+    <li>You can only claim the same reward once per day.</li>
+    <li>VIP levels are based on your accumulated betting points and subordinate count.</li>
+  </ul>
+</div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Score11. All rights reserved.</p>
+    </footer>
+
+    <script src="vip.js"></script>
+    <!-- Link to JavaScript file -->
+  </body>
+</html>

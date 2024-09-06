@@ -1,0 +1,381 @@
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    background: linear-gradient(45deg, black, #283b4d);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* User Info Section */
+.user-info {
+    background-color: #051924;
+    padding: 20px;
+    border-radius: 10px;
+    width: 333px;
+    margin: 9px;
+    display: flex;
+    height: 175px;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.user-details {
+    margin-left: 20px;
+}
+
+.user-details h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+/* Styling for the new balance section */
+.user-details p {
+    margin: 5px 0; /* Adjust as needed */
+}
+
+
+
+.user-balance{
+    font-weight: bold;
+    color: #00ff00;
+
+}
+
+/* VIP Levels Horizontal Scroll with Snap */
+.vip-levels-scroll {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    width: 368px;  /* Container width for mobile */
+    scroll-snap-type: x mandatory;  /* Enable scroll snapping */
+}
+
+.vip-level-card {
+    background-color: #344e67;
+    border-radius: 10px;
+    padding: 15px;
+    margin-right: 20px;
+    width: 336px;
+    flex-shrink: 0;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    scroll-snap-align: center;
+    margin-left: 17px;
+    display: flex;
+    height: 162px;
+
+}
+
+
+.vip-info{
+
+    width: 210px;
+    margin-right: 25px;
+}
+
+p{
+    margin: 0px;
+}
+.h3{
+    margin: 3px;
+    filter: drop-shadow(0px 0px 6px rgb(255, 255, 255));
+}
+
+.congrats-text{
+    font-size: 9px;
+}
+
+.icon-cont{
+    display: flex;
+    align-items: center;
+}
+
+.vip-level-card .vip-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 0px;
+    background-size: contain;
+}
+
+.vip-level-card .vip-icon.bronze {
+    background-image: url('bronze.png');
+    background-repeat: no-repeat;
+    background-size: 100px;
+    filter: drop-shadow(0px 0px 10px rgb(250, 201, 161));
+}
+.vip-level-card .vip-icon.silver {
+    background-image: url('silver.png');
+    background-repeat: no-repeat;
+    filter: drop-shadow(0px 0px 10px rgb(255, 255, 255));
+}
+
+.vip-level-card .vip-icon.gold {
+    background-image: url('gold.png');
+    background-repeat: no-repeat;
+    filter: drop-shadow(0px 0px 10px rgb(229, 255, 0));
+}
+
+
+.vip-level-card .vip-icon.platinum {
+    background-image: url('platinum.png');
+    background-repeat: no-repeat;
+    filter: drop-shadow(0px 0px 10px rgb(0, 255, 195));
+}
+.vip-level-card .vip-icon.diamond {
+    background-image: url('diamond.png');
+    background-repeat: no-repeat;
+    filter: drop-shadow(0px 0px 10px rgb(255, 0, 191));
+}
+
+/* Progress Bar */
+.progress-bar {
+    background-color: #2f404f;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px 0;
+    height: 10px;
+}
+
+.progress-bar .progress {
+    background-color: #ffcf00;
+    height: 100%;
+}
+
+/* VIP Benefits Section */
+.vip-benefits {
+    margin-top: 20px;
+    background-color: #25363f;
+    padding: 10px;
+    border-radius: 10px;
+    width: 350px;  /* Container width for mobile */
+}
+
+.vip-benefits h3 {
+    margin-bottom: 20px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+}
+
+.benefit-item h4 {
+    font-size: 15px;
+    color: #ffcf00;
+    margin: 0px;
+}
+
+.benefit-item p {
+    margin: 5px 0;
+    font-size: 9px;
+}
+
+.benefit-item .benefit-icon {
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    display: flex;
+
+
+}
+
+.benefit-icon.gift {
+    background-image: url('money-box.png');
+    background-repeat: no-repeat;
+    background-size: 80px;
+}
+
+.benefit-icon.money {
+    background-image: url('gem-box.png');
+    background-repeat: no-repeat;
+    background-size: 80px;
+}
+
+/* Rewards Section */
+.rewards {
+    margin-top: 20px;
+    background-color: #252f3f;
+    padding: 20px;
+    border-radius: 10px;
+    width: 333px;
+    text-align: center;
+    height: 190px;
+}
+
+.reward-item {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 109px;
+    background: radial-gradient(at top, #af00ff, #220068);
+    flex-direction: column;
+    border-radius: 9px;
+}
+
+.reward-item p {
+    font-size: 18px;
+    color: #3fff00;
+    font-weight: bold;
+}
+
+.reward-item .reward-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    background-size: contain;
+}
+
+.reward-icon.deposit {
+    background-image: url('bonus-box.png');
+}
+
+.reward-icon.rebate {
+    background-image: url('coin-box.png');
+}
+
+.reward-item button {
+    background-color: #ff8500;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    /* border-radius: 5px; */
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.reward-item button:hover {
+    background-color: #009624;
+}
+
+/* Footer Styling */
+footer {
+    margin-top: 30px;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    width: 368px;  /* Container width for mobile */
+}
+
+
+
+
+/* VIP Tabs Section */
+.vip-tabs {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    width: 368px;
+    gap: 15px;
+    background: #184456;
+  }
+  
+/* Add transition to tab links */
+.tab-link {
+    background: none;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    width: 168px;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.tab-link.active {
+    background-color: #ffcf00;
+    color: #000;
+    border-radius: 15px;
+}
+  
+/* Tab Content Base Styling */
+.tab-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Smooth transition for opacity */
+    background-color: #0f2a38;
+    padding: 20px;
+    border-radius: 10px;
+    width: 333px;
+    margin-top: 10px;
+}
+
+/* Active Tab */
+.tab-content.active {
+    display: block;
+    opacity: 1;
+}
+  
+  /* History Section */
+  .history-list {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .history-item {
+    background-color: #344e67;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .betting-points{
+    color: #ff8400;
+  }
+  .history-item p {
+    margin: 0;
+    font-size: 12px;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .pagination button {
+    background-color: #4f4f4f;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .pagination button.active {
+    background-color: #00c853;
+    color: #fff;
+  }
+  
+  .pagination button:hover {
+    background-color: #009624;
+  }
+  
+  /* Rules Section */
+  .rules-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .rules-list li {
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+  
+
+  .all-claimed-message {
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    margin-top: 10px;
+}
