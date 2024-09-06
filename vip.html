@@ -21,142 +21,159 @@
       <div class="user-details">
           <h2>USERNAME</h2>
           <p>VIP Level: <span class="vip-level" class="h3">BRONZE</span></p>
-          <p>Betting Points: <span class="betting-points">125500</span></p>
+          <p>Betting Points: <span class="betting-points"></span></p>
           
       </div>
-      <p style="text-align: center;">Balance: <span class="user-balance">₹10,000</span></p> <!-- New Balance Section -->
+      <p style="text-align: center;">Balance: <span class="user-balance"></span></p> <!-- New Balance Section -->
   </div>
   
 
-    <!-- VIP Levels Horizontal Scroll -->
-    <div class="vip-levels-scroll" id="vipLevelsScroll">
-      <div
-        class="vip-level-card"
-        style="background: radial-gradient(at top, #febf71, rgb(52, 37, 27))"
-      >
-        <div class="vip-info">
-          <p>VIP Level</p>
-          <div style="display: flex; align-items: center">
-            <h3 class="h3">BRONZE</h3>
-            <div class="achieved-status">
-              <span>Achieved</span>
-            </div>
-            <div
-              class="status-indicator"
-              style="
-                background-color: #00ff00;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-              "
-            ></div>
-          </div>
-
-          <div class="vip-icon-container">
-            <span class="completion-status">100% Completed</span>
-          </div>
-
-          <div class="progress-bar">
-            <div class="progress"></div>
-            <!-- Progress is 100% in this case -->
-          </div>
-
-          <p class="congrats-text">
-            Congratulations! You have received all the Bronze level benefits.
-          </p>
+   <!-- VIP Levels Horizontal Scroll -->
+<div class="vip-levels-scroll" id="vipLevelsScroll">
+  
+  <!-- Bronze Level Card -->
+  <div class="vip-level-card bronze" style="background: radial-gradient(at top, #febf71, rgb(52, 37, 27))">
+    <div class="vip-info">
+      <p>VIP Level</p>
+      <div style="display: flex; align-items: center">
+        <h3 class="h3">BRONZE</h3>
+        <div class="achieved-status">
+          <span>Achieved</span>
         </div>
-        <div class="icon-cont">
-          <div class="vip-icon bronze"></div>
-        </div>
+        <div class="status-indicator" style="background-color: #00ff00; width: 10px; height: 10px; border-radius: 50%;"></div>
       </div>
-
-
       
 
-      <div
-        class="vip-level-card silver"
-        style="background: radial-gradient(at top, #b2b2b2, rgb(61, 61, 61))"
-        onclick="showBenefits('silver')"
-      >
-        <div style="display: flex; align-items: center">
-          <div class="vip-info">
-            <p>VIP Level</p>
-            <h3 class="h3">SILVER</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 42%"></div>
-            </div>
-            <p>42% Completed</p>
-          </div>
-
-          <div class="icon-cont">
-            <div class="vip-icon silver"></div>
-          </div>
-        </div>
+      <!-- Betting Progress Section -->
+      <div class="betting-progress">
+        <div class="progress-percent">0%</div>
+        <span class="bet-progress">0/150000</span> <!-- This will dynamically update -->
       </div>
 
-      <div
-        class="vip-level-card gold"
-        style="background: radial-gradient(at top, #ffa600, rgb(123, 41, 0))"
-        onclick="showBenefits('gold')"
-      >
-        <div style="display: flex; align-items: center">
-          <div class="vip-info">
-            <p>VIP Level</p>
-            <h3 class="h3">GOLD</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 30%"></div>
-            </div>
-            <p>30% Completed</p>
-          </div>
-
-          <div class="icon-cont">
-            <div class="vip-icon gold"></div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="vip-level-card platinum"
-        style="background: radial-gradient(at top, #00a6ff, rgb(0, 63, 88))"
-        onclick="showBenefits('platinum')"
-      >
-        <div style="display: flex; align-items: center">
-          <div class="vip-info">
-            <p>VIP Level</p>
-            <h3 class="h3">PLATINUM</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 0%"></div>
-            </div>
-            <p>Not Achieved</p>
-          </div>
-
-          <div class="icon-cont">
-            <div class="vip-icon platinum"></div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="vip-level-card diamond"
-        style="background: radial-gradient(at top, #9d00ff, rgb(60, 0, 88))"
-        onclick="showBenefits('diamond')"
-      >
-        <div style="display: flex; align-items: center">
-          <div class="vip-info">
-            <p>VIP Level</p>
-            <h3 class="h3">DIAMOND</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 0%"></div>
-            </div>
-            <p>Not Achieved</p>
-          </div>
-
-          <div class="icon-cont">
-            <div class="vip-icon diamond"></div>
-          </div>
-        </div>
+      <!-- Progress Bar -->
+      <div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
       </div>
     </div>
+    <div class="icon-cont">
+      <div class="vip-icon bronze"></div>
+    </div>
+  </div>
+  
+  <!-- Silver Level Card -->
+  <div class="vip-level-card silver" style="background: radial-gradient(at top, #b2b2b2, rgb(61, 61, 61))">
+    <div class="vip-info">
+      <p>VIP Level</p>
+      <div style="display: flex; align-items: center">
+        <h3 class="h3">SILVER</h3>
+        <div class="achieved-status">
+          <span>Pending</span>
+        </div>
+        <div class="status-indicator" style="background-color: #ffcf00; width: 10px; height: 10px; border-radius: 50%;"></div>
+      </div>
+
+      <!-- Betting Progress Section -->
+      <div class="betting-progress">
+        <div class="progress-percent">0%</div>
+        <span class="bet-progress">0/350000</span> <!-- This will dynamically update -->
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
+      </div>
+    </div>
+    <div class="icon-cont">
+      <div class="vip-icon silver"></div>
+    </div>
+  </div>
+
+  <!-- Gold Level Card -->
+  <div class="vip-level-card gold" style="background: radial-gradient(at top, #ffa600, rgb(123, 41, 0))">
+    <div class="vip-info">
+      <p>VIP Level</p>
+      <div style="display: flex; align-items: center">
+        <h3 class="h3">GOLD</h3>
+        <div class="achieved-status">
+          <span>Pending</span>
+        </div>
+        <div class="status-indicator" style="background-color: #ffcf00; width: 10px; height: 10px; border-radius: 50%;"></div>
+      </div>
+
+      <!-- Betting Progress Section -->
+      <div class="betting-progress">
+        <div class="progress-percent">0%</div>
+        <span class="bet-progress">0/700000</span> <!-- This will dynamically update -->
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
+      </div>
+    </div>
+    <div class="icon-cont">
+      <div class="vip-icon gold"></div>
+    </div>
+  </div>
+
+  <!-- Platinum Level Card -->
+  <div class="vip-level-card platinum" style="background: radial-gradient(at top, #00a6ff, rgb(0, 63, 88))">
+    <div class="vip-info">
+      <p>VIP Level</p>
+      <div style="display: flex; align-items: center">
+        <h3 class="h3">PLATINUM</h3>
+        <div class="achieved-status">
+          <span>Pending</span>
+        </div>
+        <div class="status-indicator" style="background-color: #ffcf00; width: 10px; height: 10px; border-radius: 50%;"></div>
+      </div>
+
+      <!-- Betting Progress Section -->
+      <div class="betting-progress">
+        <div class="progress-percent">0%</div>
+        <span class="bet-progress">0/1500000</span> <!-- This will dynamically update -->
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
+      </div>
+    </div>
+    <div class="icon-cont">
+      <div class="vip-icon platinum"></div>
+    </div>
+  </div>
+
+  <!-- Diamond Level Card -->
+  <div class="vip-level-card diamond" style="background: radial-gradient(at top, #9d00ff, rgb(60, 0, 88))">
+    <div class="vip-info">
+      <p>VIP Level</p>
+      <div style="display: flex; align-items: center">
+        <h3 class="h3">DIAMOND</h3>
+        <div class="achieved-status">
+          <span>Pending</span>
+        </div>
+        <div class="status-indicator" style="background-color: #ffcf00; width: 10px; height: 10px; border-radius: 50%;"></div>
+      </div>
+
+      <!-- Betting Progress Section -->
+      <div class="betting-progress">
+        <div class="progress-percent">0%</div>
+        <span class="bet-progress">0/3000000</span> <!-- This will dynamically update -->
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
+      </div>
+    </div>
+    <div class="icon-cont">
+      <div class="vip-icon diamond"></div>
+    </div>
+  </div>
+
+</div>
+
 
     <!-- VIP Level Benefits Section -->
     <div class="vip-benefits">
