@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betting History</title>
+    <link rel="stylesheet" href="betting-history.css">
+</head>
+<body>
+
+    <!-- Full-Screen Container for Betting History -->
+    <div class="betting-history-container">
+        <h2>My Betting History</h2>
+
+        <!-- Filter Section -->
+        <div class="filters">
+            <select id="filterGame" class="filter-dropdown">
+                <option value="">All Games</option>
+                <option value="Crash">Crash</option>
+                <option value="Trading">Trading</option>
+                <option value="Snake">Snake</option>
+                <option value="Color Trading">Color Trading</option>
+                <option value="Big Small">Big Small</option>
+                <option value="Mines">Mines</option>
+                <option value="Plinko">Plinko</option>
+                <option value="Number Trading">Number Trading</option>
+                <option value="Spin Win">Spin Win</option>
+            </select>
+
+            <select id="filterResult" class="filter-dropdown">
+                <option value="">All Results</option>
+                <option value="won">Won</option>
+                <option value="lost">Lost</option>
+            </select>
+
+            <input type="date" id="filterDate" class="filter-date" />
+            <button id="applyFilters">Apply</button>
+        </div>
+
+        <!-- Betting History List -->
+        <div class="betting-history-list" id="bettingHistoryList">
+            <!-- Dynamic history items will be injected here -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+            <button class="prev-page">Previous</button>
+            <span class="page-numbers">1 of 5</span>
+            <button class="next-page">Next</button>
+        </div>
+    </div>
+
+    <script src="betting-history.js"></script>
+
+</body>
+</html>
