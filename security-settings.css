@@ -5,7 +5,7 @@ body {
     text-align: center;
     height: auto;
     min-height: 108vh;
-    max-width: 414px;
+    max-width: 385px;
     margin: auto;
     background: linear-gradient(45deg, black, #283b4d);
     font-weight: bold;
@@ -52,7 +52,7 @@ body {
     margin-bottom: 10px;
     border-radius: 5px;
     border: none;
-    background-color: #344e67;
+    background-color: #121c26;
     color: #fff;
     font-size: 14px;
 }
@@ -229,4 +229,9 @@ input:checked + .slider:before {
 
 .login-activity-section button:hover {
     background-color: #ff0000;
+}
+
+
+.footer-logout{
+    margin-bottom: 128px;
 }
