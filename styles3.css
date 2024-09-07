@@ -6,7 +6,7 @@ body {
     min-height: 100vh;
     max-width: 414px;
     margin: auto;
-       background: linear-gradient(45deg, black, #283b4d);
+    background: linear-gradient(45deg, black, #283b4d);
     background-repeat: no-repeat;
     font-weight: bold;
 }
@@ -230,6 +230,11 @@ body {
 .navigation-menu .nav-item.active img {
     filter: drop-shadow(1px 1px 10px #00d0ff);
     border: none;
+    color: red;
+}
+
+.navigation-menu .nav-item.active p{
+    color: rgb(0, 183, 255);
 }
 
 .navigation-menu .nav-item img {
@@ -242,9 +247,6 @@ body {
     margin: 0;
     font-size: 11px;
     font-weight: bold;
-}
-.navigation-menu .nav-item.active p{
-    color: rgb(0, 183, 255);
 }
 
 /* Monthly winner container */
@@ -477,7 +479,7 @@ body {
     margin: 0;
     width: 370px;
     height: 48px;
-        padding-bottom: 25px;
+    padding-bottom: 25px;
 }
 
 /* Common styles for icons (attachment, emoji, microphone, send) */
@@ -497,7 +499,7 @@ body {
     background-color: transparent;
     color: #fff; /* White text */
     padding: 10px;
-    font-size: 15px;
+    font-size: 12px;
     outline: none; /* Remove default outline */
 }
 
@@ -566,4 +568,104 @@ body {
 
 .message.vip strong {
     color: #ff79c6; /* Different color for VIP users */
+}
+
+
+
+/* Top 3 Games Container */
+.top-games-container {
+    position: relative;
+    width: 100%;
+    max-width: 414px;
+    overflow-x: auto;
+    background: #314d67;
+    padding: 10px 0;
+    border-radius: 8px;
+    margin: 0 auto;
+    margin-top: 26px;
+    display: flex;
+}
+
+.top-games-container .games-wrapper {
+    display: flex;
+    justify-content: space-between; /* Distribute space between game icons */
+    gap: 6px;
+}
+
+.top-games-container .game {
+    position: relative;
+    width: 120px;
+}
+
+.top-games-container .game img {
+    width: 120px;
+    height: 150px;
+    filter: drop-shadow(0.9px 5px 5px rgb(15, 37, 63));
+    cursor: pointer;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Rank Badge Styling */
+.rank-badge {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    color: #000000;
+    font-weight: bold;
+    font-size: 19px;
+    padding: 4px 6px;
+    z-index: 10;
+    width: 109px;
+    height: 45px;
+
+     /* Animation properties */
+     animation: breathing 2.5s ease-in-out infinite; /* Synchronize breathing effect with icons */
+     transition: transform 0.3s ease-in-out;
+}
+
+.rank-badge.top1 {
+    background-image: url(top-badge1.png);
+    background-size: 125px;
+    background-repeat: no-repeat;
+}
+
+.rank-badge.top2 {
+    background-image: url(top-badge3.png);
+    background-size: 126px;
+    background-repeat: no-repeat;
+}
+
+.rank-badge.top3 {
+    background-image: url(top-badge2.png);
+    background-size: 125px;
+    background-repeat: no-repeat;
+}
+
+
+/* Breathing effect animation */
+@keyframes breathing {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.04); /* Slightly zoom in */
+    }
+    100% {
+        transform: scale(1); /* Back to original size */
+    }
+}
+
+/* Applying breathing effect to Top 3 Games images */
+.top-games-container .game img {
+    width: 120px;
+    height: 150px;
+    filter: drop-shadow(0.9px 5px 5px rgb(15, 37, 63));
+    cursor: pointer;
+    display: block;
+    border-radius: 8px;
+
+    /* Animation properties */
+    animation: breathing 2.5s ease-in-out infinite; /* 2.5s for smooth zoom, infinite loop */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
 }
