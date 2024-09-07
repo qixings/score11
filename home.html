@@ -65,7 +65,7 @@
 
 
     <div class="section-label1">
-        <h3>All Games</h3>
+        <h3>ALL GAMES</h3>
     </div>
 
 <!-- Games section with horizontal scrolling -->
@@ -81,9 +81,6 @@
             </div>
             <div class="game" onclick="redirectToGame('./optiontrading')">
                 <img src="trading2.png" alt="Option Trading">
-            </div>
-              <div class="game" onclick="redirectToSnake('./snake')"> <!-- Added Snake game -->
-                <img src="snake.png" alt="Snake Game">
             </div>
             <div class="game" onclick="redirectToColortrading('./colortrading')">
                 <img src="colortrading.png" alt="Color Trading">
@@ -108,10 +105,35 @@
 </div>
 
 
+<!-- Top 3 Games Section -->
+<div class="section-label1">
+    <h3>TOP 3 GAMES</h3>
+</div>
+
+<div class="top-games-container no-scroll">
+    <section class="games-section">
+        <div class="games-wrapper no-gap">
+            <div class="game" onclick="redirectToGame('./optiontrading')">
+                <span class="rank-badge top1"></span>
+                <img src="trading2.png" alt="Number Trading">
+            </div>
+            <div class="game" onclick="redirectToColortrading('./colortrading')">
+                <span class="rank-badge top2"></span>
+                <img src="colortrading.png" alt="Color Trading">
+            </div>
+            <div class="game" onclick="redirectToPlinko('./plinko')">
+                <span class="rank-badge top3"></span>
+                <img src="PLINKO.png" alt="Plinko">
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+
+
 <p class="guide-game">*Tap on the game icon to play and start earning</p>
-
-
- 
 
 
 
@@ -348,7 +370,7 @@
 
 
 
-      <!-- Navigation menu -->
+    <!-- Navigation menu -->
     <nav class="navigation-menu">
         <div class="nav-item" onclick="navigateTo('home')">
             <img src="home.png" alt="Home">
@@ -371,6 +393,19 @@
             <p>Agent</p>
         </div>
         <div class="nav-item" onclick="navigateTo('user-profile')">
+            <img src="user.png" alt="Profile">
+            <p>Profile</p>
+        </div>
+    </nav>
+    
+    
+
+    
+    <script src="scripts3.js"></script>
+</body>
+
+</html>
+
             <img src="user.png" alt="Profile">
             <p>Profile</p>
         </div>
