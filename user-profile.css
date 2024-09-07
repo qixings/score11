@@ -19,7 +19,7 @@ body {
     padding-bottom: 13px;
     border-radius:8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 205px;
+    height: 175px;
 }
 
 .profile-header {
@@ -135,15 +135,15 @@ body {
 
 
 .navbar{
-    background-image: url(user-ban.png);
     padding: 10px;
     border-radius: 12px;
-    margin-top: 3px;
+    margin-top: 36px;
     display: flex;
     justify-content: center;
     height: 150px;
     background-size: 396px;
     background-repeat: no-repeat;
+    
 
 }
 
@@ -165,7 +165,7 @@ body {
     gap: 5px;
     font-size: 12px;
     width: 114px;
-    background: rgb(0 0 0 / 13%);
+    background: rgb(57 95 119 / 62%);
     border-radius: 8px;
     justify-content: center;
     
@@ -174,7 +174,7 @@ body {
 
 .alert-panel2 {
     margin: 9px;
-    margin-top:119px;
+    margin-top:164px;
     margin-bottom:18px;
     background-color: #ffffff69;
     padding: 5px;
