@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security & Privacy Settings</title>
+    <link rel="stylesheet" href="security-settings.css">
+</head>
+<body>
+
+    <!-- Security & Privacy Settings Container -->
+    <div class="settings-container">
+        <h2 style="color: #ffffff; font-size: 18px;">Security & Privacy Settings</h2>
+
+        <!-- Change Password Section with OTP Verification -->
+        <div class="change-password-section">
+            <h3>Change Password</h3>
+            <input type="password" id="currentPassword" placeholder="Current Password" />
+            <input type="password" id="newPassword" placeholder="New Password" />
+            <input type="password" id="confirmPassword" placeholder="Confirm New Password" />
+            
+            <!-- Button initially acts as "Save New Password" -->
+            <button id="actionButton" onclick="saveNewPassword()">Save New Password</button>
+
+            <!-- Forgot Password Link -->
+            <p><a href="#" id="forgotPasswordLink" onclick="forgotPassword()">Forgot Password?</a></p>
+
+            <!-- OTP Input Field (Initially Hidden) -->
+            <div id="otpSection" style="display: none;">
+                <input type="text" id="otpInput" placeholder="Enter OTP" maxlength="6" />
+                <button onclick="verifyOTP()">Verify OTP & Change Password</button>
+            </div>
+        </div>
+
+       
+
+      
+    </div>
+
+    <div class="tfa">
+         <!-- Two-Factor Authentication Section -->
+         <div class="two-factor-section">
+            <h3>Two-Factor Authentication (2FA)</h3>
+            <label class="switch">
+                <input type="checkbox" id="enable2FA" onchange="toggle2FA(this.checked)" />
+                <span class="slider"></span>
+            </label>
+            <div id="2faInputSection" style="display: none;">
+                <input style="  width: 320px;
+                padding: 10px;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                border: none;
+                background-color: #182836;
+                color: #fff;
+                font-size: 14px;" type="text" id="2faInput" placeholder="Enter Mobile Number or Email" />
+                <button style="width: 173px;
+                padding: 12px;
+                background-color: #008cba;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;" onclick="verify2FA()">Enable 2FA</button>
+            </div>
+        </div>
+    </div>
+
+    <div>
+          <!-- Login Activity Section -->
+          <div class="login-activity-section">
+            <h3>Login Activity</h3>
+            <ul id="loginActivityList">
+                <!-- Login activity will be dynamically injected here -->
+            </ul>
+            <button onclick="logoutFromAllDevices()">Log Out from All Devices</button>
+        </div>
+    </div>
+
+    <!-- Popup for messages -->
+    <div id="popupMessage" class="popup"></div>
+
+    <script src="security-settings.js"></script>
+
+</body>
+</html>

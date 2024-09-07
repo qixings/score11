@@ -1,0 +1,232 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    height: auto;
+    min-height: 108vh;
+    max-width: 414px;
+    margin: auto;
+    background: linear-gradient(45deg, black, #283b4d);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Settings Container */
+.settings-container {
+    width: 360px;
+    padding: 7px;
+    background-color: #1f2b38;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 0px 9px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+
+
+#forgotPasswordLink{
+    font-size: 12px;
+    color: #00c6ff;
+}
+
+/* Header Styling */
+.settings-container h2, .settings-container h3 {
+    color: #ffd700;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 15px;
+}
+
+/* Change Password Section */
+.change-password-section {
+    margin-bottom: 20px;
+}
+
+.change-password-section input {
+    width: 320px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #344e67;
+    color: #fff;
+    font-size: 14px;
+}
+
+.tfa{
+    background: #2e4a5d;
+    border-radius: 10px;
+    padding: 7px;
+    width: 360px;
+    height: 182px;
+    margin-top: 9px;
+}
+
+
+.change-password-section button {
+    width: 173px;
+    padding: 12px;
+    background-color: #008cba;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.change-password-section button:hover {
+    background-color: #0079a1;
+}
+
+/* Two-Factor Authentication Section */
+.two-factor-section {
+    margin-bottom: 20px;
+}
+
+/* OTP Section (Initially Hidden) */
+#otpSection {
+    margin-top: 15px;
+}
+
+/* Popup Message */
+.popup {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #555;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+}
+
+.popup.show {
+    visibility: visible;
+    transition: visibility 0.5s;
+}
+
+
+/* Two-Factor Authentication Section */
+.two-factor-section {
+    margin-bottom: 20px;
+}
+
+/* Toggle Switch Styling */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #008cba;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+/* Two-Factor Input Section */
+#2faInputSection {
+    margin-top: 10px;
+}
+
+#2faInputSection input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #344e67;
+    color: #fff;
+    font-size: 14px;
+}
+
+#2faInputSection button {
+    width: 100%;
+    padding: 12px;
+    background-color: #008cba;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#2faInputSection button:hover {
+    background-color: #0079a1;
+}
+
+/* Login Activity Section */
+.login-activity-section {
+    margin-bottom: 20px;
+    margin-bottom: 20px;
+    background: #202c38;
+    border-radius: 10px;
+    padding: 7px;
+    width: 360px;
+    height: 182px;
+    margin-top: 9px;
+}
+
+.login-activity-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.login-activity-section li {
+    background-color: #454545;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.login-activity-section button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff4500;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.login-activity-section button:hover {
+    background-color: #ff0000;
+}
