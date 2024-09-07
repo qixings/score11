@@ -76,6 +76,7 @@ body {
     justify-content: space-around;
     margin-bottom: 15px;
     background: #0000003d;
+        border-radius: 15px;
 }
 
 .tab-link {
