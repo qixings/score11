@@ -62,7 +62,7 @@ body {
 
 .games-container {
     position: relative;
-    width: 100%;
+    width: 385px;
     max-width: 414px;
     overflow-x: auto; /* Enable horizontal scrolling */
     background: #314d67;
@@ -332,6 +332,7 @@ body {
     margin-bottom: -24px;
     font-size: 12px;
     margin-left: 10px;
+    margin-top: 25px;
 }
 
 .bottom-section {
@@ -395,9 +396,9 @@ body {
     text-decoration: none;
     gap: 10px;
     color: skyblue;
-    font-size: 13px;
+    font-size: 12px;
     align-items: center;
-    margin-left: 35px;
+    margin-left: 18px;
 }
 
 .connect-container h4{
@@ -575,9 +576,9 @@ body {
 /* Top 3 Games Container */
 .top-games-container {
     position: relative;
-    width: 100%;
+    width: 385px;
     max-width: 414px;
-    overflow-x: auto;
+    overflow-x: hidden;
     background: #314d67;
     padding: 10px 0;
     border-radius: 8px;
