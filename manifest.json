@@ -1,13 +1,13 @@
 {
-  "name": "SCORE 11",
-  "short_name": "SCORE 11",
+  "name": "qing",
+  "short_name": "qing",
   "start_url": "./home.html",
   "display": "standalone",
   "background_color": "#FFFFFF",
   "theme_color": "#28324d",
   "icons": [
     {
-      "src": "./binc.png",
+      "src": "./logo3.png",
       "sizes": "192x192",
       "type": "image/png"
     },
