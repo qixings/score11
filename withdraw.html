@@ -66,21 +66,21 @@
 
     <div class="withdraw-section">
          <div class="transaction-history"><a href="transaction-history.html">Transaction History</a></div>
-        <form id="withdraw-form">
-            <label for="withdraw-amount">Withdraw amount</label>
-            <input type="number" id="withdraw-amount" placeholder="Enter withdraw amount">
-            <label for="withdraw-password">Withdraw Password</label>
-            <input type="password" id="withdraw-password" placeholder="Enter withdrawal password">
+     <form id="withdraw-form">
+    <label for="withdraw-amount">Withdraw amount</label>
+    <input type="text" id="withdraw-amount" placeholder="Enter withdraw amount" inputmode="numeric" pattern="[0-9]*">
+    <label for="withdraw-password">Withdraw Password</label>
+    <input type="password" id="withdraw-password" placeholder="Enter withdrawal password" inputmode="numeric" pattern="[0-9]*">
 
-            <div class="remember">
-                <input type="checkbox" id="remember-me" style="margin-top: 0px;">
-                <label for="remember-me" style="margin-left: -120px;">Remember</label>
-                <p><a href="https://t.me/ronyforPremiumAgents" style="text-decoration: none; color:#00e5ff ; font-size: 10px;">Forgot password?</a></p>
-            </div>
-            <div class="sbmt">
-                <button type="submit">Submit</button>
-            </div>
-        </form>
+    <div class="remember">
+        <input type="checkbox" id="remember-me" style="margin-top: 0px;">
+        <label for="remember-me" style="margin-left: -120px;">Remember</label>
+        <p><a href="https://t.me/ronyforPremiumAgents" style="text-decoration: none; color:#00e5ff ; font-size: 10px;">Forgot password?</a></p>
+    </div>
+    <div class="sbmt">
+        <button type="submit">Submit</button>
+    </div>
+</form>
 
         <p class="note">Note: After requesting the withdraw, please wait until we process and complete your transaction. Sometimes, due to high transaction volume, your withdraw might take some time to settle. If you do not receive your withdrawal after 24 hours, contact our customer support for assistance. Never share your withdrawal password with anyone else.</p>
     </div>
