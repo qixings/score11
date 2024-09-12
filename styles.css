@@ -21,7 +21,7 @@ body {
 
 img{
     width: 27%;
-    left: 33px;
+
     position: relative;
     top: -3px;
     filter:drop-shadow(2px 4px 6px rgba(5, 5, 5, 0.678)) ;
