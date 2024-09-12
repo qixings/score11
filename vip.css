@@ -277,6 +277,7 @@ footer {
     width: 368px;
     gap: 15px;
     background: #184456;
+        border-radius: 15px;
   }
   
 /* Add transition to tab links */
