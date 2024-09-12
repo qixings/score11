@@ -27,15 +27,14 @@ body {
 }
 
 .card-container {
-    display: flex;
-    width: 370px; 
+display: flex;
+    width: 370px;
     height: 206px;
     justify-content: center;
-    background:radial-gradient(at top, #2a415b, #0000006e);
+    background: radial-gradient(at top, #2a415b, #0000006e);
     border-radius: 12px;
     position: relative;
     margin: 10px 9px;
-    margin-top: -15px;
     z-index: 1;
 }
 
