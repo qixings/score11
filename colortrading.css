@@ -21,6 +21,9 @@ body {
     overflow: hidden;
 }
 
+.logo-container img{
+    width: 100px;
+}
 header {
     display: flex;
     justify-content: space-between;
