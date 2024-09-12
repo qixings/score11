@@ -19,85 +19,76 @@
 
 <body>
     <div class="card-container">
-
+        <!-- Profile Section (same as deposit) -->
         <div class="profile-section">
-
-            <div class="profile-info active">
-                <p style="display: flex;
-            align-items: center;
-            gap: 5px;"><img src="user.png" alt="" width="30px" style="filter: invert();"> <span id="username">Shiv
-                        Patel</span></p>
-                <p><span id="Balance-label">Available Balance</span></p>
-            </div>
-            <div class="balance-container">
+            <div class="profile-info front active" onclick="flipCard()">
+              <div style="display: flex; align-items: center; width: 306px; justify-content: space-between; font-size: 16px;">
+                <p style="display: flex; align-items: center; gap: 5px">
+                  <img src="user.png" alt="" width="30px" />
+                  <span id="username">Shiv Patel</span>
+                </p>
+                <p><span id="Balance-label">Balance</span></p>
+              </div>
+              <div class="balance-container">
                 <p><span id="balance">₹55554.45</span></p>
+              </div>
+              <div style="min-width: 306px; text-align: right; margin-right: 0; margin-top: 32px; font-size: 14px;">
+                <p class="bank-info-link">Bank info</p>
+              </div>
             </div>
-            <div class="bank-info">
-                <button class="flip-button" id="bank-info-button">Bank info</button>
-                <img src="eyeoff.png" alt="eye" width="15px" style="filter:invert();" class="eyeoff">
+            <div class="profile-info back" onclick="flipCard()">
+              <div style="display: flex; width: 100%; justify-content: space-between; align-items: center;">
+                <p style="margin: 3px; margin-top: 24px">Name: Shivam Patel</p>
+                <button class="support-button">
+                  <a href="https://t.me/ronyforPremiumAgents" style="text-decoration: none; color: rgb(255, 0, 0)">Support</a>
+                </button>
+              </div>
+              <p style="margin: 3px">A/C No.: 34977023456</p>
+              <p style="margin: 3px">Bank: STATE BANK OF INDIA</p>
+              <p style="margin: 3px">IFSC: SBIN0000001</p>
+              <p style="margin: 3px">Phone: 98621234567</p>
+              <p class="bank-info-link">Back to Balance</p>
             </div>
-
-            <div class="bank-info-section">
-                <div class="bank-change">
-                    <p>Name: &nbsp; &nbsp; &nbsp; Shivam Patel</p>
-                    <button class="flip-button" id="change-bank-button">Support</button>
-                </div>
-                <p>A/C No.: &nbsp; &nbsp; 34977023456</p>
-                <p>Bank: &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;STATE BANK OF INDIA</p>
-                <p>IFSC: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; SBIN0000001</p>
-                <p>Phone: &nbsp; &nbsp; &nbsp; 98621234567</p>
-            </div>
-
-
-            <div class="card" id="card-info">
-                <img src="bank.png" alt="" width="30px" style="filter: invert();">
-                <p style="margin-left: 20px; font-size: 12px;">STATE BANK OF INDIA...****4977</p>
-            </div>
-            <p class="bank-change"><a href="https://t.me/ronyforPremiumAgents"> Bank account change request?</a></p>
-        </div>
+          </div>
     </div>
 
+    <div class="card" id="card-info">
+        <img src="bank.png" alt="" width="30px" />
+        <p style="margin-left: 20px; font-size: 12px">
+          STATE BANK OF INDIA...****4977
+        </p>
+    </div>
+
+    <!-- Alert panel -->
+    <section class="alert-panel2">
+        <marquee behavior="scroll" direction="left">Our customer support never sends links to members. If you receive any, please report it immediately.</marquee>
+    </section>
 
     <div class="withdraw-section">
         <form id="withdraw-form">
             <label for="withdraw-amount">Withdraw amount</label>
-            <input type="text" id="withdraw-amount" placeholder="Enter withdraw amount">
+            <input type="number" id="withdraw-amount" placeholder="Enter withdraw amount">
             <label for="withdraw-password">Withdraw Password</label>
             <input type="password" id="withdraw-password" placeholder="Enter withdrawal password">
 
             <div class="remember">
                 <input type="checkbox" id="remember-me" style="margin-top: 0px;">
                 <label for="remember-me" style="margin-left: -120px;">Remember</label>
-
-                <p><a href="https://t.me/ronyforPremiumAgents"
-                        style="text-decoration: none; color:#00e5ff ; font-size: 10px;">Forgot password?</a></p>
+                <p><a href="https://t.me/ronyforPremiumAgents" style="text-decoration: none; color:#00e5ff ; font-size: 10px;">Forgot password?</a></p>
             </div>
             <div class="sbmt">
                 <button type="submit">Submit</button>
             </div>
         </form>
 
-
-        <p class="note">Note: after requesting the withdraw, please wait untill we
-            process and complete your transaction. Sometimes due to
-            hight volume of transactions, your withdraw might take some
-            time to settle. <br> <br>
-
-            If you do not recieve your withdrawal even after 24 hours,
-            you can simply contact our customer support and our
-            representitive will try their best to resolve you withdrawal
-            issue. <br> <br>
-
-            Never share your withdrawal password with anyone else.</p>
-
+        <p class="note">Note: After requesting the withdraw, please wait until we process and complete your transaction. Sometimes, due to high transaction volume, your withdraw might take some time to settle. If you do not receive your withdrawal after 24 hours, contact our customer support for assistance. Never share your withdrawal password with anyone else.</p>
     </div>
+
     <div class="history-section">
         <div class="withdraw-label">
             <h3>Withdraw history</h3>
         </div>
         <div id="withdraw-history"></div>
-
-   <!-- Add more entries as needed -->
     </div>
 
     <script src="withdraw.js"></script>
