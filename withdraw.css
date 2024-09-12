@@ -112,7 +112,7 @@ body {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    margin: 9px;
+    margin: 2px 9px 2px 9px;
     border-radius: 12px;
     height: 442px;
     align-items: center;
