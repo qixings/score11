@@ -13,9 +13,10 @@ body {
     max-width: 390px;
     top: 0px;
     position: relative;
-    height: 47px;
+    height: 54px;
     background: linear-gradient(45deg, #3a6279, transparent);
     z-index: 1;
+    width: 100%;
 }
 
 img{
