@@ -7,141 +7,108 @@ body {
     min-height: 100vh;
     max-width: 414px;
     margin: auto;
-    background: linear-gradient(45deg, black, #2c4fa4);
+    background: linear-gradient(45deg, black, #283b4d);
     background-repeat: no-repeat;
     flex-direction: column;
+    align-items: center;
 }
 
-.profile-section{
+.profile-section, .card-container {
     margin-bottom: 20px;
     margin-top: 15px;
-    background-image: url('withdraw card.png');
     width: 100%;
-    height: 240px;
-    background-size: 100%;
-    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
+    perspective: 1000px;
+    height: 100%;
 }
 
 .card-container {
     display: flex;
-    align-content: flex-start;
-    width: auto;
-    height: 340px;
+    width: 370px; 
+    height: 206px;
     justify-content: center;
-
-    background: linear-gradient(124deg, #00b7ff75, #28ff3e, #8400ff3a, #9e00e1, #0084ff, #008bd6, #009dff3e, #4c00ff5d, #a166ff);
-    background-size: 1800% 1800%;
+    background: radial-gradient(at top, #2a415b, #0000006e);
     border-radius: 12px;
     position: relative;
-    margin: 9px;
-    margin-top: -15px;
-    flex-wrap: wrap;
-    overflow: hidden; /* Ensure overflow doesn't disrupt the gradient animation */
-    z-index: 1; /* Ensure the gradient is behind game icons */
-    animation: rainbow 20s ease infinite; /* Apply animation */
+    margin: 10px 9px;
+    z-index: 1;
 }
 
-@keyframes rainbow {
-    0% { background-position: 0% 82%; }
-    50% { background-position: 100% 19%; }
-    100% { background-position: 0% 82%; }
-}
-
-.profile-info, .bank-info-section {
-    display: none;
+.profile-info {
+    display: flex;
+    width: 350px;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
 }
 
 .profile-info.active {
     display: flex;
-    width: 340px;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.bank-info-section.active {
-    display: flex;
-    width: 340px;
-    align-items: flex-start;
     flex-direction: column;
-    margin-top: -120px;
-    filter: drop-shadow(0px 4px 16px rgb(195, 0, 255));
-}
-
-.bank-info-section.active p {
+    margin-top: 11px;
+    max-width: 306px;
+    align-items: flex-start;
     font-size: 14px;
-    margin: 2px;
-
 }
 
-.bank-change {
-    display: flex;
-    align-items: center;
+.profile-info.back {
+    display: none;
+    font-size: 12px;
+    text-align: left;
+    width: 282px;
+    margin-left: 28px;
+    transform: rotateY(180deg);
 }
 
-#change-bank-button {
-    background: linear-gradient(32deg, #e04fee, #1993e8);
-    margin-left: 113px;
-    color: white;
-    font-weight: bold;
-    padding: 9px;
+.profile-info.active.back {
+    display: block;
 }
 
 .balance-container {
-    margin-left: 205px;
-    font-size: 25px;
-    margin-top: -48px;
+    margin-left: 242px;
+    font-size: 15px;
+    margin-top: -34px;
     color: greenyellow;
 }
 
-.bank-info {
-    display: flex;
-    margin-top: 84px;
-    margin-left: 233px;
-    align-items: center;
-}
-
-.bank-info.active {
-    display: none;
+.bank-info-link {
+    cursor: pointer;
+    color: #00ffe5;
+    margin-left: 247px;
+    margin-top: 0px;
 }
 
 .card {
     display: flex;
-    background: linear-gradient(45deg, #9600c0, #0c245e);
+    background: #335b78;
     padding: 10px;
     border-radius: 10px;
-    align-items: center;
-    width: 330px;
-    margin-top: 22px;
-    align-items: center;
-    height: 40px
+    width: 337px;
+    height: 31px;
+    margin-bottom: 4px;
 }
 
-.bank-change a{
-    text-decoration: none;
-    color: #00fffb;
-    margin-top: -5px;
+.alert-panel2 {
+    margin: 2px 9px;
+    background-color: #8a8a8a;
+    padding: 5px;
+    text-align: center;
     font-size: 12px;
+    border-radius: 13px;
+    z-index: 9999;
+    position: relative;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    width: 359px;
 }
 
-.flip-button {
-    background: none;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #00e5ff;
-}
-
-.flip-button:hover {
-    color: #00ff00;
-}
-
-.withdraw-section{
-    background:#ffffff0d;
+.withdraw-section {
+    background: #ffffff0d;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -149,20 +116,32 @@ body {
     border-radius: 12px;
     height: 442px;
     align-items: center;
-    margin-top: 0px;
-
+    width: 368px;
 }
 
-#withdraw-form{
+#withdraw-form {
     display: flex;
     width: 75%;
     text-align: left;
-    background: #1550cf;
+    background: #475f71;
     border-radius: 12px;
     height: 200px;
     justify-content: center;
     flex-direction: column;
     padding: 20px;
+}
+
+
+.withdraw-data {
+    display: flex;
+    font-size: 12px;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 6px;
+}
+.data {
+    display: flex;
+    gap: 60px;
 
 }
 
@@ -172,22 +151,26 @@ label {
     font-size: 12px;
 }
 
-input[type="text"], input[type="password"] {
+input[type="number"], input[type="password"] {
     width: 93%;
     padding: 10px;
     margin-bottom: 10px;
     border: none;
     border-radius: 5px;
     height: 30px;
+    background-color: #162630;
+    color: white;
 }
 
-.remember{
+.remember {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px;
-    height: 15px;
+}
 
+.sbmt {
+    display: flex;
+    justify-content: center;
 }
 
 button[type="submit"] {
@@ -200,19 +183,9 @@ button[type="submit"] {
     width: 85px;
     transition: background-color 0.3s;
 }
-.sbmt{
-    display: flex;
-    justify-content: center;
-}
 
 button[type="submit"]:hover {
     background-color: #e65c00;
-}
-
-.remember {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
 }
 
 .note {
@@ -225,63 +198,24 @@ button[type="submit"]:hover {
     width: 300px;
 }
 
-
-.history-section{
+.history-section {
     background: #ffffff14;
     border-radius: 12px;
     margin: 9px;
-    margin-top: 0px;
-    min-height:535px
+    min-height: 535px;
+    width: 368px;
 }
 
-.withdraw-data{
-    display: flex;
-    font-size: 12px;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 6px;
-    
-}
-.data{
-    display: flex;
-    gap: 60px;
-   
-}
 .history-entry {
     display: flex;
     background-color: #ffffff;
     border-radius: 5px;
     margin-bottom: 10px;
-    gap: 15px;
     justify-content: space-between;
     color: black;
 }
 
-
-.success-cont{
-    background:#1aa41a ;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 75px;
-    justify-content: center;
-    border-radius: 6px;
-    
-}
-.fail-cont{
-    background:#e10808 ;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 75px;
-    justify-content: center;
-    border-radius: 6px;
-    
-}
-
-.withdraw-label{
+.withdraw-label {
     display: flex;
     text-align: left;
     background: linear-gradient(45deg, #e04fee, #1993e8);
@@ -290,13 +224,33 @@ button[type="submit"]:hover {
     border-radius: 3px;
     font-size: 12px;
     align-items: center;
-
 }
 
-.withdraw-label h3{
+.withdraw-label h3 {
     margin-left: 5px;
 }
 
+.success-cont {
+    background: #1aa41a;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 75px;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+.fail-cont {
+    background: #e10808;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 75px;
+    justify-content: center;
+    border-radius: 6px;
+}
 
 .success {
     color: #ffffff;
@@ -307,4 +261,18 @@ button[type="submit"]:hover {
 .failed {
     color: #ffffff;
     font-weight: bold;
+}
+
+.status-cont {
+    background: #24d2cc;
+    border-radius: 6px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    font-size: 12px;
+    height: inherit;
 }
