@@ -18,7 +18,7 @@ body {
     top: 0;
     width: 100%;
     max-width: 414px;
-    background: linear-gradient(45deg, #4d70aa, transparent);
+    background:linear-gradient(45deg, #3a6279, transparent);
     display: flex;
     align-items: center;
     justify-content: space-between;
