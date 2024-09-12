@@ -38,6 +38,13 @@ display: flex;
     z-index: 1;
 }
 
+
+.transaction-history a{
+    text-decoration: none;
+    color: cyan;
+    margin-left: 239px;
+    font-size: 12px;
+}
 .card{
     display: flex;
     background: #335b78;
