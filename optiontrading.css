@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(45deg, black, #28324d);
+    background: linear-gradient(45deg, black, #283b4d);
     color: #ffffff;
     display: flex;
     min-height: 100vh;
@@ -15,7 +15,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #395281;
+    background-color: #3a6279;
     width: 366px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
