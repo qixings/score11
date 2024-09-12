@@ -110,13 +110,20 @@ body {
 .withdraw-section {
     background: #ffffff0d;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: column;
     margin: 9px;
     border-radius: 12px;
     height: 442px;
     align-items: center;
     width: 368px;
+}
+
+.transaction-history a{
+    text-decoration: none;
+    color: cyan;
+    margin-left: 239px;
+    font-size: 12px;
 }
 
 #withdraw-form {
